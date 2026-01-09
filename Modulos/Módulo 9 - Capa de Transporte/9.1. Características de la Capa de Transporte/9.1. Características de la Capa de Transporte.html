@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="9.1.1">9.1.1 Función de la Capa de Transporte</h1>
+        <br>
+        <p>Los programas de capa de aplicación generan datos que deben intercambiarse entre los hosts de origen y de destino. La capa de transporte es responsable de las comunicaciones lógicas entre aplicaciones que se ejecutan en diferentes hosts. Esto puede incluir servicios como el establecimiento de una sesión temporal entre dos hosts y la transmisión fiable de información para una aplicación.</p>
+        <br>
+        <p>Como se muestra en la ilustración, la capa de transporte es el enlace entre la capa de aplicación y las capas inferiores que son responsables de la transmisión a través de la red.</p>
+        <br>
+        <img src="img/Función de la Capa de Transporte.jpg" class="foto">
+        <br>
+        <p>La capa de transporte no tiene conocimiento del tipo de host de destino, el tipo de medio por el que deben viajar los datos, la ruta tomada por los datos, la congestión en un enlace o el tamaño de la red.</p>
+        <br>
+        <p>La capa de transporte incluye dos protocolos:</p>
+        <br>
+        <li>Protocolo de Control de Transmisión (TCP)</li>
+        <li>Protocolo de Datagramas de Usuario (UDP)</li>
+        <hr>
+
+        <h1 id="9.1.2">9.1.2 Responsabilidades de la Capa de Transporte</h1>
+        <br>
+        <p>La capa de transporte tiene muchas responsabilidades.</p>
+        <br>
+
+        <p><b>Seguimiento de conversaciones individuales</b></p>
+        <br>
+        <p>En la capa de transporte, cada conjunto de datos que fluye entre una aplicación de origen y una aplicación de destino se conoce como una conversación y se rastrea por separado. Es responsabilidad de la capa de transporte mantener y hacer un seguimiento de todas estas conversaciones.</p>
+        <br>
+        <p>Como se ilustra en la figura, un host puede tener múltiples aplicaciones que se comunican a través de la red simultáneamente.</p>
+        <br>
+        <p>La mayoría de las redes tienen un límite de la cantidad de datos que se puede incluir en un solo paquete. Por lo tanto, los datos deben dividirse en piezas manejables.</p>
+        <br>
+        <img src="img/Seguimiento de conversaciones individuales.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Segmentación de Datos y Rearmado de Segmentos</b></p>
+        <br>
+        <p>Es responsabilidad de la capa de transporte dividir los datos de la aplicación en bloques de tamaño adecuado. Dependiendo del protocolo de capa de transporte utilizado, los bloques de capa de transporte se denominan segmentos o datagramas. La figura ilustra la capa de transporte utilizando diferentes bloques para cada conversación.</p>
+        <br>
+        <p>La capa de transporte divide los datos en bloques más pequeños (es decir, segmentos o datagramas) que son más fáciles de administrar y transportar.</p>
+        <br>
+        <img src="img/Segmentación de Datos y Rearmado de Segmentos.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Agregar información de encabezado</b></p>
+        <br>
+        <p>El protocolo de capa de transporte también agrega información de encabezado que contiene datos binarios organizados en varios campos a cada bloque de datos. Los valores de estos campos permiten que los distintos protocolos de la capa de transporte lleven a cabo variadas funciones de administración de la comunicación de datos.</p>
+        <br>
+        <p>Por ejemplo, el host receptor utiliza la información de encabezado para volver a ensamblar los bloques de datos en un flujo de datos completo para el programa de capa de aplicación de recepción.</p>
+        <br>
+        <p>La capa de transporte garantiza que incluso con múltiples aplicaciones que se ejecutan en un dispositivo, todas las aplicaciones reciben los datos correctos.</p>
+        <br>
+        <img src="img/Agregar información de encabezado.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Identificación de las aplicaciones</b></p>
+        <br>
+        <p>La capa de transporte debe poder separar y administrar varias comunicaciones con diferentes necesidades de requisitos de transporte. Para pasar flujos de datos a las aplicaciones adecuadas, la capa de transporte identifica la aplicación de destino utilizando un identificador llamado número de puerto. Como se ilustra en la figura, a cada proceso de software que necesita acceder a la red se le asigna un número de puerto único para ese host.</p>
+        <br>
+        <img src="img/Identificación de las aplicaciones.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Multiplexión de conversaciones</b></p>
+        <br>
+        <p>El envío de algunos tipos de datos (por ejemplo, una transmisión de video) a través de una red, como una transmisión de comunicación completa, puede consumir todo el ancho de banda disponible. Esto evitaría que se produzcan otras conversaciones de comunicación al mismo tiempo. También podría dificultar la recuperación de errores y la retransmisión de datos dañados.</p>
+        <br>
+        <p>Como se muestra en la figura, la capa de transporte utiliza segmentación y multiplexación para permitir que diferentes conversaciones de comunicación se intercalen en la misma red.</p>
+        <br>
+        <p>La verificación de errores se puede realizar en los datos del segmento, para determinar si el segmento se modificó durante la transmisión.</p>
+        <br>
+        <img src="img/Multiplexión de conversaciones.jpg" class="foto">
+        <hr>
+
+        <h1 id="9.1.3">9.1.3 Protocolos de Capa de Transporte</h1>
+        <br>
+        <p>IP se ocupa solo de la estructura, el direccionamiento y el routing de paquetes. IP no especifica la manera en que se lleva a cabo la entrega o el transporte de los paquetes.</p>
+        <br>
+        <p>Los protocolos de capa de transporte especifican cómo transferir mensajes entre hosts y son responsables de administrar los requisitos de fiabilidad de una conversación. La capa de transporte incluye los protocolos TCP y UDP.</p>
+        <br>
+        <p>Las diferentes aplicaciones tienen diferentes requisitos de confiabilidad de transporte. Por lo tanto, TCP/IP proporciona dos protocolos de capa de transporte, como se muestra en la figura.</p>
+        <br>
+        <img src="img/Protocolos de Capa de Transporte.jpg" class="foto">
+        <hr>
+
+        <h1 id="9.1.4">9.1.4 Protocolo de Control de Transmisión (TCP)</h1>
+        <br>
+        <p>IP solo se refiere a la estructura, direccionamiento y enrutamiento de paquetes, desde el remitente original hasta el destino final. IP no es responsable de garantizar la entrega o determinar si es necesario establecer una conexión entre el remitente y el receptor.</p>
+        <br>
+        <p>El TCP se considera un protocolo de la capa de transporte confiable y completo, que garantiza que todos los datos lleguen al destino. TCP incluye campos que garantizan la entrega de los datos de la aplicación. Estos campos requieren un procesamiento adicional por parte de los hosts de envío y recepción.</p>
+        <br>
+        <p><b>Nota: </b>TCP divide los datos en segmentos.</p>
+        <br>
+        <p>La función del protocolo de transporte TCP es similar al envío de paquetes de los que se hace un rastreo de origen a destino. Si se divide un pedido de envío en varios paquetes, un cliente puede verificar en línea para ver el orden de la entrega.</p>
+        <br>
+        <p>TCP proporciona confiabilidad y control de flujo mediante estas operaciones básicas:</p>
+        <br>
+        <li>Enumerar y rastrear segmentos de datos transmitidos a un host específico desde una aplicación específica</li>
+        <li>Confirmar datos recibidos</li>
+        <li>Retransmitir cualquier información no reconocida después de un cierto período de tiempo</li>
+        <li>Secuenciar datos que pueden llegar en un orden incorrecto</li>
+        <li>Enviar datos a una velocidad eficiente que sea aceptable por el receptor</li>
+        <br>
+        <p>Para mantener el estado de una conversación y realizar un seguimiento de la información, TCP debe establecer primero una conexión entre el remitente y el receptor. Es por eso que TCP se conoce como un protocolo orientado a la conexión.</p>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver cómo los segmentos de TDP y los reconocimientos se transmiten entre el emisor y el receptor.</p>
+        <br>
+        <video src="video/Protocolo de Control de Transmisión (TCP).mp4" controls></video>
+
+        <hr>
+        <h1 id="9.1.5">9.1.5 Encabezado TCP</h1>
+        <br>
+        <p>TCP es un protocolo con estado, lo que significa que realiza un seguimiento del estado de la sesión de comunicación. Para hacer un seguimiento del estado de una sesión, TCP registra qué información se envió y qué información se reconoció. La sesión con estado comienza con el establecimiento de la sesión y termina con la finalización de la sesión.</p>
+        <br>
+        <p>Un segmento TCP agrega 20 bytes (es decir, 160 bits) de sobrecarga al encapsular los datos de la capa de aplicación. La figura muestra los campos en un encabezado TCP.</p>
+        <br>
+        <img src="img/Encabezado TCP.jpg" class="foto">
+        <hr>
+
+        <h1 id="9.1.6">9.1.6 Campos de Encabezado TCP</h1>
+        <br>
+        <p>La tabla identifica y describe los diez campos de un encabezado TCP.</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>Campo de Encabezado TCP</th>
+            <th>Descripción</th>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Puerto de Origen</b></td>
+            <td>Campo de 16 bits utilizado para identificar la aplicación de origen por número de puerto.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Puerto de Destino</b></td>
+            <td>Campo de 16 bits utilizado para identificar la aplicación de destino por número de puerto.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Secuencia de Números</b></td>
+            <td>Campo de 32 bits utilizado para reensamblar datos.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Número de Acuse de Recibo</b></td>
+            <td>Campo de 32 bits utilizado para indicar que se han recibido datos y el siguiente byte esperado de la fuente.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Longitud del Encabezado</b></td>
+            <td>Campo de 4 bits conocido como desplazamiento de datos que indica la longitud del encabezado del segmento TCP.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Reservado</b></td>
+            <td>Campo de 6 bits reservado para uso futuro.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Bits de Control</b></td>
+            <td>Campo de 6 bits que incluye indicadores que señalan el propósito y función del segmento TCP.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Tamaño de la ventana</b></td>
+            <td>Campo de 16 bits que indica el número de bytes que se pueden aceptar a la vez.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Suma de Comprobación</b></td>
+            <td>Campo de 16 bits utilizado para la detección de errores del encabezado y los datos del segmento.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Urgente</b></td>
+            <td>Campo de 16 bits utilizado para indicar si los datos contenidos son urgentes.</td>
+        </tr>
+        </table>
+        <hr>
+
+        <h1 id="9.1.7">9.1.7 Protocolo de Datagramas de Usuario (UDP)</h1>
+        <br>
+        <p>UDP es un protocolo de capa de transporte más simple que TCP. No proporciona confiabilidad y control de flujo, lo que significa que requiere menos campos de encabezado. Debido a que los procesos UDP remitente y receptor no tienen que administrar la confiabilidad y el control de flujo, esto significa que los datagramas UDP se pueden procesar más rápido que los segmentos TCP. El UDP proporciona las funciones básicas para entregar segmentos de datos entre las aplicaciones adecuadas, con muy poca sobrecarga y revisión de datos.</p>
+        <br>
+        <p><b>Nota: </b>UDP divide los datos en datagramas que también se conocen como segmentos.</p>
+        <br>
+        <p>UDP es un protocolo sin conexión. Debido a que UDP no proporciona fiabilidad ni control de flujo, no requiere una conexión establecida. Debido a que UDP no realiza un seguimiento de la información enviada o recibida entre el cliente y el servidor, UDP también se conoce como protocolo sin estado.</p>
+        <br>
+        <p>UDP también se conoce como un protocolo de entrega de mejor esfuerzo porque no hay reconocimiento de que los datos se reciben en el destino. Con UDP, no existen procesos de capa de transporte que informen al emisor si la entrega se realizó correctamente.</p>
+        <br>
+        <p>UDP es como colocar una carta regular, no registrada, en el correo. El emisor de la carta no conoce la disponibilidad del receptor para recibir la carta. Además, la oficina de correos tampoco es responsable de hacer un rastreo de la carta ni de informar al emisor si esta no llega a destino.</p>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una animación de los datagramas UDP que se transmiten del remitente al receptor.</p>
+        <br>
+        <video src="video/Protocolo de Datagramas de Usuario (UDP).mp4" controls></video>
+
+        <hr>
+        <h1 id="9.1.8">9.1.8 Encabezado UDP</h1>
+        <br>
+        <p>UDP es un protocolo sin estado, lo que significa que ni el cliente ni el servidor rastrean el estado de la sesión de comunicación. Si se requiere confiabilidad al utilizar UDP como protocolo de transporte, a esta la debe administrar la aplicación.</p>
+        <br>
+        <p>Uno de los requisitos más importantes para transmitir video en vivo y voz a través de la red es que los datos fluyan rápidamente. Las aplicaciones de video y de voz en vivo pueden tolerar cierta pérdida de datos con un efecto mínimo o imperceptible, y se adaptan perfectamente a UDP.</p>
+        <br>
+        <p>Los bloques de comunicación en UDP se denominan datagramas o segmentos. Estos datagramas se envían como el mejor esfuerzo por el protocolo de la capa de transporte.</p>
+        <br>
+        <p>El encabezado UDP es mucho más simple que el encabezado TCP porque solo tiene cuatro campos y requiere 8 bytes (es decir, 64 bits). La figura muestra los campos en un encabezado TCP.</p>
+        <br>
+        <img src="img/Encabezado UDP.jpg" alt="">
+        <hr>
+
+        <h1 id="9.1.9">9.1.9 Campos de Encabezado UDP</h1>
+        <br>
+        <p>La tabla identifica y describe los cuatro campos de un encabezado UDP.</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>Campo de Encabezado UDP</th>
+            <th>Descripción</th>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Puerto de Origen</b></td>
+            <td>Campo de 16 bits utilizado para identificar la aplicación de origen por número de puerto.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Puerto de Destino</b></td>
+            <td>Campo de 16 bits utilizado para identificar la aplicación de destino por número de puerto.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Longitud</b></td>
+            <td>Campo de 16 bits que indica la longitud del encabezado del datagrama UDP.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Suma de comprobación</b></td>
+            <td>Campo de 16 bits utilizado para la comprobación de errores del encabezado y los datos del datagrama.</td>
+        </tr>
+        </table>
+        <hr>
+
+        <h1 id="9.1.10">9.1.10 Pares de Sockets</h1>
+        <br>
+        <p>Los puertos de origen y de destino se colocan dentro del segmento. Los segmentos se encapsulan dentro de un paquete IP. El paquete IP contiene la dirección IP de origen y de destino. Se conoce como socket a la combinación de la dirección IP de origen y el número de puerto de origen, o de la dirección IP de destino y el número de puerto de destino.</p>
+        <br>
+        <p>En el ejemplo de la figura, el PC está solicitando simultáneamente servicios FTP y web desde el servidor de destino.</p>
+        <br>
+        <img src="img/Pares de Sockets.jpg" class="foto">
+        <br>
+        <p>En el ejemplo, la solicitud FTP generada por el PC incluye las direcciones MAC de Capa 2 y las direcciones IP de Capa 3. La solicitud también identifica el puerto de origen 1305 (es decir, generado dinámicamente por el host) y el puerto de destino, identificando los servicios FTP en el puerto 21. El host también ha solicitado una página web del servidor utilizando las mismas direcciones de Capa 2 y Capa 3. Sin embargo, está utilizando el número de puerto de origen 1099 (es decir, generado dinámicamente por el host) y el puerto de destino que identifica el servicio web en el puerto 80.</p>
+        <br>
+        <p>El socket se utiliza para identificar el servidor y el servicio que solicita el cliente. Un socket de cliente puede ser parecido a esto, donde 1099 representa el número de puerto de origen: 192.168.1.5:1099</p>
+        <br>
+        <p>El socket en un servidor web puede ser 192.168.1.7:80</p>
+        <br>
+        <p>Juntos, estos dos sockets se combinan para formar un par de zócalos: 192.168.1.5:1099, 192.168.1.7:80</p>
+        <br>
+        <p>Los sockets permiten que los diversos procesos que se ejecutan en un cliente se distingan entre sí. También permiten la diferenciación de diferentes conexiones a un proceso de servidor.</p>
+        <br>
+        <p>El número de puerto de origen actúa como dirección de retorno para la aplicación que realiza la solicitud. La capa de transporte hace un seguimiento de este puerto y de la aplicación que generó la solicitud de manera que cuando se devuelva una respuesta, esta se envíe a la aplicación correcta.</p>
+        <hr>
+
+        <h1 id="9.1.11">9.1.11 Verifique Su Conocimiento - Compare las Características de TCP y UDP</h1>
+        <br>
+        <img src="img/Verifique Su Conocimiento - Compare las Características de TCP y UDP.jpg" class="foto">
+    </div>
+</body>
+</html>

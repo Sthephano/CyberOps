@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="11.3.1">11.3.1 ¿Qué aprendí en este módulo?</h1>
+        <br>
+        <p><b>Dispositivos de red</b></p>
+        <br>
+        <p>En este módulo, aprendió que los dispositivos finales que están conectados a una LAN se conectan a otras LAN mediante una interred de dispositivos intermediarios, como routers y switches.</p>
+        <br>
+        <p>Los routers son dispositivos de la capa de red (Capa 3) y utilizan el proceso de enrutamiento para reenviar paquetes de datos entre redes o subredes. Los routeres proporcionan:</p>
+        <br>
+        <li>Determinación de ruta: el router crea una tabla de enrutamiento que contiene una lista de todas las rutas de red remotas y conectadas directamente conocidas y cómo llegar a ellas. La información de la tabla de enrutamiento se configura manualmente mediante rutas estáticas o se descubre dinámicamente mediante un protocolo de enrutamiento dinámico (por ejemplo, RIP, OSPF, EIGRP, BGP). El procesamiento de la decisión de reenvío de paquetes se basa en la coincidencia más larga y determina cómo encapsular el paquete y reenviarlo a la interfaz de salida correcta.</li>
+        <li>Servicios de reenvío de paquetes: los paquetes entrantes pasan por el proceso de determinación de rutas para identificar la interfaz saliente. El router luego proporciona la función de switching encapsulando los paquetes de salida en el tipo de enlace de datos apropiado y lo reenvía a la interfaz de salida.</li>
+        <br>
+        <p>Los switches segmentan una red LAN en dominios de colisión separados, uno para cada puerto del switch. Un switch toma decisiones de reenvío basado en la tabla de direcciones MAC de Ethernet, que están contenidos en el segmento de Ethernet. El switch utiliza la dirección de origen de trama para obtener información sobre las nuevas direcciones MAC y la dirección MAC de destino para identificar el puerto de salida para reenviar la trama. Los switches admiten la creación de VLAN (es decir, dominios de difusión lógica) para mejorar el rendimiento y la seguridad de la red. Para la redundancia, los switches suelen estar interconectados para proporcionar rutas alternativas que pueden causar problemas de bucle de capa 2. Los switches se configuran con el protocolo de árbol de expansión (STP) para mantener una ruta de capa 2 libre de bucle bloqueando intencionalmente las rutas redundantes que podrían provocar un bucle.</p>
+        <br>
+        <p>Los switches multicapa (también conocidos como switches de Capa 3) no solo tiene a su cargo el switching de Capa 2 sino que también reenvían tramas en función de la información de las capas 3 y 4. Un switch multicapa Cisco Catalyst soporta puertos enrutados e interfaces virtuales de switch (SVIs).</p>
+        <br>
+        <p><b>Comunicaciones inalámbricas</b></p>
+        <br>
+        <p>Los dispositivos de red inalámbrica se conectan a un punto de acceso (AP) o a un controlador de LAN inalámbrica (WLC) que demandan el estándar 802.11. El formato de la trama 802.11 es similar al formato de trama de Ethernet, excepto que este contiene campos adicionales. Los dispositivos WLAN usan CSMA/CA como método para determinar cómo y cuándo enviar datos en la red Para conectarse a la WLAN, los dispositivos inalámbricos completan un proceso de tres etapas para descubrir un punto de acceso inalámbrico, autenticarse con el punto de acceso y asociarse con el punto de acceso (AP)</p>
+        <br>
+        <p>Los AP se pueden configurar de forma autónoma (individualmente) o mediante un WLC para simplificar la configuración y supervisión de numerosos puntos de acceso.</p>
+        <hr>
+
+        <h1 id="11.3.2">11.3.2 Módulo 11 - Cuestionario de dispositivos de comunicación de red</h1>
+    </div>
+</body>
+</html>

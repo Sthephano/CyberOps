@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="10.7.1">10.7.1 ¿Qué Aprendí en este Módulo?</h1>
+        <br>
+        <p><b>DHCP</b></p>
+        <br>
+        <p>El Protocolo de Configuración de Host Dinámico (Dynamic Host Configuration Protocol) (DHCP) automatiza la asignación de direcciones IPv4. Esto se conoce como la alternativa al direccionamiento estático y es el direccionamiento dinámico. En redes más grandes, o donde la población de usuarios cambia con frecuencia, el direccionamiento dinámico es a menudo el método preferido para la asignación de direcciones. Muchas redes utilizan ambos métodos. DHCP se utiliza para hosts de propósito general, como dispositivos finales de usuario. El direccionamiento estático se utiliza para los dispositivos de red, tales como (puertas de enlace )gateways, switches, servidores e impresoras.</p>
+        <br>
+        <p>Cuando un dispositivo configurado con IPv4 DHCP se inicia o se conecta a la red, el cliente transmite un mensaje de descubrimiento de DHCP (DHCPDISCOVER) para identificar cualquier servidor DCHP que esté disponible en la red. Un servidor DHCP responde con un mensaje de oferta DCHP (DHCPOFFER), que ofrece una concesión al cliente. El mensaje de oferta contiene la dirección IPv4 y la máscara de subred que se deben asignar, la dirección IPv4 del servidor DNS y la dirección IPv4 del gateway predeterminado. El cliente puede recibir varios mensajes de OFERTA DHCP si hay más de un servidor DHCP en la red local. Debe elegir entre ellos y envía un mensaje DCHPREQUEST que identifica el servidor explícito y la oferta de arrendamiento que el cliente está aceptando. Si la dirección IPv4 aún está disponible, el servidor devuelve un mensaje DHCPACK. Si la oferta ya no es válida, devolverá un mensaje DCHPNACK. El formato del mensaje DHCPv4 se utiliza para todas las transacciones DHCPv4. Los mensajes DHCPv4 se encapsulan dentro del protocolo de transporte UDP.</p>
+        <br>
+        <p><b>Descripción general de DNS</b></p>
+        <br>
+        <p>El sistema de nombres de dominio (DNS) se desarrolló para proporcionar un medio confiable de administrar y proporcionar los nombres de dominio y sus direcciones IP asociadas. El sistema de DNS se compone de una jerarquía global de servidores distribuidos que contienen bases de datos con asignaciones de nombre para las direcciones IP. Los analistas de ciberseguridad deben tener un conocimiento profundo del DNS porque un análisis reciente de las amenazas a la seguridad de la red descubrió que más del 90% del software malicioso que se usa para atacar las redes usa el sistema DNS para llevar a cabo campañas de ataque.</p>
+        <br>
+        <p>Los siguientes son los pasos involucrados en la resolución de DNS:</p>
+        <br>
+        <li>El usuario escribe un FQDN en un campo de dirección del navegador.</li>
+        <li>Se envía una consulta de DNS al servidor DNS designado.</li>
+        <li>El servidor DNS hace coincidir el FQDN con su dirección IP.</li>
+        <li>La respuesta de la consulta de DNS se envía de vuelta al cliente con la dirección IP para el FDQN.</li>
+        <li>El equipo cliente utiliza la dirección IP para enviar solicitudes al servidor.</li>
+        <br>
+        <p>DNS utiliza el puerto UDP 53 para las consultas y respuestas de DNS. El servidor DNS almacena los diferentes tipos de RR utilizados para resolver nombres. Estos registros contienen el nombre, la dirección y el tipo de registro. Este formato de mensaje que se ve en la figura se utiliza para todos los tipos de solicitudes de clientes y respuestas del servidor, para los mensajes de error y para la transferencia de información de registro de recursos entre servidores. DNS dinámico (DDNS) le permite a un usuario u organización registrar una dirección IP con un nombre de dominio, al igual que en DNS. Sin embargo, cuando la dirección IP del mapeo cambia, el nuevo mapeo se puede propagar por todo el DNS casi instantáneamente. Los agentes de amenazas pueden abusar de DDNS de varias maneras y las URL que usan DDNS deben ser sospechosas. WHOIS es un protocolo basado en TCP que se utiliza para identificar a los propietarios de dominios de Internet a través del sistema DNS. WHOIS tiene limitaciones y los hackers tienen maneras de ocultar su identidad.</p>
+        <br>
+        <p><b>NAT</b></p>
+        <br>
+        <p>NAT proporciona la traducción de direcciones privadas a direcciones públicas. Esto permite que los dispositivos con direcciones IPv4 privadas accedan a recursos fuera de su red privada, como los que se encuentran en Internet. NAT ayuda a conservar las direcciones IPv4 públicas. Los routers con NAT habilitada se pueden configurar con una o más direcciones IPv4 públicas válidas. Estas direcciones se conocen como grupo NAT. En general, los routers NAT funcionan en la frontera de una red de rutas internas. Cuando un dispositivo dentro de la red de rutas internas desea comunicarse con un dispositivo fuera de su red, el paquete se reenvía al router de frontera. El enrutador de borde realiza el proceso NAT, traduciendo la dirección privada interna del dispositivo a la dirección pública, externa y enrutable. La traducción de la dirección del puerto (PAT), también conocida como “NAT con overload”, asigna varias direcciones IPv4 privadas a una única dirección IPv4 pública o algunas direcciones.</p>
+        <br>
+        <p><b>Servicios de transferencia de archivos y uso compartido</b></p>
+        <br>
+        <p>El Protocolo de transferencia de archivos (FTP) es otro protocolo de capa de aplicación de uso común. Fue desarrollado para permitir transferencias de archivos entre un cliente y un servidor. Para transferir archivos correctamente, FTP requiere dos conexiones entre el cliente y el servidor: una para comandos y respuestas, y otra para la transferencia de archivos real. El protocolo de transferencia de archivos SSH es una forma segura de FTP que utiliza Secure Shell para proporcionar un canal seguro. El Protocolo de transferencia de archivos trivial (TFTP) es un protocolo de transferencia de archivos simplificado que utiliza el puerto UDP número 69. TFTP es fundamentalmente inseguro. El bloque de mensajes del servidor (SMB) es un protocolo de intercambio de archivos cliente / servidor que describe la estructura de los recursos de red compartidos, como directorios, archivos, impresoras y puertos serie. Los servicios de impresión y el uso compartido de archivos se han convertido en el pilar de las redes de Microsoft.</p>
+        <br>
+        <p><b>Correo electrónico</b></p>
+        <br>
+        <p>Los clientes de correo electrónico se comunican con servidores de correo para enviar y recibir correo electrónico. Los servidores de correo se comunican con otros servidores de correo para transportar mensajes de un dominio a otro. El correo electrónico soporta tres protocolos separados para funcionar: SMTP, POP e IMAP. El proceso de la capa de aplicación que envía correo desde un cliente a un servidor de correo electrónico utiliza SMTP. Un cliente recupera el correo electrónico de un servidor de correo mediante POP3 o IMAP.</p>
+        <br>
+        <p><b>HTTP</b></p>
+        <br>
+        <p>Los navegadores web y los servidores web interactúan mediante los siguientes pasos:</p>
+        <br>
+        <li>El navegador interpreta las tres partes de la URL.</li>
+        <li>El navegador comprueba con un servidor de nombres para convertir una dirección en una dirección IP numérica. El cliente inicia una solicitud HTTP a un servidor enviando una solicitud GET al servidor.</li>
+        <li>En respuesta a la solicitud, el servidor envía el HTML de esta página web al navegador.</li>
+        <li>El navegador descifra el HTML y muestra la página para la ventana del navegador.</li>
+        <br>
+        <p>HTTP URLS también puede especificar el puerto en el servidor que debe manejar los métodos HTTP. Además, puede especificar una cadena y un fragmento de la consulta. HTTP es un protocolo de solicitud y respuesta que utiliza el puerto TCP 80, aunque se pueden utilizar otros puertos. Cuando un cliente envía una solicitud a un servidor web, utiliza uno de los seis métodos especifcados en el protocolo HTTP: GET, POST, PUT, DELETE, OPTIONS y CONNECT. HTTP es flexible pero no seguro. Las respuestas del servidor HTTP se identifican con códigos de estado organizados en cinco grupos de códigos: 1xx, 2xx, 3xx, 4xx y 5xx. HTTP/2 es una revisión importante de la especificación del protocolo HTTP que está diseñada para mejorar el rendimiento HTTP solucionando problemas de latencia. Para una comunicación segura a través de Internet, se utiliza HTTP seguro (HTTPS). HTTPS usa la autenticación y ecriptación para asegurar los datos mientras viajan entre el cliente y el servidor.</p>
+        <hr>
+        <h1 id="10.7.2">10.7.2 Módulo 10 - Cuestionario de servicios de red</h1>
+    </div>
+</body>
+</html>

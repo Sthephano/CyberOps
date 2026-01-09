@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="4.7.1">4.7.1 Instalación y Ejecución de Aplicaciones en un Host Linux</h1>
+        <br>
+        <p>Muchas aplicaciones de usuario final son programas complejos escritos en lenguajes compilados. Para ayudar en el proceso de instalación, Linux suele incluir programas llamados administradores de paquetes. Un paquete es el término utilizado para referirse a un programa y a todos sus archivos compatibles. El uso de un administrador de paquetes para instalar un paquete permite colocar todos los archivos necesarios en la ubicación correcta en el sistema de archivos.</p>
+        <br>
+        <p>Los administradores de paquetes varían dependiendo de las distribuciones de Linux. Por ejemplo, <b>pacman</b> es utilizado por Arch Linux mientras que <b>dpkg</b> (paquete Debian) y <b>apt</b> (Advanced Packaging Tool) se utilizan en las distribuciones Debian y Ubuntu Linux. Para este curso, haremos uso del administrador de paquates <b>pacman</b>.</p>
+        <br>
+        <p>El resultado del comando muestra la salida de algunos <b>apt-get</b> comandos utilizados en las distribuciones Debian.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>analyst@cuckoo:~$ sudo apt-get update</p>
+            <p>[sudo] password for analyst:</p>
+            <p>Hit:l http://us.archive.ubuntu.com/ubuntu xenial InRelease</p>
+            <p>Get:2 http://us.archive.ubuntu.com/ubuntu xenial-updates InRelease [102 kB]</p>
+            <p>Get:3 http://security.ubuntu.com/ubuntu xenial-security InRelease [102 kB]</p>
+            <p>Get:4 http://us.archive.ubuntu.com/ubuntu xenial-backports InRelease [102 kB]</p>
+            <p>Get:5 http://us.archive.ubuntu.com/ubuntu xenial-updates/main amd64 Packages [534 kB]</p>
+            <p>output omitted</p>
+            <p>Fetched 4,613 kB in 4s (1,003 kB/s)</p>
+            <p>Reading package lists... Done</p>
+            <p>analyst@cuckoo:~$</p>
+            <p>analyst@cuckoo:~$ sudo apt-get upgrade</p>
+            <p>Reading package lists Done</p>
+            <p>Building dependency tree</p>
+            <p>Reading state information... Done</p>
+            <p>Calculating upgrade... Done</p>
+            <p>The following packages have been kept back:</p>
+            <p>linux-generic-hwe-16.04 linux-headers-generic-hwe-16.04</p>
+            <p>linux-image-generic-hwe-16.04</p>
+            <p>The following packages will be upgraded:</p>
+            <p>firefox firefox-locale-en girl.2-javascriptcoregtk-4.0 girl.2-webkit2-4.0 libjavascriptcoregtk-4.0-18</p>
+            <p>libwebkit2gtk-4.0-37 libwebkit2gtk-4.0-37-gtk2 libxen-4.6 libxenstore3.0 linux-libc-dev logrotate openssh-client</p>
+            <p>qemu-block-extra qerau-kvm qemu-system-common qemu-system-x86 qemu-utils</p>
+        </div>
+        <br>
+        <p>El comando <b>apt-get update</b> es usado para obtener la lista de paquetes desde el repositorio y actualizar la base de datos de paquetes locales. El comando <b>apt-get upgrade</b> es usado para actualizar todos los paquetes actualmente instalados a sus versiones más recientes.</p>
+        <br>
+
+        <h1 id="4.7.2">4.7.2 Mantener el Sistema Actualizado</h1>
+        <br>
+        <p>También conocidas como parches, las actualizaciones del sistema operativo son publicadas periódicamente por empresas de sistemas operativos para abordar cualquier vulnerabilidad conocida en sus sistemas operativos. Aunque las empresas tienen programadas las actualizaciones, la publicación de actualizaciones no programadas del sistema operativo puede suceder si se detecta una vulnerabilidad importante en el código del sistema operativo. Los sistemas operativos modernos alertarán al usuario cuando las actualizaciones estén disponibles para la descarga e instalación, pero el usuario puede buscar actualizaciones en cualquier momento.</p>
+        <br>
+        <p>La siguiente tabla compara los comandos de distribución de Arch Linux y Debian/Ubuntu Linux para realizar operaciones básicas del sistema de paquetes.</p>
+        <br>
+        <table>
+            <tr>
+                <th>Tarea</th>
+                <th>Arch</th>
+                <th>Debian/Ubuntu</th>
+            </tr>
+            <tr>
+                <td>Instala un paquete por nombre</td>
+                <td>pacman -S</td>
+                <td>apt install</td>
+            </tr>
+            <tr>
+                <td>Eliminar un paquete por nombre</td>
+                <td>pacman -Rs</td>
+                <td>apt remove</td>
+            </tr>
+            <tr>
+                <td>Actualizar un paquete local</td>
+                <td>pacman -Syy</td>
+                <td>apt-apt-get update</td>
+            </tr>
+            <tr>
+                <td>Actualizar todos los paquetes instalados actualmente</td>
+                <td>pacman -Syu</td>
+                <td>apt-get upgrade</td>
+            </tr>
+        </table>
+        <br>
+        <p>Una GUI de Linux también se puede utilizar para comprobar e instalar actualizaciones manualmente. En Ubuntu, por ejemplo, para instalar actualizaciones, haga clic en <b>Dash Search Box</b>, escriba <b>software updater</b>,y a continuación, haga clic en el <b>ícono</b> Software Updater, como se muestra en la figura.</p>
+        <br>
+        <img src="img/4.7.2-image-3.jpg" class="foto">
+        <hr>
+
+        <h1 id="4.7.3">4.7.3 Procesos y Bifurcaciones</h1>
+        <br>
+        <p>Un proceso es una instancia en ejecución de un programa informático. Los sistemas operativos multitarea pueden ejecutar varios procesos al mismo tiempo.</p>
+        <p>El plegamiento es un método que utiliza el kernel para permitir que un proceso cree una copia de sí mismo. Los procesos necesitan una manera de crear nuevos procesos en los sistemas operativos multitarea. La bifurcación es la única manera de lograr esto en Linux.</p>
+        <p>La bifurcación es importante por muchas razones. Una de ellas se relaciona con la escalabilidad de los procesos. Apache, un servidor web muy conocido, es un buen ejemplo de ello. Gracias a que puede bifurcarse a sí mismo, Apache es capaz de responder a una gran cantidad de solicitudes con menos recursos de sistema que un servidor con base en procesos individuales.</p>
+        <p>Cuando un proceso solicita la bifurcación, el proceso que realiza la solicitud se convierte en el proceso principal, y el proceso recién creado se denomina subproceso. Después de la bifurcación, los procesos son, en cierta medida, independientes; tienen diferentes identificaciones, pero ejecutan el mismo código de programa.</p>
+        <p>La tabla muestra tres comandos que se utilizan para administrar procesos.</p>
+        <br>
+        <table>
+            <tr>
+                <th>Comando</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>ps</td>
+                <td>
+                    <li>Se utiliza para enumerar los procesos en ejecución en el sistema cuando se invoca. </li>
+                    <li>Se puede indicar que muestre los procesos en ejecución que pertenecen al usuario actual o a otros usuarios. </li>
+                    <li>Mientras que el proceso de enlistar no requiera privilegios de root, eliminar o modificar otro proceso sí los necesita.</li>
+                </td>
+            </tr>
+            <tr>
+                <td>top</td>
+                <td>
+                    <li>Es utilizado para ejecutar procesos, pero a diferencia de <b>ps</b>, <b>top</b> sigue mostrando los procesos en ejecución dinámicamente. </li>
+                    <li>Presione <b>q</b> para salir de top.</li>
+                </td>
+            </tr>
+            <tr>
+                <td>kill</td>
+                <td>
+                    <li>Utilizado para modificar el comportamiento de un proceso específico. </li>
+                    <li>Según los parámetros, <b>kill</b> eliminará, reiniciará o detendrá un proceso. </li>
+                    <li>En muchos casos, el usuario ejecuta <b>ps</b> o <b>top</b> antes de ejecutar kill. </li>
+                    <li>Esto se hace para que el usuario adquiera la PID de un proceso antes de ejecutar kill.</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>La salida del comando muestra el resulta del comando top en una computadora Linux.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>[analyst@secOps ~]$ top</p>
+            <p>top - 11:29:16 up 0 min,  1 user,  load average: 1.09, 0.31, 0.11</p>
+            <p>Tasks: 119 total,   1 running, 118 sleeping,   0 stopped,   0 zombie</p>
+            <p>%Cpu(s):  5.4 us,  2.0 sy,  0.0 ni, 87.4 id,  2.7 wa,  1.4 hi,  1.0 si,  0.0 st</p>
+            <p>MiB Mem : 982.8 total, 67.9 free, 765.8 used, 149.1 buff/cache</p>
+            <p>MiB Swap:   0.0 total,   0.0 free,   0.0 used. 39.3 avail Mem</p>
+            <p>PID USER   PR  NI VIRT RES SHR S  %CPU  %MEM TIME+ COMMAND  </p>
+            <p>729 analyst   20   0 2652376 284472  61076 S   2.7  28.3   0:06.75 Web Con+</p>
+            <p>570 analyst   20   0 2691388 215728  62404 S   2.0  21.4   0:06.99 firefox  </p>
+            <p>357 root   20   0  267972  91960  18468 S   1.3   9.1   0:01.63 Xorg</p>
+            <p>461 analyst   20   0  322208  21000   7480 S   1.3   2.1   0:00.67 xfce4-p+</p>
+            <p>121 root   20   0   0   0   0 S   0.7   0.0   0:00.43 kswapd0  </p>
+            <p>   1 root   20   0  174376   4196   1688 S   0.3   0.4   0:00.66 systemd  </p>
+            <p>294 root   20   0  245036  11876 868 S   0.3   1.2   0:00.34 python2+</p>
+            <p>539 analyst   20   0  150824 660   0 S   0.3   0.1   0:00.02 VBoxCli+</p>
+            <p>800 analyst   20   0  477768  18968   9800 S   0.3   1.9   0:00.30 xfce4-t+</p>
+            <p>   2 root   20   0   0   0   0 S   0.0   0.0   0:00.00 kthreadd</p>
+            <p>   3 root   0 -20   0   0   0 I   0.0   0.0   0:00.00 rcu_gp  </p>
+            <p>   4 root   0 -20   0   0   0 I   0.0   0.0   0:00.00 rcu_par+</p>
+            <p>   5 root   20   0   0   0   0 I   0.0   0.0   0:00.00 kworker+</p>
+            <p>   6 root   0 -20   0   0   0 I   0.0   0.0   0:00.00 kworker+</p>
+            <p>   7 root   20   0   0   0   0 I   0.0   0.0   0:00.00 kworker+</p>
+            <p>   8 root   0 -20   0   0   0 I   0.0   0.0   0:00.00 mm_perc+</p>
+            <p>   9 root   20   0   0   0   0 S   0.0   0.0   0:00.02 ksoftir+</p>
+            <p>[analyst@secOps ~]$</p>
+        </div>
+
+        <h1 id="4.7.4">4.7.4 Malware en un host de Linux</h1>
+        <br>
+        <p>El malware de Linux incluye virus, troyanos, gusanos y otros tipos de malware que pueden afectar el sistema operativo. Debido a una serie de componentes del diseño, como la estructura del sistema de archivos, los permisos de archivos y las restricciones de las cuentas de usuario, es habitual considerar que los sistemas operativos Linux tienen mejor protección contra malware.</p>
+        <br>
+        <p>Aunque se podría decir que está mejor protegido, Linux no es inmune al malware. Se han encontrado y aprovechado muchas vulnerabilidades en Linux, desde vulnerabilidades en el software de servidor hasta vulnerabilidades en el kernel. Los atacantes son capaces de aprovechar estas vulnerabilidades y poner en riesgo el sistema de destino. Debido a la naturaleza de código abierto de Linux, los parches y las correcciones suelen estar disponibles apenas horas después de detectar este tipo de problemas.</p>
+        <br>
+        <p>Si se ejecuta un programa malicioso, causará daños, independientemente de la plataforma. Un vector de ataque común en Linux son sus servicios y procesos. Con frecuencia, las vulnerabilidades se detectan en el código de servidores y procesos ejecutándose en computadoras conectadas a la red. Por ejemplo, una versión desactualizada del servidor web Apache puede contener una vulnerabilidad sin parches que un atacante puede aprovechar. A menudo, los atacantes sondean puertos abiertos para determinar la versión y naturaleza del servidor en ese puerto. Con ese conocimiento, los atacantes pueden investigar si hay algún problema conocido con esa versión particular de ese servidor específico para mejorar el ataque. Al igual que con la mayoría de las vulnerabilidades, mantener la computadora actualizada y cerrar todos los servicios y puertos no utilizados es una buena manera de reducir las posibilidades de ataque en una computadora con Linux.</p>
+        <br>
+        <p>El comando output muestra un atacante usando el comando Telnet para probar la naturaleza y versión de un servidor web (Puerto 80).</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <pre><code>
+                analyst@secOps ~]$ telnet 209.165.200.224 80
+                Trying 209.165.200.224...
+                Connected to 209.165.200.224.
+                Escape character is ‘^]’.
+                &lt;type anything to force an HTTP error response&gt;
+                HTTP/1.1 400 Bad Request
+                Server: nginx/1.12.0
+                Date: Wed, 17 May 2017 14:27:30 GMT
+                Content-Type: text/html
+                Content-Length: 173
+                Connection: close
+                &lt;html&gt;
+                &lt;head&gt;&lt;title&gt;400 Bad Request&lt;/title&gt;&lt;/head&gt;
+                &lt;body bgcolor="white"&gt;
+                &lt;center&gt;&lt;h1&gt;400 Bad Request&lt;/h1&gt;&lt;/center&gt;
+                &lt;hr&gt;&lt;center&gt;nginx/1.12.0&lt;/center&gt;
+                &lt;/body&gt;
+                &lt;/html &gt;
+                Connection closed by foreign host.
+                analyst@secOps ~]$
+            </code></pre>
+        </div>
+        <br>
+        <p>El atacante descubrió que el servidor en cuestión está ejecutando nginx versión 1.12.0. El siguiente paso sería investigar vulnerabilidades conocidas en el código de nginx 1.12.0.</p>
+        <br>
+        <p><b>Nota: </b>Más adelante en el curso, se brindará información más detallada sobre este ataque.</p>
+        <hr>
+
+        <h1 id="4.7.5">4.7.5 Comprobación de Rootkit</h1>
+        <p>Un rootkit es un tipo de malware diseñado para aumentar los privilegios de un usuario no autorizado u otorgar acceso a partes del software que no suelen estar disponibles. Los rootkit también suelen usarse para asegurar el ingreso a una puerta trasera de una computadora atacada.</p>
+        <p>Es posible automatizar la instalación de un rootkit (como parte de una infección) o un atacante puede instalarlo manualmente después de atacar una computadora. Un rootkit es destructivo porque cambia el código del kernel y sus módulos, lo que afecta las operaciones más fundamentales del sistema operativo propiamente dicho. Con un nivel tan profundo de ataque, los rootkits pueden ocultar la intrusión, eliminar cualquier rastro de su instalación e incluso manipular las herramientas de solución de problemas y diagnóstico para que oculten la presencia del rootkit en sus resultados. Mientras que hay antecedentes de instalación de rootkits mediante cuentas de usuario comunes en Linux, la gran mayoría de los ataques con rootkit requieren acceso de root o administrador.</p>
+        <p>Dado que se ve afectada la naturaleza misma de la computadora, la detección de rootkits puede ser muy difícil. Los métodos de detección típicos suelen incluir arrancar la computadora desde medios confiables, como un CD con el sistema operativo de diagnóstico ejecutado en directo. Se monta la unidad afectada y, desde el conjunto seguro de herramientas del sistema, es posible iniciar herramientas de diagnóstico confiables para inspeccionar el sistema de archivos atacado. Los métodos de inspección incluyen métodos basados en el comportamiento, y análisis de firmas, diferencias y volcado de memoria.</p>
+        <p>La eliminación de rootkits puede ser complicada y, a menudo, es imposible, especialmente en casos en los que el rootkit reside en el kernel. La reinstalación del sistema operativo suele ser la única solución real. Normalmente, los rootkits de firmware requieren la sustitución de hardware.</p>
+        <p><b>chkrootkit</b> es un popular programa basado en Linux diseñado para comprobar la computadora en busca de rootkits conocidos. Es un script de shell que utiliza herramientas de Linux comunes, como strings y grep, para comparar las firmas de los programas principales. También busca discrepancias mientras atraviesa el sistema de archivos /proc comparando las firmas detectadas con el resultado de <b>ps</b>.</p>
+        <p>Aunque son útiles, recuerde que los programas para detectar rootkits no son infalibles.</p>
+        <p>La salida del comando muestra la salida de chkrootkit en un Ubuntu Linux.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <b>analyst@cuckoo:~$ sudo ./chkrootkit</b>
+            <b>[sudo] password for analyst:</b>
+            <b>ROOTDIR is ‘/’</b>
+            <b>Checking 'amd’... not found</b>
+            <b>Checking 'basename’... not infected</b>
+            <b>Checking 'biff’... not found</b>
+            <b>Checking 'chfn’... not infected</b>
+            <b>Checking 'chsh'... not infected</b>
+            <b>Checking 'cron'... not infected</b>
+            <b>Checking 'crontab’... not infected</b>
+            <b>Checking 'date'... not infected</b>
+            <b>Checking 'du'... not infected</b>
+            <b>Checking 'dirname'... not infected</b>
+            <b>Checking 'echo'... not infected</b>
+            <b>Checking 'egrep’... not infected</b>
+            <b>Checking 'env'— not infected</b>
+            <b>Checking 'find'... not infected</b>
+            <b>Checking 'fingerd'... not found</b>
+            <b>Checking 'gpm'... not found</b>
+            <b>Checking 'grep'... not infected</b>
+            <b>Checking 'hdparm’... not infected</b>
+            <b>Checking 'su'... not infected</b>
+            <b>Checking 'ifconfig'... not infected</b>
+            <b>Checking 'inetd’... not tested</b>
+            <b>Checking 'inetdconf’... not found</b>
+        </div>
+
+        <h1 id="4.7.6">4.7.6 Comandos de tuberías</h1>
+        <br>
+        <p>Aunque las herramientas de línea de comando suelen diseñarse para realizar una tarea específica bien definida, muchos comandos se pueden combinar para realizar tareas más complejas mediante una técnica conocida como tuberías. El carácter que define el proceso de tuberías es la barra vertical (|), y es un procedimiento que consiste en vincular comandos entre sí, de manera que el resultado de un comando alimente la entrada de otro.</p>
+        <br>
+        <p>Por ejemplo, el comando ls se utiliza para mostrar todos los archivos y directorios de un directorio específico. El comando grep compara las búsquedas a través de un archivo de texto buscando por el caracter especifico. si la encuentra, grep muestra todo el contenido de las carpetas donde se encuentre la cadena.</p>
+        <br>
+        <p>Los dos comandos, <b>ls</b> y <b>grep</b>, se pueden canalizar juntos para filtrar la salida de ls. Esto se muestra en la salida del comando <b>ls -l</b> | <b>grep host</b> y el comando ls -l | grep file.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>[analyst@secOps ~]$ ls -l</p>
+            <p>total 40</p>
+            <p>drwxr-xr-x 2 analyst analyst   4096 Mar  22  2018 Desktop</p>
+            <p>drwxr-xr-x 3 analyst analyst   4096 April 2 14:44 Downloads</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile1.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile2.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:52 hostfile3.txt</p>
+            <p>drwxr-xr-x 9 analyst analyst   4096 Jul 19  2018 lab.support.files</p>
+            <p>-rw-r--r-- 1 analyst analyst     19 May 20 10:53 mytest.com</p>
+            <p>-rw-r--r-- 1 analyst analyst 228844 May 20 10:54 rkhunter-1.4.6-1-any.pkg.tar.xz</p>
+            <p>drwxr-xr-x 2 analyst analyst   4096 Mar 21  2018 second_drive</p>
+            <p>-rw-r--r-- 1 analyst analyst    257 May 20 10:52 space.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ ls -l | grep host</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile1.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile2.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:52 hostfile3.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ ls -l | grep file</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile1.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:51 hostfile2.txt</p>
+            <p>-rw-r--r-- 1 analyst analyst      9 May 20 10:52 hostfile3.txt</p>
+            <p>drwxr-xr-x 9 analyst analyst   4096 Jul 19  2018 lab.support.files</p>
+            <p>[analyst@secOps ~]$</p>
+        </div>
+
+
+        <h1 id="4.7.7">4.7.7 Video - Aplicaciones, Rootkits y Comandos piping.</h1>
+        <br>
+        <p>Observe el video para ver una demostración de la instalación y actualización de aplicaciones, la detección de rootkits y el uso de comandos de tuberías.</p>
+        <br>
+        <br>
+        <video src="video/4.7.7 Video - Aplicaciones, Rootkits y Comandos piping..mp4" controls></video>
+
+    </div>
+</body>
+</html>

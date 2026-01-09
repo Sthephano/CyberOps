@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="7.2.1">7.2.1 Demostración de video - Prueba y Verificación de Redes con Comandos de la CLI de Windows</h1>
+        <br>
+        <video src="video/Demostración de video - Prueba y Verificación de Redes con Comandos de la CLI de Windows.mp4" controls></video>
+        <hr>
+
+        <h1 id="7.2.2">7.2.2 Ping - Prueba de Conectividad</h1>
+        <br>
+        <p>En el tema anterior, se le presentó a las herramientas ping y traceroute (tracert). En este tema, aprenderá acerca de las situaciones en las que se usa cada herramienta y cómo usarlas. Ping es una utilidad de prueba de IPv4 e IPv6 que utiliza la solicitud de eco ICMP y los mensajes de respuesta de eco para probar la conectividad entre los hosts.</p>
+        <br>
+        <p>Para probar la conectividad a otro host en una red, se envía una solicitud de eco a la dirección del host utilizando el comando. ping Si el host en la dirección especificada recibe la solicitud de eco, responde con una respuesta de eco. A medida que se recibe cada respuesta de eco, ping proporciona comentarios sobre el tiempo entre el momento en que se envió la solicitud y el momento en que se recibió la respuesta. Esto puede ser una medida del rendimiento de la red.</p>
+        <br>
+        <p>El comando ping tiene un valor de tiempo de espera para la respuesta. Si no se recibe una respuesta dentro del tiempo de espera, el comando ping proporciona un mensaje que indica que no se recibió una respuesta. Esto puede indicar que hay un problema, pero también podría indicar que las funciones de seguridad que bloquean los mensajes de ping se han habilitado en la red. Es común que el primer ping se agote si es necesario realizar la resolución de direcciones (ARP o ND) antes de enviar la solicitud de eco ICMP.</p>
+        <br>
+        <p>Después de enviar todas las solicitudes, la ping utilidad proporciona un resumen que incluye la tasa de éxito y el tiempo promedio de ida y vuelta al destino.</p>
+        <br>
+        <p>Los tipos de pruebas de conectividad que se realizan con ping son los siguientes:</p>
+        <br>
+        <li>Hacer ping al loopback local</li>
+        <li>Hacer ping a la puerta de enlace predeterminada</li>
+        <li>Hacer ping al host remoto</li>
+        <hr>
+
+        <h1 id="7.2.3">7.2.3 Hacer ping al loopback</h1>
+        <br>
+        <p>Ping se puede usar para probar la configuración interna de IPv4 o IPv6 en el host local. Para realizar esta prueba, ping a dirección de bucle de retorno local de 127.0.0.1 para IPv4 (:: 1 para IPv6).</p>
+        <br>
+        <p>Una respuesta de 127.0.0.1 para IPv4 (o ::1 para IPv6) indica que IP está instalado correctamente en el host. Esta respuesta proviene de la capa de red. Sin embargo, esta respuesta no indica que las direcciones, las máscaras o los gateways estén configurados adecuadamente. Tampoco indica nada acerca del estado de la capa inferior de la pila de red. Simplemente, prueba el protocolo IP en la capa de red de dicho protocolo. Un mensaje de error indica que TCP/IP no funciona en el host.</p>
+        <br>
+        <img src="img/Hacer ping al loopback.jpg" class="foto">
+        <hr>
+
+        <h1 id="7.2.4">7.2.4 Hacer ping al gateway predeterminado</h1>
+        <br>
+        <p>También puede usar para ping probar la capacidad de un host para comunicarse en la red local. Esto generalmente se hace haciendo ping a la dirección IP de la puerta de enlace predeterminada del host. Un éxito en la ping puerta de enlace predeterminada indica que el host y la interfaz del router que sirve como puerta de enlace predeterminada están operativos en la red local.</p>
+        <br>
+        <p>Para esta prueba, la dirección de puerta de enlace predeterminada se usa con mayor frecuencia porque el router normalmente siempre está operativo. Si la dirección de la puerta de enlace predeterminada no responde, ping se puede enviar a la dirección IP de otro host en la red local que se sabe que está operativa.</p>
+        <br>
+        <p>Si la puerta de enlace predeterminada u otro host responde, entonces el host local puede comunicarse con éxito a través de la red local. Si la puerta de enlace predeterminada no responde pero otro host sí, esto podría indicar un problema con la interfaz del router que funciona como la puerta de enlace predeterminada.</p>
+        <br>
+        <p>Una posibilidad es que se haya configurado una dirección de puerta de enlace predeterminada incorrecta en el host. Otra posibilidad es que la interfaz del router puede estar en funcionamiento, pero se le ha aplicado seguridad, de manera que no procesa o responde solicitudes de ping.</p>
+        <br>
+        <img src="img/Hacer ping al gateway predeterminado.jpg" class="foto">
+        <hr>
+
+        <h1 id="7.2.5">7.2.5 Hacer ping a un Host Remoto</h1>
+        <br>
+        <p>También se puede utilizar el comando ping para probar la capacidad de un host local para comunicarse en una interconexión de redes. El host local puede hacer ping a un host IPv4 operativo de una red remota, como se muestra en la ilustración. El router utiliza su tabla de enrutamiento IP para reenviar los paquetes.</p>
+        <br>
+        <p>Si este ping se realiza correctamente, se puede verificar el funcionamiento de una amplia porción de la interconexión de redes. Un éxito en ping toda la red confirma la comunicación en la red local, el funcionamiento del router que sirve como puerta de enlace predeterminada y el funcionamiento de todos los demás routers que podrían estar en la ruta entre la red local y la red del host remoto.</p>
+        <br>
+        <p>Además, se puede verificar la funcionalidad del host remoto. Si el host remoto no pudiera comunicarse fuera de su red local, no habría respondido.</p>
+        <br>
+        <p><b>Nota: </b>Muchos administradores de redes limitan o prohíben la entrada de mensajes ICMP a la red de la empresa; por lo tanto, la falta de una ping respuesta de ping puede ser por razones de seguridad.</p>
+        <br>
+        <video src="video/Hacer ping a un Host Remoto.mp4" controls></video>
+
+        <hr>
+
+        <h1 id="7.2.6">7.2.6 Traceroute - Prueba el Camino</h1>
+        <br>
+        <p>El comando ping se usa para probar la conectividad entre dos hosts, pero no proporciona información sobre los detalles de los dispositivos entre los hosts. Traceroute (tracert) es una utilidad que genera una lista de saltos que se alcanzaron con éxito a lo largo de la ruta. Esta lista puede proporcionar información importante sobre la verificación y la solución de problemas. Si los datos llegan al destino, el rastreo indica la interfaz de cada router que aparece en la ruta entre los hosts. Si los datos fallan en algún salto a lo largo del camino, la dirección del último router que respondió al rastreo puede indicar dónde se encuentra el problema o las restricciones de seguridad.</p>
+        <br>
+        <p>Tiempo de Ida y Vuelta (RTT)</p>
+        <br>
+        <p>El uso de traceroute proporciona tiempo de ida y vuelta para cada salto a lo largo del camino e indica si un salto no responde. El tiempo de ida y vuelta es el tiempo que tarda un paquete en llegar al host remoto y que la respuesta del host regrese. Se utiliza un asterisco ( *) para indicar un paquete perdido o no respondido.</p>
+        <br>
+        <p>Esta información se puede usar para localizar un router problemático en la ruta o puede indicar que el router está configurado para no responder. Si aparecen en pantalla tiempos de respuesta elevados o pérdidas de datos de un salto específico, esto indica que los recursos del router o sus conexiones pueden estar sobrecargados.</p>
+        <br>
+        <p>TTL de IPv4 y Límite de Saltos de IPv6</p>
+        <br>
+        <p>Traceroute utiliza una función del campo TTL en IPv4 y el campo Límite de Salto en IPv6 en los encabezados de Capa 3, junto con el mensaje de ICMP Tiempo Excedido.</p>
+        <br>
+        <p>Reproduzca la animación en la figura para ver cómo traceroute aprovecha el TTL.</p>
+        <br>
+        <video src="video/Traceroute - Prueba el Camino.mp4" controls></video>
+        <br><br>
+        <p>La primera secuencia de mensajes enviados desde traceroute tiene un valor de 1 en el campo TTL. Esto hace que el TTL agote el tiempo de espera del paquete IPv4 en el primer router. Este router responde con un mensaje ICMPv4 Tiempo Excedido. Traceroute ahora tiene la dirección del primer salto.</p>
+        <br>
+        <p>A continuación, Traceroute incrementa progresivamente el campo TTL (2, 3, 4...) para cada secuencia de mensajes. Esto proporciona el rastro con la dirección de cada salto a medida que los paquetes caducan más adelante en la ruta. El campo TTL sigue aumentando hasta que se alcanza el destino, o se incrementa a un máximo predefinido.</p>
+        <br>
+        <p>Una vez que se alcanza el destino final, el host responde con un mensaje de puerto inalcanzable ICMP o un mensaje de respuesta de eco ICMP en lugar del mensaje de tiempo excedido ICMP.</p>
+        <hr>
+
+        <h1 id="7.2.7">7.2.7 Formato de Paquetes ICMP</h1>
+        <br>
+        <p>ICMP se encapsula directamente en paquetes IP. En este sentido, es casi como un protocolo de capa de transporte, porque se encapsula en un paquete; sin embargo, se considera un protocolo de capa 3. ICMP actúa como una carga útil de datos dentro del paquete IP. Tiene un campo de datos de encabezado especial, como se ve en la figura.</p>
+        <br>
+        <p>ICMP utiliza códigos de mensaje para diferenciar entre distintos tipos de mensajes ICMP. Los siguientes son algunos códigos de mensaje comunes:</p>
+        <br>
+        <li><b>0 : </b>Respuesta de eco (respuesta a un ping)</li>
+        <li><b>3 : </b>Destino inalcanzable</li>
+        <li><b>5 : </b>Redireccionamiento (utilizar otra ruta al destino)</li>
+        <li><b>8 : </b>Solicitud de eco (para ping)</li>
+        <li><b>11 : </b>Ttiempo Excedido (TTL se convirtió en 0)</li>
+        <br>
+        <p>Como se verá más adelante en el curso, un analista de ciberseguridad sabe que el campo de carga útil opcional de ICMP se puede utilizar en un vector de ataque para extraer datos.</p>
+        <br><br>
+
+        <h2> Datagrama IP</h2>
+        <br>
+        <img src="img/Datagrama IP.jpg" class="foto">
+        <hr>
+
+        <h1 id="7.2.8">7.2.8 Packet Tracer - Identificación del Direccionamiento IPv4 e IPv6</h1>
+        <br>
+        <p>En esta actividad de Paquet Tracer, verificará la configuración de direccionamiento IPv4 e IPv6 y probará la conectividad con Ping y Tracert.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/7.2.8-packet-tracer---verify-ipv4-and-ipv6-addressing_es-XL.pdf" target="_blank">Verificar direccionamiento IPV4 e IPV6 PDF</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m7/es-XL/assets/7.2.8-packet-tracer---verify-ipv4-and-ipv6-addressing_es-XL.pdf" target="_blank">Verificar direccionamiento IPV4 e IPV6 PDF (online)</a></button>
+        </div>
+        <br>
+        <div class="botones">
+            <button><a href="recursos/7.2.8-packet-tracer---verify-ipv4-and-ipv6-addressing_es-XL.pka" target="_blank">Verificar direccionamiento IPV4 e IPV6</a></button>
+            <button><a href="https://senatipe-my.sharepoint.com/:u:/g/personal/1607166_senati_pe/IQBQ3KTIRWonSrPtcpTONYsWAbzyLUAgerMcZZ-JBKWkQA0?e=csQvjT" target="_blank">Verificar direccionamiento IPV4 e IPV6 (online)</a></button>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

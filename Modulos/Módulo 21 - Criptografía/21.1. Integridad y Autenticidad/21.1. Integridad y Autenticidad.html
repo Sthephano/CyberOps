@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="21.1.1">21.1.1 Protegiendo las Comunicaciones</h1>
+        <br>
+        <p>Las organizaciones deben proporcionar soporte para proteger los datos a medida que viajan a través de enlaces. Esto puede incluir el tráfico interno, pero la mayor preocupación es proteger los datos que viajan fuera de la organización a sitios de sucursales, teletrabajadores y socios.</p>
+        <br>
+        <p>Estos son los cuatro elementos de las comunicaciones seguras:</p>
+        <br>
+        <li><b>Integridad de los datos - </b>Garantiza que el mensaje no fue alterado. Se detectara cualquier cambio de los datos en tránsito. La integridad se garantiza mediante la implementación de Algoritmos de Seguridad de Hash (Secure Hash Algorithms SHA-2 o SHA-3) El algoritmo de resumen de mensajes MD5 sigue siendo ampliamente utilizado, sin embargo, es inherentemente inseguro y crea vulnerabilidades en una red. Debe evitarse el uso de MD5.</li>
+        <li><b>Autenticación de origen - </b>Garantiza que el mensaje no sea falso y que el remitente sea el verdadero. Muchas redes modernas garantizan la autenticación con algoritmos, como el código de autenticación de mensaje basado en hash (hash-based message authentication code HMAC).</li>
+        <li><b>Confidencialidad de los datos - </b>Garantiza que solamente los usuarios autorizados puedan leer el mensaje. Si se intercepta el mensaje, no se puede descifrar en un período de tiempo razonable. La confidencialidad de los datos se implementa utilizando algoritmos de encriptación simétrico y asimétrico.</li>
+        <li><b>Imposibilidad de Negación de los Datos - </b>Garantiza que el remitente no pueda negar ni refutar la validez de un mensaje enviado. La imposibilidad de negación se basa en el hecho de que solamente el remitente tiene características o una firma únicas relacionadas con el tratamiento del mensaje.</li>
+        <br>
+        <p>La criptografía puede usarse casi en cualquier lugar donde haya comunicación de datos. De hecho, estamos yendo hacia un mundo donde toda la comunicación se encriptará.</p>
+        <hr>
+
+        <h1 id="21.1.2">21.1.2 Funciones del Hash Criptográfico</h1>
+        <br>
+        <p>Los hash criptográficos se usan para comprobar y garantizar la integridad de los datos. El hashing se basa en una función matemática unidireccional que es relativamente fácil de computar, pero mucho más difícil de revertir. El café molido es una buena analogía de una función unidireccional. Es fácil moler los granos de café, pero es casi imposible volver a unir todas las partes minúsculas para reconstruir los granos originales. La función de hash criptográfico puede utilizarse también para verificar la autenticación.</p>
+        <br>
+        <img src="img/Funciones del Hash Criptográfico.jpg" class="foto">
+        <br><br>
+        <p>Como se ve en la figura, una función de hash toma un bloque variable de datos binarios, llamado "mensaje", y produce una representación condensada de longitud fija, denominada hash. El hash resultante, a veces, también se denomina síntesis del mensaje, síntesis o huella digital.</p>
+        <br>
+        <p>Con las funciones de hash, es informáticamente inviable que dos conjuntos diferentes de datos tengan el mismo resultado de hash. Cada vez que se cambian o se modifican los datos, el valor hash también cambia. Debido a esto, los valores hash criptográficos se conocen a menudo como huellas dactilares digitales. Pueden usarse para detectar archivos de datos duplicados, cambios en las versiones de los archivos y otros usos similares. Estos valores se usan para proteger los datos de un cambio accidental o intencional, y del daño accidental.</p>
+        <br>
+        <p>La función de hash criptográfico se aplica en muchas situaciones diferentes con fines de autenticación de entidades, integridad de los datos y autenticidad de los datos.</p>
+        <hr>
+
+        <h1 id="21.1.3">21.1.3 Funcionamiento del Hash criptográfico</h1>
+        <br>
+        <p>Matemáticamente, la ecuación h= H(x) se utiliza para explicar cómo funciona un algoritmo de hash. Como se ve en la imagen, la función de hash H toma un valor de entrada x y arroja un cadena de tamaño fijo con valor de hash h.</p>
+        <br>
+        <img src="img/Funcionamiento del Hash criptográfico.jpg" class="foto">
+        <br>
+        <p>En el ejemplo de la imagen, se resume la operación matemática. Una función de hash criptográfica debe tener las siguientes propiedades:</p>
+        <br>
+        <li>La entrada puede ser de cualquier longitud.</li>
+        <li>La salida tiene una longitud fija.</li>
+        <li>H(x) es relativamente fácil de calcular para cualquier valor x dado.</li>
+        <li>H(x) es unidireccional y no reversible.</li>
+        <li>H(x) está libre de colisiones, lo que significa que dos valores diferentes de entrada darán como resultado valores diferentes de hash.</li>
+        <br>
+        <p>Si una función de hash es difícil de invertir, se considera un hash unidireccional. Difícil de invertir significa que dado un valor hash de h, es computacionalmente inviable encontrar una entrada para x tal que h=h (x).</p>
+        <hr>
+
+        <h1 id="21.1.4">21.1.4 MD5 y SHA</h1>
+        <br>
+        <p>Las funciones de hash se utilizan para garantizar la integridad de un mensaje. Garantizan que los datos no hayan cambiado accidental o intencionalmente. En la imagen , el remitente envía una transferencia de USD $100 a Alex. El remitente quiere asegurarse de que el mensaje no se modifique accidentalmente en su recorrido hasta el receptor. Los cambios deliberados realizados por un agente de amenazas siguen siendo posibles.</p>
+        <br>
+        <img src="img/MD5 y SHA.jpg" class="foto">
+        <br><br>
+        <p>Existen tres funciones de hash muy conocidas:</p>
+        <br>
+        <li><b>MD5 with 128-bit digest - </b>Desarrollada por Ron Rivest y utilizada en una variedad de aplicaciones de Internet, MD5 es una función unidireccional que produce un mensaje hash de 128- bits. MD5 se considera un algoritmo obsoleto y se debe evitar o usar solamente cuando no haya mejores alternativas disponibles. se recomienda utilizar SHA-2 o SHA-3 en su lugar.</li>
+        <li><b>SHA-1 - </b>Desarrollado por la Agencia Nacional de Seguridad de los Estados Unidos (National Security Agency NSA) en 1995. Es muy similar a las funciones de hash MD5. Existen numerosas versiones. SHA-1 crea un mensaje hash de 160 bits y es un poco más lento que MD5. SHA-1 tiene defectos conocidos y es un algoritmo obsoleto.</li>
+        <li><b>SHA-2 - </b>Desarrollado por la NSA. Esto incluye SHA-224 (224 bit), SHA-256 (256 bit), SHA-384 (384 bit) y SHA-512 (512 bit). Si está utilizando SHA-2, se deben usar los algoritmos SHA-256, SHA-384 y SHA-512 siempre que sea posible.</li>
+        <li><b>SHA-3 - </b>SHA-3 es el algoritmo hash más nuevo y fue introducido por el Instituto Nacional de Estándares y Tecnología (NITS, siglas en inglés) como una alternativa y eventual sustitución para la familia SHA-2 de algoritmos hash. SHA-3 incluye SHA3-224 (224 bit), SHA3-256 (256 bit), SHA3-384 (384 bit) y SHA3-512 (512 bit). La familia SHA-3 son la próxima generación de algoritmos y deben usarse siempre que sea posible.</li>
+        <br>
+        <p>Mientras que el hash se puede utilizar para detectar modificaciones accidentales, no brinda protección contra cambios deliberados hechos por un agente de amenaza. No existe información de identificación única del emisor en el procedimiento de hash. Esto significa que cualquier persona puede calcular un hash para cualesquiera sean los datos, siempre y cuando tengan la función de hash correcta.</p>
+        <br>
+        <p>Por ejemplo, cuando un mensaje pasa por la red, un atacante potencial puede interceptarlo, cambiarlo, o recalcular el hash y añadirlo al mensaje. El dispositivo receptor solo validará el hash que esté añadido.</p>
+        <br>
+        <p>Por lo tanto, el hash es vulnerable a los ataques man-in-the-middle (ataque de intermediario) y no proporciona seguridad a los datos transmitidos. Para proporcionar integridad y autenticación de origen, se necesita algo más.</p>
+        <br>
+        <p><b>Nota: </b>Los algoritmos hash solo protegen contra cambios accidentales y no protegen los datos de los cambios realizados deliberadamente por un actor de amenazas.</p>
+        <hr>
+
+        <h1 id="21.1.5">21.1.5 Autenticación de origen</h1>
+        <br>
+        <p>Para agregar autenticación y control de integridad, se usa un código de autenticación de mensajes hash con clave (hash message authentication code HMAC). Los HMAC utilizan una clave secreta adicional como entrada a la función de hash.</p>
+        <br>
+        <p><b>Nota: </b>También se utilizan otros métodos de Código de Autenticación de Mensajes ( Message Authentication Code MAC). Sin embargo, HMAC se utiliza en muchos sistemas, incluidos SSL, IPSec y SSH.</p>
+        <br><br>
+        <p><b>Algoritmo de Hashing de HMAC</b></p>
+        <br>
+        <p>Como se muestra en la figura, un HMAC se calcula utilizando cualquier algoritmo criptográfico que combine una función hash criptográfica con una clave secreta. Las funciones de hash son la base del mecanismo de protección de HMAC.</p>
+        <br>
+        <p>Solo el emisor y el receptor conocen la clave secreta y el resultado de la función de hash ahora depende de los datos de entrada y la clave secreta. Solo las personas que tienen acceso a esa clave secreta pueden calcular la síntesis de una función de HMAC. Esta característica derrota los ataques man-in-the-middle y proporciona autenticación del origen de los datos.</p>
+        <br>
+        <p>Si las dos partes comparten una clave secreta y utilizan funciones HMAC para la autenticación, una síntesis HMAC construida correctamente de un mensaje que ha recibido un tercero indica que la otra parte fue la que originó el mensaje. Esto se debe a que la otra parte posee la clave secreta.</p>
+        <br>
+        <img src="img/Algoritmo de Hashing de HMAC.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Creando un valor HMAC</b></p>
+        <br>
+        <p>Como se ve en la figura, el dispositivo emisor introduce datos (como el pago de Terry Smith de $100 y la clave secreta) en el algoritmo de hash y calcula la síntesis de HMAC de longitud fija. Luego, esta síntesis autenticada se adjunta al mensaje y se envía al receptor.</p>
+        <br>
+        <img src="img/Creando un valor HMAC.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Verificando un valor HMAC</b></p>
+        <br>
+        <p>En la figura, el dispositivo receptor elimina la síntesis del mensaje y utiliza el mensaje de texto plano con su clave secreta como valor de entrada para la misma función de hash. Si la síntesis que calcula el dispositivo receptor es igual a la síntesis que se envió, el mensaje no se modificó. Adicionalmente, el origen del mensaje se autentifica porque solamente el emisor posee una copia de la clave secreta compartida. La función de HMAC comprobó la autenticidad del mensaje.</p>
+        <br>
+        <img src="img/Verificando un valor HMAC.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Ejemplo de HMAC en Cisco Router</b></p>
+        <br>
+        <p>La figura muestra cómo las HMAC son usadas por los routers Cisco que están configurados para usar la Ruta Abierta de Acceso mas Corto (Open Shortest Path First OSPF).</p>
+        <br>
+        <p>R1 esta envíando una Actualización de Estado de Enlace (LSU, siglas en inglés) sobre una ruta hacia la red 10.2.0.0/16:</p>
+        <br>
+        <li>R1 calcula el valor de hash mediante el mensaje de LSU y la clave secreta.</li>
+        <li>El valor de hash que resulta se envía con la LSU al R2.</li>
+        <li>R2 calcula el valor de hash mediante la LSU y su clave secreta. R2 acepta la actualización si los valores de hash coinciden. Si no coinciden, R2 descarta la actualización.</li>
+        <br>
+        <img src="img/Ejemplo de HMAC en Cisco Router.jpg" class="foto">
+        <hr>
+
+        <h1 id="21.1.6">21.1.6 Práctica de laboratorio - Convertir Elementos en Hashes</h1>
+        <br>
+        <p>En esta práctica de laboratorio cumpliremos los siguientes objetivos:</p>
+        <br>
+        <li>Crear hashes con OpenSSL</li>
+        <li>Verificando Hashes</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/21.1.6-lab---hashing-things-out_es-XL.pdf" target="_blank">Uso de hashes</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m21/es-XL/assets/21.1.6-lab---hashing-things-out_es-XL.pdf" target="_blank">Uso de hashes (online)</a></button>
+        </div>
+    </div>
+</body>
+</html>

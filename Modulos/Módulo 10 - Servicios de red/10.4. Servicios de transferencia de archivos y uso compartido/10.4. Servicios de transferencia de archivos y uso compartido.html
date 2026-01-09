@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="10.4.1">10.4.1 FTP y TFTP</h1>
+        <br>
+        <p><b>Protocolo de transferencia de archivos (FTP)</b></p>
+        <br>
+        <p>FTP es otro protocolo de capa de aplicación que se utiliza comúnmente. El protocolo FTP se desarrolló para permitir las transferencias de datos entre un cliente y un servidor. Un cliente FTP es una aplicación que se ejecuta en una computadora cliente y se utiliza para insertar y extraer datos en un servidor FTP.</p>
+        <br>
+        <p>Como se muestra en la figura, para transferir datos correctamente, FTP requiere dos conexiones entre el cliente y el servidor, una para los comandos y las respuestas y la otra para la transferencia de archivos propiamente dicha:</p>
+        <br>
+        <li>El cliente establece la primera conexión al servidor para el tráfico de control por medio del puerto 21 de TCP, que está constituido por comandos del cliente y respuestas del servidor.</li>
+        <br>
+        <li>El cliente establece la segunda conexión al servidor para la transferencia de datos propiamente dicha por medio del puerto 20 de TCP. Esta conexión se crea cada vez que hay datos para transferir.</li>
+        <br>
+        <p>La transferencia de datos se puede producir en ambas direcciones. El cliente puede descargar (extraer) datos del servidor o subir datos a él (insertarlos).</p>
+        <br>
+        <p>El FTP no se concibió como un protocolo de capa de aplicación seguro. Por este motivo, el protocolo de transferencia de SSH, que es una forma segura de FTP que utiliza el protocolo Secure Shell para ofrecer un canal protegido, es la opción preferida para la transferencia de archivos.</p>
+        <br>
+        <img src="img/FTP y TFTP.jpg" class="foto">
+        <br><br>
+        <p>Protocolo trivial de transferencia de archivos (TFTP)</p>
+        <br>
+        <p>TFTP es un protocolo de transferencia de archivos simplificado que utiliza el conocido número de puerto UDP 69. Carece de muchas de las características del FTP, como las operaciones de gestión de archivos para enumerar, eliminar o renombrar archivos. Debido a su sencillez, el TFTP tiene una sobrecarga de red muy baja y es popular para aplicaciones de transferencia de archivos que no son fundamentales. Sin embargo, es inseguro por naturaleza, porque no tiene ninguna característica de inicio de sesión ni de control de acceso. Por este motivo, el TFTP debe implementarse cuidadosamente y solo cuando sea absolutamente necesario.</p>
+        <hr>
+
+        <h1 id="10.4.2">10.4.2 SMB</h1>
+        <br>
+        <p>El bloque de mensajes del servidor (Server message block)(SMB) es un protocolo de intercambio de archivos entre cliente y servidor que describe la estructura de los recursos de red compartidos, como directorios, archivos, impresoras y puertos serie, como se ve en la Figura. Es un protocolo de solicitud-respuesta. Todos los mensajes SMB comparten un mismo formato. Este formato utiliza un encabezado de tamaño fijo seguido de un parámetro de tamaño variable y un componente de datos.</p>
+        <br>
+        <img src="img/SMB 1.jpg" class="foto">
+        <br><br>
+        <p>Los mensajes SMB pueden iniciar, autenticar y terminar sesiones, controlar el acceso a archivos e impresoras, y permitir que una aplicación envíe mensajes a otro dispositivo o los reciba de él.</p>
+        <br>
+        <p>Los servicios de impresión y uso compartido de archivos de SMB se han convertido en el pilar de las redes de Microsoft, como se ve en la Figura.</p>
+        <br>
+        <img src="img/SMB 2.jpg" class="foto">
+        <hr>
+
+        <h1 id="10.4.3">10.4.3 Práctica de laboratorio - Utilizar Wireshark para examinar capturas de TCP y UDP</h1>
+        <br>
+        <p>En esta práctica de laboratorio se cumplirán los siguientes objetivos:</p>
+        <br>
+        <li>Identificar campos de encabezado y operación UDP mediante una captura de sesión TFTP de Wireshark</li>
+        <li>Identificar campos de encabezado y operación TCP mediante una captura de sesión FTP de Wireshark</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/10.4.3-lab---using-wireshark-to-examine-tcp-and-udp-captures_es-XL.pdf" target="_blank">Uso de Wireshark para examinar capturas de TCP y UDP</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m10/es-XL/assets/10.4.3-lab---using-wireshark-to-examine-tcp-and-udp-captures_es-XL.pdf" target="_blank">Uso de Wireshark para examinar capturas de TCP y UDP (online)</a></button>
+        </div>
+    </div>
+</body>
+</html>

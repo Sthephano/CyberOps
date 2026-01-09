@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="8.1.1">8.1.1 Destino en la misma red</h1>
+        <br>
+        <p>Hay dos direcciones primarias asignadas a un dispositivo en una LAN Ethernet:</p>
+        <br>
+        <p><b>Dirección física (dirección MAC) - </b>Se utiliza para comunicaciones de NIC Ethernet a NIC Ethernet en la misma red.</p>
+        <p><b>Dirección lógica (la dirección IP) - </b>Se utiliza para enviar el paquete desde la fuente original al destino final.</p>
+        <br>
+        <p>Las direcciones IP se utilizan para identificar la dirección del dispositivo origen y el dispositivo de destino. La dirección IP de destino puede estar en la misma red IP que la fuente o puede estar en una red remota.</p>
+        <br>
+        p
+        <b>Nota: </b>La mayoría de las aplicaciones utilizan el sistema de nombres de dominio (DNS) para determinar la dirección IP cuando se les indica un nombre de dominio, como <a href="www.cisco.com">"www.cisco.com"</a>. El DNS se analiza en un módulo más adelante.
+        <br>
+        <p>Las direcciones MAC Ethernet, tienen un propósito diferente: se utilizan para distribuir la trama de enlace de datos con el paquete IP encapsulado de una NIC a otra en la misma red. Si la dirección IP de destino está en la misma red, la dirección MAC de destino será la del dispositivo de destino.</p>
+        <br>
+        <p>En la ilustración, se muestran las direcciones MAC Ethernet y la dirección IP de la PC-A enviando un paquete IP al servidor de archivos en la misma red.</p>
+        <br>
+        <p>La trama Ethernet de capa 2 contiene lo siguiente:</p>
+        <br>
+        <li><b>Dirección MAC de destino: </b>es la dirección MAC de la NIC de Ethernet del servidor de archivos.</li>
+        <li><b>Dirección MAC de origen: </b>es la dirección MAC de la NIC Ethernet de la PC-A.</li>
+        <br>
+        <p>El paquete IP de capa 3 contiene lo siguiente:</p>
+        <br>
+        <p><b>Dirección IP de origen: </b>es la dirección IP del origen inicial, la PC-A.</p>
+        <p><b>Dirección IP de destino: </b>es la dirección IP del destino final, el servidor de archivos.</p>
+        <br><br>
+
+        <h2>Comunicación a través de una red local</h2>
+        <br>
+        <img src="img/Comunicación a través de una red local.jpg" class="foto">
+
+        <hr>
+
+        <h1 id="8.1.2">8.1.2 Destino en una red remota</h1>
+        <br>
+        <p>Cuando la dirección IP de destino está en una red remota, la dirección MAC de destino es la dirección de la puerta de enlace predeterminada del host. La dirección de puerta de enlace predeterminada es la dirección de la NIC del router, como se muestra en la figura. Si utilizamos una analogía de correo postal, esto sería similar a cuando una persona lleva una carta a la oficina postal local. Sólo necesitan dejar la carta en la oficina de correos. . A partir de ese momento, se vuelve responsabilidad de la oficina postal reenviar la carta al destinatario final.</p>
+        <br>
+        <p>En la ilustración, se muestran las direcciones MAC Ethernet y las direcciones IPv4 de la PC-A enviando un paquete IP al servidor web en una red remota. Los routers examinan la dirección IPv4 de destino para determinar la mejor ruta para reenviar el paquete IPv4. Esto es similar a la manera en que el servicio postal reenvía el correo según la dirección del destinatario.</p>
+        <br>
+        <p>Cuando el router recibe una trama de Ethernet, desencapsula la información de capa 2. Por medio de la dirección IP de destino, determina el dispositivo del siguiente salto y desencapsula el paquete IP en una nueva trama de enlace de datos para la interfaz de salida. Junto con cada enlace en una ruta, se encapsula un paquete IP en una trama específica para la tecnología de enlace de datos particular relacionada con ese enlace, como Ethernet. Si el dispositivo del siguiente salto es el destino final, la dirección MAC de destino es la de la NIC Ethernet del dispositivo.</p>
+        <br>
+        <p>¿Cómo se asocian las direcciones IPv4 de los paquetes IPv4 en un flujo de datos con las direcciones MAC en cada enlace a lo largo de la ruta hacia el destino? Esto se realiza mediante un proceso llamado “protocolo de resolución de direcciones (ARP)”.</p>
+        <br><br>
+
+        <h2>Comunicación con una red remota</h2>
+        <br>
+        <img src="img/Comunicación con una red remota.jpg" class="foto">
+    </div>
+</body>
+</html>

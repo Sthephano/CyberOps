@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="10.1.1">10.1.1 Protocolo de configuración dinámica de host</h1>
+        <br>
+        <p>El protocolo DHCP del servicio IPv4 automatiza la asignación de direcciones IPv4, máscaras de subred, puertas de enlace (gateways) y otros parámetros de redes IPv4. Esto se denomina “direccionamiento dinámico”. La alternativa al direccionamiento dinámico es el direccionamiento estático. Al utilizar el direccionamiento estático, el administrador de redes introduce manualmente la información de la dirección IP en los hosts.</p>
+        <br>
+        <p>Cuando un host se conecta a la red, se realiza el contacto con el servidor de DHCP y se solicita una dirección. El servidor de DHCP elige una dirección de un rango de direcciones configurado llamado grupo y la asigna (concede) al host.</p>
+        <br>
+        <p>En redes más grandes, o donde los usuarios cambian con frecuencia, se prefiere asignar direcciones con DHCP. Es posible que los nuevos usuarios necesiten conexiones; otros pueden tener PC nuevas que deben estar conectadas. En lugar de usar asignación de direcciones estáticas para cada conexión, es más eficaz que las direcciones IPv4 se asignen automáticamente mediante DHCP.</p>
+        <br>
+        <p>DHCP puede asignar direcciones IP durante un período de tiempo configurable, denominado período de concesión. El período de concesión es una configuración DHCP importante. Cuando caduca el período de concesión o el servidor DHCP recibe un mensaje DHCPRELASE, la dirección se devuelve al grupo DHCP para su reutilización. Los usuarios pueden moverse libremente desde una ubicación a otra y volver a establecer con facilidad las conexiones de red por medio de DHCP.</p>
+        <br>
+        <p>Como lo muestra la figura, varios tipos de dispositivos pueden ser servidores DHCP. En la mayoría de las redes medianas a grandes, el servidor DHCP suele ser un servidor local y dedicado con base en una PC. En las redes domésticas, el servidor de DHCP suele estar ubicado en el router local que conecta la red doméstica al provedor de servicio de internet (ISP).</p>
+        <br>
+        <img src="img/Protocolo de configuración dinámica de host.jpg" class="foto">
+        <br>
+        <p>Muchas redes utilizan tanto el direccionamiento estático como DHCP. DHCP se utiliza para hosts de propósito general, tales como los dispositivos de usuario final. El direccionamiento estático se utiliza para los dispositivos de red, tales como (puertas de enlace )gateways, switches, servidores e impresoras.</p>
+        <br>
+        <p>DHCPv6 (DHCP para IPv6) proporciona servicios similares para los clientes IPv6. Una diferencia importante es que DHCPv6 no brinda una dirección de puerta de enlace predeterminada (default gateway). Esto sólo se puede obtener de forma dinámica a partir del anuncio de router del propio router.</p>
+        <hr>
+
+        <h1 id="10.1.2">10.1.2 Funcionamiento de DHCP</h1>
+        <br>
+        <p>Como se muestra en la ilustración, cuando un dispositivo configurado con DHCP e IPv4 se inicia o se conecta a la red, el cliente transmite un mensaje de detección de DHCP (DHCPDISCOVER) para identificar cualquier servidor de DHCP disponible en la red. Un servidor de DHCP responde con un mensaje de oferta de DHCP (DHCPOFFER), que ofrece una concesión al cliente. El mensaje de oferta contiene la dirección IPv4 y la máscara de subred que se deben asignar, la dirección IPv4 del servidor DNS y la dirección IPv4 de la puerta de enlace predeterminada (default gateway). La oferta de concesión también incluye la duración de esta.</p>
+        <br>
+        <img src="img/Funcionamiento de DHCP.jpg" class="foto">
+        <br>
+        <p>El cliente puede recibir varios mensajes DHCPOFFER si hay más de un servidor de DHCP en la red local. Por lo tanto, debe elegir entre ellos y enviar un mensaje de solicitud de DHCP (DHCPREQUEST) que identifique el servidor explícito y la oferta de concesión que el cliente acepta. Un cliente también puede optar por solicitar una dirección previamente asignada por el servidor.</p>
+        <br>
+        <p>Suponiendo que la dirección IPv4 solicitada por el cliente, u ofrecida por el servidor, aún está disponible, el servidor devuelve un mensaje de reconocimiento de DHCP (DHCPACK) que le informa al cliente que finalizó la concesión. Si la oferta ya no es válida, el servidor seleccionado responde con un mensaje de reconocimiento negativo de DHCP (DHCPNAK). Si se devuelve un mensaje DHCPNAK, entonces el proceso de selección debe volver a comenzar con la transmisión de un nuevo mensaje DHCPDISCOVER. Una vez que el cliente tiene la concesión, se debe renovar mediante otro mensaje DHCPREQUEST antes de que expire.</p>
+        <br>
+        <p>El servidor DHCP asegura que todas las direcciones IP sean únicas (no se puede asignar la misma dirección IP a dos dispositivos de red diferentes de forma simultánea). La mayoría de los proveedores de Internet utilizan DHCP para asignar direcciones a los clientes.</p>
+        <br>
+        <p>DHCPv6 tiene un conjunto similar de mensajes a los de DHCP para IPv4. Los mensajes de DHCPv6 son SOLICIT, ADVERTISE, INFORMATION REQUEST y REPLY.</p>
+        <hr>
+
+        <h1 id="10.1.3">10.1.3 Formato de mensaje DHCP</h1>
+        <br>
+        <p>El formato del mensaje DHCPv4 se utiliza para todas las transacciones DHCPv4. Los mensajes DHCPv4 se encapsulan dentro del protocolo de transporte UDP. Los mensajes DHCPv4 que se envían desde el cliente utilizan el puerto de origen UDP 68 y el puerto de destino 67. Los mensajes DHCPv4 que se envían del servidor al cliente utilizan el puerto de origen UDP 67 y el puerto de destino 68. La estructura del mensaje DHCPv4 se muestra a continuación.</p>
+        <br>
+        <table>
+        <thead>
+            <tr class="cabecera">
+            <th><strong>8</strong><br>Código OP.<br>(1)</th>
+            <th><strong>16</strong><br>Tipo de hardware<br>(1)</th>
+            <th><strong>24</strong><br>Longitud de dirección de hardware<br>(1)</th>
+            <th><strong>32</strong><br>Saltos<br>(1)</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr class="oscuro">
+            <td colspan="4">Identificador de transacción</td>
+            </tr>
+
+            <tr class="claro">
+            <td colspan="2">Segundos: 2 bytes</td>
+            <td colspan="2">Indicadores: 2 bytes</td>
+            </tr>
+
+            <tr class="oscuro">
+            <td colspan="4">Dirección IP del cliente (CIADDR): 4 bytes</td>
+            </tr>
+
+            <tr class="claro">
+            <td colspan="4">Su dirección IP (YIADDR): 4 bytes</td>
+            </tr>
+
+            <tr class="oscuro">
+            <td colspan="4">Dirección IP del servidor (SIADDR): 4 bytes</td>
+            </tr>
+
+            <tr class="claro">
+            <td colspan="4">Dirección IP del gateway (GIADDR): 4 bytes</td>
+            </tr>
+
+            <tr class="oscuro">
+            <td colspan="4">Dirección de hardware del cliente (CHADDR): 16 bytes</td>
+            </tr>
+
+            <tr class="claro">
+            <td colspan="4">Nombre del servidor (SNAME): 64 bytes</td>
+            </tr>
+
+            <tr class="oscuro">
+            <td colspan="4">Nombre del archivo de arranque: 128 bytes</td>
+            </tr>
+
+            <tr class="claro">
+            <td colspan="4">Opciones de DHCP: variable</td>
+            </tr>
+        </tbody>
+        </table>
+        <br><br>
+        <p>Estos campos se explican aquí:</p>
+        <br>
+        <li><b>Código de funcionamiento - </b>Especifica el tipo general de mensaje. El valor 1 indica un mensaje de solicitud y el valor 2 es un mensaje de respuesta.</li>
+        <li><b>Tipo de hardware - </b>Identifica el tipo de hardware que se utiliza en la red. Por ejemplo, 1 es Ethernet, 15 es retransmisión de tramas y 20 es una línea serial. Estos son los mismos códigos que se utilizan en mensajes ARP.</li>
+        <li><b>Longitud de dirección de hardware - </b>Especifica la longitud de la dirección.</li>
+        <li><b>Saltos - </b>Controla el reenvío de mensajes. Un cliente lo establece en 0 antes de transmitir una solicitud.</li>
+        <li><b>Identificador de transacción - </b>Lo utiliza el cliente para hacer coincidir la solicitud con las respuestas recibidas de los servidores DHCPv4.</li>
+        <li><b>Segundos - </b>Identifica la cantidad de segundos transcurridos desde que un cliente comenzó a intentar adquirir o renovar un arrendamiento. Lo utilizan los servidores de DHCPv4 para priorizar respuestas cuando hay varias solicitudes del cliente pendientes.</li>
+        <li><b>Marcadores - </b>Los utiliza un cliente que no conoce su dirección IPv4 cuando envía una solicitud. Se utiliza solo uno de los 16 bits, que es el indicador de difusión. El valor 1 en este campo le indica al servidor de DHCPv4 o al agente de retransmisión que recibe la solicitud que la respuesta se debe enviar como una difusión.</li>
+        <li><b>Dirección IP del cliente - </b>La utiliza un cliente durante la renovación del arrendamiento cuando la dirección del cliente es válida y utilizable, no durante el proceso de adquisición de una dirección. El cliente coloca su propia dirección IPv4 en este campo solamente si tiene una dirección IPv4 válida mientras se encuentra en el estado vinculado. De lo contrario, establece el campo en 0.</li>
+        <li><b>Su dirección IP - </b>La utiliza el servidor para asignar una dirección IPv4 al cliente.</li>
+        <li><b>Dirección IP del servidor - </b>La utiliza el servidor para identificar la dirección del servidor que debe utilizar el cliente para el próximo paso en el proceso bootstrap, que puede ser, o no, el servidor que envía esta respuesta. El servidor emisor siempre incluye su propia dirección IPv4 en un campo especial llamado opción DHCPv4 Server Identifier (Identificador de servidores DHCPv4).</li>
+        <li><b>Dirección IP de la puerta de enlace (gateway) - </b>Enruta los mensajes DHCPv4 cuando intervienen los agentes de retransmisión DHCPv4. La dirección de la puerta de enlace (gateway) facilita las comunicaciones de las solicitudes y respuestas de DHCPv4 entre el cliente y un servidor que se encuentran en distintas subredes o redes.</li>
+        <li><b>Dirección de hardware del cliente - </b>Especifica la capa física del cliente.</li>
+        <li><b>Nombre del servidor - </b>Lo utiliza el servidor que envía un mensaje DHCPOFFER o DHCPACK. El servidor puede, de manera optativa, colocar su nombre en este campo. Puede tratarse de un simple apodo de texto o un nombre de dominio DNS, como dhcpserver.netacad.net.</li>
+        <li><b>Nombre del archivo de arranque - </b>Lo utiliza un cliente de manera optativa para solicitar un determinado tipo de archivo de arranque en un mensaje DHCPDISCOVER. Lo utiliza un servidor en un DHCPOFFER para especificar completamente un directorio de archivos y un nombre de archivo de arranque.</li>
+        <li><b>Opciones de DHCP - </b>Contiene las opciones de DHCP, incluidos varios parámetros requeridos para el funcionamiento básico de DHCP. Este campo es de longitud variable. Tanto el cliente como el servidor pueden utilizarlo.</li>
+        <hr>
+        
+        <h1 id="10.1.4">10.1.4 Verifique su conocimiento - DHCP</h1>
+    </div>
+</body>
+</html>

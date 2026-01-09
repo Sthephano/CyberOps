@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="28.3.1">28.3.1 Descripción general del modelo de diamante</h1>
+        <br>
+        <p>El modelo de diamante para análisis de intrusión está compuesto de cuatro partes, como se muestra en la figura. El modelo representa un incidente o evento de seguridad. En el modelo de diamante, un evento es una actividad de tiempo limitado que está restringido a un paso específico donde el adversario utiliza la capacidad sobre la infraestructura para atacar una víctima para lograr un resultado específico.</p>
+        <br>
+        <p>Las cuatro características principales de un evento de intrusión son el adversario, la capacidad, la infraestructura y la víctima:</p>
+        <br>
+        <li><b>Adversario - </b>Son los responsables de la intrusión.</li>
+        <li><b>Capacidad - </b>Se trata de una herramienta o técnica que utiliza el adversario para atacar a la víctima.</li>
+        <li><b>Infraestructura - </b>Esta es la ruta o rutas de red que los adversarios utilizan para establecer y mantener el comando y control de sus funcionalidades.</li>
+        <li><b>Víctima - </b>Es el objetivo del ataque. Sin embargo, la víctima podría ser el objetivo inicial y, luego, el atacante puede utilizarla como parte de la infraestructura para iniciar otros ataques.</li>
+        <br>
+        <p>El adversario utiliza las funcionalidades en la infraestructura para atacar a la víctima. El modelo puede interpretarse como diciendo: «El adversario usa la infraestructura para conectarse con la víctima. El adversario desarrolla la capacidad de explotar a la víctima». Por ejemplo, un adversario podría usar una funcionalidad como el malware sobre la infraestructura de correo electrónico para aprovecharse de la víctima.</p>
+        <br>
+        <p>Las metacaracterísticas amplían un poco el modelo para incluir los siguientes elementos importantes:</p>
+        <br>
+        <li><b>Marca de hora - </b>Indica la hora de inicio y fin de un evento y es una parte integral de la agrupación de actividad maliciosa.</li>
+        <li><b>Fase - </b>Este concepto es análogo al de los pasos en la cadena de ciber eliminación (Cyber Kill Chain); la actividad maliciosa incluye dos o más pasos ejecutados seguidamente para lograr el resultado deseado.</li>
+        <li><b>Resultado - </b>Define lo que el adversario obtuvo en el evento. Los resultados pueden documentarse como uno o más de los siguientes: confidencialidad afectada, integridad afectada y disponibilidad afectada.</li>
+        <li><b>Dirección - </b>Indica la dirección del evento en el modelo de diamante. Algunas direcciones son adversario a infraestructura, infraestructura a víctima, víctima a infraestructura e infraestructura a adversario.</li>
+        <li><b>Metodología - </b>Se utiliza para clasificar el tipo general del evento, como exploración de puertos, suplantación de identidad, ataque de entrega de contenido, saturación SYN, etc.</li>
+        <li><b>Recursos - </b>Uno o más recursos externos utilizados por el adversario para el evento de intrusión, como software, conocimiento del adversario, información (por ejemplo, nombre de usuario/contraseñas) y activos para llevar a cabo el ataque (hardware, fondos, instalaciones, acceso a la red).</li>
+        <br>
+        <h2>El modelo de diamente</h2>
+        <br>
+        <img src="img/El modelo de diamante.jpg" class="foto">
+        <hr>
+
+        <h1 id="28.3.2">28.3.2 Cómo desplazarse por el modelo de diamante</h1>
+        <br>
+        <p>Como analistas especializados en ciberseguridad, es posible que se les pida que utilicen el Modelo de diamante de análisis de intrusión para diagramar una serie de eventos de intrusión. El Modelo de diamante es ideal para ilustrar de qué manera el atacante pasa de un evento al siguiente.</p>
+        <br>
+        <p>Por ejemplo, en la figura, un empleado informa que su computadora se comporta de manera extraña. El técnico de seguridad realiza un análisis del host que indica que la computadora está infectada con malware. Un análisis del malware revela que el malware contiene una lista de nombres de dominio de CnC. Estos nombres de dominio se resuelven en una lista de direcciones IP. Luego, estas direcciones IP se utilizan para identificar al adversario, así como para investigar los registros a fin de determinar si otras víctimas de la organización utilizan el canal de CnC.</p>
+        <br>
+        <h2>Caracterización del modelo de diamante de un exploit</h2>
+        <br>
+        <img src="img/Caracterización del modelo de diamante de un exploit.jpg" class="foto">
+        <hr>
+
+        <h1 id="28.3.3">28.3.3 El modelo de diamante y la cadena de cibereliminación</h1>
+        <br>
+        <p>Los adversarios no ejecutan un solo evento. En cambio, los eventos se entretejen en una cadena en la que cada evento debe completarse con éxito antes del siguiente. Esta serie de eventos puede asignarse a la cadena de cibereliminación analizada previamente en el capítulo.</p>
+        <br>
+        <p>En el siguiente ejemplo (que se muestra en la figura), se ejemplifica el proceso integral de un adversario a medida que atraviesa verticalmente la cadena de cibereliminación, utiliza un host afectado para desplazarse horizontalmente hacia otra víctima, y empieza otro subproceso de la actividad:</p>
+        <br>
+        <li>El adversario realiza una búsqueda web sobre la empresa víctima Gadgets, Inc. y recibe, como parte de los resultados, el nombre de dominio gadgets.com.</li>
+        <br>
+        <li>El adversario utiliza gadgets.com, el dominio que acaba de detectar, para realizar una nueva búsqueda de “administrador de red gadgets.com”. Así, descubre publicaciones de usuarios en los foros alegando que son administradores de red de gadgets.com. Los perfiles de usuario revelan sus direcciones de correo electrónico.</li>
+        <br>
+        <li>El adversario envía correos electrónicos de suplantación de identidad con un troyano adjunto a los administradores de red de gadgets.com.</li>
+        <br>
+        <li>Un administrador de red (NA1) de gadgets.com abre el archivo adjunto malicioso. Esto ejecuta el ataque incluido y permite seguir con la ejecución de código.</li>
+        <br>
+        <li>El host atacado de NA1 envía un mensaje HTTP Post a una dirección IP para registrarla con un controlador de CnC. El host atacado de NA1 recibe una respuesta HTTP.</li>
+        <br>
+        <li>Mediante ingeniería inversa, se revela que el malware tiene direcciones IP adicionales configuradas que actúan como una copia de respaldo si el primer controlador no responde.</li>
+        <br>
+        <li>Mediante un mensaje de respuesta HTTP de CnC enviado al host de NA1, el malware comienza a actuar como un web proxy para nuevas conexiones de TCP.</li>
+        <br>
+        <li>Mediante la información del proxy ejecutado en el host de NA1, el adversario realiza una búsqueda web con las palabras “la investigación más importante de todos los tiempos” y encuentra a la víctima 2, Interesting Research Inc.</li>
+        <br>
+        <li>El adversario consulta la lista de contactos de correo electrónico de NA1 para buscar contactos de Interesting Research, Inc. y descubre el contacto del Director principal de investigaciones de Interesting Research, Inc.</li>
+        <br>
+        <li>El Director principal de investigaciones de Interesting Research, Inc. recibe un correo electrónico de phishing dirigido desde la dirección de correo electrónico de NA1 de Gadget, Inc. enviado desde el host de NA1 con la misma carga útil del evento 3.</li>
+        <br>
+        <p>El adversario tiene ahora dos víctimas afectadas desde las que puede iniciar ataques adicionales. Por ejemplo, el adversario podría analizar la lista de contactos del Director principal de investigaciones en busca de posibles víctimas adicionales. El adversario también podría configurar otro proxy para exfiltrar todos los archivos del Director principal de investigaciones.</p>
+        <br>
+        <p><b>Nota: </b>Este ejemplo es una adaptación del ejemplo de la publicación “El modelo de diamante del análisis de intrusiones”.</p>
+        <br>
+        <h2>Ejemplos de hilo de actividad</h2>
+        <br>
+        <img src="img/Ejemplos de hilo de actividad.jpg" class="foto">
+        <hr>
+
+        <h1 id="28.3.4">28.3.4 Compruebe su comprensión - Identifique las características del modelo de diamante</h1>
+    </div>
+</body>
+</html>
+

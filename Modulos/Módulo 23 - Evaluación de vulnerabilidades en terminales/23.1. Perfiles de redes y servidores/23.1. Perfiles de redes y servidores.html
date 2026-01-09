@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="23.1.1">23.1.1 Perfiles de red</h1>
+        <br>
+        <p>Con el fin de detectar incidentes de seguridad graves, es importante comprender, describir y analizar la información sobre el funcionamiento normal de la red. Las redes, los servidores y los hosts demuestran todos un comportamiento típico durante un momento determinado. La creación de perfiles de redes y dispositivos puede proporcionar una línea de base estadística que sirve como punto de referencia. Las desviaciones inexplicables del valor de referencia pueden indicar un riesgo.</p>
+        <br>
+        <p>Se debe tener cuidado al capturar datos de línea base para que todas las operaciones normales de red se incluyan en la línea base. Además, es importante que la línea base sea actual. No debe incluir datos de rendimiento de red que ya no forman parte del funcionamiento normal. Por ejemplo, los aumentos en la utilización de la red durante las operaciones periódicas de copia de seguridad del servidor forman parte del funcionamiento normal de la red y deben formar parte de los datos de línea base. Sin embargo, la medición del tráfico que corresponde al acceso externo a un servidor interno que se ha movido a la nube no lo sería. Un medio para capturar el período adecuado para la medición de la línea base se conoce como detección de anomalías de ventana deslizante. Define una ventana que es más representativa de la operación de red y elimina los datos que están desactualizados. Este proceso continúa con mediciones de referencia repetidas para garantizar que las estadísticas de medición de línea base muestren el funcionamiento de la red con la máxima precisión.</p>
+        <br>
+        <p>La mayor utilización de enlaces WAN en momentos inusuales puede indicar una violación de la red y exfiltración de datos. Los hosts que comienzan a acceder a servidores de Internet oscuros, resuelven dominios que se obtienen a través de DNS dinámicos o usan protocolos o servicios que no son necesarios para el usuario del sistema también pueden indicar un compromiso. Las desviaciones en el comportamiento de la red son difíciles de detectar si no se conoce el comportamiento normal.</p>
+        <br>
+        <p>Herramientas como NetFlow y Wireshark pueden utilizarse para describir las características de tráfico de red normal. Debido a que las organizaciones pueden realizar diferentes demandas en sus redes según la hora del día o el día del año, la línea de base de la red debe llevarse a cabo durante un período prolongado. La figura muestra algunas preguntas que se deben hacer al establecer una línea base de red.</p>
+        <br><br>
+
+        <h2>Elementos de un perfil de red</h2>
+        <br>
+        <img src="img/Elementos de un perfil de red.jpg" class="foto">
+        <br><br>
+
+        <p>La tabla enumera elementos importantes del perfil de red.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Elemento  de perfil de redes</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Duración de sesiones</td>
+                <td>Este es el tiempo entre el establecimiento de un flujo de datos y su terminación.</td>
+            </tr>
+            <tr class="claro">
+                <td>Rendimiento total</td>
+                <td>Esta es la cantidad de datos que pasan de una fuente determinada a un destino determinado en un período de tiempo determinado.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Puertos utilizados</td>
+                <td>Esta es una lista de procesos TCP o UDP que están disponibles para aceptar datos.</td>
+            </tr>
+            <tr class="claro">
+                <td>Espacio de direcciones de activos críticos</td>
+                <td>Estas son las direcciones IP o la ubicación lógica de los sistemas o datos esenciales.</td>
+            </tr>
+        </table>
+        <br>
+        <p>Además, un perfil de los tipos de tráfico que normalmente entran y salen de la red es una herramienta importante para comprender el comportamiento de la red. El malware puede utilizar puertos inusuales que no suelen verse durante el funcionamiento normal de la red. El tráfico de host a host es otra métrica importante. La mayoría de los clientes de la red se comunican directamente con los servidores, por lo que un aumento del tráfico entre los clientes puede indicar que el malware se extiende lateralmente por la red.</p>
+        <br>
+        <p>Por último, otro indicador valioso son los cambios en el comportamiento de los usuarios, según lo indicado por AAA, los registros de servidor o un sistema de creación de perfiles de usuario (Cisco Identity Services Engine ISE). Saber cómo utilizan habitualmente la red los usuarios permite detectar posibles riesgos en las cuentas de usuario. Un usuario que, de pronto, comienza a conectarse a la red en momentos extraños desde una ubicación remota, debe encender las alarmas si este comportamiento no es el habitual.</p>            
+        <hr>
+
+        <h1 id="23.1.2">23.1.2 Creación de perfiles de servidor</h1>
+        <br>
+        <p>La creación de perfiles de servidor se utiliza para establecer el funcionamiento aceptado de los servidores. Un perfil de servidor es una referencia de seguridad para un servidor específico. Establece la red, el usuario y los parámetros de aplicaciones que se aceptan para un servidor específico.</p>
+        <br>
+        <p>Para establecer un perfil de servidor, es importante comprender la función que debe realizar un servidor en una red. Desde allí, es posible definir y documentar diversos parámetros de funcionamiento y uso.</p>
+        <br>
+        <p>La tabla enumera los elementos de un perfil de servidor.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Elemento de perfil de servidor</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Puertos de escucha</td>
+                <td>Estos son los daemons TCP y UDP y los puertos que normalmente pueden estar abiertos en el servidor.</td>
+            </tr>
+            <tr class="claro">
+                <td>Usuarios y cuentas que han iniciado sesión</td>
+                <td>Estos son los parámetros que definen el acceso y el comportamiento del usuario</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Cuentas de servicio</td>
+                <td>Estas son las definiciones del tipo de servicio que una aplicación puede ejecutar</td>
+            </tr>
+            <tr class="claro">
+                <td>Entorno de software</td>
+                <td>Estas son las tareas, los procesos y las aplicaciones que pueden ejecutarse en el servidor.</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="23.1.3">23.1.3 Detección de anomalías en la red</h1>
+        <br>
+        <p>Es posible describir el comportamiento de la red mediante una gran cantidad de datos diferentes, como las características del flujo de paquetes, las particularidades de los mismos paquetes y la telemetría derivada de múltiples fuentes. Un enfoque para la detección de ataques a la red es el análisis de estos datos diferentes sin estructurar mediante técnicas de análisis de datos masivos. Esto se conoce como análisis de comportamiento de red (network behavior analysis NBA).</p>
+        <br>
+        <p>Esto implica el uso de técnicas sofisticadas de estadística y aprendizaje mecanizado para comparar los valores de referencia del funcionamiento normal con el desempeño de la red en un momento específico. Las desviaciones significativas pueden indicar la existencia de riesgo. Además, el comportamiento de la red se puede analizar en busca de comportamientos de red conocidos que indiquen un compromiso.</p>
+        <br>
+        <p>La detección de anomalías puede reconocer el tráfico de red causado por la actividad del gusano que muestra un comportamiento de exploración. La detección de anomalías también puede identificar hosts infectados en la red que están buscando otros hosts vulnerables.</p>
+        <br>
+        <p>La figura ejemplifica una versión simplificada de un algoritmo diseñado para detectar una situación inusual en los routers de frontera de una empresa.</p>
+        <br>
+        <img src="img/Detección de anomalías en la red.jpg" class="foto">
+        <br><br>
+        <p>Por ejemplo, el analista de ciberseguridad podría proporcionar los siguientes valores:</p>
+        <br>
+        <li>X = 5</li>
+        <li>Y = 100</li>
+        <li>Z = 30</li>
+        <li>N = 500</li>
+        <br>
+        <p>Ahora bien, el algoritmo se puede interpretar como: cada 5 minutos, obtener una muestra de 1/100 de los flujos durante el segundo 30. Si el número de flujos es mayor que 500, generar una alarma. Si el número de flujos es menor que 500, no hacer nada. Este es un ejemplo sencillo del uso de un perfil de tráfico para identificar el potencial de pérdida de datos.</p>
+        <br>
+        <p>Además de los enfoques estadísticos y de comportamiento para la detección de anomalías es la detección de anomalías basada en reglas. La detección basada en reglas analiza paquetes decodificados para ataques basados en patrones predefinidos.</p>
+        <hr>
+
+        <h1 id="23.1.4">23.1.4 Pruebas de vulnerabilidad de la red</h1>
+        <br>
+        <p>La mayoría de las organizaciones se conectan a redes públicas de alguna manera debido a la necesidad de acceder a Internet. Estas organizaciones también deben proporcionar servicios de acceso a Internet de varios tipos al público. Debido a la gran cantidad de vulnerabilidades potenciales y al hecho de que se pueden crear nuevas vulnerabilidades dentro de la red de una organización y sus servicios de acceso a Internet, las pruebas de seguridad periódicas son esenciales.</p>
+        <br>
+        <p>La tabla enumera varios tipos de pruebas que se pueden realizar.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Término</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Análisis de riesgos</td>
+                <td>
+                    <li>Se trata de una disciplina en la que los analistas evalúan el riesgo que representan las vulnerabilidades para una organización específica. </li>
+                    <li>Un análisis de riesgos incluye evaluar la probabilidad de ataques, identifica tipos de probables actores de amenazas y evalúa el impacto de ataques exitosos en la organización.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Evaluación de vulnerabilidades</td>
+                <td>
+                    <li>Esta prueba emplea software para escanear los servidores y las redes internas de Internet en busca de varios tipos de vulnerabilidades. </li>
+                    <li>Estas vulnerabilidades incluyen infecciones desconocidas, debilidades en los servicios de base de datos orientados a la web, parches de software faltantes, puertos de escucha innecesarios, etc. </li>
+                    <li>Las herramientas para la evaluación de vulnerabilidades incluyen la plataforma OpenVAS de código abierto, Microsoft Baseline Security Analyzer, Nessus, Qualys y los servicios FireEye Mandiant. </li>
+                    <li>La evaluación de vulnerabilidades incluye el análisis de puertos entre otras funcionalidades.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Pruebas de penetración</td>
+                <td>
+                    <li>Este tipo de prueba utiliza ataques simulados autorizados para probar la solidez de la seguridad de la red. </li>
+                    <li>Personal interno con experiencia en hacking o hackers éticos profesionales identifican los activos que podrían ser objetivo de agentes de amenaza. </li>
+                    <li>Se utiliza una serie de ataques para probar la seguridad de esos activos. </li>
+                    <li>Las herramientas de software de simulación de ataques se utilizan con frecuencia. </li>
+                    <li>Las pruebas de penetración no verifican solamente la existencia de vulnerabilidades, sino que las atacan para determinar el posible impacto de un ataque exitoso. </li>
+                    <li>Una prueba de penetración individual suele denominarse “pentest”. </li>
+                    <li>Metasploit es una herramienta utilizada en las pruebas de penetración. </li>
+                    <li>CORE Impact ofrece software y servicios para pruebas de penetración.</li>
+                </td>
+            </tr>
+        </table>
+
+        <br>
+        <p>En la lista de tablas se enumeran ejemplos de actividades y herramientas que se utilizan en las pruebas de vulnerabilidad.</p>
+        <br>
+
+        <table>
+            <tr class="cabecera">
+                <th>Actividad</th>
+                <th>Descripción</th>
+                <th>Herramientas</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Análisis de riesgos</td>
+                <td>Las personas realizan un análisis integral de los impactos de los ataques en los activos centrales de la empresa y su funcionamiento</td>
+                <td>Consultores internos o externos, marcos de gestión de riesgos</td>
+            </tr>
+            <tr class="claro">
+                <td>Evaluación de vulnerabilidades</td>
+                <td>Administración de parches, escaneos de hosts, escaneo de puertos, y otros servicios y escaneos de vulnerabilidades</td>
+                <td>OpenVas, Microsoft Baseline Analyzer, Nessus, Qualys, Nmap</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Pruebas de penetración</td>
+                <td>Uso de herramientas y técnicas de hacking para sortear las defensas de redes e identificar las posibilidades de penetración</td>
+                <td>Metasploit, CORE Impact, hackers éticos</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="23.1.5">23.1.5 Compruebe su comprensión - Identifique los elementos de la creación de perfiles de red</h1>
+        <br>
+    </div>
+</body>
+</html>

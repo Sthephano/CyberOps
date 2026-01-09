@@ -1,0 +1,12 @@
+.descarga{
+    display: flex;
+}
+
+.descarga div{
+    align-self: center;
+}
+
+.img_descarga{
+    align-items: center;
+}
+

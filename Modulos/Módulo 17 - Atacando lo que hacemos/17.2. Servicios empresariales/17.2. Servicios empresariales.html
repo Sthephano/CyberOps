@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="17.2.1">17.2.1 HTTP y HTTPS</h1>
+        <br>
+        <p>Casi todo el mundo usa navegadores de Internet. Bloquear la navegación web por completo no es una opción, ya que las empresas necesitan tener acceso a la web sin poner en riesgo la seguridad web.</p>
+        <br>
+        <p>Para investigar los ataques basados en la web, los analistas de seguridad deben comprender muy bien cómo funciona un ataque estándar basado en la web. Normalmente, estas son las etapas de un típico ataque de web:</p>
+        <br>
+        <li>La víctima, sin saberlo, visita una página web infectada con malware.</li>
+        <li>La página web infectada redirige al usuario a menudo, mediante muchos servidores comprometidos, a un sitio que contiene código malicioso.</li>
+        <li>El usuario visita este sitio con código malicioso y su computadora se infecta. Esto se conoce como "drive-by download". Cuando el usuario visita el sitio, un kit de ataque (exploit kit) escanea el software que se ejecuta en la computadora de la víctima incluyendo el Sistema Operativo, Java o Flash Player en busca de una vulnerabilidad en el software. El kit de ataque es, a menudo, es un script PHP y le proporciona al atacante una consola de administración para gestionar el ataque.</li>
+        <li>Después de identificar un paquete de software vulnerable ejecutándose en la computadora de la víctima, el kit de ataque se comunica con el servidor de kit de ataque para descargar código que pueda aprovechar la vulnerabilidad para ejecutar código malicioso en la computadora de la víctima.</li>
+        <li>Una vez que se infecta la computadora de la víctima, se conecta al servidor de malware y descarga una payload. La cual podría ser malware o un servicio de descarga de archivos que descarga otro malware.</li>
+        <li>El paquete final de malware se ejecuta en la computadora de la víctima.</li>
+        <br>
+        <p>Independientemente del tipo de ataque que se utilice, el objetivo principal del atacante es asegurarse que el navegador web de la víctima llegue a su página web, la cual introduce el código malicioso en la computadora de la víctima.</p>
+        <br>
+        <p>Algunos sitios maliciosos toman ventaja de los complementos (plugins) vulnerables o de las vulnerabilidades del navegador para comprometer el sistema del cliente. Las redes más grandes dependen de los IDS para analizar los archivos descargados, en busca de malware. Si detectan que los archivos podrían contener malware, los IDS emiten alertas y registran el evento en archivos de registro para su posterior análisis.</p>
+        <br>
+        <p>Los registros de conexión del servidor suelen revelar información sobre el tipo de escaneo o de ataque. Los diferentes tipos de códigos de estado de conexión se enumeran aquí:</p>
+        <br>
+        <li><b>Informativo 1xx: </b>Este corresponde a una respuesta provisional, que consiste solamente en la línea de estado y los encabezados opcionales. Finaliza con una línea vacía. No se necesitan encabezados para esta clase de código de estado. Los servidores NO DEBEN enviar una respuesta 1xx a un cliente HTTP/1.0, salvo en condiciones experimentales.</li>
+        <li><b>Correcto 2xx: </b>La solicitud del cliente fue satisfactoriamente recibida, comprendida, y aceptada.</li>
+        <li><b>Redirección 3xx: </b>El agente de usuario debe tomar medidas adicionales para completar la solicitud. Un cliente DEBE detectar bucles de redireccionamiento infinito, porque estos bucles generan tráfico de red por cada redireccionamiento.</li>
+        <li><b>Error de Cliente 4xx: </b>Para casos en los que el cliente parece haber cometido un error. Excepto al responder a una solicitud de ENCABEZADO, el servidor DEBE incluir una entidad que contenga una explicación de la situación, y si es temporal. Los agentes de usuario DEBEN mostrar todas las entidades incluidas al usuario.</li>
+        <li><b>Error de Servidor 5xx: </b>Para casos donde el servidor detecta que se equivocó, o no puede realizar la solicitud. Excepto al responder a una petición de ENCABEZADO (HEAD request), el servidor DEBE incluir una entidad que contenga una explicación de la situación de error, y si es temporal. Los agentes de usuario DEBEN mostrar todas las entidades incluidas al usuario.</li>
+        <br>
+        <p>Para defenderse de los ataques basados en la web, se deben implementar las siguientes medidas:</p>
+        <br>
+        <li>Actualizar siempre el Sistema Operativo y los navegadores con las últimas versiones y parches actuales.</li>
+        <li>Utilizar un proxy web como Cisco Cloud Web Security o Cisco Web Security Appliance para bloquear sitios maliciosos.</li>
+        <li>Utilizar las buenas prácticas de seguridad del Proyecto Abierto de Seguridad de Aplicaciones Web (Open Web Application Security Project, OWASP) durante el desarrollo de aplicaciones web.</li>
+        <li>Capacitar a los usuarios finales demostrándoles cómo evitar ataques basados en web.</li>
+        <br>
+        <p>El "Top 10 Web Application Security Risks" (Top 10 principales riesgos de seguridad para las aplicaciones Web de OWASP) está diseñado para ayudar a las organizaciones a crear aplicaciones web seguras. Es una lista útil de vulnerabilidades potenciales que son comúnmente aprovechadas por los atacantes.</p>
+        <hr>
+
+        <h1 id="17.2.2">17.2.2 Exploits HTTP comunes</h1>
+        <br>
+        <p><b>iFrames maliciosos</b></p>
+        <br>
+        <p>Los atacantes suelen usar iFrames maliciosos. Un iFrame es un elemento HTML que le permite al navegador cargar otra página web desde otra fuente. Los ataques de iFrame se han vuelto muy comunes, ya que suelen utilizarse para insertar anuncios de otras fuentes en la página. Los atacantes comprometen un servidor web y modifican las páginas web agregando HTML para el iFrame malicioso. El HTML hace un enlace al servidor web del atacante. En algunos casos, la página iFrame que se carga consta de apenas algunos píxeles. Esto hace que el usuario tenga dificultades para ver el contenido. Debido a que el iFrame se ejecuta en la página, se puede utilizar para lanzar un exploit malicioso, como publicidad Spam, kits de ataque (exploit kits) y otros tipos de malware.</p>
+        <br>
+        <p>Estas son algunas maneras de evitar o reducir los iFrames maliciosos:</p>
+        <br>
+        <li>Utilizar un proxy web para bloquear sitios maliciosos.</li>
+        <li>Debido a que los atacantes suelen cambiar la fuente HTML del iFrame en un sitio web comprometido, nos debemos asegurar de que los desarrolladores web no utilicen iFrames. Esto aislará cualquier contenido de sitios web de terceros y facilitará la búsqueda de páginas modificadas.</li>
+        <li>Utilizar un servicio como Cisco Umbrella para evitar que los usuarios visiten sitios web que se sabe que son maliciosos.</li>
+        <li>Asegurarse de que el usuario final entienda lo que es un iFrame. Los atacantes suelen utilizar este método en ataques basados en web.</li>
+        <br>
+        <p><b>Ataque de redireccionamiento HTTP 302 (cushioning HTTP 302)</b></p>
+        <br>
+        <p>Otro tipo de ataque HTTP es el ataque de redireccionamiento HTTP 302. Los atacantes utilizan el código de respuesta HTTP 302 Found (Encontrado) para dirigir el navegador web del usuario a una nueva ubicación. Los atacantes suelen utilizar funciones legítimas de HTTP como redireccionamientos HTTP para llevar a cabo sus ataques. HTTP permite a los servidores redirigir una solicitud HTTP de cliente a un servidor diferente. El redireccionamiento HTTP se utiliza, por ejemplo, cuando el contenido de la web se ha trasladado a una dirección URL o un nombre de dominio diferentes. Esto permite que la dirección URL y los marcadores anteriores continúen funcionando. Por lo tanto, los analistas de seguridad deben comprender cómo funciona una característica como el redireccionamiento HTTP y cómo se usa durante los ataques.</p>
+        <br>
+        <p>Cuando la respuesta del servidor es un estado HTTP 302 Found, también proporciona la dirección URL en el campo de ubicación. El navegador cree que la nueva ubicación es la dirección URL en el encabezado, y a este se le invita a solicitar esta nueva dirección URL. Esta función de redireccionamiento puede utilizarse varias veces hasta que el navegador finalmente llega a la página que contiene el exploit. Los redireccionamientos pueden ser difíciles de detectar debido a que los redireccionamientos legítimos son comunes en la red.</p>
+        <br>
+        <p>Estas son algunas maneras de evitar o reducir los ataques de redireccionamiento HTTP 302:</p>
+        <br>
+        <li>Utilizar un proxy web para bloquear sitios maliciosos.</li>
+        <li>Utilizar un servicio como Cisco Umbrella para evitar que los usuarios visiten sitios web que se sabe que son maliciosos.</li>
+        <li>Asegurarse de que el usuario final entienda cómo es redirigido su navegador por una serie de redireccionamientos HTTP 302.</li>
+        <br>
+        <p><b>Domain shadowing</b></p>
+        <p>Cuando un atacante quiere crear un ataque de Domain shadowing, el atacante primero debe comprometer un dominio. Luego, el atacante debe crear múltiples subdominios de ese dominio para usarlos en los ataques. Una vez que lo hace, los inicio de sesión del registro secuestrados son utilizados para crear los subdominios que sean necesarios. Después de crear estos subdominios, los atacantes pueden utilizarlos como quieran, incluso si se detecta que son dominios maliciosos. Simplemente pueden crear más desde el dominio principal. La siguiente secuencia es comúnmente utilizada por los atacantes:</p>
+        <br>
+        <li>Un sitio web es comprometido.</li>
+        <li>El redireccionamiento HTTP 302 es utilizado para enviar el navegador a sitios web maliciosos.</li>
+        <li>Se utiliza Domain shadowing para dirigir el navegador a un servidor comprometido.</li>
+        <li>Se accede a una página que contiene un kit de ataque (exploit kit)</li>
+        <li>Se descarga el malware de la página que contiene el exploit kit.</li>
+        <br>
+        <p>Estas son algunas maneras de evitar o reducir los ataques Domain shadowing:</p>
+        <br>
+        <li>Proteger todas las cuentas de propietario de dominio. Utilizar contraseñas fuertes y la autenticación de dos factores para asegurar estas cuentas tan importantes.</li>
+        <li>Utilizar un proxy web para bloquear sitios maliciosos.</li>
+        <li>Utilizar un servicio como Cisco Umbrella para evitar que los usuarios visiten sitios web que se sabe que son maliciosos.</li>
+        <li>Asegurarse de que los propietarios de dominios validen sus cuentas de registro y busquen cualquier subdominio que no hayan autorizado.</li>
+        <hr>
+
+        <h1 id="17.2.3">17.2.3 Correo electrónico</h1>
+        <br>
+        <p>Durante más de 25 años, el correo electrónico ha evolucionado: pasó de ser una herramienta que usaban principalmente los profesionales técnicos y de investigación, a ser el pilar de las comunicaciones corporativas. Cada día se intercambian más de 100 000 millones de mensajes de correo electrónico corporativos. A medida que aumenta el uso del correo electrónico, la seguridad se vuelve una prioridad mayor. La manera en que los usuarios tienen acceso al correo electrónico hoy en día, también aumenta la oportunidad de ataques de malware. En el pasado, los usuarios corporativos accedían a correo electrónico basado en texto desde un servidor corporativo. El servidor corporativo estaba en una estación de trabajo protegida por el firewall de la empresa. Hoy en día se tiene acceso a los mensajes de correo electrónico desde muchos dispositivos diferentes que no suelen estar protegidos por el firewall de la empresa. HTML permite más ataques debido a la cantidad de accesos, los cuales a veces, puede esquivar las distintas capas de seguridad.</p>
+        <br>
+        <p>Los siguientes son ejemplos de amenazas de correo electrónico:</p>
+        <br>
+        <li><b>Ataques basados en archivos adjuntos: </b>Los atacantes incrustan contenido malicioso en los archivos empresariales, por ejemplo, en un correo electrónico del departamento de TI. Los usuarios legítimos abren el contenido malicioso. El malware se usa en grandes ataques, usualmente apuntando hacia un área empresarial específica (por ejemplo contabilidad) , para que el malware parezca software legítimo, y así convencer a los usuarios que trabajan en esa área empresarial que abran los archivos adjuntos o hagan clic en los enlaces incrustados.</li>
+        <li><b>Suplantación de correo (email spoofing): </b>Los atacantes crean mensajes de correo electrónico con una dirección de remitente falsificada, pretendiendo engañar al destinatario para que entregue dinero o información confidencial. Por ejemplo, un banco nos envía un correo electrónico solicitando actualizar nuestras credenciales. Cuando este mensaje tiene un logo del banco idéntico al de otros correos legítimos que hemos recibido, hay más probabilidades de que abramos los archivos adjuntos y de hacer clic en los enlaces. El mensaje de correo electrónico suplantado podría incluso solicitarnos que verifiquemos nuestras credenciales, para que el banco se asegure de que somos esa persona que intentan contactar, logrando exponer así su información de inicio de sesión.</li>
+        <li><b>Correo Spam: </b>Los atacantes envían correo electrónico no solicitado que contiene publicidad o archivos maliciosos. Normalmente, este tipo de correo electrónico se envía para solicitar una respuesta que le indique al atacante que el correo es válido y que un usuario abrió el Spam.</li>
+        <li><b>Servidor de correo con open relay: </b>Los atacantes toman ventaja de los servidores empresariales que están mal configurados como servidores de correo con "open relay", para así poder enviar grandes cantidades de Spam o de malware a usuarios desprevenidos. Este tipo de servidor mal configurado es un servidor SMTP que permite que cualquiera en internet pueda enviar correo Debido a que cualquier persona puede utilizar el servidor, este es vulnerable al Spam y a gusanos informáticos. Es posible enviar grandes cantidades de Spam utilizando un servidor de correo "open relay". Es importante que los servidores corporativos de correo electrónico nunca se configuren como servidores con open relay. Esto reducirá considerablemente la cantidad de correos electrónicos no solicitados (Spam).</li>
+        <li><b>Homógrafos: </b>Los atacantes pueden utilizar caracteres de texto que son muy similares o incluso idénticos a los caracteres de texto legítimo. Por ejemplo, puede ser difícil distinguir entre una O (“O” mayúscula) y el 0 (número cero) o una l (“L” minúscula) y un 1 (número uno). Estos pueden utilizarse en correos electrónicos de Phishing para hacerlos muy convincentes. En DNS, estos caracteres son muy diferentes de la realidad. Cuando se realizan búsquedas en el registro de DNS, se encuentra una dirección URL totalmente diferente si se usa el enlace con el homógrafo en la búsqueda.</li>
+        <br>
+        <p>Al igual que cualquier otro servicio que escuche a un puerto en busca de conexiones entrantes, los servidores SMTP también pueden tener vulnerabilidades. Siempre debemos mantener al día el software de SMTP con parches y actualizaciones de software y de seguridad. Para evitar que los atacantes cumplan su tarea de engañar al usuario final, tenemos que implantar contramedidas. Utilizar un dispositivo de seguridad específico para correo electrónico, como el Cisco Email Security Appliance. Esto ayudará a detectar y bloquear muchos tipos conocidos de amenazas, como Phishing, Spam y malware. También recordemos capacitar al usuario final. Cuando los ataques superen las medidas de seguridad implementadas (lo harán a veces), el usuario final es la última línea de defensa. Debemos enseñarles a reconocer el Spam, los intentos de Phishing, los enlaces y las direcciones URL sospechosas, los homógrafos, y a nunca abrir archivos adjuntos sospechosos.</p>
+
+
+
+        <h1 id="17.2.4">17.2.4 Bases de datos expuestas en la web</h1>
+        <br>
+        <p>Las aplicaciones web suelen conectarse a una base de datos relacional para tener acceso a los datos. Como las bases de datos relacionales a menudo contienen datos confidenciales, son un objetivo frecuente de los ataques.</p>
+        <br>
+        <p><b>Inyección de código</b></p>
+        <br>
+        <p>Los atacantes son capaces de ejecutar comandos en el Sistema Operativo de un servidor web mediante una aplicación web vulnerable. Esto puede ocurrir si la aplicación web proporciona campos de entrada al atacante para ingresar datos maliciosos. Los comandos del atacante son ejecutados mediante la aplicación web y tienen los mismos permisos que dicha aplicación. Este tipo de ataques se usa porque usualmente no hay suficiente validación de las entradas. Un ejemplo es cuando un atacante "inyecta" código PHP en un campo de entrada inseguro en la página del servidor.</p>
+        <br>
+        <p><b>Inyección SQL</b></p>
+        <br>
+        <p>SQL es el lenguaje que se utiliza para consultar una base de datos relacional. Los atacantes utilizan las inyecciones SQL para irrumpir en la base de datos relacional, crear consultas SQL maliciosas y obtener datos confidenciales de la base de datos relacional.</p>
+        <br>
+        <p>Uno de los ataques de base de datos más común es el ataque de inyección SQL. Este ataque consiste en inyectar una consulta SQL usando los datos de entrada desde el cliente hacia la aplicación. Un ataque exitoso de inyección SQL, puede leer los datos confidenciales de la base de datos, modificarlos, ejecutar operaciones de administración de la base de datos y, a veces, emitir comandos al Sistema Operativo.</p>
+        <br>
+        <p>A menos que una aplicación utilice validación estricta para los datos de entrada, será vulnerable al ataque de inyección SQL. Si una aplicación acepta y procesa los datos suministrados por el usuario sin ninguna validación de datos de entrada, un atacante podría ingresar una entrada string maliciosa para desencadenar el ataque de inyección SQL.</p>
+        <br>
+        <p>Los analistas de seguridad deben ser capaces de reconocer consultas SQL sospechosas para detectar si se realizaron ataques de inyección SQL en la base de datos relacional. Deben tener la capacidad de determinar cuál ID de usuario usó el atacante para iniciar sesión y, después, identificar cualquier información o acceso posterior que el atacante podría haber usado tras un inicio de sesión satisfactorio.</p>
+        <hr>
+
+        <h1 id="17.2.5">17.2.5 Client-side Scripting</h1>
+        <br>
+        <p><b>Cross-Site Scripting</b></p>
+        <br>
+        <p>No todos los ataques se inician desde el servidor. El Cross-Site Scripting (XSS) ocurre cuando páginas web que se ejecutan en el navegador web del cliente, se inyectan con scripts maliciosos. Estos scripts pueden ser usados por Visual Basic, JavaScript, entre otros, para tener acceso a una computadora, recopilar información confidencial o desplegar más ataques y propagar malware. Al igual que con la inyección SQL, el XSS suele originarse cuando el atacante publica contenido en un sitio web confiable que no tiene validación de entrada. Los futuros visitantes del sitio web de confianza estarán expuestos al contenido publicado por el atacante.</p>
+        <br>
+        <p>Existen dos tipos principales de XSS:</p>
+        <br>
+        <li><b>Almacenado (persistente): </b>Este es permanentemente almacenado en el servidor infectado y es recibido por todos los que visiten la página afectada.</li>
+        <li><b>Reflejado (no persistente): </b>Este solo requiere que el script malicioso se encuentre localizado en un enlace y los visitantes hagan clic en él para infectarse.</li>
+        <br>
+        <p>Estas son algunas maneras de prevenir o reducir los ataques XSS:</p>
+        <br>
+        <li>Asegúrese de que los desarrolladores de aplicaciones web conozcan las vulnerabilidades de XSS y cómo evitarlas.</li>
+        <li>Utilizar una implementación de IPS para detectar y evitar scripts maliciosos.</li>
+        <li>Utilizar un proxy web para bloquear sitios maliciosos.</li>
+        <li>Utilizar un servicio como Cisco Umbrella para evitar que los usuarios visiten sitios web que se sabe que son maliciosos.</li>
+        <li>Al igual que con las demás medidas de seguridad, asegurarse de capacitar a los usuarios finales. Enseñarles a identificar los ataques de Phishing y notificar al personal de seguridad de la información si tienen cualquier tipo de sospecha relacionada con la seguridad.</li>
+        <hr>
+
+        <h1 id="17.2.6">17.2.6 Práctica de laboratorio - Atacar una base de datos MySQL</h1>
+        <br>
+        <p>En esta práctica de laboratorio revisarán un archivo PCAP de un ataque anterior a una base de datos SQL.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/17.2.6-lab---attacking-a-mysql-database_es-XL.pdf" target="_blank">Ataque a mi base de datos MySQL</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m17/es-XL/assets/17.2.6-lab---attacking-a-mysql-database_es-XL.pdf" target="_blank">Ataque a mi base de datos MySQL (online)</a></button>
+        </div>
+        <hr>
+
+        <h id="17.2.7"1>17.2.7 Práctica de laboratorio - Leer archivos de registro de un servidor</h1>
+        <br>
+        <p>En esta práctica de laboratorio se cumplirán los siguientes objetivos:</p>
+        <br>
+        <li>Reading Log Files with cat, more, and less</li>
+        <li>Archivos de registro y Syslog</li>
+        <li>Log Files and journalctl</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/17.2.7-lab---reading-server-logs_es-XL.pdf" target="_blank">Lectura de registros de servidores</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m17/es-XL/assets/17.2.7-lab---reading-server-logs_es-XL.pdf" target="_blank">Lectura de registros de servidores (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="17.2.8">17.2.8 Verifique su conocimiento - Ataques a los servicios de red</h1>
+        <br>
+    </div>
+</body>
+</html>

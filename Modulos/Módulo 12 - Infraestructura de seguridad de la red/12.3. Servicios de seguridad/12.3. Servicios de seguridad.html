@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="12.3.1">12.3.1 Video - Servicios de seguridad</h1>
+        <br>
+        <p>Vea el vídeo para obtener más información sobre los servicios de seguridad.</p>
+        <br>
+        <video src="video/Video - Servicios de seguridad.mp4" controls></video>
+        <hr>
+
+        <h1 id="12.3.2">12.3.2 Control de tráfico con ACL</h1>
+        <br>
+        <p>Una lista de control de acceso (ACL, Access Control List) es una serie de comandos que controla si un dispositivo reenvía o descarta paquetes según la información que se encuentra en el encabezado del paquete. Cuando se las configura, las ACL realizan las siguientes tareas:</p>
+        <br>
+        <li>Limitar el tráfico de red para aumentar el rendimiento. Por ejemplo, si la política corporativa no permite el tráfico de video en la red, se pueden configurar y aplicar ACL que bloqueen el tráfico de video. Esto reduciría considerablemente la carga de la red y aumentaría su rendimiento.</li>
+        <li>Brindan control de flujo de tráfico. Las ACL pueden restringir la entrega de actualizaciones de enrutamiento para asegurar que las actualizaciones provienen de un origen conocido.</li>
+        <li>Proporcionan un nivel básico de seguridad para el acceso a la red. Las ACL pueden permitir que un host acceda a una parte de la red y evitar que otro host acceda a la misma área. Por ejemplo, se puede restringir el acceso a la red de Recursos Humanos a los usuarios autorizados.</li>
+        <li>Filtran el tráfico según el tipo de tráfico. Por ejemplo, una ACL puede permitir el tráfico de correo electrónico, pero bloquear todo el tráfico de Telnet.</li>
+        <li>Examinan los hosts para permitirles o denegarles el acceso a los servicios de red. Las ACL pueden permitirles o denegarles a los usuarios el acceso a determinados tipos de archivos, como FTP o HTTP.</li>
+        <br>
+        <p>Además de permitir o denegar tráfico, las ACL se pueden utilizar para seleccionar tipos de tráfico para analizar, reenviar o procesar de otras formas. Por ejemplo, se pueden utilizar ACL para clasificar el tráfico a fin de permitir el procesamiento por prioridad. Esta capacidad es similar a tener un pase vip para un concierto o un evento deportivo. El pase vip brinda a ciertos invitados privilegios que no se ofrecen a los asistentes que poseen entradas de admisión general, como prioridad de entrada o el ingreso a un área restringida.</p>
+        <br>
+        <p>En la figura, se ve un ejemplo de una topología con ACL aplicadas a los routers R1, R2 y R3.</p>
+        <br><br>
+
+        <h2>¿Qué es una ACL?</h2>
+        <br>
+        <img src="img/¿Qué es una ACL.jpg" class="foto">
+        <hr>
+
+        <h1 id="12.3.3">12.3.3 Características importantes de las ACL</h1>
+        <br>
+        <p>Los dos tipos de ACL de IPv4 de Cisco son estándar y extendidos. Las ACL estándar se pueden utilizar para permitir o denegar el tráfico de direcciones IPv4 de origen únicamente. El destino del paquete y los puertos involucrados no se evalúan.</p>
+        <br>
+        <p>Las ACL extendidas filtran paquetes IPv4 según varios atributos, como los siguientes:</p>
+        <br>
+        <li>Tipo de protocolo</li>
+        <li>Dirección IPv4 de origen</li>
+        <li>Dirección IPv4 de destino</li>
+        <li>Puertos TCP o UDP de origen</li>
+        <li>Puertos TCP o UDP de destino</li>
+        <li>Información optativa de tipo de protocolo para un control más preciso</li>
+        <br>
+        <p>Las ACL estándar y extendidas se pueden crear con un número o un nombre para identificar la ACL y su lista de instrucciones.</p>
+        <br>
+        <p>El uso de ACL numeradas es un método eficaz para determinar el tipo de ACL en redes más pequeñas con tráfico definido de forma más homogénea. Sin embargo, un número no proporciona información sobre el propósito de la ACL. Por este motivo, se puede usar un nombre para identificar una ACL de Cisco.</p>
+        <br>
+        <p>Mediante la configuración de registro de ACL, se puede generar y registrar un mensaje de ACL cuando el tráfico cumpla con los criterios de permiso o denegación definidos en la ACL.</p>
+        <br>
+        <p>Las ACL de Cisco también pueden configurarse para permitir solamente el tráfico de TCP que tiene un conjunto de bits ACK o RST, de modo que únicamente se permita el tráfico de una sesión de TCP establecida. Esto puede utilizarse para denegar el tráfico de TCP que provenga del exterior de la red que intenta establecer una nueva sesión de TCP.</p>
+        <hr>
+
+        <h1 id="12.3.4">12.3.4 PacketTracer - Demostración de ACL</h1>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/12.3.4-packet-tracer---acl-demonstration_es-XL.pdf" target="_blank">Demostración de ACL PDF</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m12/es-XL/assets/12.3.4-packet-tracer---acl-demonstration_es-XL.pdf" target="_blank">Demostración de ACL PDF (online)</a></button>
+        </div>
+        <br>
+        <div class="botones">
+            <button><a href="recursos/12.3.4-packet-tracer---acl-demonstration_es-XL.pka" target="_blank">Demostración de ACL PDF</a></button>
+            <button><a href="https://senatipe-my.sharepoint.com/:u:/g/personal/1607166_senati_pe/IQB2qnNM19N8S4ezvvfCMhiNAbiY5vcrrRJgbslbcbpKWc4?e=1vXr4x" target="_blank">Demostración de ACL PDF (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="12.3.5">12.3.5 SNMP</h1>
+        <br>
+        <p>El protocolo simple de administración de redes (Simple Network Management Protocol SNMP) les permite a los administradores gestionar terminales en una red IP, como servidores, estaciones de trabajo, routers, switches y dispositivos de seguridad. Permite que los administradores de redes monitoreen y administren el rendimiento de la red, detecten y resuelvan problemas de red y planifiquen el crecimiento de la red.</p>
+        <br>
+        <p>SNMP es un protocolo de capa de aplicación que proporciona un formato de mensaje para la comunicación entre administradores y agentes.</p>
+        <br>
+        <p>Como se muestra en la figura, el sistema SNMP consta de dos elementos.</p>
+        <br>
+        <li>El administrador de SNMP, que ejecuta el software de administración de SNMP.</li>
+        <li>Los agentes de SNMP, que son los nodos monitoreados y administrados.</li>
+        <br>
+        <p>La base de información de administración (Management Information based MIB), que es una base de datos de los agentes donde se guardan datos y estadísticas operativas sobre el dispositivo</p>
+        <br>
+        <p>Para configurar SNMP en un dispositivo de red, primero es necesario definir la relación entre el administrador y el agente.</p>
+        <br>
+        <p>El administrador de SNMP forma parte de un sistema de administración de red (Network Management System NMS). El administrador de SNMP ejecuta software de administración SNMP. Como se muestra en la ilustración, el administrador de SNMP puede recopilar información de un agente SNMP mediante una acción “get” y puede cambiar la configuración en un agente mediante la acción “set”. Además, lo agentes de SNMP pueden reenviar información directamente a un administrador de red mediante "traps".</p>
+        <br>
+        <img src="img/SNMP.jpg" class="foto">
+        <hr>
+
+        <h1 id="12.3.6">12.3.6 NetFlow</h1>
+        <br>
+        <p>NetFlow es una tecnología de Cisco IOS que proporciona estadísticas sobre los paquetes que atraviesan un router o switch multicapa de Cisco. Mientras que SNMP intenta proporcionar una amplia variedad de características y opciones de administración de red, NetFlow se centra en proporcionar estadísticas sobre los paquetes IP que fluyen a través de los dispositivos de red.</p>
+        <br>
+        <p>NetFlow proporciona datos para habilitar el monitoreo de red y de seguridad, la planificación de red, el análisis de tráfico para incluir la identificación de los cuellos de botella de la red y la contabilidad de IP para fines de facturación. Por ejemplo, en la ilustración, la PC1 se conecta a la PC2 mediante una aplicación como HTTPS.</p>
+        <br><br>
+
+        <h2>NetFlow en la red</h2>
+        <br>
+        <img src="img/NetFlow en la red.jpg" class="foto">
+        <br><br>
+        <p>NetFlow puede monitorear la conexión de esa aplicación mediante el seguimiento de los conteos de bytes y de paquetes para el flujo de esa aplicación individual. A continuación, inserta las estadísticas en un servidor externo denominado “recopilador NetFlow”.</p>
+        <br>
+        <p>Existen varias generaciones de la tecnología NetFlow que proporcionan mayor sofisticación para definir los flujos de tráfico, pero “NetFlow original” distinguía los flujos mediante una combinación de siete campos. Si el valor de uno de estos campos difería del de otro paquete, se podía determinar con seguridad que los paquetes provenían de flujos diferentes:</p>
+        <br>
+        <li>Dirección IP de origen</li>
+        <li>Dirección IP de destino</li>
+        <li>Número de puerto de origen</li>
+        <li>Número de puerto de destino</li>
+        <li>Tipo de protocolo de capa 3</li>
+        <li>Marca de tipo de servicio (ToS)</li>
+        <li>Interfaz lógica de entrada</li>
+        <br>
+        <p>Los primeros cuatro campos que usa NetFlow para identificar un flujo se deberían conocer. Las direcciones IP de origen y destino, más los puertos de origen y destino, identifican la conexión entre la aplicación de origen y destino. El tipo de protocolo de capa 3 identifica el tipo de encabezado que sigue al encabezado IP (generalmente TCP o UDP, pero otras opciones incluyen ICMP). El byte ToS en el encabezado de IPv4 contiene información sobre cómo los dispositivos deben aplicar las reglas de calidad de servicio (QoS) a los paquetes en ese flujo.</p>
+        <hr>
+
+        <h1 id="12.3.7">12.3.7 Replicación de puertos</h1>
+        <br>
+        <p>Un analizador de paquetes (también conocido como sniffer de paquetes o sniffer de tráfico) es, normalmente, un software que captura paquetes de entrada y salida de la tarjeta de interfaz de red (NIC). No siempre es posible ni deseable que el analizador de paquetes esté en el dispositivo que se está monitoreando. A veces, es mejor que esté en una estación separada designada para capturar los paquetes.</p>
+        <br>
+        <p>Dado que los switches de red pueden aislar el tráfico, los sniffers de tráfico u otros monitores de red (como IDS) no pueden tener acceso a todo el tráfico en un segmento de red. La replicación de puertos es una característica que le permite al switch hacer copias del tráfico que pasa y, luego, enviarlas a un puerto con un supervisor de redes conectado. El tráfico original se reenvía de la manera habitual. En la figura, se ve un ejemplo de replicación de puertos.</p>
+        <br>
+
+        <h2>Sniffing de tráfico mediante un switch</h2>
+        <br>
+        <img src="img/Sniffing de tráfico mediante un switch.jpg" class="foto">
+        <hr>
+
+        <h1 id="12.3.8">12.3.8 Servidores Syslog</h1>
+        <br>
+        <p>Cuando ocurren ciertos eventos en una red, los dispositivos de red tienen mecanismos de confianza para notificar mensajes detallados del sistema al administrador. Estos mensajes pueden ser importantes o no. Los administradores de red tienen una variedad de opciones para almacenar, interpretar y mostrar estos mensajes, así como para recibir esos mensajes que podrían tener el mayor impacto en la infraestructura de la red.</p>
+        <br>
+        <p>El método más común para acceder a los mensajes del sistema es utilizar un protocolo denominado syslog.</p>
+        <br>
+        <p>Muchos dispositivos de red admiten syslog, incluidos routers, switches, servidores de aplicación, firewalls y otros dispositivos de red. El protocolo syslog permite que los dispositivos de red envíen los mensajes del sistema a servidores de syslog mediante la red, como se ve en la figura.</p>
+        <br><br>
+
+        <h2>Syslog</h2>
+        <br>
+        <img src="img/Syslog.jpg" class="foto">
+        <br><br>
+
+        <p>El servicio de registro de syslog proporciona tres funciones principales:</p>
+        <br>
+        <li>La capacidad de recopilar información de registro para el control y la solución de problemas</li>
+        <li>La capacidad de escoger el tipo de información de registro que se captura</li>
+        <li>La capacidad de especificar el destino de los mensajes de syslog capturados</li>
+
+
+        <hr>
+
+        <h1 id="12.3.9">12.3.9 NTP</h1>
+        <br>
+        <p>Es importante sincronizar la hora en todos los dispositivos de la red porque todos los aspectos de administración, protección, solución de problemas y planificación de redes requieren una marca de hora precisa y uniforme. Cuando no se sincroniza la hora entre los dispositivos, resulta imposible determinar el orden de los eventos que tienen lugar en las diferentes partes de la red.</p>
+        <br>
+        <p>Generalmente, la configuración de fecha y hora en un dispositivo de red se pueden ajustar mediante una de las siguientes maneras:</p>
+        <br>
+        <li>Configuración manual de fecha y hora</li>
+        <li>Configuración del protocolo de tiempo de red (NTP)</li>
+        <br>
+        <p>A medida que una red crece, se hace difícil garantizar que todos los dispositivos de infraestructura operen con una hora sincronizada. Incluso en un entorno de red más pequeño, el método manual no es lo ideal. ¿Cómo obtener una fecha y marca de hora precisas si se reinicia un dispositivo?</p>
+        <br>
+        <p>Una mejor solución es configurar el NTP en la red. Este protocolo permite que los routers de la red sincronicen sus ajustes de hora con un servidor NTP. Si un grupo de clientes NTP obtiene información de fecha y hora de un único origen, tendrá ajustes de hora más consistentes. Cuando se implementa NTP en la red, se lo puede configurar para sincronizarse con un reloj maestro privado o se puede sincronizar con un servidor NTP disponible públicamente en Internet.</p>
+        <br>
+        <p>Las redes NTP utilizan un sistema jerárquico de fuentes horarias. Cada nivel en este sistema jerárquico se denomina estrato. El nivel de estrato se define como la cantidad de saltos desde fuente autorizada. La hora sincronización se distribuye en la red mediante el protocolo NTP. En la figura muestra una red NTP modelo.</p>
+        <br><br>
+
+        <h2>Niveles de estratos de NTP</h2>
+        <br>
+        <img src="img/Niveles de estratos de NTP.jpg" class="foto">
+        <br><br>
+        <p>Los servidores NTP están dispuestos en tres niveles, conocidos como estratos:</p>
+        <br>
+        <li><b>Estrato 0 - </b>Una red NTP obtiene la hora de fuentes horarias autorizadas. Estas fuentes autorizadas, conocidas como dispositivos de estrato 0, son dispositivos de cronometraje de alta precisión que son presuntamente precisos y con poco o ningún retraso asociado con los mismos.</li>
+        <li><b>Estrato 1 - </b>Los dispositivos del estrato 1 están conectados directamente a las fuentes horarias autorizadas. Actúan como el estándar horario de la red principal.</li>
+        <li><b>Estrato 2 e inferiores - </b>Los servidores del estrato 2 están conectados a dispositivos del estrato 1 mediante conexiones de red. Los dispositivos del estrato 2, como clientes de NTP, sincronizan su horario con los paquetes NTP desde servidores del estrato 1. Podrían también actuar como servidores para dispositivos del estrato 3.</li>
+        <br>
+        <p>Los números más bajos de estratos indican que el servidor está más cerca de la fuente horaria autorizada que los números de estrato más altos. Cuanto mayor sea el número de estrato, menor es el nivel del estrato. El recuento de saltos máximo es 15. El estrato 16, el nivel de estrato inferior, indica que un dispositivo no está sincronizado. Los servidores horarios en el mismo nivel de estrato pueden configurarse para actuar como un par con otros servidores horarios en el mismo nivel de estratos para la verificación o la copia de respaldo del horario.</p>
+        <hr>
+
+        <h1 id="12.3.10">12.3.10 Servidores AAA</h1>
+        <br>
+        <p>La tabla enumera las tres funciones de seguridad independientes proporcionadas por el marco arquitectónico AAA.</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>AAA proporciona</th>
+            <th>Descripción</th>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Autenticación</b></td>
+            <td>
+            <ul>
+                <li>Los usuarios y administradores deben probar que son quienes dicen ser.</li>
+                <li>La autenticación se puede establecer utilizando combinaciones de nombre de usuario y contraseña, preguntas de desafío y respuesta, tarjetas token y otros métodos.</li>
+                <li>La autenticación AAA es una forma centralizada de controlar el acceso a la red.</li>
+            </ul>
+            </td>
+        </tr>
+        <tr class="claro">
+            <td><b>Autorización</b></td>
+            <td>
+            <ul>
+                <li>Una vez autenticado el usuario, los servicios de autorización determinan a qué recursos puede acceder el usuario y qué operaciones está habilitado para realizar.</li>
+                <li>Un ejemplo es: “El usuario estudiante puede tener acceso al servidor XYZ del host mediante SSH solamente”.</li>
+            </ul>
+            </td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Contabilidad</b></td>
+            <td>
+            <ul>
+                <li>La contabilidad registra lo que hace el usuario, incluidos los elementos a los que accede, la cantidad de tiempo que accede al recurso y todos los cambios que se realizaron.</li>
+                <li>La contabilidad realiza un seguimiento de la forma en que se utilizan los recursos de red.</li>
+                <li>Un ejemplo es: “El usuario estudiante tuvo acceso al servidor XYZ del host mediante SSH durante 15 minutos”.</li>
+            </ul>
+            </td>
+        </tr>
+        </table>
+        <br>
+        <p>Los Terminal Access Controller Access-Control System Plus (TACACS+) y Remote Authentication Dial-In User Service (RADIUS) son dos protocolos de autenticación que se utilizan para comunicarse con servidores AAA. La selección de TACACS+ o RADIUS depende de las necesidades de la organización.</p>
+        <br>
+        <p>Mientras ambos protocolos pueden usarse para la comunicación entre un router y los servidores AAA, TACACS+ se considera el protocolo más seguro. Esto se debe a que se cifran todos los intercambios de protocolos TACACS+, mientras que RADIUS solo cifra la contraseña del usuario. RADIUS no cifra nombres de usuario, información de la cuenta, o cualquier otra información que contenga el mensaje de RADIUS.</p>
+        <br>
+        <p>En la tabla se enumeran las diferencias entre estos programas;</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th></th>
+            <th>TACACS+</th>
+            <th>RADIUS</th>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Funcionalidad</b></td>
+            <td>Separa AAA conforme a la arquitectura AAA, lo que permite la modularidad de la implementación de servidores de seguridad.</td>
+            <td>Combina autenticación y autorización, pero separa la auditoría, lo que permite menos flexibilidad en la implementación que TACACS+.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Estándar</b></td>
+            <td>Mayormente admitido por Cisco.</td>
+            <td>Estándar abierto / RFC.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Transporte</b></td>
+            <td>TCP</td>
+            <td>UDP</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Protocolo CHAP</b></td>
+            <td>Desafío y respuesta bidireccionales, como se utilizan en CHAP.</td>
+            <td>Desafío y respuesta unidireccionales desde el servidor RADIUS hacia el cliente.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Confidencialidad</b></td>
+            <td>Todo el paquete cifrado.</td>
+            <td>Contraseña cifrada.</td>
+        </tr>
+        <tr class="claro">
+            <td><b>Personalización</b></td>
+            <td>Autoriza comandos del router por usuario o por grupo.</td>
+            <td>No permite autorizar comandos del router por usuario o por grupo.</td>
+        </tr>
+        <tr class="oscuro">
+            <td><b>Contabilidad</b></td>
+            <td>Limitada.</td>
+            <td>Extensa.</td>
+        </tr>
+        </table>
+        <hr>
+
+        <h1 id="12.3.11">12.3.11 Comunidades</h1>
+        <br>
+        <p>Una VPN es una red privada que se crea en una red pública, normalmente Internet, como se ve en la Figura.</p>
+        <br>
+        <h2>Red privada virtual</h2>
+        <br>
+        <img src="img/Red privada virtual.jpg" class="foto">
+        <br><br>
+        <p>En vez de utilizar una conexión física exclusiva, una VPN utiliza conexiones virtuales cuyo enrutamiento se realiza por Internet desde la organización hacia el sitio remoto. Las primeras VPN eran exclusivamente túneles IP que no incluían la autenticación o el cifrado de los datos. Por ejemplo, la encapsulación de enrutamiento genérico (Generic Routing Encapsulation GRE) es un protocolo de tunelización desarrollado por Cisco que puede encapsular una amplia variedad de tipos de paquetes de protocolo de capa de red dentro de los túneles IP. Esto crea un enlace virtual punto a punto a los routers Cisco en puntos remotos a través de una red IP.</p>
+        <br>
+        <p>Una VPN es virtual porque transporta la información dentro de una red privada, pero, en realidad, esa información se transporta usando una red pública. Una VPN es privada porque el tráfico se encripta para preservar la confidencialidad de los datos mientras se los transporta por la red pública.</p>
+        <br>
+        <p>Una VPN es un entorno de comunicaciones en el que el acceso se controla de forma estricta para permitir las conexiones de compañeros dentro de una comunidad de interés definida. La confidencialidad se consigue encriptando el tráfico dentro de la VPN. En la actualidad, una implementación segura de VPN con encriptación es lo que suele equipararse con el concepto de redes privadas virtuales.</p>
+        <br>
+        <p>En el sentido más simple, una VPN conecta dos terminales (por ejemplo, una oficina remota con una central) usando una red pública para formar una conexión lógica. Las conexiones lógicas se pueden realizar en la capa 2 o la capa 3. Ejemplos comunes de VPN de capa 3 son GRE, switching por etiquetas multiprotocolo (MPLS, Multiprotocol Label Switching) e IPsec. Las VPN de capa 3 pueden ser conexiones de sitio de punto a punto (como GRE e IPsec) o pueden establecer conectividad entre cualquier punto y a muchos sitios con MPLS.</p>
+        <br>
+        <p>IPsec es un conjunto de protocolos desarrollados con el respaldo de la IETF para lograr servicios seguros en redes de switching por paquetes IP.</p>
+        <br>
+        <p>Los servicios de IPSec permiten la autenticación, la integridad, el control de acceso y la confidencialidad. Con IPsec se puede cifrar y verificar la información intercambiada entre sitios remotos. Las VPN suelen implementarse en una topología de sitio a sitio para conectar de forma segura sitios centrales con ubicaciones remotas. También se implementan en una topología de acceso remoto para proporcionar acceso remoto seguro a usuarios externos que viajan o trabajan desde casa. Se pueden implementar redes VPN de acceso remoto y de sitio a sitio por igual utilizando IPsec.</p>
+        <hr>
+
+        <h1 id="12.3.12">12.3.12 Verifique su conocimiento - Identificación de servicios o dispositivos de seguridad de redes</h1>
+        <br>
+    </div>
+</body>
+</html>

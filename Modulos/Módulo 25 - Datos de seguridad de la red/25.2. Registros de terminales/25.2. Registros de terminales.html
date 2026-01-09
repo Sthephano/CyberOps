@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="25.2.1">25.2.1 Archivos de registro del host</h1>
+        <br>
+        <p>Como se discutió anteriormente, el sistema de detección de intrusiones basado en host (host-based intrusion detection systems, HIDS) se ejecuta en hosts individuales. HIDS no solo detecta intrusiones sino que, en la forma de firewalls con base en hosts, también puede prevenirlas. Este software crea registros y los guarda en el host. Esto puede obstaculizar la visión de lo que está sucediendo en los hosts en la empresa, por lo que muchas protecciones con base en el host tienen una funcionalidad para enviar registros a servidores de administración centralizada de registros. De esta manera, es posible realizar búsquedas en los registros desde una ubicación centralizada utilizando herramientas de NSM.</p>
+        <br>
+        <p>Los sistemas de HIDS pueden utilizar agentes para enviar registros a servidores de administración. OSSEC, un HIDS de código abierto muy conocido, incluye una funcionalidad muy resistente de recopilación y análisis de registros. Busque OSSEC en Internet para obtener más información. Microsoft Windows incluye numerosos métodos para la recopilación y el análisis automatizados de registros del host. Tripwire, un HIDS para Linux, incluye una funcionalidad similar. Todos se pueden escalar para usarlos en grandes empresas.</p>
+        <br>
+        <p>Los archivos de registro de los hosts Microsoft Windows pueden verse a nivel local en el Visor de eventos. El Visor de eventos tiene cuatro tipos de archivos de registro:</p>
+        <br>
+        <p><b>Registro de aplicaciones - </b>Contiene eventos registrados por varias aplicaciones.</p>
+        <p><b>Registros del sistema - </b>Incluyen eventos relacionados al funcionamiento de los controladores, procesos y hardware.</p>
+        <p><b>Registros de configuración - </b>Registran información sobre la instalación de software, incluyendo actualizaciones de Windows.</p>
+        <p><b>Registros de seguridad - </b>Registra eventos relacionados a la seguridad, como los intentos de inicio de sesión y operaciones relacionadas con el acceso y administración de archivos u objetos.</p>
+        <p><b>Registros de línea de comandos - </b>Los atacantes que han obtenido acceso a un sistema, y algunos tipos de malware, ejecutan comandos desde la interfaz de línea de comandos (CLI) en lugar de una GUI. La ejecución de la línea de comandos de registro proporcionará visibilidad de este tipo de incidente.</p>
+        <br>
+        <p>Los diversos registros pueden tener diferentes tipos de eventos. Los registros de seguridad incluyen solamente mensajes de éxito o fracaso de las auditorías. En computadoras con Windows, el Servicio de subsistema de autoridad de seguridad local (LSASS, Local Security Authority Subsystem Service) lleva a cabo el registro y también es responsable de implementar las políticas de seguridad en un host de Windows. LSASS funciona como lsass.exe. Con frecuencia, se usa malware para hacerse pasar por este servicio. Debe ejecutarse desde el directorio System32 de Windows. Si un archivo con este nombre, o uno camuflado como 1sass.exe, se está ejecutando o se está corriendo desde otro directorio, podría ser malware.</p>
+        <br>
+        <p>Los eventos de Windows se identifican mediante números de identificación y descripciones breves. Una enciclopedia de ID de eventos de seguridad, algunos con detalles adicionales, está disponible en Ultimate Windows Security en la Web.</p>
+        <br>
+        <p>La tabla explica el significado de los cinco tipos de eventos de registro de host de Windows.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Tipo de evento</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Error</td>
+                <td>Un error es un evento que indica la presencia de un problema significativo, como la pérdida de datos o de funcionalidad. Por ejemplo, si un servicio no se carga durante el arranque, se registra un evento de error.</td>
+            </tr>
+            <tr class="claro">
+                <td>Advertencia</td>
+                <td>Una advertencia es un evento que no es necesariamente significativo, pero que puede indicar un posible problema en el futuro. Por ejemplo, se registra un evento de advertencia cuando hay poco espacio en el disco. Si una aplicación puede recuperarse de un evento sin pérdida de funcionalidad ni de datos, generalmente se puede clasificar el evento como de advertencia.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Información</td>
+                <td>Un evento de información es aquel que describe el correcto funcionamiento de una aplicación, de un controlador o de un servicio. Por ejemplo, cuando se carga correctamente un controlador de red, puede ser adecuado registrar un evento de información. Tengan presente que generalmente no es adecuado que una aplicación de escritorio registre un evento cada vez que se inicia.</td>
+            </tr>
+            <tr class="claro">
+                <td>Auditoría exitosa</td>
+                <td>Una auditoría exitosa es un evento que registra un intento de acceso de seguridad auditado que tuvo éxito. Por ejemplo, un usuario logra iniciar sesión en el sistema, el intento se registra como un evento de auditoría exitoso.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Auditoría fallida</td>
+                <td>Una auditoría fallida es un evento que registra un intento de acceso de seguridad auditado que no tuvo éxito. Por ejemplo, si un usuario intenta tener acceso a una unidad de red y no lo logra, el intento se registra como un evento de auditoría fallida.</td>
+            </tr>
+        </table>
+        <br>
+        <p>Fuente: <a href="https://msdn.microsoft.com/es-XL/library/windows/desktop/aa363662(v=vs.85).aspx">https://msdn.microsoft.com/es-XL/library/windows/desktop/aa363662(v=vs.85).aspx</a></p>
+        <hr>
+
+        <h1 id="25.2.2">25.2.2 Syslog</h1>
+        <br>
+        <p>Syslog incluye especificaciones para formatos de mensajes, una estructura de aplicación de cliente y servidor, y un protocolo de red. Muchos tipos diferentes de dispositivos de red pueden configurarse para utilizar el estándar de syslog a fin de registrar eventos en los servidores de syslog centralizados.</p>
+        <br>
+        <p>Syslog es un protocolo entre cliente y servidor. Syslog se definió dentro del grupo de trabajo de Syslog de la IETF (RFC 5424) y es compatible con una amplia variedad de dispositivos y receptores en múltiples plataformas.</p>
+        <br>
+        <p>El emisor de Syslog envía un mensaje de texto breve (menos de 1 KB) al receptor de Syslog. El receptor de Syslog es comúnmente llamado “syslogd”, “daemon de syslog” o “servidor de syslog”. Es posible enviar mensajes de syslog mediante UDP (puerto 514) o TCP (normalmente, el puerto 5000). Aunque hay algunas excepciones, como los contenedores SSL, estos datos suelen enviarse por la red como texto sin formato.</p>
+        <br>
+        <p>El formato completo de un mensaje de Syslog que se ve en la red tiene tres partes distintas, como se muestra en la figura.</p>
+        <br>
+        <li>PRI (prioridad)</li>
+        <li>ENCABEZADO</li>
+        <li>MSG (texto del mensaje)</li>
+        <br>
+        <p>El PRI consiste de dos elementos, la instalación y la gravedad del mensaje, los cuales son valores enteros. El componente consta de categorías amplias de fuentes que generaron el mensaje, como el sistema, el proceso o la aplicación. Los servidores de registro pueden usar el valor del componente para dirigir el mensaje al archivo de registro correspondiente. La gravedad es un valor de 0 a 7 que define la gravedad del mensaje.</p>
+        <br><br>
+
+        <h2>Formato de paquetes Syslog</h2>
+        <br>
+        <img src="img/Formato de paquetes Syslog.jpg" class="foto">
+        <br><br>
+
+        <h3>Instalación</h3>
+        <br>
+        <p><b>Nota: </b>Los códigos de instalación entre 15 y 23 (local0-local7) no estan asignados con un nombre clave o nombre. Se pueden asignar a otros significados dependiendo del contexto de uso. Además, se ha descubierto que diversos sistemas operativos utilizan los componentes 9 y 15 para los mensajes de reloj.</p>
+
+        <br><br><br>
+
+        <h3>Gravedad</h3>
+        <br>
+        <table>
+            <tr class="claro">
+                <th>Valor</th>
+                <th>Gravedad<th>
+            </tr>
+            <tr class="oscuro">
+                <td>0</td>
+                <td><b>Emergencia</b>: el sistema no puede utilizarse</td>
+            </tr>
+            <tr class="claro">
+                <td>1</td>
+                <td><b>Alerta</b>: se debe tomar alguna medida inmediatamente</td>
+            </tr>
+            <tr class="oscuro">
+                <td>2</td>
+                <td><b>Críticas</b>: condiciones críticas que deben corregirse inmediatamente e indican un fallo en un sistema</td>
+            </tr>
+            <tr class="claro">
+                <td>3</td>
+                <td><b>Error</b>: un fallo que no es urgente, debe resolverse dentro de un plazo determinado</td>
+            </tr>
+            <tr class="oscuro">
+                <td>4</td>
+                <td><b>Advertencia</b>: actualmente no existe un error; sin embargo, se producirá un error en el futuro si no se soluciona la condición</td>
+            </tr>
+            <tr class="claro">
+                <td>5</td>
+                <td><b>Aviso</b>: un evento que no es un error, pero que se considera inusual. No requiere una acción inmediata.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>6</td>
+                <td><b>Información</b>: mensajes emitidos sobre el funcionamiento normal</td>
+            </tr>
+            <tr class="claro">
+                <td>7</td>
+                <td><b>Depuración</b>: mensajes de interés para los desarrolladores</td>
+            </tr>
+        </table>
+
+        <br><br><br>
+
+        <h3>Prioridad</h3>
+        <p>
+            <p>El valor de prioridad (PRI) se calcula multiplicando el valor de componente por ocho y sumando el resultado al valor de gravedad, como se muestra a continuación.</p>
+            <br>
+            <p><b>Prioridad = (instalación * 8) + gravedad</b></p>
+            <br>
+            <p>El valor de prioridad es el primer valor en un paquete y figura entre paréntesis angulares <code>&lt;&gt;</code>.</p>
+        </p>
+
+        <br><br><br>
+
+        <p>La sección <b>HEADER</b> del mensaje contiene las marcas de tiempo en formato <b>MMM DD HH:MM:SS</b>. Si la marca de tiempo está precedida por los símbolos de punto (.) o de asterisco(*), se indica que hay un problema con NTP. La sección HEADER incluye también el nombre del host o la dirección IP del dispositivo que origina el mensaje.</p>
+        <br>
+        <p>La sección <b>MSG</b> contiene el significado del mensaje de syslog. Esto puede variar entre los fabricantes de dispositivos y puede personalizarse. Por lo tanto, esta parte del mensaje es la más significativa y útil para el analista de ciberseguridad.</p>
+
+        <hr>
+
+        <h1 id="25.2.3">25.2.3 Archivos de registro de un servidor</h1>
+        <br>
+        <p>Los registros del servidor son una fuente esencial de información para el monitoreo de la seguridad de la red. Los servidores de aplicaciones de una red, como los web y los de correo electrónico, tienen archivos de registro de acceso y de errores. Los registros de servidores proxy de DNS son particularmente importantes, dado que documentan todas las consultas y respuestas de DNS que tienen lugar en la red. Los registros del proxy de DNS son útiles para la identificación de hosts que podrían haber visitado sitios web peligrosos y para la identificación de exfiltración de datos de DNS y conexiones a servidores de comando y control de malware. Muchos servidores UNIX y Linux utilizan syslog, y otros usan funciones de registro patentadas. El contenido de los eventos de los archivos de registro depende del tipo de servidor.</p>
+        <br>
+        <p>Hay dos archivos de registro importantes que se deben conocer: los archivos de registro de servidores web Apache y los archivos de registro de acceso de Microsoft Internet Information Server (IIS). A continuación se muestran ejemplos de cada uno.</p>
+        <br><br>
+
+        <h2>Registro de acceso de Apache</h2>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>203.0.113.127 – dsmith [10/Oct/2016:10:26:57 - 0500] "GET /logo_sm.gif HTTP/1.0" 200 2254 "http://www.example.com/links.html" "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"</p>
+        </div>
+        <br>
+        <h2>Registro de acceso de IIS</h2>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>6/14/2016, 16:22:43, 203.0.113.24, -, W3SVC2, WEB3, 198.51.100.10, 80, GET, /home.htm, -, 200, 0, 15321, 159, 15, HTTP/1.1, Mozilla/5.0 (compatible; MSIE 9.0; Windows Phone OS 7.5; Trident/5.0; IEMobile/9.0), -, http://www.example.com</p>
+        </div>
+        <hr>
+
+        <h1 id="25.2.4">25.2.4 SIEM y la recopilación de archivos de registro</h1>
+        <br>
+        <p>La tecnología de administración de información y eventos de seguridad (SIEM) es utilizada en muchas organizaciones para proporcionar informes en tiempo real y análisis a largo plazo de eventos de seguridad, como se ve en la Figura.</p>
+        <br><br>
+
+        <h2>Entradas y salidas SIEM</h2>
+        <br>
+        <img src="img/Entradas y salidas SIEM.jpg" class="foto">
+        <br>
+        <p>SIEM combina las funciones esenciales de las herramientas de administración de eventos de seguridad (SEM) y administración de información de seguridad (SIM) para brindar una perspectiva integral de las redes empresariales mediante las siguientes funciones:</p>
+        <br>
+        <li><b>Recopilación de registros</b>- Estos registros de eventos obtenidos de fuentes en toda la organización proporcionan importante información de informática forense y ayudan a abordar requisitos de los informes de cumplimiento.</li>
+        <li><b>Normalización</b> - Esta función integra mensajes de registro de diferentes sistemas en un modelo común de datos, lo que le permite a la organización conectar y analizar eventos relacionados, incluso si inicialmente se registraron en diferentes formatos de origen.</li>
+        <li><b>Correlación</b> - Esta función vincula registros y eventos de sistemas o aplicaciones separados, lo que acelera la detección de las amenazas de seguridad y la capacidad de reacción ante ellas.</li>
+        <li><b>Agregación</b> - Esta función reduce el volumen de datos de eventos mediante la consolidación de registros de eventos duplicados.</li>
+        <li><b>Generación de informes</b> - Esta función presenta los datos del evento correlacionado y unificados en el monitoreo en tiempo real y en resúmenes a largo plazo, incluidos tableros gráficos interactivos.</li>
+        <li><b>Cumplimiento</b> - Esta función permite generar informes para satisfacer los requerimientos de diferentes reglas de cumplimiento.</li>
+        <br>
+        <p>Una SIEM muy conocida es Splunk, diseñada por un Cisco partner. La figura muestra un panel de amenazas Splunk. Splunk es ampliamente utilizado en los SOC. Otra popular solución de SIEM es Security Onion con ELK, la cual consiste en integrar las aplicaciones de Elasticsearch, Logstash y Kibana. Security Onion incluye otras herramientas de supervisión de seguridad de red de código abierto.</p>
+        <br><br>
+
+        <h2>Panel de amenazas Splunk</h2>
+        <br>
+        <img src="img/25.2.4-image-3.png" class="foto">
+        <br><br>
+        <p>Como sabemos, la orquestación de seguridad, automatización y respuesta (SOAR) lleva SIEM y va más allá de la automatización de los flujos de trabajo de respuesta de seguridad y la facilitación de la respuesta de incidencia. Debido a la importancia de la seguridad de la red, numerosas empresas han traído excelentes productos al mercado de herramientas de seguridad. Sin embargo, estas herramientas carecen de compatibilidad y requieren la supervisión de múltiples paneles de productos independientes para procesar las numerosas alertas que generan. Debido a la falta de profesionales de ciberseguridad para monitorear y analizar el gran volumen de datos de seguridad, es importante que las herramientas de varios proveedores se puedan integrar en una sola plataforma. Las plataformas de seguridad integradas van más allá de SIEM y SOAR para unificar múltiples tecnologías de seguridad, procesos y personas en un equipo unificado cuyos componentes se basan en lugar de obstaculizarse mutuamente. Las plataformas de seguridad como Cisco SecureX, Fortinet Security Fabric y Paloalto Networks Cortex XDR prometen abordar la complejidad de la supervisión de la seguridad de la red mediante la integración de múltiples funciones y fuentes de datos en una sola plataforma que mejorará enormemente la precisión de las alertas al tiempo que ofrece una defensa sólida.</p>
+
+        <hr>
+
+        <h1 id="25.2.5">25.2.5 Comprobar su comprensión - Identificar los niveles de seguridad de eventos de Windows</h1>
+        <br>
+    </div>
+</body>
+</html>
+
+
+

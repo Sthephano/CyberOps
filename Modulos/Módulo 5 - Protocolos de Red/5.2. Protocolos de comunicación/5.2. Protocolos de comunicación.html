@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="5.2.1">5.2.1 ¿Qué son los protocolos?</h1>
+        <br>
+        <p>Realizar simplemente la conexión física por cable o inalámbrica entre los terminales no es suficiente para habilitar la comunicación. Para que se produzca la comunicación, los dispositivos deben saber “cómo” comunicarse. La comunicación, ya sea cara a cara o por una red, está regida por reglas denominadas protocolos. Estos protocolos son específicos del tipo de método de comunicación en cuestión.</p>
+        <br>
+        <p>Por ejemplo, considere a dos personas que se comunican cara a cara. Antes de comunicarse, deben acordar cómo hacerlo. Si en la comunicación se utiliza la voz, primero deben acordar el idioma. A continuación, cuando tienen un mensaje que compartir, deben poder dar formato a ese mensaje de una manera que sea comprensible. Por ejemplo, si alguien utiliza el idioma español, pero la estructura de las oraciones es deficiente, el mensaje se puede malinterpretar fácilmente.</p>
+        <br>
+        <p>Del mismo modo, los protocolos de red especifican muchas características de la comunicación de red, como se muestra en la figura.</p>
+        <br>
+        <img src="img/¿Qué son los protocolos.jpg" class="foto">
+        <hr>
+
+        <h1 id="5.2.2">5.2.2 Protocolos de red</h1>
+        <br>
+        <p>Los protocolos de red ofrecen los medios para que las computadoras se comuniquen en las redes. Los protocolos de red determinan la codificación, el formato, la encapsulación, el tamaño, la distribución y las opciones de entrega del mensaje. Los protocolos de red definen un formato y un conjunto de reglas comunes para intercambiar mensajes entre dispositivos. Algunos de los protocolos de red más comunes son Hypertext Transfer Protocol (HTTP), el protocolo de control de transmisión (TCP) y el protocolo de Internet (IP). Como analista de ciberseguridad, debe estar muy familiarizado con la estructura de los datos del protocolo y cómo funcionan los protocolos en las comunicaciones de red.</p>
+        <br>
+        <p><b>Nota: </b>IP en este curso se refiere tanto a los protocolos de IPv4 como a los de IPv6. IPv6 es la versión más reciente de IP y, con el tiempo, sustituirá al protocolo IPv4 más común.</p>
+        <br>
+        <h2>Estructura del mensaje</h2>
+        <br>
+        <img src="img/Estructura del mensaje.jpg" class="foto">
+        <br><br>
+        <h2>Uso compartido de rutas</h2>
+        <br>
+        <img src="img/Uso compartido de rutas.jpg" class="foto">
+        <br><br>
+        <h2>Uso compartido de la información</h2>
+        <br>
+        <img src="img/Uso compartido de la información.jpg" class="foto">
+        <br><br>
+        <h2>Administración de sesión</h2>
+        <br>
+        <img src="img/Administración de sesión.jpg" class="foto">
+        <br><br>
+        <hr>
+
+        <h1 id="5.2.3">5.2.3 La suite de protocolos TCP/IP</h1>
+        <br>
+        <p>Hoy en día, el conjunto de protocolos TCP/IP incluye muchos protocolos y continúa evolucionando para admitir nuevos servicios. Algunos de los más populares se muestran en la figura.</p>
+        <br>
+        <img src="img/La suite de protocolos TCPIP.jpg" alt="">
+        <br><br><br>
+
+        <p><b>Capa de aplicación</b></p>
+        <br>
+        <p>Sistema de nombres</p>
+        <br>
+        <li><b>DNS</b> - Domain Name System. Traduce los nombres de dominio tales como cisco.com a direcciones IP</li>
+        <br>
+        <p>Configuración de host</p>
+        <br>
+        <li><b>DHCPv4</b> - Protocolo de configuración dinámica de host para  IPv4. Un servidor DHCPv4 asigna dinámicamente información de direccionamiento IPv4 a clientes DHCPv4 al inicio y permite que las direcciones se reutilicen cuando ya no sean necesarias.</li>
+        <li><b>DHCPv6</b> - Protocolo de configuración dinámica de host para  IPv6. DHCPv6 es similar a DHCPv4. Un servidor DHCPv6 asigna dinámicamente información de direccionamiento IPv6 a clientes DHCPv6 al inicio.</li>
+        <li><b>SLAAC</b> - Autoconfiguración sin estado. Método que permite a un dispositivo obtener su información de direccionamiento IPv6 sin utilizar un servidor DHCPv6.</li>
+        <br>
+        <p>Correo electrónico</p>
+        <br>
+        <li><b>SMTP</b> - Protocolo para Transferencia Simple de Correo. Les permite a los clientes enviar correo electrónico a un servidor de correo y les permite a los servidores enviar correo electrónico a otros servidores.</li>
+        <li><b>POP3</b> -Protocolo de Oficinca de Correo versión 3. Permite a los clientes recuperar el correo electrónico de un servidor de correo y descargarlo en la aplicación de correo local del cliente.</li>
+        <li><b>IMAP</b> - Protocolo de Acceso a Mensajes de Internet Permite que los clientes accedan a correos electrónicos almacenados en un servidor de correo.</li>
+        <br>
+        <p>Transferencia de Archivos</p>
+        <ul>
+        <li><b>FTP</b> - Protocolo de Transferencia de Archivos. Establece las reglas que permiten a un usuario en un host acceder y transferir archivos hacia y desde otro host a través de una red. FTP Es un protocolo confiable de entrega de archivos, orientado a la conexión y con acuse de recibo.</li>
+        <li><b>SFTP</b> - SSH Protocolo de Transferencia de Archivos Como una extensión al protocolo Shell seguro (SSH), el SFTP se puede utilizar para establecer una sesión segura de transferencia de archivos, en el que el archivo transferido está cifrado. SSH es un método para el inicio de sesión remoto seguro que se utiliza normalmente para acceder a la línea de comandos de un dispositivo.</li>
+        <li><b>TFTP</b> - Protocolo de Transferencia de Archivos Trivial Un protocolo de transferencia de archivos simple y sin conexión con la entrega de archivos sin reconocimiento y el mejor esfuerzo posible. Utiliza menos sobrecarga que FTP.</li>
+        <br>
+        <p>Web y Servicio Web</p>
+        <br>
+        <li><b>HTTP</b> - Hypertext Transfer Protocol. Un Conjunto de reglas para intercambiar texto, imágenes gráficas, sonido, video y otros archivos multimedia en la World Wide Web.</li>
+        <li><b>HTTPS</b> - HTTP seguro. Una forma segura de HTTP que cifra los datos que se intercambian a través de la World Wide Web.</li>
+        <li><b>REST</b> - Transferencia de Estado Representacional. Servicio web que utiliza interfaces de programación de aplicaciones (API) y solicitudes HTTP para crear aplicaciones web.</li>
+        <br><br>
+
+        <p><b>Capa de transporte</b></p>
+        <br>
+        <p><b>Capa de transporte</b></p>
+        <p>Orientado a la conexión</p>
+        <br>
+        <li><b>TCP</b> - Protocolo de Control de Transmisión. Permite la comunicación confiable entre procesos que se ejecutan en hosts independientes y tiene transmisiones fiables y con acuse de recibo que confirman la entrega exitosa.</li>
+        <br>
+        <p>Sin conexión</p>
+        <br>
+        <li><b>UDP</b> - Protocolo de Datagramas de Usuario Habilita un proceso que se ejecuta en un host para enviar paquetes a un proceso que se ejecuta en otro host Sin embargo, UDP No confirma la transmisión correcta de datagramas</li>
+        <br><br>
+
+        <p><b>Capa de Internet</b></p>
+        <br>
+        <p>Protocolo de Internet</p>
+        <br>
+        <li><b>IPv4</b> - Protocolo de Internet versión 4. Recibe segmentos de mensajes de la capa de transporte, empaqueta mensajes en paquetes y dirige paquetes para entrega end-to-end a través de una red. IPv4 utiliza una dirección de 32 bits.</li>
+        <li><b>IPv6</b> - IP versión 6. Similar a IPv4 pero usa una dirección de 128 bits.</li>
+        <li><b>NAT</b> -  Traducción de Direcciones de Red Traduce las direcciones IPv4 de una red privada en direcciones IPv4 públicas globalmente únicas.</li>
+        <br>
+        <p>Mensajería</p>
+        <br>
+        <li><b>ICMPv4</b> - Protocolo de Control de Mensajes de Internet Proporciona comentarios desde un host de destino a un host de origen con respecto a los errores en la entrega de paquetes</li>
+        <li><b>ICMPv6</b> - ICMP para IPv6. Funcionalidad similar a ICMPv4 pero se utiliza para paquetes IPv6.</li>
+        <li><b>ICMPv6 ND</b> - Protocolo de Descubrimiento de Vecinos versión 6 Incluye cuatro mensajes de protocolo que se utilizan para la resolución de direcciones y la detección de direcciones duplicadas.</li>
+        <br>
+        <p>Protocolos de Routing</p>
+        <br>
+        <li><b>OSPF</b> - Abrir el Camino más Corto Primero. Protocolo de enrutamiento de estado de vínculo que utiliza un diseño jerárquico basado en áreas. OSPF s un protocolo de routing interior de estándar abierto.</li>
+        <li><b>EIGRP</b> - EIGRP Protocolo de Enrutamiento de Puerta de enlace Interior Mejorado. Es un protocolo de routing abierto desarrollado por Cisco, utiliza una métrica compuesta en función del ancho de banda, la demora, la carga y la confiabilidad.</li>
+        <li><b>BGP</b> - Protocolo de Puerta de Enlace de Frontera Un protocolo de enrutamiento de puerta de enlace exterior estándar abierto utilizado entre los proveedores de servicios de Internet (ISP). BGP también se utiliza entre los ISP y sus clientes privados más grandes para intercambiar información de enrutamiento.</li>
+        <br><br>
+
+        <p><b>Capa de Acceso de Red</b></p>
+        <br>
+        <p><b>Capa de Acceso de Red</b></p>
+        <p>Resolución de dirección</p>
+        <br>
+        <li>
+        <p><b>ARP</b> - Protocolo de Resolución de Direcciones Proporciona la asignación de direcciones dinámicas entre una dirección IP y una dirección de hardware.</p>
+        <p><b>Nota</b>: Puede ver otro estado de documentación que ARP opera en la capa de Internet (OSI Capa 3). Sin embargo, en este curso declaramos que ARP opera en la capa de acceso a la red (OSI Capa 2) porque su objetivo principal es descubrir la dirección MAC del destino. y una dirección de capa 2 es una dirección MAC.</p>
+        </li>
+        <br>
+        <p>Protocolos de Enlace de Datos:</p>
+        <br>
+        <li><b>Ethernet</b> - define las reglas para conectar y señalizar estándares de la capa de acceso a la red.</li>
+        <li><b>WLAN</b> - Wireless Local Area Network. Define las reglas para la señalización inalámbrica a través de las frecuencias de radio de 2,4 GHz y 5 GHz.</li>
+        <hr>
+
+        <h1 id="5.2.4">5.2.4 Formato y encapsulamiento del mensaje</h1>
+        <br>
+        <p>Cuando se envía un mensaje desde el origen hacia el destino, se debe utilizar un formato o estructura específicos. Los formatos de los mensajes dependen del tipo de mensaje y el canal que se utilice para entregar el mensaje.</p>
+        <br><br>
+
+        <h2>Analogía</h2>
+        <br>
+        <p>Un ejemplo común de requerir el formato correcto en las comunicaciones humanas es cuando se envía una carta. Haga clic en Reproducir en la figura para ver una animación de formato y encapsulación de una letra.</p>
+        <br>
+        <p>El sobre tiene la dirección del emisor y la del receptor, cada una escrita en el lugar adecuado del sobre. Si la dirección de destino y el formato no son correctos, la carta no se entrega.</p>
+        <br>
+        <p>El proceso que consiste en colocar un formato de mensaje (la carta) dentro de otro formato de mensaje (el sobre) se denomina encapsulamiento. La desencapsulación ocurre cuando el destinatario invierte el proceso y la carta se saca del sobre.</p>
+        <br>
+        <video src="video/Formato y encapsulamiento del mensaje.mp4" controls></video>
+        <br><br>
+
+        <h2>Red</h2>
+        <br>
+        <p>Semejante a enviar una carta,Un mensaje que se envía a través de una red de computadoras sigue reglas de formato específicas para que pueda ser entregado y procesado.</p>
+        <br>
+        <p>Protocolo de Internet (IP) es un protocolo con una función similar a la del ejemplo sobre. En la figura, los campos del paquete de Protocolo de Internet versión 6 (IPv6) identifican el origen del paquete y su destino. IP es responsable de enviar un mensaje desde el origen del mensaje al destino a través de una o más redes.</p>
+        <br>
+        <p><b>Nota: </b>Los campos del paquete IPv6 se analizan en detalle en otro módulo.</p>
+        <br>
+        <img src="img/Red.jpg" class="foto">
+        <hr>
+
+        <h1 id="5.2.5">5.2.5 Tamaño del mensaje</h1>
+        <br>
+        <p>Otra regla de comunicación es el tamaño del mensaje.</p>
+        <br>
+        <p><b>Analogía</b></p>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una animación del tamaño del mensaje en las comunicaciones cara a cara.</p>
+        <br>
+        <p>Cuando las personas se comunican, los mensajes que envían, normalmente, están divididos en fragmentos más pequeños u oraciones. El tamaño de estas oraciones se limita a lo que la persona que recibe el mensaje puede procesar por vez, como se muestra en la figura. También hace que sea más fácil para el receptor leer y comprender.</p>
+        <br>
+        <video src="video/Analogia.mp4" controls></video>
+        <br><br><br>
+
+        <p><b>Red</b></p>
+        <br>
+        <p>De manera similar, cuando se envía un mensaje largo de un host a otro a través de una red, es necesario separarlo en partes más pequeñas, como se muestra en la figura 2. Las reglas que controlan el tamaño de las partes, o tramas que se comunican a través de la red, son muy estrictas. También pueden ser diferentes, de acuerdo con el canal utilizado. Las tramas que son demasiado largas o demasiado cortas no se entregan.</p>
+        <br>
+        <p>Las restricciones de tamaño de las tramas requieren que el host de origen divida un mensaje largo en fragmentos individuales que cumplan los requisitos de tamaño mínimo y máximo. El mensaje largo se enviará en tramas independientes, cada trama contendrá una parte del mensaje original. Cada trama también tendrá su propia información de direccionamiento. En el host receptor, las partes individuales del mensaje se vuelven a unir para reconstruir el mensaje original.</p>
+        <br>
+        <video src="video/Red.mp4" controls></video>
+        <hr>
+
+        <h1 id="5.2.6">5.2.6 Sincronización del mensaje</h1>
+        <br>
+        <p>El tiempo de los mensajes también es muy importante en las comunicaciones de red. El tiempo de los mensajes incluye lo siguiente:</p>
+        <br>
+        <p><b>Control de flujo -</b> Este es el proceso de gestión de la velocidad de transmisión de datos. La sincronización también afecta la cantidad de información que se puede enviar y la velocidad con la que puede entregarse. Por ejemplo, Si una persona habla demasiado rápido, la otra persona tendrá dificultades para escuchar y comprender el mensaje. En la comunicación de red, existen protocolos de red utilizados por los dispositivos de origen y destino para negociar y administrar el flujo de información.</p>
+        <p><b>Tiempo de espera de respuesta (Response Timeout) -</b> Si una persona hace una pregunta y no escucha una respuesta antes de un tiempo aceptable, la persona supone que no habrá ninguna respuesta y reacciona en consecuencia. La persona puede repetir la pregunta o puede continuar la conversación. Los hosts de las redes tienen reglas que especifican cuánto tiempo deben esperar una respuesta y qué deben hacer si se agota el tiempo de espera para la respuesta.</p>
+        <p><b>Métodos de acceso - </b> Determina en qué momento alguien puede enviar un mensaje. Haga clic en Reproducir en la figura para ver una animación de dos personas hablando al mismo tiempo, luego se produce una "colisión de información" y es necesario que las dos retrocedan y comiencen de nuevo. Del mismo modo, cuando un dispositivo desea transmitir en una LAN inalámbrica, es necesario que la tarjeta de interfaz de red (NIC) WLAN determine si el medio inalámbrico está disponible.</p>
+        <br>
+        <video src="video/Sincronización del mensaje.mp4" controls></video>
+        <hr>
+
+        <h1 id="5.2.7">5.2.7 Unidifusión, multidifusión y difusión</h1>
+        <br>
+        <p>Un mensaje se puede entregar de diferentes maneras. En algunos casos, una persona desea comunicar información a un solo individuo. Otras veces, esa persona puede necesitar enviar información a un grupo de personas simultáneamente o, incluso, a todas las personas de un área.</p>
+        <br>
+        <p>Los hosts en una red utilizan opciones de entrega similares para comunicarse. Estos métodos de comunicación se denominan unicast, multicast y broadcast</p>
+        <br>
+
+        <h2>Unidifusión</h2>
+        <br>
+        <p>Una opción de entrega de uno a uno se denomina unicast, que significa que el mensaje tiene solo un destinatario.</p>
+        <br>
+        <video src="video/Unidifusion.mp4" controls></video>
+
+        <h2>Multidifusión</h2>
+        <br>
+        <p>Si un host necesita enviar mensajes utilizando una opción de uno a varios, se denomina multicast.</p>
+        <br>
+        <video src="video/Multidifusion.mp4" controls></video>
+
+        <h2>Difusión</h2>
+        <br>
+        <p>Si es necesario que todos los hosts de la red reciban el mensaje a la vez, se utiliza el método de broadcast. La broadcast representa una opción de entrega de mensaje de uno a todos.</p>
+        <br>
+        <video src="video/Difusion.mp4" controls></video>
+        <hr>
+
+        <h1 id="5.2.8">5.2.8 Beneficios del uso de un modelo en capas</h1>
+        <br>
+        <p>En realidad, no puede ver los paquetes reales viajar a través de una red real de la misma manera que puede ver cómo se ensamblan los componentes de un automóvil en una línea de ensamblaje. por lo tanto, es útil tener una forma de pensar acerca de una red para que puedas imaginar lo que está sucediendo. Un modelo es útil en estas situaciones.</p>
+        <br>
+        <p>Conceptos complejos, como el funcionamiento de una red, pueden ser difíciles de explicar y comprender. Por esta razón, un modelo en capas se utiliza para modularizar las operaciones de una red en capas manejables.</p>
+        <br>
+        <p>Los beneficios por el uso de un modelo en capas para describir protocolos de red y operaciones incluyen lo siguiente:.</p>
+        <br>
+        <li>Asistencia en el diseño de protocolos porque los protocolos que operan en una capa específica tienen información definida sobre la que actúan y una interfaz definida para las capas superiores e inferiores.</li>
+        <li>Fomenta la competencia, ya que los productos de distintos proveedores pueden trabajar en conjunto.</li>
+        <li>Evita que los cambios en la tecnología o en las funcionalidades de una capa afecten otras capas superiores e inferiores.</li>
+        <li>Proporciona un lenguaje común para describir las funciones y capacidades de red.</li>
+        <br>
+        <p>Como se muestra en la figura, hay dos modelos en capas que se utilizan para describir las operaciones de red:</p>
+        <br>
+        <li>Modelo de Referencia de Interconexión de Sistemas Abiertos</li>
+        <li>Modelo de referencia TCP/IP</li>
+        <br>
+        <img src="img/Beneficios del uso de un modelo en capas.jpg" class="foto">
+        <hr>
+
+        <h1 id="5.2.9">5.2.9 El Modelo de Referencia OSI</h1>
+        <br>
+        <p>El modelo de referencia OSI proporciona una amplia lista de funciones y servicios que se pueden presentar en cada capa. Este tipo de modelo es coherente con todos los tipos de servicios y protocolos de red al describir qué es lo que se debe hacer en una capa determinada, pero sin regir la forma en que se debe lograr.</p>
+        <br>
+        <p>También describe la interacción de cada capa con las capas directamente por encima y por debajo de él. Los protocolos TCP/IP que se analizan en este curso se estructuran en torno a los modelos OSI y TCP/IP. La tabla muestra detalles sobre cada capa del modelo OSI. La funcionalidad de cada capa y la relación entre ellas será más evidente a medida que avance en el curso y que se brinden más detalles acerca de los protocolos.</p>
+        <br>
+
+        <table>
+            <tr class="cabecera">
+                <th>Capa del modelo OSI</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>7 - Aplicació</td>
+                <td>La capa de aplicación contiene protocolos utilizados para comunicaciones proceso a proceso.</td>
+            </tr>
+            <tr class="claro">
+                <td>6 - Presentación</td>
+                <td>La capa de presentación proporciona una representación común de los datos transferidos entre los servicios de la capa de aplicación.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>5 - Sesión</td>
+                <td>La capa de sesión proporciona servicios a la capa de presentación para organizar su diálogo y administrar el intercambio de datos.</td>
+            </tr>
+            <tr class="claro">
+                <td>4 - Transporte</td>
+                <td>La capa de transporte define los servicios para segmentar, transferir y reensamblar los datos para las comunicaciones individuales entre terminales.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>3 - Red</td>
+                <td>La capa de red proporciona servicios para intercambiar los datos individuales en la red entre terminales identificados.</td>
+            </tr>
+            <tr class="claro">
+                <td>2 - Enlacede Datos</td>
+                <td>protocolos de la capa de enlace de datos describen métodos para intercambiar tramas de datos entre dispositivos a través de un medio común.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>1 - Física</td>
+                <td>Los protocolos de la capa física describen los medios mecánicos, eléctricos, funcionales y de procedimiento para activar, mantener y desactivar conexiones físicas para una transmisión de bits hacia y desde un dispositivo de red.</td>
+            </tr>
+        </table>
+        <br>
+        <p><b>Nota: </b>tenga en cuenta que, mientras las capas del modelo TCP/IP se mencionan solo por el nombre, las siete capas del modelo OSI se mencionan con frecuencia por número y no por nombre. Por ejemplo, la capa física se conoce como Capa 1 del modelo OSI, la capa de enlace de datos es la Capa 2, y así sucesivamente.</p>
+        <hr>
+
+        <h1 id="5.2.10">5.2.10 Modelo de Protocolo TCP/IP</h1>
+        <br>
+        <p>El modelo de protocolo TCP/IP para comunicaciones de internetwork se creó a principios de la década de los setenta y se conoce con el nombre de modelo de Internet. Este tipo de modelo coincide con precisión con la estructura de una suite de protocolos determinada. El modelo TCP/IP es un protocolo modelo porque describe las funciones que ocurren en cada capa de protocolos dentro de una suite de TCP/IP. TCP/IP también es un ejemplo de un modelo de referencia. La tabla muestra detalles sobre cada capa del modelo OSI.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Capa del modelo TCP/IP</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>4 - Aplicación</td>
+                <td>Representa datos para el usuario más el control de codificación y de diálogo.</td>
+            </tr>
+            <tr class="claro">
+                <td>3 - Transporte</td>
+                <td>Admite la comunicación entre distintos dispositivos a través de diversas redes.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>2 - Internet</td>
+                <td>Determina el mejor camino a través de una red.</td>
+            </tr>
+            <tr class="claro">
+                <td>1 - Acceso a la Red</td>
+                <td>Controla los dispositivos del hardware y los medios que forman la red.</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="16.1.1">16.1.1 IPv4 e IPv6</h1>
+        <br>
+        <p>IP fue diseñado como un protocolo sin conexión de capa 3. Brinda las funciones necesarias para enviar un paquete de un host de origen a uno de destino mediante un sistema interconectado de redes. El protocolo no fue diseñado para rastrear ni administrar el flujo de paquetes. Si es necesario, TCP realiza principalmente estas funciones en la capa 4.</p>
+        <br>
+        <p>El protocolo IP no hace ningún esfuerzo para validar si la dirección IP de origen que figura en un paquete realmente proviene de ese origen. Por eso, los atacantes pueden enviar paquetes con una dirección IP de origen falsa o suplantada. Además, los atacantes pueden alterar los demás campos del encabezado de IP para llevar a cabo sus ataques. Por lo tanto, es importante que los analistas de seguridad entiendan los diferentes campos de los encabezados de IPv4 e IPv6.</p>
+        <hr>
+            
+        <h1 id="16.1.2">16.1.2 Encabezado del paquete IPv4</h1>
+        <br>
+        <p>Los campos acerca del encabezado IPv4 se muestran en la siguiente figura.</p>
+        <br><br>
+            
+        <h2>Encabezado del paquete IPv4</h2>
+        <br>
+        <img src="img/Encabezado del paquete IPv4.jpg" class="foto">
+        <br><br>
+            
+        <p>La tabla describe los campos del encabezado IPv4.</p>
+        <br>
+            
+        <table>
+            <tr class="cabecera">
+                <th>Campo del encabezado de IPv4</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Versión</td>
+                <td><li>Contiene un valor binario de 4 bits establecido en "0100" que lo identifica como un paquete de IPv4.</li></td>
+            </tr>
+            <tr class="claro">
+                <td>Longitud del encabezado de Internet</td>
+                <td>
+                    <li>Un campo de 4 bits que contiene la longitud del encabezado IP. </li>
+                    <li>La longitud mínima de un encabezado IP es de 20 bytes.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Servicios diferenciados o DiffServ (DS)</td>
+                <td>
+                    <li>Antiguamente conocido como el campo de "Tipo de Servicio" (ToS, siglas en inglés), el campo DS es un campo de 8 bits utilizado para determinar la prioridad de cada paquete. </li>
+                    <li>Los seis bits más importantes del campo DiffServ son el Differentiated Services Code Point (DSCP). </li>
+                    <li>Los dos últimos bits son los bits de Notificación de Congestión (ECN, siglas en inglés).</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Longitud total</td>
+                <td>
+                    <li>Especifica la longitud total del paquete IP incluyendo el encabezado IP y los datos del usuario. </li>
+                    <li>El campo de longitud total es de 2 bytes, por lo que el tamaño máximo de un paquete IP es de 65 535 bytes.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Identificación, Banderas y Desplazamiento de fragmentos.</td>
+                <td>
+                    <li>A medida que un paquete IP se moviliza, es posible que deba cruzar una ruta que no es capaz de manejar el tamaño total del paquete. </li>
+                    <li>El paquete se dividirá o fragmentará en paquetes más pequeños y se rearmará más adelante. </li>
+                    <li>Estos campos se utilizan para fragmentar y rearmar los paquetes.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Tiempo de vida (TTL)</td>
+                <td>
+                    <li>Contiene un valor binario de 8 bits que es utilizado para delimitar el tiempo de existencia de un paquete </li>
+                    <li>El emisor del paquete establece el valor TTL inicial , el cual se reduce en uno cada vez que un router procesa el paquete. </li>
+                    <li>Si el campo TTL llega a cero, el router descarta el paquete y envía a la dirección IP de origen un mensaje de "Tiempo excedido", el cual procede del Protocolo de Mensajes de Control de Internet (ICMP).</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Protocolo</td>
+                <td>
+                    <li>Este campo se utiliza para identificar el protocolo de capa superior. </li>
+                    <li>Este valor binario de 8 bits indica el tipo de payload (carga útil) de datos que contiene el paquete, lo que permite que la capa de red transmita los datos al protocolo de capa superior apropiado. </li>
+                    <li>Algunos valores comunes son: ICMP (1), TCP (6) y UDP (17).</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Checksum del encabezado</td>
+                <td>
+                    <li>Corresponde a un valor que es calculado basándose en el contenido del encabezado IP del paquete. </li>
+                    <li>Se utiliza para determinar si se han introducido errores durante la transmisión.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Dirección IPv4 de origen</td>
+                <td>
+                    <li>Contiene un valor binario de 32 bits que representa la dirección IPv4 de origen del paquete. </li>
+                    <li>La dirección IPv4 de origen siempre es una dirección de Unicast.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Dirección IPv4 de destino</td>
+                <td>Contiene un valor binario de 32 bits que representa la dirección IPv4 de destino del paquete.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Opciones y Relleno</td>
+                <td>
+                    <li>Este es un campo que varia la longitud de 0 a un múltiplo de 32 bits </li>
+                    <li>Si los valores de opción no son un múltiplo de 32 bits, se agregan los ceros necesarios para convertir el contenido de ese espacio en un múltiplo de 32 bits</li>
+                </td>
+            </tr>
+        </table>
+        <hr>
+        
+        <h1 id="16.1.3">16.1.3 Video - Ejemplos de encabezados IPv4 en Wireshark</h1>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una demostración de una revisión de encabezados IPv4 en una captura de Wireshark.</p>
+        <br>
+        <video src="video/Ejemplos de encabezados IPv4 en Wireshark.mp4" controls></video>
+        <hr>
+        
+        <h1 id="16.1.4">16.1.4 Encabezado del paquete IPv6</h1>
+        <br>
+        <p>Existen ocho campos en el encabezado IPv6, tal como se muestra en la figura.</p>
+        <br>
+        <h2>Encabezado del paquete IPv6</h2>
+        <br>
+        <img src="img/Encabezado del paquete IPv6.jpg" class="foto">
+        <br><br>
+        
+        <p>La tabla describe los campos del encabezado IPv6.</p>
+        <br>
+        <img src="img/Encabezado del paquete IPv6 tabla.jpg" class="foto">
+        <br><br>
+        
+        <p>Un paquete IPv6 también contiene encabezados de extensión (EH) que proporcionan información opcional de la capa de red. Los encabezados de extensión son opcionales y están ubicados entre el encabezado de IPv6 y la payload (carga útil). Los encabezados de extensión (EH) se utilizan para fragmentar, dar seguridad, soportar movilidad, entre otras.</p>
+        <br>
+        <p>A diferencia de IPv4, los routers no fragmentan los paquetes IPv6 enrutados.</p>
+        <hr>
+        
+        <h1 id="16.1.5">16.1.5 Video - Ejemplos de encabezados IPv6 en Wireshark</h1>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una demostración de una revisión de encabezados IPv6 en una captura de Wireshark.</p>
+        <br>
+        <video src="video/Ejemplos de encabezados IPv6 en Wireshark.mp4" controls></video>
+    </div>
+</body>
+</html>

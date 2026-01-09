@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="12.2.1">12.2.1 Video - Dispositivos de seguridad</h1>
+        <br>
+        <p>Reproduzca el vídeo para obtener más información sobre los servicios de seguridad.</p>
+        <br>
+        <video src="video/Dispositivos de seguridad.mp4" controls></video>
+        <hr>
+
+        <h1 id="12.2.2">12.2.2 Firewalls</h1>
+        <br>
+        <p>Un firewall es un sistema o grupo de sistemas que impone una política de control de acceso entre redes.</p>
+        <br>
+        <p>Reproduzca en la figura para ver una animación de cómo funciona un firewall.</p>
+        <br><br>
+
+        <h2>Funcionamiento del firewall</h2>
+        <br>
+        <video src="video/Funcionamiento del firewall.mp4" controls></video>
+        <br><br>
+        <p>Haga clic en cada botón para aprender más acerca de los firewalls.</p>
+        <br><br>
+
+        <p><b>Propiedades comunes de firewall</b></p>
+        <br>
+        <p>Todos los firewalls comparten algunas propiedades comunes:</p>
+        <br>
+        <li>Los firewalls resisten ataques de red.</li>
+        <li>Los firewalls son el único punto de tránsito entre las redes corporativas internas y las redes externas porque todo el tráfico circula por ellos.</li>
+        <li>Los firewalls aplican la política de control de acceso.</li>
+        <br><br>
+
+        <p><b>Ventajas de firewall</b></p>
+        <br>
+        <p>Los firewalls en una red brindan numerosos beneficios:</p>
+        <br>
+        <li>Evitan la exposición de hosts, recursos y aplicaciones confidenciales a usuarios no confiables.</li>
+        <li>Sanean el flujo de protocolos, lo que evita el aprovechamiento de las fallas de protocolos.</li>
+        <li>Bloquean los datos maliciosos de servidores y clientes.</li>
+        <li>Simplifican la administración de la seguridad, ya que la mayor parte del control del acceso a redes se deriva a unos pocos firewalls de la red.</li>
+        <br><br>
+
+        <p><b>Limitaciones de firewall</b></p>
+        <br>
+        <p>Los firewalls también tienen algunas limitaciones:</p>
+        <br>
+        <li>Un firewall mal configurado puede tener graves consecuencias para la red, por ejemplo, convertirse en un punto único de falla.</li>
+        <li>Los datos de muchas aplicaciones no se pueden transmitir con seguridad mediante firewalls.</li>
+        <li>Los usuarios pueden buscar maneras de esquivar el firewall para recibir material bloqueado, lo que expone a la red a posibles ataques.</li>
+        <li>Puede reducirse la velocidad de la red.</li>
+        <li>El tráfico no autorizado se puede tunelizar u ocultar como tráfico legítimo a través del firewall.</li>
+        <hr>
+
+        <h1 id="12.2.3">12.2.3 Descripciones de tipos de firewall</h1>
+        <br>
+        <p><b>Firewall para filtrado de paquetes (sin estado)</b></p>
+        <br>
+        <p>Los firewalls de filtrado de paquetes suelen formar parte de un firewall de router, que autoriza o rechaza el tráfico a partir de la información de las capas 3 y 4. Son firewalls sin estado que utilizan una simple búsqueda en la tabla de políticas que filtra el tráfico según criterios específicos.</p>
+        <br>
+        <p>Por ejemplo, los servidores SMTP escuchan el puerto 25 de manera predeterminada. Un administrador puede configurar el firewall de filtrado de paquetes para bloquear el puerto 25 desde una estación de trabajo específica a fin de evitar que difunda un virus por correo electrónico.</p>
+        <br>
+        <img src="img/Firewall para filtrado de paquetes (sin estado).jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Firewall con detección de estado</b></p>
+        <br>
+        <p>Los firewalls con estado son los más versátiles y las tecnologías de firewall más comúnmente usadas. Los firewalls activos proporcionan un filtrado de paquetes utilizando la información de conexión que se mantiene en una tabla de estados. El filtrado con estado es una arquitectura de firewall que se clasifica en la capa de red. También analiza el tráfico en las capas 4 y 5 de OSI.</p>
+        <br>
+        <img src="img/Firewall con detección de estado.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Firewall de gateway de aplicaciones</b></p>
+        <br>
+        <p><b>Firewall de gateway de aplicación (proxy de firewall) ─ </b>Como se muestra en la figura, filtra la información en las capas 3, 4, 5 y 7 del modelo de referencia OSI. La mayor parte del control y filtrado del firewall se realiza en el software. Cuando un cliente necesita tener acceso a un servidor remoto, se conecta a un servidor proxy. El servidor proxy se conecta al servidor remoto en nombre del cliente. Por lo tanto, el servidor solamente ve una conexión desde el servidor proxy.</p>
+        <br>
+        <img src="img/Firewall de gateway de aplicaciones.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Firewall de próxima generación</b></p>
+        <br>
+        <p>Los firewalls de próxima generación (NGFW) van más allá de los firewalls con estado y ofrecen lo siguiente:</p>
+        <br>
+        <li>Prevención de intrusiones integrada.</li>
+        <li>Control y reconocimiento de aplicaciones para ver y bloquear aplicaciones riesgosas.</li>
+        <li>Rutas de actualización para incluir futuros datos de información.</li>
+        <li>Técnicas para afrontar amenazas de seguridad en constante evolución.</li>
+        <br>
+        <img src="img/Firewall de próxima generación.jpg" class="foto">
+        <br><br><br>
+
+        <p>Otros métodos de implementación de firewall incluyen los siguientes:</p>
+        <br>
+        <li><b>Firewall basado en host (servidor y personal) ─ </b>Una computadora o servidor que ejecuta software de firewall.</li>
+        <li><b>Firewall transparente ─ </b>Filtra el tráfico de IP entre un par de interfaces conectadas con puente.</li>
+        <li><b>Firewall híbrido ─ </b>Una combinación de los distintos tipos de firewall. Por ejemplo, un firewall de inspección de aplicación combina un firewall con estado y un firewall de gateway de aplicación.</li>
+        <hr>
+
+        <h1 id="12.2.4">12.2.4 Verifique su conocimiento - Identificar los tipos de firewall</h1>
+        <br>
+
+
+        <hr>
+
+        <h1 id="12.2.5">12.2.5 Dispositivos de detección y prevención de intrusiones</h1>
+        <br>
+        <p>Es necesario un cambio de paradigma en las arquitecturas de red para defenderse de los ataques cada vez más rápidos y complejos. Este debe incluir sistemas de detección y prevención rentables, como sistemas de detección de intrusiones (IDS, Intrusion Detection System) o sistemas de prevención de intrusiones (IPS, Intrusion Prevention System), que son más escalables. La arquitectura de red integra estas soluciones en los puntos de entrada y salida de la red.</p>
+        <br>
+        <p>Al implementar IDS o IPS, es importante conocer los tipos de sistemas disponibles, los enfoques basados en host y basados en la red, la implementación de estos sistemas, el papel que desempeñan las categorías de firma y las posibles acciones que puede adoptar un router de Cisco IOS cuando se detecta un ataque.</p>
+        <br>
+        <p>La figura muestra cómo un dispositivo IPS maneja el tráfico malicioso.</p>
+        <br><br>
+
+        <h2>Características de IDS e IPS</h2>
+        <br>
+        <img src="img/Características de IDS e IPS.jpg" class="foto">
+        <br><br>
+        <p>Ambas tecnologías se implementan como sensores. Un sensor IDS o IPS puede adoptar la forma de varios dispositivos diferentes:</p>
+        <br>
+        <li>Un router configurado con el software IPS de Cisco IOS.</li>
+        <li>Un dispositivo diseñado específicamente para proporcionar servicios de IDS o IPS exclusivos.</li>
+        <li>Un módulo de red instalado en un dispositivo de seguridad adaptable (ASA, Adaptive Security Appliance), switch o router.</li>
+        <br>
+        <p>Las tecnologías IDS e IPS utilizan firmas para detectar patrones de tráfico de red. Una firma es un conjunto de reglas que un IDS o IPS utiliza para detectar actividad maliciosa. Las firmas pueden utilizarse para detectar infracciones graves de seguridad y ataques de red comunes, y para recopilar información. Las tecnologías IDS e IPS pueden detectar patrones de firma atómica (paquete individual) o patrones de firma compuesta (varios paquetes).</p>
+        <hr>
+
+        <h1 id="12.2.6">12.2.6 Ventajas y desventajas de IDS e IPS</h1>
+        <br>
+        <p><b>Ventajas y Desventajas del IDS</b></p>
+        <br>
+        <p>La tabla lista las ventajas y desventajas del IDS y IPS. </p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>Solución</th>
+            <th>Ventajas</th>
+            <th>Desventajas</th>
+        </tr>
+        <tr class="oscuro">
+            <td><b>IDS</b></td>
+            <td>
+            <ul>
+                <li>Sin impacto en la red (latencia, fluctuación)</li>
+                <li>Ningún impacto en la red si hay una falla en los sensores</li>
+                <li>Ningún impacto en la red si hay una sobrecarga en los sensores</li>
+            </ul>
+            </td>
+            <td>
+            <ul>
+                <li>La acción de respuesta no puede detener paquetes activadores</li>
+                <li>Se requiere la afinación correcta para las acciones de respuesta</li>
+                <li>Más vulnerable a técnicas de evasión de la seguridad de la red</li>
+            </ul>
+            </td>
+        </tr>
+        <tr class="claro">
+            <td><b>IPS</b></td>
+            <td>
+            <ul>
+                <li>Detiene paquetes activadores</li>
+                <li>Puede usar técnicas de normalización de transmisiones</li>
+            </ul>
+            </td>
+            <td>
+            <ul>
+                <li>Los problemas de los sensores podrían afectar el tráfico de red</li>
+                <li>La sobrecarga en el sensor afecta a la red</li>
+                <li>Cierto impacto en la red (latencia, fluctuación)</li>
+            </ul>
+            </td>
+        </tr>
+        </table>
+        <br><br>
+
+        <h2>Ventajas y desventajas de un IDS</h2>
+        <br>
+        <p><b>Ventajas de IDS</b></p>
+        <br>
+        <p>Un IDS se implementa en modo sin conexión y por lo tanto:</p>
+        <br>
+        <li>No afecta al rendimiento de la red. Específicamente, no introduce latencia, fluctuación ni otros problemas de flujo de tráfico.</li>
+        <li>No afecta la funcionalidad de la red si el sensor falla. solamente afecta a la capacidad de IDS para analizar los datos.</li>
+        <br>
+        <p><b>Desventajas de IDS</b></p>
+        <br>
+        <p>Las desventajas de un IDS incluyen:</p>
+        <br>
+        <li>Un sensor de IDS no puede detener el paquete de activación y son menos útiles para detener los virus de correo electrónico y los ataques automatizados, como los gusanos.</li>
+        <li>Afinar los sensores IDS para lograr niveles esperados de detección de intrusiones puede llevar mucho tiempo. Los usuarios que Implementan acciones de respuesta de sensores de IDS deben tener una política de seguridad bien diseñada y una acabada comprensión operativa de sus implementaciones de IDS.</li>
+        <li>Una implementación de IDS es más vulnerable a las técnicas de evasión de seguridad de red porque no está en línea.</li>
+        <br><br>
+
+        <h2>Ventajas y desventajas de IPS</h2>
+        <br>
+        <p><b>Ventajas de IPS</b></p>
+        <br>
+        <p>Las ventajas de IPS incluyen:</p>
+        <br>
+        <li>Un sensor IPS se puede configurar para que omita el paquete a fin de detener el paquete de activación, los paquetes asociados a una conexión o los paquetes desde una dirección IP de origen.</li>
+        <li>Porque los sensores IPS son en línea, pueden utilizar la normalización de transmisión. La normalización de transmisión es una técnica usada para reconstruir el flujo de datos cuando el ataque se produce en varios segmentos de datos.</li>
+        <br>
+        <p><b>Desventajas de IPS</b></p>
+        <br>
+        <p>Las desventajas de un IPS incluyen:</p>
+        <br>
+        <li>Y que es implementado en línea, los errores, las fallas y rl sobrecalentamiento del sensor IPS con mucho tráfico pude tener un efecto negativo en el rendimiento de la red.</li>
+        <li>Un sensor de IPS puede afectar el rendimiento de la red al introducir latencia y fluctuación.</li>
+        <li>Un sensor IPS debe tener el tamaño correcto e implementarse adecuadamente para que las aplicaciones sensibles al tiempo, como VoIP, no se vean afectadas negativamente.</li>
+        <br><br>
+
+        <h2>Consideraciones para la implementación</h2>
+        <br>
+        <p>Puede implementar un IPS y un IDS. Estas tecnologías no son mutuamente exclusivas. De hecho, las tecnologías IDS e IPS pueden complementarse.</p>
+        <br>
+        <p>Por ejemplo, es posible implementar IDS para validar el funcionamiento de IPS, ya que se puede configurar IDS para que realice una inspección de paquetes más profunda sin conexión. Esto permite que IPS se centre en menos patrones de tráfico en línea, pero que son esenciales.</p>
+        <br>
+        <p>Decidir qué implementación aplicar depende de los objetivos de seguridad de la organización, como se definen en su política de seguridad de la red.</p>
+        <hr>
+
+        <h1 id="12.2.7">12.2.7 Tipos de IPS</h1>
+        <br>
+        <p>Existen dos tipos primarios de IPS disponibles: IPS basados en hosts y con base en la red.</p>
+        <br>
+        <p><b>Ejemplo de la implementacion de un sensor IPS</b></p>
+        <br>
+        <p>La tecnología IPS con base en host (HIPS) es un software instalado en un host para controlar y analizar actividades sospechosas. Una ventaja importante de HIPS es que puede monitorear y proteger el sistema operativo y los procesos fundamentales del sistema que son específicos de ese host. Con un conocimiento detallado del sistema operativo, HIPS puede monitorear la actividad inusual y evitar que el host ejecute comandos que no coinciden con el comportamiento habitual. Este comportamiento sospechoso o malicioso podría incluir actualizaciones del registro no autorizadas, cambios en el directorio del sistema, ejecución de programas de instalación y actividades que provocan desbordamientos del búfer. También es posible monitorear el tráfico de red para evitar que el host participe en un ataque de denegación de servicio (DoS, Denial of Service) o forme parte de una sesión de FTP ilícita.</p>
+        <br>
+        <p>HIPS puede considerarse una combinación de firewall, software antivirus y software antimalware. Combinado con IPS con base en la red, HIPS es una herramienta eficaz para brindar protección adicional al host.</p>
+        <br>
+        <p>Una desventaja de HIPS es que actúa solamente a nivel local. No tiene una perspectiva completa de la red o de los eventos coordinados que podrían estar ocurriendo en toda la red. Para ser eficaz en una red, HIPS debe instalarse en cada host y ser compatible con cada sistema operativo. La tabla de lista de ventajas y desventajas de HIPS.</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>
+            <p><strong>Ventajas</strong></p>
+            </th>
+            <th>
+            <p><strong>Desventajas</strong></p>
+            </th>
+        </tr>
+        <tr class="oscuro">
+            <td>
+            <ul>
+                <li>Proporciona protección específica a un sistema operativo del host</li>
+                <li>Proporciona protección al nivel del sistema operativo y de las aplicaciones</li>
+                <li>Protege al host después de descifrar el mensaje</li>
+            </ul>
+            </td>
+            <td>
+            <ul>
+                <li>Depende del sistema operativo</li>
+                <li>Debe instalarse en todos los hosts</li>
+            </ul>
+            </td>
+        </tr>
+        </table>
+        <br><br>
+
+        <p><b>IPS con base en la red </b></p>
+        <p>La tecnología IPS con base en la red se puede implementar utilizando un dispositivo IPS exclusivo o no exclusivo. Las implementaciones de IPS con base en la red son un componente fundamental de la prevención de intrusiones. Hay soluciones IDS/IPS con base en el host, pero estas deben integrarse con una implementación de IPS con base en la red para que la arquitectura de seguridad sea realmente sólida.</p>
+        <br>
+        <p>Los sensores detectan actividad maliciosa y no autorizada en tiempo real y pueden tomar medidas cuando es necesario. Como se muestra en la figura, los sensores se despliegan en puntos de red designados. Esto permite a los administradodres de seguridad a monitorear la actividad de la red mientras esto ocurre, sin importar dónde sea el objetivo del ataque.</p>
+        <br><br>
+
+        <h2>Implementación de sensor IPS de muestra</h2>
+        <br>
+        <img src="img/Implementación de sensor IPS de muestra.jpg" class="foto">
+        <hr>
+
+        <h1 id="12.2.8">12.2.8 Dispositivos de seguridad especializados</h1>
+        <br>
+        <p>Hay una variedad de dispositivos de seguridad especializados disponibles. Estos son algunos ejemplos:</p>
+        <br><br>
+
+        <p><b>AMP</b></p>
+        <br>
+        <p>Cisco Advanced Malware Protection (AMP) es una solución de protección y análisis de malware avanzado de clase empresarial. Brinda protección integral contra malware para las organizaciones antes, durante y después de un ataque:</p>
+        <br>
+        <li>Antes del ataque, AMP fortalece las defensas y brinda protección contra amenazas conocidas y emergentes.</li>
+        <li>Durante un ataque, AMP identifica y bloquea tipos de archivo que infrinjan las políticas, intentos de ataque y archivos maliciosos que intenten infiltrarse en la red.</li>
+        <li>Después de un ataque o de la inspección inicial de un archivo, AMP no solo se queda en las funcionalidades de detección en un momento determinado, sino que también analiza y controla constantemente toda la actividad y el tráfico de archivos, independientemente de su ubicación, y busca detectar cualquier indicador de comportamiento malicioso. Si un archivo con una condición desconocida o que anteriormente se consideró “buena” comienza a comportarse mal, AMP lo detectará e inmediatamente generará una alerta para los equipos de seguridad con un indicador del riesgo. Luego proporciona visibilidad del lugar de origen del malware, los sistemas que se vieron afectados y la actividad del malware.</li>
+        <br>
+        <p>AMP tiene acceso a la inteligencia de seguridad colectiva del grupo de inteligencia e investigación de seguridad Cisco Talos. Talos detecta y correlaciona amenazas en tiempo real por medio de la mayor red de detección de amenazas del mundo.</p>
+        <br><br>
+
+        <p><b>WSA</b></p>
+        <br>
+        <p>Un Dispositivo de Seguridad Web (Cisco Web Security Appliance) (WSA) es un gateway de web seguro que combina las mejores protecciones para ayudar a las organizaciones a afrontar los crecientes desafíos de proteger y controlar el tráfico web. WSA protege la red bloqueando automáticamente sitios peligrosos y probando sitios desconocidos antes de permitir que los usuarios tengan acceso a ellos. WSA ofrece protección contra malware, visibilidad y control de las aplicaciones, controles de políticas de uso aceptable, informes detallados y movilidad segura.</p>
+        <br>
+        <p>Mientras que WSA protege la red contra intrusiones de malware, no proporciona protección para los usuarios que deseen conectarse a Internet directamente fuera de la red protegida, por ejemplo, desde un servicio de Wi-Fi pública. En este caso, la computadora del usuario puede infectarse con malware que, luego, puede diseminarse a otras redes y dispositivos. Para ayudar a proteger a las computadoras de usuarios de estos tipos de infecciones de malware, existe Cisco Cloud Web Security (CWS).</p>
+        <br>
+        <p>CWS, junto con WSA, proporciona protección completa contra malware y los impactos asociados. La solución Cisco CWS impone comunicación segura desde y hacia Internet, y les proporciona a los trabajadores remotos el mismo nivel de seguridad que el de los empleados en las instalaciones cuando utilizan su computadora portátil. Cisco CWS incorpora dos funciones principales, filtrado web y seguridad web, y ambas están acompañadas de una capacidad amplia y centralizada de generación de informes.</p>
+        <br><br>
+
+        <p><b>ESA</b></p>
+        <br>
+        <p>Cisco Email Security Appliance (ESA) y Cisco Cloud Email Security ayudan a reducir las amenazas con base en el correo electrónico. Cisco ESA defiende sistemas de correo electrónico fundamentales.</p>
+        <br>
+        <p>Cisco ESA se actualiza constantemente mediante datos en tiempo real de Cisco Talos, que detecta y correlaciona las amenazas con un sistema de monitoreo que utiliza una base de datos mundial.</p>
+        <br>
+        <p>Algunas de las características principales de ESA son las siguientes:</p>
+        <br>
+        <li><b>Inteligencia global de amenazas - </b>Cisco Talos proporciona un panorama permanente de la actividad de tráfico global. Analiza anomalías, descubre nuevas amenazas y monitorea tendencias de tráfico.</li>
+        <li><b>Bloqueo de correo electrónico no deseado - </b>Una defensa multicapa que combina una capa externa de filtrado con base en la reputación del emisor y una capa interna de filtrado que lleva a cabo un análisis exhaustivo del mensaje.</li>
+        <li><b>Protección avanzada contra malware ─ </b>Incluye protección que aprovecha la enorme red de inteligencia de seguridad de la nube de Sourcefire. Brinda protección en toda la secuencia del ataque; es decir, antes, durante y después.</li>
+        <li><b>Control de mensajes salientes - </b>Controla los mensajes salientes para ayudar a garantizar que los mensajes importantes cumplan con las normas del sector y estén protegidos mientras se transmiten.</li>
+        <hr>
+
+        <h1 id="12.2.9">12.2.9 Verifique su conocimiento - Compare las características de IPS</h1>
+        <br>
+        <img src="img/Verifique su conocimiento - Compare las características de IPS.jpg" class="foto">
+        <br>
+    </div>
+</body>
+</html>

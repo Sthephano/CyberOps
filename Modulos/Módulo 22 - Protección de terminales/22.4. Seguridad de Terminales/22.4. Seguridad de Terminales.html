@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div id="container">
+        <h1 id="22.4.1">22.4.1 Reglas, Firmas y AI Predictiva</h1>
+        <br>
+        <p>La tecnología de endpoint en el contexto del monitoreo de seguridad se refiere a las herramientas y sistemas que se despliegan en los endpoints (como dispositivos de usuario, servidores, aplicaciones o nodos de red) para monitorearlos y protegerlos de amenazas. Estas tecnologías operan típicamente a nivel de host, pero también pueden monitorear el tráfico de red y el comportamiento de las aplicaciones. El monitoreo de seguridad en endpoints se basa en una combinación de métodos, incluyendo reglas, firmas y AI predictiva para detectar y mitigar riesgos de seguridad.</p>
+        <br><br>
+
+        <h2>Detección Basada en Reglas</h2>
+        <br>
+        <p>Esto implica definir condiciones o reglas explícitas que deben cumplirse para que se tome una acción. Estas reglas a menudo incluyen umbrales, comportamientos o patrones predefinidos que desencadenan alertas o acciones.</p>
+        <br>
+        <p><b>Funcionalidad:</b></p>
+        <li><b>Hosts: </b>Las reglas pueden monitorear actividades como intentos de inicio de sesión fallidos, modificaciones de archivos o procesos inusuales en los endpoints. Si un endpoint realiza una acción que coincide con una regla predefinida (por ejemplo, intentar ejecutar un archivo con código malicioso), el sistema desencadenará una alerta o tomará una acción correctiva.</li>
+        <li><b>Aplicaciones: </b>Se pueden crear reglas para detectar comportamientos anormales de las aplicaciones o accesos no autorizados a datos sensibles de aplicaciones.</li>
+        <li><b>Red: </b>Las reglas pueden monitorear el tráfico de red en busca de patrones inusuales, como tráfico excesivo desde un solo endpoint o comunicación con direcciones IP maliciosas conocidas.</li>
+        <br>
+        <p><b>Ejemplo: </b>Una regla que marque cualquier proceso que intente ejecutarse en un endpoint sin un certificado firmado correspondiente puede prevenir la ejecución de malware no autorizado.</p>
+        <br><br>
+
+        <h2>Detección Basada en Firmas</h2>
+        <br>
+        <p>Este enfoque implica el uso de patrones conocidos de actividad maliciosa (firmas) para detectar amenazas. Las firmas son representaciones predefinidas de malware, intentos de explotación o comportamientos maliciosos.</p>
+        <br>
+        <p><b>Funcionalidad:</b></p>
+        <li><b>Hosts: </b>La detección basada en firmas se utiliza a menudo para identificar malware conocido que ha sido previamente observado y catalogado. Este enfoque es común en el software antivirus tradicional.</li>
+        <li><b>Aplicaciones: </b>Se monitorean las aplicaciones en busca de patrones de ataque conocidos, como intentos de desbordamiento de búfer o intentos de explotar vulnerabilidades no parcheadas.</li>
+        <li><b>Red: </b>La detección basada en firmas también puede analizar el tráfico de red en busca de firmas de ataque conocidas, como patrones de inyección SQL o DDoS (Denegación de Servicio Distribuida).</li>
+        <br>
+        <p><b>Ejemplo: </b>Un sistema antivirus con detección basada en firmas puede identificar archivos de malware comparando hashes de archivos o patrones de código con una base de datos de firmas conocidas.</p>
+        <br><br>
+
+        <h2>AI Predictiva y Aprendizaje Automático</h2>
+        <br>
+        <p>La AI predictiva y el aprendizaje automático son técnicas avanzadas que utilizan algoritmos y datos históricos para identificar nuevas amenazas desconocidas al aprender patrones y comportamientos. La IA puede detectar comportamientos anómalos analizando grandes conjuntos de datos y mejorando continuamente sus modelos basados en nuevos datos.</p>
+        <br>
+        <p><b>Funcionalidad:</b></p>
+        <li><b>Hosts: </b>Las soluciones de seguridad de endpoints impulsadas por IA pueden monitorear patrones de comportamiento (por ejemplo, ejecuciones de archivos, cambios del sistema) para identificar posibles amenazas. En lugar de depender de firmas, la IA predictiva puede detectar actividades que son inusuales o sospechosas, incluso si la amenaza es desconocida previamente.</li>
+        <li><b>Aplicaciones: </b>La IA se puede aplicar para detectar anomalías en el comportamiento de las aplicaciones, como un consumo inusual de recursos o llamadas API anormales, lo que podría indicar una explotación o violación.</li>
+        <li><b>Red: </b>La IA puede monitorear el tráfico de red e identificar métodos de ataque sofisticados (por ejemplo, ataques de día cero o movimiento lateral dentro de una red) al detectar patrones inusuales o inesperados que se desvían del comportamiento típico.</li>
+        <br>
+        <p><b>Ejemplo: </b>Los modelos de aprendizaje automático pueden analizar brotes de malware pasados para predecir posibles amenazas futuras, marcando comportamientos como un endpoint que intenta conectarse a IPs externas con una reputación maliciosa conocida o mostrando comportamientos similares a un tipo de ataque conocido.</p>
+        <hr>
+
+        <h1 id="22.4.2">22.4.2 Combinación de las Técnicas para Mantener Seguros los Endpoints</h1>
+        <br>
+        <p><b>Hosts: </b>Las herramientas de seguridad de endpoints a nivel de host monitorean y analizan actividades dentro del sistema operativo, sistemas de archivos y procesos en ejecución. La IA puede ayudar a identificar nuevo malware o amenazas de día cero, mientras que los métodos basados en firmas pueden detectar rápidamente amenazas conocidas.</p>
+        <br>
+        <p><b>Aplicaciones: </b>El comportamiento de las aplicaciones se puede monitorear a través de agentes basados en host que rastrean llamadas al sistema, interacciones con bases de datos y otros procesos. La IA predictiva puede ayudar a detectar interacciones inusuales o patrones de comportamiento que los métodos basados en firmas tradicionales podrían pasar por alto.</p>
+        <br>
+        <p><b>Red: </b>Las herramientas de monitoreo de red pueden rastrear el tráfico entre endpoints, utilizando IA para identificar patrones de ataque emergentes que los métodos tradicionales podrían no detectar. Los métodos basados en firmas son efectivos para detectar métodos de ataque conocidos, mientras que la IA puede predecir y prevenir futuros ataques al analizar patrones de tráfico y comunicación.</p>
+        <br><br>
+
+        <h2>Combinación de los Métodos</h2>
+        <br>
+        <p>Los sistemas de monitoreo de seguridad más efectivos combinan los tres métodos:</p>
+        <br>
+        <li><b>Las reglas </b>proporcionan una base de parámetros de seguridad conocidos y establecidos.</li>
+        <li><b>Las firmas </b>ofrecen una detección rápida de amenazas conocidas.</li>
+        <li><b>La IA </b>mejora la capacidad del sistema para identificar ataques novedosos, de día cero o altamente sofisticados que no se ajustan a patrones conocidos.</li>
+        <br>
+        <p>Por ejemplo, una solución de seguridad para endpoints puede tener una regla que marque cualquier archivo que se ejecute desde un directorio inusual. Si ese archivo coincide con una firma de malware conocida, se marca inmediatamente. Si el archivo no coincide con una firma conocida, la IA predictiva podría analizar su comportamiento y bloquearlo si actúa como un malware observado previamente.</p>
+    </div>
+</body>
+</html>

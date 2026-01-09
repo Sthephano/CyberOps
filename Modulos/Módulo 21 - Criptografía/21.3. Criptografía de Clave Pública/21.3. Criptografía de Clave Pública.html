@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+    <h1 id="21.3.1">21.3.1 Uso de Firmas Digitales</h1>
+    <br>
+    <p>Las firmas digitales son una técnica matemática empleada para brindar autenticidad, integridad, y no repudio (osea, que no se rechaze el mensaje al negar ser el remitente o el receptor) Las firmas digitales tienen propiedades específicas que permiten la autenticación de la entidad y la integridad de los datos. Además, las firmas digitales proporcionan no repudio a la transacción. En otras palabras, la firma digital sirve como prueba legal de que el intercambio de datos tuvo lugar. Las firmas digitales usan criptografía asimétrica.</p>
+    <br>
+    <p>Hacer clic en los botones para explorar las propiedades de las firmas digitales.</p>
+    <br><br>
+
+    <p><b>Auténtica</b></p>
+    <p>No es posible falsificarlas y permiten demostrar que el firmante fue el único que firmó el documento.</p>
+    <br>
+
+    <p><b>Inalterable</b></p>
+    <p>Después de firmar un documento, no puede modificarse.</p>
+    <br>
+
+    <p><b>No reutilizable</b></p>
+    <p>La firma del documento no se puede transferir a otro documento.</p>
+    <br>
+
+    <p><b>No renpudiado</b></p>
+    <p>Se considera que el documento firmado es el mismo que un documento físico. La firma es prueba de que el documento ha sido firmado por la persona real.</p>
+    <br><br>
+    <p>Las firmas digitales se utilizan comúnmente en las siguientes dos situaciones:</p>
+    <br>
+    <li><b>Firma de código - </b>Se utiliza para fines de integridad y autenticación de datos. La firma de código se utiliza para verificar la integridad de los archivos ejecutables descargados del sitio web de un proveedor. También utiliza certificados digitales firmados para autenticar y verificar la identidad de un sitio de donde provienen los archivos.</li>
+    <li><b>Certificados digitales - </b>Son similares a una tarjeta de Identificación virtual y se usan para autenticar la identidad del sistema con un sitio web de un proveedor, además de establecer una conexión encriptada para intercambiar datos confidenciales.</li>
+    <br>
+    <p>Se utilizan tres algoritmos DSS para generar y verificar firmas digitales:</p>
+    <br>
+    <li><b>Algoritmo de Firma Digital (Digital Signature Algorithm DSA) - </b>DSA es el estándar original para generar pares de claves públicas y privadas, y para generar y verificar firmas digitales.</li>
+    <li><b>Algoritmo de Rivest-Shamir-Adelman (RSA) </b>RSA es un algoritmo asimétrico que se utiliza comúnmente para generar y verificar firmas digitales.</li>
+    <li><b>Algoritmo de Firma Digital de Curva Elíptica ( Eliptic Curve Digital Signature Algorithm ECDSA) - </b>ECDSA es una nueva variante de DSA y proporciona autenticación de firma digital y no repudio, con los beneficios agregados de eficiencia informática, tamaños de firma pequeños y ancho de banda mínimo.</li>
+    <br>
+    <p>En los noventa, RSE Security Inc. comenzó a publicar Estándares de Criptografía de Clave Pública (public-key cryptograhy standards PKCS) Hubo 15 PKCS, aunque se ha retirado uno desde el momento en que se escribió el presente contenido. RSE publicó estos estándares porque tenía las patentes para los estándares y deseaba promocionarlos. Los PKCS no son estándares industriales, pero son bien reconocidos en la industria de la seguridad y, recientemente, han comenzado a llamar la atención de organizaciones de estándares, como IETF y el grupo de trabajo PKIX.</p>
+    <hr>
+
+    <h1 id="21.3.2">21.3.2 Firmas Digitales para la Firma de Código</h1>
+    <br>
+    <p>Las firmas digitales suelen usarse para proporcionar certeza de la autenticidad e integridad del código de software. Los archivos ejecutables están dentro de un sobre firmado digitalmente, lo que le permite al usuario final verificar la firma antes de instalar el software.</p>
+    <br>
+    <p>Firmar código en forma digital proporciona varias garantías con respecto al código:</p>
+    <br>
+    <li>El código es auténtico y realmente es provisto por el editor.</li>
+    <li>El código no se ha modificado desde que salió del editor de software.</li>
+    <li>El editor definitivamente publicó el código. Esto proporciona no repudio de la acción de la publicación.</li>
+    <br>
+    <p>La publicación 140-3 de los Estándares Federales de Procesamiento de la Información (Federal Information Processing Standard FIPS) del gobierno de EE.UU. especifica que el software disponible para descargar de Internet debe estar firmado y verificado digitalmente. El propósito del software firmado digitalmente es asegurar que no se alteró y que, como se dice, proviene de una fuente de confianza. Las firmas digitales sirven como verificación de que el código no ha sido manipulado por agentes de amenazas y que un tercero no ha insertado código malicioso en el archivo.</p>
+    <br>
+    <p>Hacer clic en los botones para acceder a las propiedades de un archivo que tiene un certificado firmado digitalmente.</p>
+    <br><br>
+    <p><b>Propiedades de archivo</b></p>
+    <br>
+    <p>El archivo ejecutable fue descargado de internet. El archivo contiene una herramienta de software de Cisco Systems.</p>
+    <br>
+    <img src="img/Propiedades de archivo.png" class="foto">
+    <br><br><br>
+
+    <p><b>Firmas digitales</b></p>
+    <br>
+    <p>Hacer clic en la ficha <b>Firmas digitales</b> revela que el archivo procede de una organización de confianza, Cisco Systems Inc. El resumen del archivo fue creado con el algoritmo sha256. También se proporciona la fecha en la que se firmó el archivo. Al hacer clic en el botón <b>Details</b> se abre la ventana Detalles de Firmas Digitales (Digital Signatures Detail DSD).</p>
+    <br>
+    <img src="img/Firmas digitales.png" class="foto">
+    <br><br><br>
+
+    <p><b>Detalles de la Firma Digital</b></p>
+    <br>
+    <p>La ventana "Detalles de Firma Digital" revela que el archivo fue firmado por Cisco Systems, Inc en Octubre de 2019. Esto se verificó mediante un refrendo (segunda firma para comprobar la validez de un documento) proporcionado por la Autoridad de Estampado de Tiempo de Entrust el mismo día en que fue firmada por Cisco. Haga clic en <b>Ver certificado</b> para ver los detalles del propio certificado.</p>
+    <br>
+    <img src="img/Detalles de la Firma Digital.png" class="foto">
+    <br><br><br>
+
+    <p><b>Información sobre certificado</b></p>
+    <br>
+    <p>La pestaña <b>General</b> proporciona los propósitos del certificado, a quién se emitió el certificado y quién lo emitió. También muestra el período para el que el certificado es válido. Los certificados no válidos pueden impedir que se ejecute el archivo.</p>
+    <br>
+    <img src="img/Información sobre certificados.png" class="foto">
+    <br><br><br>
+
+    <p><b>Ruta de certificación</b></p>
+    <br>
+    <p>Haga clic en la pestaña <b>Ruta de Certificación</b> certificación para ver que el archivo fue firmado por Cisco Systems, como se verificó en DigiCert. En algunos casos, una entidad adicional puede verificar independientemente el certificado.</p>
+    <br>
+    <img src="img/Ruta de certificación.png" class="foto">
+
+    <h1 id="21.3.3">21.3.3 Firmas digitales para Certificados Digitales</h1>
+    <br>
+    <p>Un certificado digital es equivalente a un pasaporte electrónico. Permite que los usuarios, hosts y organizaciones intercambien información de manera segura en Internet. Específicamente, un certificado digital se usa para autenticar y verificar que los usuarios que envían un mensaje son quienes afirman ser. Los certificados digitales también pueden usarse para garantizar la confidencialidad del receptor con los medios necesarios para encriptar una respuesta.</p>
+    <br>
+    <p>Los certificados digitales son similares a los certificados físicos. Por ejemplo, el certificado Cisco Certified Network Associate Security (CCNA-S) en papel (Figura 1) permite identificar a quién se emitió el certificado, quién lo autorizó y el plazo de validez. Los certificados digitales también proporcionan información similar.</p>
+    <br>
+    <img src="img/Firmas digitales para Certificados Digitales.jpg" class="foto">
+    <br><br>
+    <p>El certificado digital verifica de forma independiente una identidad. Las firmas digitales se utilizan para verificar que un artefacto, como un archivo o mensaje, se envía desde la persona verificada. En otras palabras, un certificado verifica la identidad, una firma verifica que algo proviene de esa identidad.</p>
+    <br>
+    <p>Este escenario le ayudará a comprender cómo se utiliza una firma digital. Bob confirma un pedido con Alice. Alice está ordenando desde el sitio web de Bob. Alice se ha conectado con el sitio web de Bob, y después de verificar el certificado, el certificado de Bob se almacena en el sitio web de Alice. El certificado contiene la clave pública de Bob. La clave pública se utiliza para verificar la firma digital de Bob.</p>
+    <br>
+    <p>Consulte la figura para ver cómo se utiliza la firma digital.</p>
+    <br>
+    <img src="img/Firmas digitales para Certificados Digitales 2.jpg" class="foto">
+    <br><br>
+    <p>Cuando Alice recibe la firma digital, se produce el siguiente proceso.</p>
+    <br>
+    <img src="img/Firmas digitales para Certificados Digitales 3.jpg" class="foto">
+    </div>
+</body>
+</html>

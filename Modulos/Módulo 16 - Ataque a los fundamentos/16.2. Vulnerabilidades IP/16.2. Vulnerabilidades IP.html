@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="16.2.1">16.2.1 Vulnerabilidades IP</h1>
+        <br>
+        <p>Existen distintos tipos de ataques de IP. La siguiente tabla menciona algunos de los ataques comunes relacionados con IP:</p>
+        <br>
+        <img src="img/Vulnerabilidades IP tabla.jpg" class="foto">
+        <hr>
+
+        <h1 id="16.2.2">16.2.2 Ataques de ICMP</h1>
+        <br>
+        <p>El ICMP fue desarrollado para llevar mensajes de diagnóstico e informar condiciones de error cuando no están disponibles rutas, hosts y puertos. Los mensajes de ICMP son generados por los dispositivos cuando ocurre un error o un corte en en la red. El comando "ping" es un mensaje de ICMP generado por el usuario, es una "solicitud echo", y es utilizado para verificar la conectividad a un destino.</p>
+        <br>
+        <p>Los atacantes utilizan el ICMP para los ataques de reconocimiento y análisis. Esto les permite iniciar ataques de recopilación de información para mapear una topología de red, detectar qué hosts están activos (reachable), identificar el sistema operativo del host (OS fingerprinting) y determinar el estado de un Firewall.</p>
+        <br>
+        <p>Los atacantes también utilizan ICMP para realizar ataques DoS y DDoS, como se muestra en el ataque de saturación de ICMP en la imagen.</p>
+        <br>
+        <h2>Saturación ICMP</h2>
+        <br>
+        <img src="img/Saturación ICMP.jpg" class="foto">
+        <br><br>
+
+        <p>Nota: ICMP para IPv4 (ICMPv4) e ICMP para IPv6 (ICMPv6) son susceptibles a ataques similares.</p>
+        <br>
+        <p>La siguiente tabla menciona algunos mensajes de interés ICMP para los atacantes.</p>
+        <br>
+        <table>
+            <tr>
+                <th>Mensaje ICMP</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td>"Echo request" y "echo reply" de ICMP</td>
+                <td>Esto se utiliza para realizar la verificación del host y los ata</td>
+            </tr>
+            <tr>
+                <td>"Unreachable" de ICMP</td>
+                <td>Esto se utiliza para realizar ataques de reconocimiento y análisis d</td>
+            </tr>
+            <tr>
+                <td>"Mask reply" de ICMP</td>
+                <td>Se utiliza para mapear una red IP</td>
+            </tr>
+            <tr>
+                <td>"Redirects" de ICMP</td>
+                <td>Se utiliza para lograr que un host objetivo envíe todo el tráfico a través de un dispositivo comprometido y crear un ataque</td>
+            </tr>
+            <tr>
+                <td>"Router discovery" de ICMP</td>
+                <td>Esto se utiliza para inyectar entradas de rutas falsas en la tabla de routing de un host </td>
+            </tr>
+        </table>
+        <br>
+        <p>Las redes deben tener filtros estrictos de Lista de Control de Acceso (ACL, siglas en inglés) de ICMP en el perímetro de la red para evitar sondeos de ICMP desde Internet. Los analistas de seguridad deben ser capaces de detectar ataques relacionados con ICMP observando el tráfico capturado y los archivos de registro. En el caso de redes grandes, los dispositivos de seguridad (como Firewalls e IDS) deben detectar este tipo de ataques y generar alertas para los analistas de seguridad.</p>
+        <hr>
+
+        <h1 id="16.2.3">16.2.3 Ataques de Amplificación, Reflexión, y Suplantación (Spoofing)</h1>
+        <br>
+        <p>Haga clic en el botón play de la figura para visualizar el video sobre ataques de amplificación, reflexión y suplantación (spoofing).</p>
+        <br>
+        <video src="video/Ataques de Amplificación, Reflexión, y Suplantación (Spoofing).mp4" controls></video>
+        <br><br>
+        <hr>
+
+        <h1 id="16.2.4">16.2.4 Ataques de reflexión y amplificación</h1>
+        <br>
+        <p>Los atacantes suelen usar técnicas de amplificación y reflexión para crear ataques de DoS. La figura muestra como una técnica de amplificación y reflexión llamada "Smurf attack" es utilizada para abrumar o sobrecargar a un objetivo.</p>
+        <br>
+        <img src="img/Ataques de reflexión y amplificación.jpg" class="foto">
+        <br><br>
+
+        <p><b>Nota: </b>Actualmente se han estado utilizando nuevas formas de ataques de amplificación y reflexión, como ataques de amplificación y reflexión basados en DNS y ataques de amplificación de Network Time Protocol (NTP).</p>
+        <br>
+        <p>Los atacantes también usan ataques de agotamiento de recursos. Estos ataques consumen los recursos de un host objetivo detener su funcionamiento o consumir los recursos de una red.</p>
+        <hr>
+
+        <h1 id="16.2.5">16.2.5 Ataques de suplantación de dirección</h1>
+        <br>
+        <p>Los ataques de Suplantación de dirección IP se producen cuando un atacante crea paquetes con información suplantada de la dirección IP de origen, ya sea para ocultar la identidad del remitente o hacerse pasar por otro usuario legítimo. Entonces, el atacante puede obtener acceso a datos a los que, de otro modo, no podría acceder, o para eludir configuraciones de seguridad. La Suplantación de dirección IP suele formar parte de otro ataque denominado ataque Smurf.</p>
+        <br>
+        <p>Los ataques de Spoofing (suplantación) pueden ser "blind" (a ciegas) o "non-blind" (con visibilidad):</p>
+        <br>
+        <p><b>Non-blind spoofing: </b>El atacante puede observar el tráfico que está siendo enviado entre el host y el objetivo. El atacante usa este tipo de suplantación para inspeccionar el paquete de respuesta del objetivo. Esta técnica determina el estado de un Firewall y la predicción del número de secuencia. También puede secuestrar una sesión autorizada.</p>
+        <p><b>Blind spoofing: </b>El atacante no puede ver el tráfico que se envía entre el host y el objetivo. Este tipo de suplantación se utiliza en ataques DoS.</p>
+        <br>
+        <p>Los ataques de suplantación de dirección MAC se utilizan cuando los atacantes tienen acceso a la red interna. Los atacantes cambian la dirección MAC de su host para que coincida con otra dirección MAC conocida de un host objetivo, como se ve en la Figura 1. Luego, el host atacante envía una trama a través de la red con la dirección MAC recién configurada. Cuando el switch recibe la trama, examina la dirección MAC de origen.</p>
+        <br><br>
+
+        <h2>El atacante simula ser la dirección MAC de un servidor</h2>
+        <br>
+        <img src="img/El atacante simula ser la dirección MAC de un servidor.jpg" class="foto">
+        <br><br>
+
+        <h2>Un switch actualiza la tabla CAM con una dirección suplantada</h2>
+        <br>
+        <img src="img/Un switch actualiza la tabla CAM con una dirección suplantada.jpg" class="foto">
+        <br><br>
+        <p>La suplantación de aplicaciones o servicios es otro ejemplo de suplantación. Un atacante puede conectar un servidor DHCP malicioso para crear una condición MiTM.</p>
+
+        <h1 id="16.2.6">16.2.6 Verifique su comprensión - Vulnerabilidades y amenazas de IP</h1>
+        <br>
+    </div>
+</body>
+</html>

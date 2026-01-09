@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="13.2.1">13.2.1 Introducción a las herramientas de ataque</h1>
+        <br>
+        <p>Para explotar una vulnerabilidad, un atacante debe tener una técnica o herramienta. Con los años, las herramientas de ataque se han vuelto más sofisticadas y altamente automatizadas. Estas nuevas herramientas requieren menos conocimiento técnico para su implementación.</p>
+        <br>
+        <p>En la figura, arrastre el círculo blanco a través de la línea de tiempo para ver la relación entre la sofisticación de las herramientas de ataque y el conocimiento técnico necesario para utilizarlas.</p>
+        <br>
+
+        <h2>Sofisticación de las herramientas de ataque frente al conocimiento técnico</h2>
+        <br>
+        <video src="video/Sofisticación de las herramientas de ataque frente al conocimiento técnico.mp4" controls></video>
+        <hr>
+
+        <h1 id="13.2.2">13.2.2 Evolución de las herramientas de seguridad</h1>
+        <br>
+        <p>El hacking ético involucra el uso de muchos tipos diferentes de herramientas para probar la red y sus terminales (computadoras, impresoras, etc). Para validar la seguridad de una red y sus sistemas, se han desarrollado muchas herramientas de pentesting (prueba de penetración) de red. Sin embargo, también los atacantes pueden aprovechar muchas de estas herramientas para realizar ataques.</p>
+        <br>
+        <p>Los atacantes también han creado diversas herramientas de hacking. Estas herramientas están escritas explícitamente con motivos maliciosos. El personal de ciberseguridad también debe saber cómo usar estas herramientas al realizar pruebas de penetración de red.</p>
+        <br>
+        <p>Exploremos las categorías de las herramientas más comunes para realizar pruebas de penetración de red. Observe cómo algunas herramientas son utilizadas por hackers de sombrero blanco y de sombrero negro. Tenga en cuenta que esta lista no es definitiva, ya que se desarrollan nuevas herramientas constantemente.</p>
+        <br>
+        <p><b>Nota:</b> Muchas de estas herramientas están basadas en UNIX o Linux; por lo tanto, un profesional de seguridad debe tener una sólida formación en UNIX y Linux.</p>
+        <br><br>
+        <table>
+            <tr class="cabecera">
+                <th>Categorías de herramientas</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>decodificadores de contraseñ</td>
+                <td>Las contraseñas son la amenaza de seguridad más vulnerable. A las herramientas de decodificación a menudo se las conoce como herramientas para recuperar contraseñas y se pueden utilizar para decodificar o recuperar la contraseña. Esto se logra ya sea quitando la contraseña original (después de evadir a la encriptación de datos) o directamente averiguando la contraseña. Los decodificadores de contraseñas hacen repetidos intentos por averiguar las contraseñas para decodificarlas y acceder al sistema. Algunos ejemplos de herramientas para decodificar contraseñas: John the Ripper, Ophcrack, L0phtCrack, THC Hydra, RainbowCrack y Medusa.</td>
+            </tr>
+            <tr class="claro">
+                <td>herramientas de hacking inalámbricas</td>
+                <td>Las redes inalámbricas son más susceptibles a las amenazas de seguridad de la red. Las herramientas de hacking inalámbrico se utilizan para hackear intencionalmente una red inalámbrica con el fin de detectar vulnerabilidades en la seguridad. Algunos ejemplos de herramientas de hacking inalámbrico: Aircrack-ng, Kismet, InSSIDer, KisMAC, Firesheep y NetStumbler.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>herramientas de escaneo y hacking de redes</td>
+                <td>Las herramientas de análisis de red se utilizan para sondear dispositivos de red, servidores y hosts para puertos TCP o UDP abiertos. Algunos ejemplos de herramientas de análisis: Nmap, SuperScan, Angry IP Scanner y NetScanTools.</td>
+            </tr>
+            <tr class="claro">
+                <td>herramientas de fabricación de paquetes</td>
+                <td>Las herramientas de fabricación de paquetes se utilizan para sondear y probar la solidez de un firewall usando paquetes especialmente diseñados. Algunos ejemplos de esta clase de herramientas: Hping, Scapy, Socat, Yersinia, Netcat, Nping y Nemesis.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>programas detectores de paquetes</td>
+                <td>Las herramientas detectoras de paquetes se utilizan para capturar y analizar paquetes en redes Ethernet LAN o WLAN tradicionales. Algunas herramientas detectoras son las siguientes: Wireshark, Tcpdump, Ethercap, Dsniff, EtherApe, Paros, Fiddler, Ratproxy y SSLstrip.</td>
+            </tr>
+            <tr class="claro">
+                <td>detectores de rootkits</td>
+                <td>Un detector de rootkits es un comprobador de integridad de archivos y directorios utilizado por hackers de sombrero blanco para detectar rootkits instalados. Algunos ejemplos de herramientas son AIDE, Netfilter y PF: OpenBSD Packet Filter.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>los fuzzers para la búsqueda de vulnerabilidades</td>
+                <td>Los fuzzers son herramientas usadas por los atacantes cuando intentan descubrir las vulnerabilidades de un sistema informático. Algunos ejemplos de fuzzers: Skipfish, Wapiti y W3af.</td>
+            </tr>
+            <tr class="claro">
+                <td>herramientas de informática forense</td>
+                <td>Las herramientas de informática forense son utilizadas por los hackers de sombrero blanco para detectar cualquier rastro de evidencia existente en un sistema informático en particular. Algunos ejemplos de herramientas: Sleuth Kit, Helix, Maltego y Encase.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>depuradores</td>
+                <td>Los hackers de sombrero negro utilizan herramientas de depuración para aplicar ingeniería inversa en archivos binarios cuando programan ataques. También las utilizan los sombreros blancos cuando analizan malware. Algunas herramientas de depuración son las siguientes: GDB, WinDbg, IDA Pro e Immunity Debugger.</td>
+            </tr>
+            <tr class="claro">
+                <td>sistemas operativos para hacking</td>
+                <td>Los sistemas operativos para hacking son sistemas operativos especialmente diseñados que vienen precargados con herramientas y tecnologías optimizadas para hacking. Algunos ejemplos de sistemas operativos especialmente diseñados para hacking son Kali Linux, SElinux, Knoppix, Parrot OS, y BackBox Linux.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>herramientas de encriptación</td>
+                <td>Estas herramientas protegen el contenido de los datos de una organización cuando se almacenan o transmiten. Las herramientas de encriptación utilizan esquemas de algoritmo para codificar los datos con el fin de prevenir el acceso no autorizado a los datos encriptados. Algunos ejemplos de estas herramientas son VeraCrypt, CipherShed, OpenSSH, OpenSSL, OpenVPN y Stunnel.</td>
+            </tr>
+            <tr class="claro">
+                <td>herramientas para aprovechar vulnerabilidades</td>
+                <td>Estas herramientas identifican si un host remoto es vulnerable a un ataque de seguridad. Algunos ejemplos de herramientas de explotación de vulnerabilidades son Metasploit, Core Impact, Sqlmap, Social Engineer Toolkit y Netsparker.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>escáneres de vulnerabilidad</td>
+                <td>Estas herramientas analizan una red o un sistema para identificar puertos abiertos. También pueden utilizarse para escanear vulnerabilidades conocidas y escanear Máquinas Virtuales, dispositivos Bring Your Own (BYOD) y bases de datos de clientes. Algunos ejemplos de estas herramientas son: Nipper, Securia PSI, Core Impact, Nessus, SAINT y Open VAS.</p></td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="13.2.3">13.2.3 Categorías de ataques</h1>
+        <br>
+        <p>Los atacantes pueden utilizar las herramientas mencionadas anteriormente o una combinación de herramientas para crear distintos ataques. En la figura, se ven los tipos de ataques comunes. Sin embargo, la lista de ataques no es definitiva, ya que se detectan constantemente nuevas formas de atacar redes.</p>
+        <br>
+        <p>Es importante entender que los atacantes utilizan una variedad de herramientas de seguridad para llevar a cabo estos ataques.</p>
+        <br><br>
+        <table>
+            <tr class="cabecera">
+                <th>Categoría de ataque</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Ataque de intercepción pasiva (eavesdropping)</td>
+                <td>Un ataque de intercepción pasiva (eavesdropping) ocurre cuando un atacante captura y escucha el tráfico de la red. Este ataque también se conoce como sniffing o snooping.</td>
+            </tr>
+            <tr class="claro">
+                <td>ataque de modificación de datos.</td>
+                <td>Los ataques de modificación de datos se producen cuando un agente de amenaza captura tráfico de la empresa y puede alterar los datos en el paquete sin el conocimiento del emisor o del receptor.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Ataque de Suplantación de dirección IP</td>
+                <td>Un ataque de Suplantación de dirección IP ocurre cuando un atacante crea un paquete IP que parece provenir de una dirección válida dentro de la intranet corporativa.</td>
+            </tr>
+            <tr class="claro">
+                <td>ataques basados en contraseñas</td>
+                <td>Los ataques basados en contraseñas se producen cuando un atacante descubre las credenciales de una cuenta de usuario válida. Los atacantes pueden usar esa cuenta válida para obtener listas de otros usuarios e información de la red. De igual manera pueden cambiar las configuraciones de servidores y de la red, además de modificar, redireccionar o eliminar datos. </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Ataque de Denegación de Servicios (DoS, siglas en inglés)</td>
+                <td>Un ataque de DoS impide el uso normal de una computadora o red por parte de usuarios válidos. Después de lograr acceder a la red, un ataque DoS puede detener el funcionamiento de aplicaciones o de servicios de red. Un ataque de DoS también puede saturar una computadora o toda la red con tráfico hasta que se apague por sobrecarga. Un ataque de DoS también puede bloquear tráfico lo que resulta en la pérdida de acceso a recursos de red por parte de usuarios autorizados.</td>
+            </tr>
+            <tr class="claro">
+                <td>Ataque de intermediario (MiTM, Man-in-The-Middle)</td>
+                <td>Este tipo de ataque se produce cuando los hackers se posicionan entre la fuente de origen y la de destino. Lo cual les permite monitorear, capturar y controlar la comunicación en forma activa y transparente.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>ataque de clave en riesgo </td>
+                <td>Un ataque de clave en riesgo ocurre cuando un atacante obtiene una contraseña secreta. Esto se conoce como una contraseña comprometida. Una clave comprometida puede utilizarse para obtener acceso a una comunicación asegurada sin que el emisor ni el receptor se enteren del ataque.</td>
+            </tr>
+            <tr class="claro">
+                <td>ataque de sniffer</td>
+                <td>Un sniffer (rastreador) es una aplicación o un dispositivo que puede leer, monitorear y capturar intercambios de datos en la red y leer paquetes de red. Si los paquetes no están encriptados, un sniffer permite ver por completo los datos que contienen. Incluso es posible decodificar, abrir y leer paquetes encapsulados (tunelizados), a menos que se encripten y el atacante no tenga acceso a la clave.</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="13.2.4">13.2.4 Verifique su conocimiento - Clasificar los Ciberataques</h1>
+        <br>
+
+
+        <hr>
+
+    </div>
+</body>
+</html>

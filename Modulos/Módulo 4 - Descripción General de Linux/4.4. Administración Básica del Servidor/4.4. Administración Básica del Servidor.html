@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 id="4.4.1">4.4.1 Archivos de Configuración de Servicios</h1>
+        <br>
+        <p>En Linux, los servicios se administran por medio de archivos de configuración. Las opciones frecuentes en la configuración de archivos son números de puertos, localización de los recursos alojados y detalles de autorización del cliente. Cuando el servicio se inicia, busca sus archivos de configuración, los carga en la memoria y se ajusta conforme a la configuración presente en los archivos. A menudo, las modificaciones del archivo de configuración requieren el reinicio del servicio antes de que los cambios surtan efecto.</p>
+        <br>
+        <p>Debido a que los servicios suelen requerir privilegios de superusuario para ejecutarse, los archivos de configuración del servicio suelen requerir privilegios de superusuario para editar.</p>
+        <br>
+        <p>La salida del comando muestra una porción del archivo de configuración para Nginx, el cual es un servidor web ligero para Linux.</p>
+        </div>
+        <br>
+        <img src="img/4.4.1-1-image.jpg" class="foto">
+        <br><br>
+        <p>La salida del siguiente comando muestra los archivos de configuración del protocolo de tiempo de red (Network Time Protocol, NTP).</p>
+        <br>
+        <img src="img/4.4.1-2-image.jpg" class="foto">
+        <br>
+        <p>la última salida del comando muestra los archivos de configuración de Snort, un sistema de detección de intrusiones (Intrusion detection system, IDS) con base en Linux.</p>
+        <img src="img/4.4.1-3-image.jpg" class="foto">
+        <br>
+        <p>No existe ninguna regla de formato para el archivo de configuración; es decisión del desarrollador del servicio. Sin embargo, el formato <b>option = value</b> se usa a menudo. por ejemplo, en la última salida del comando, la variable <b>ipvar</b> es configurada con varias opciones. La primera opción, HOME_NET, tiene el valor de 209.165.200.224/27. El carácter hash (#) se utiliza para indicar los comentarios.</p>
+        <hr>
+
+        <h1 id="4.4.2">4.4.2 Fortalecimiento de dispositivos</h1>
+        <br>
+        <p>El fortalecimiento de dispositivos consiste en implementar métodos probados para proteger el dispositivo y su acceso administrativo. Algunos de estos métodos implican mantenimiento de contraseñas, la configuración de características de inicio de sesión remoto mejorado y la implementación de seguridad al iniciar sesión por medio de SSH. Definir funciones administrativas en términos de acceso es otro aspecto importante para proteger los dispositivos de la infraestructura, ya que no todo el personal de tecnología de la información debe tener el mismo nivel de acceso a los dispositivos de la infraestructura.</p>
+        <br>
+        <p>De acuerdo con la distribución de Linux, muchos servicios están habilitados de manera predeterminada. Algunas de estas características se habilitaron por motivos históricos pero ya no son necesarias. Detener estos servicios y garantizar que no se inicien automáticamente al momento del arranque constituye otra técnica de fortalecimiento de dispositivos.</p>
+        <br>
+        <p>Las actualizaciones del sistema operativo también son fundamentales para mantener un dispositivo fortalecido. Todos los días se detectan nuevas vulnerabilidades. Los desarrolladores de sistemas operativos crean y publican correcciones y parches con frecuencia. Una computadora actualizada corre un riesgo menor de verse afectada.</p>
+        <br>
+        <p>La siguientes son las mejores practicas básicas para fortalecer un dispositivo.</p>
+        <br>
+        <li>Garantizar la seguridad física</li>
+        <li>Minimizar la cantidad de paquetes instalados</li>
+        <li>Deshabilitar servicios que no se utilizan</li>
+        <li>Utilizar SSH y deshabilitar el inicio de sesión en cuentas raíz a través de SSH</li>
+        <li>Mantener el sistema actualizado</li>
+        <li>Deshabilitar la detección automática de USB</li>
+        <li>Aplicar contraseñas seguras</li>
+        <li>Forzar cambios de contraseña periódicamente</li>
+        <li>Impedir que los usuarios vuelvan a utilizar contraseñas antiguas</li>
+        <br>
+        <p>Existen muchas otras medidas que suelen depender del servicio o las aplicaciones.</p>
+        <hr>
+
+        <h1 id="4.4.3">4.4.3 Monitoreo de los registros de servicio</h1>
+        <br>
+        <p>Los archivos de registro son los datos que almacena una computadora para llevar un registro de eventos importantes. Todos los eventos del Kernel, los servicios y las aplicaciones se registran en los archivos de registro. Es muy importante que un administrador revise periódicamente los registros de una computadora para mantenerla libre de problemas. Mediante el monitoreo de archivos de registro de Linux, un administrador obtiene un panorama claro del desempeño de la computadora, el estado de la seguridad y cualquier problema subyacente. El análisis de archivos de registro le permite a un administrador protegerse contra futuros problemas antes de que ocurran.</p>
+        <br>
+        <p>En Linux, los archivos de registro pueden clasificarse del siguiente modo:</p>
+        <br>
+        <li>Registros de aplicaciones</li>
+        <li>Registros de eventos</li>
+        <li>Registros de servicios</li>
+        <li>Registros del sistema</li>
+        <br>
+        <p>Algunos registros contienen información acerca de daemons que se están ejecutando en el sistema Linux. Un daemon es un proceso en segundo plano que se ejecuta sin necesidad de interactuar con el usuario. Por ejemplo, el daemon de Servicios de Seguridad del Sistema (SSSD) gestiona autenticación para capacidades de inicio de sesión únicas y acceso remoto.</p>
+        <br>
+        <p>La tabla enlista algunos archivos de registro de Linux populares y sus funciones</p>
+
+        <table>
+            <tr class="cabecera">
+                <th>Archivo de registro de Linux</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>/var/log/messages</td>
+                <td>
+                    <li>Este directorio contiene registros genéricos de la actividad de la computadora. </li>
+                    <li>Principalmente, se emplea para guardar mensajes informativos y no críticos del sistema. </li>
+                    <li>En computadoras con base en Debian, el directorio /var/log/syslog tiene el mismo propósito.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>/var/log/auth.log</td>
+                <td>
+                    <li>Este archivo almacena todos los eventos relacionados con la autenticación en computadoras Debian y Ubuntu </li>
+                    <li>En este archivo, es posible encontrar cualquier información relacionada con el mecanismo de autorización de usuario.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>/var/log/secure</td>
+                <td>
+                    <li>Este directorio es utilizado por los equipos RedHat y CentOS en lugar de /var/log/auth.log. </li>
+                    <li>También realiza un seguimiento de inicios de sesión de sudo y de SSH, y otros errores registrados por SSSD.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>/var/log/boot.log</td>
+                <td>
+                    <li>Este archivo almacena información relacionada al arranque y los mensajes registrados durante el proceso de inicio de la computadora.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>/var/log/dmesg</td>
+                <td>
+                    <li>Este directorio contiene mensajes kernel ring buffer.</li>
+                    <li>Aquí se registra la información relacionada con dispositivos de hardware y sus controladores. </li>
+                    <li>Es muy importante porque, debido a su natural nivel bajo, los sistemas de registro (como syslog) no se ejecutan cuando estos eventos suceden y, por lo tanto, no suelen estar disponibles para el administrador en tiempo real.</li></td>
+            </tr>
+            <tr class="claro">
+                <td>/var/log/kern.log</td>
+                <td><li>Este archivo contiene información registrada por el Kernel</li></td>
+            </tr>
+            <tr class="oscuro">
+                <td>/var/log/cron</td>
+                <td>
+                    <li>Cron es un servicio utilizado para programar tareas automatizadas en Linux y sus eventos se almacenan en este directorio. </li>
+                    <li>Cada vez que se ejecuta una tarea programada (también llamada tarea de cron), toda la información pertinente se almacena aquí, incluidos el estado de ejecución y los mensajes de error.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>/var/log/mysqld.log o /var/log/mysql.log</td>
+                <td>
+                    <li>Este es el archivo de registro de MySQL. </li>
+                    <li>Aquí se registran todos los mensajes de depuración, error y éxito relacionados con el proceso mysqld y el demonio mysqld_safe. </li>
+                    <li>Las distribuciones de Linux de RedHat, CentOS y Fedora almacenan registros de MySQL en /var/log/mysqld.log, mientras que Debian y Ubuntu mantienen el registro en el archivo /var/log/mysql.log</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>El resultado del comando muestra una parte del archivo de registro /var/log/messages. Cada línea representa un evento registrado. Las marcas de hora en el comienzo de las líneas marcan el momento en que ocurrió el evento.</p>
+        <br>
+        <img src="img/4.4.3-image.jpg" class="foto">
+        <hr>
+
+        <h1 id="4.4.4">4.4.4 Práctica de laboratorio - Ubicar archivos de registro</h1>
+        <br>
+        <p>En esta práctica de laboratorio se familiarizarán con los pasos para ubicar y manipular archivos de registro de Linux.</p>
+        <br>
+        <div class="botones">
+            <button>
+                <a href="pdf/4.4.4-lab---locating-log-files_es-XL.pdf">Localizar archivos de registro</a>
+            </button>
+            <button>
+                <a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m4/es-XL/assets/4.4.4-lab---locating-log-files_es-XL.pdf" target="_blank">Localizar archivos de registro (online)</a>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

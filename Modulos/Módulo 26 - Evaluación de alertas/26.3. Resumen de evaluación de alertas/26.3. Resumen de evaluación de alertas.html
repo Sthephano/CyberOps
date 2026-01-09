@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="26.3.1">26.3.1 ¿Qué aprenderé en este módulo?</h1>
+        <br>
+        <p><b>Fuentes de las alertas</b></p>
+        <br>
+        <p>Security Onion es una suite de código abierto de herramientas de Monitoreo de la seguridad de la red (Network Security Monitoring, NSM) que se ejecuta en una distribución Ubuntu de Linux. Las herramientas de Security Onion ofrecen tres funciones principales para el análisis de ciberseguridad como la captura completa de paquetes y tipos de datos, sistemas de detección de intrusión basados en el host y basados en la red, y herramientas de análisis de alerta. Algunos de los componentes de Security Onion son propiedad de corporaciones que los mantienen, como Cisco y Riverbend Technologies, pero está disponible como una plataforma de código abierto.</p>
+        <br>
+        <p>Security Onion contiene muchos componentes. Es un entorno integrado diseñado para simplificar la implementación de una solución integral de NSM. Security Onion integra estos diferentes tipos de datos y registros del sistema de detección de intrusiones (IDS) en una única plataforma mediante las siguientes herramientas: Sguil - Sirve para punto de inicio de investigación de alertas de seguridad Kibana - Kibana es una interfaz interactiva para datos de Elasticsearch. Permite la consulta de datos de NSM y proporciona visualizaciones flexibles de esos datos. La aplicación capturadora de paquetes Wireshark está integrada en el conjunto de Security Onion. Zeek es un analizador de tráfico de red que sirve como monitor de seguridad. Zeek inspecciona todo el tráfico en un segmento de red y permite un análisis detallado de esos datos.</p>
+        <br>
+        <p>Las alertas de seguridad son los mensajes de notificación que generan las herramientas, los sistemas y los dispositivos de seguridad de NSM. En Security Onion, Sguil proporciona una consola que integra alertas de varias fuentes en una cola con marca de hora. Un analista de ciberseguridad puede navegar por la cola de seguridad investigando, clasificando, derivando o retirando alertas.</p>
+        <br>
+        <p>Las alertas suelen incluir información de cinco tuplas cuando esté disponible, así como marcas de hora y la información necesaria para identificar qué dispositivo o sistema generó la alerta. Según la tecnología de seguridad, es posible generar alertas con base en reglas, firmas, anomalías o comportamientos. Las alertas pueden provenir de varios orígenes, como NIDS, administración y supervisión de activos, transacciones HTTP, DNS y TCP, y mensajes Syslog.</p>
+        <p>Snort es un sistema de detección de intrusiones en la red (NIDS, Network Intrusion Detection System). Es una fuente importante de los datos de alerta que se indexan en la herramienta de análisis Sguil. Utiliza reglas para identificar el tráfico potencialmente malicioso. Las reglas de Snort consisten de dos secciones: el encabezado de la regla y las opciones de la regla. El encabezado de la regla contiene la acción, el protocolo, las direcciones IP y máscaras de red de origen y destino, y la información del puerto de origen y de destino. La sección de opciones de la regla contiene mensajes de alerta e información sobre qué partes del paquete deben ser inspeccionadas para determinar si debe adoptarse la acción de la regla. La estructura de la sección de opciones de la regla es variable.</p>
+        <br>
+        <p><b>Descripción general de la evaluación de alertas</b></p>
+        <br>
+        <p>El panorama de amenazas cambia constantemente con la detección de nuevas vulnerabilidades y la evolución de nuevas amenazas. A medida que las necesidades de usuarios y organizaciones cambian, también lo hace la superficie de ataque. Los agentes de amenaza han aprendido a cambiar rápidamente las características de sus ataques para evadir la detección. Las reglas de detección deben ser excesivamente conservadoras. Es mejor que se generen alertas ocasionales por tráfico inocente que tener reglas que no detecten tráfico malicioso. Por este motivo, es necesario tener analistas de ciberseguridad calificados que investiguen las alertas para determinar si realmente se produjo un ataque.</p>
+        <br>
+        <p>Los incidentes de seguridad se clasifican con un esquema adoptado del ámbito de los diagnósticos médicos. Este esquema de clasificación se utiliza para guiar acciones y evaluar los procedimientos de diagnóstico. La inquietud radica en que el diagnóstico sea exacto (verdadero) o inexacto (falso). Las alertas se pueden clasificar como Verdadero Positivo (se ha verificado que la alerta es un incidente de seguridad real) o Falso Positivo (La alerta no indica un incidente de seguridad real). Otra situación puede ser que no se haya generado una alerta. La ausencia de una alerta se puede clasificar como: Verdadero negativo (no se ha producido ningún incidente de seguridad. La actividad es benigna.) y falso negativo (Un incidente no detectado que ha ocurrido) Los verdaderos positivos y los verdaderos negativos son deseables. Los falsos positivos no son deseables, pero inevitables, y los falsos negativos son peligrosos.</p>
+        <br>
+        <p>Se pueden utilizar técnicas estadísticas para evaluar el riesgo de que los ataques tengan éxito en una red dada. Este tipo de análisis puede ayudar a los encargados de la toma de decisiones a evaluar mejor el costo de mitigar una amenaza respecto del daño que podría causar un ataque. Hay dos enfoques generales para esto el análisis determinista y el análisis probabilístico. El análisis determinista evalúa el riesgo según lo que se conoce acerca de una vulnerabilidad. Supone que, para que un ataque tenga éxito, todos los pasos anteriores del ataque también deben tener éxito. Este tipo de análisis de riesgo solamente puede describir el peor de los casos. El análisis probabilístico evalúa el éxito potencial de un ataque calculando la probabilidad de que, si un paso de un ataque concluye con éxito, el siguiente paso también lo hará. El análisis probabilístico es especialmente útil en los análisis de seguridad de la red en tiempo real, en los que numerosas variables están en juego y un agente de amenaza puede tomar decisiones desconocidas a medida que se persigue un ataque.</p>
+        <hr>
+
+        <h1 id="26.3.2">26.3.2 Módulo 26 - Prueba de evaluación de alertas</h1>
+    </div>
+</body>
+</html>

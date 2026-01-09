@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="10.6.1">10.6.1 Protocolo de transferencia de hipertexto y lenguaje de marcado de hipertexto</h1>
+        <br>
+        <p>Existen protocolos específicos de la capa de aplicación diseñados para usos comunes, como la navegación web y el correo electrónico. El primer tema le dio una visión general de estos protocolos. Este tema entra en más detalle.</p>
+        <br>
+        <p>Cuando se escribe una dirección web o un localizador uniforme de recursos (Uniform Resource Locator)(URL) en un navegador web, el navegador establece una conexión con el servicio web. El servicio web se está ejecutando en el servidor que está utilizando el protocolo HTTP. Los nombres que la mayoría de las personas asocia con las direcciones web son URL e identificador uniforme de recursos (URI).</p>
+        <br>
+        <p>Para comprender mejor cómo interactúa el navegador web con el servidor web, podemos analizar cómo se abre una página web en un navegador. Para este ejemplo, utilice el URL <a href="https://www.cisco.com">http://www.cisco.com/index.html</a>.</p>
+        <br><br>
+
+        <p><b>Paso 1</b></p>
+        <br>
+        <p>El explorador interpreta las tres partes del URL:</p>
+        <br>
+        <li>http (el protocolo o esquema)</li>
+        <li>www.cisco.com (el nombre del servidor)</li>
+        <li>index.html (el nombre de archivo específico solicitado)</li>
+        <br>
+        <img src="img/Paso 1.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 2</b></p>
+        <br>
+        <p>El navegador luego verifica con un Servidor de nombres de dominio (DNS) para convertir a <a href="www.cisco.com">www.cisco.com</a> en una dirección numérica que utiliza para conectarse con el servidor. El cliente inicia una solicitud HTTP a un servidor enviando una solicitud GET al servidor y solicita el archivo index.html.</p>
+        <br>
+        <img src="img/Paso 2.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 3</b></p>
+        <br>
+        <p>En respuesta a la solicitud, el servidor envía el código HTML de esta página web al navegador.</p>
+        <br>
+        <img src="img/Paso 3.jpg" class="foto">
+        <br></br><br>
+
+        <p><b>Paso 4</b></p>
+        <br>
+        <p>El navegador descifra el código HTML y da formato a la página para que se pueda visualizar en la ventana del navegador.</p>
+        <br>
+        <img src="img/Paso 4.jpg" class="foto">
+        <hr>
+
+        <h1 id="10.6.2">10.6.2 La URL de HTTP</h1>
+        <br>
+        <p>Las URL de HTTP también pueden especificar el puerto en el servidor que debe manejar los métodos de HTTP. Además, puede especificar una cadena y un fragmento de la consulta. Normalmente, la cadena de la consulta contiene información que no maneja el propio proceso del servidor HTTP, sino otro proceso que se ejecuta en el servidor. Las cadenas de la consulta comienzan con un carácter “?” y, normalmente, constan de una serie de pares de nombre y valor. Un fragmento comienza con un carácter “#”. Hace referencia a una parte subordinada del recurso que se solicita en la URL. Por ejemplo, un fragmento puede hacer referencia a un delimitador nombrado en un documento HTML. La URL tendrá acceso al documento y, luego, se dirigirá a la parte del documento especificada por el fragmento si existe un enlace del delimitador nombrado que coincida en el documento. En la figura, se ve una URL de HTTP que incluye estas partes.</p>
+        <br>
+        <img src="img/La URL de HTTP.jpg" class="foto">
+        <hr>
+
+        <h1 id="10.6.3">10.6.3 Operación HTTP</h1>
+        <br>
+        <img src="img/Operación HTTP.jpg" class="foto">
+        <br><br>
+        <p>HTTP es un protocolo de solicitud y respuesta que utiliza el puerto TCP 80, aunque se pueden utilizar otros puertos. Cuando un cliente (normalmente, un navegador web) envía una solicitud a un servidor web, utiliza uno de los seis métodos que especifica el protocolo HTTP.</p>
+        <br>
+        <li><b>GET - </b>Solicitud de datos por parte del cliente. Un cliente (navegador web) envía el mensaje GET al servidor web para solicitar las páginas HTML, como se ve en la figura.</li>
+        <li><b>POST - </b>Envía datos para que los procese un recurso.</li>
+        <li><b>PUT - </b>Carga los recursos o el contenido, como por ejemplo una imagen, en el servidor web.</li>
+        <li><b>DELETE - </b>Borra el recurso especificado.</li>
+        <li><b>OPTIONS - </b>Enumera los métodos HTTP que admite el servidor.</li>
+        <li><b>CONNECT - </b>Solicita que un servidor proxy HTTP reenvíe la sesión TCP de HTTP al destino deseado.</li>
+        <br>
+        <p>Aunque HTTP es sumamente flexible, no es un protocolo seguro. Los mensajes de solicitud envían información al servidor en texto sin formato que puede ser interceptado y leído. Las respuestas del servidor, generalmente páginas HTML, también están sin cifrar.</p>
+        <hr>
+
+        <h1 id="10.6.4">10.6.4 Códigos de estado de HTTP</h1>
+        <br>
+        <p>Las respuestas del servidor HTTP se identifican con diversos códigos de estado que le informan a la aplicación host el resultado de las solicitudes que el cliente le realiza al servidor. Los códigos se organizan en cinco grupos. Los códigos son numéricos y el primer número del código indica el tipo de mensaje. Los cinco grupos de códigos de estado son los siguientes:</p>
+        <br>
+        <li>1xx - Informativo</li>
+        <li>2xx - Operación exitosa</li>
+        <li>3xx - Redireccionamiento</li>
+        <li>4xx - Error en cliente</li>
+        <li>5xx - Error en servidor</li>
+        <br>
+        <p>En la figura, se ve una explicación de algunos códigos de estado comunes. Un excelente recurso para obtener detalles sobre códigos de estado específicos se puede encontrar buscando «rest api tutorial» y «códigos de estado HTTP». Los códigos de estado HTTP se muestran en el tráfico de cliente/servidor HTTP y son útiles para las investigaciones de ciberseguridad.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+            <th>Código</th>
+            <th>Estado</th>
+            <th>Significado</th>
+            </tr>
+            <tr class="oscuro">
+            <td>1xx - Informativo</td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr class="claro">
+            <td>100</td>
+            <td>Continuar</td>
+            <td>El cliente debe continuar con la solicitud. El servidor ha verificado que la solicitud se puede cumplir.</td>
+            </tr>
+            <tr class="oscuro">
+            <td>2xx - Operación exitosa</td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr class="claro">
+            <td>200</td>
+            <td>OK</td>
+            <td>La solicitud se completó correctamente.</td>
+            </tr>
+            <tr class="oscuro">
+            <td>202</td>
+            <td>Aceptada</td>
+            <td>La solicitud ha sido aceptada para su procesamiento, pero el procesamiento no está terminado.</td>
+            </tr>
+            <tr class="claro">
+            <td>4xx - Error en cliente</td>
+            <td></td>
+            <td></td>
+            </tr>
+            <tr class="oscuro">
+            <td>403</td>
+            <td>Prohibida</td>
+            <td>El servidor entiende la solicitud, pero el recurso no se cumplirá. Esto se debe posiblemente a que el solicitante no está autorizado para ver el recurso.</td>
+            </tr>
+            <tr class="claro">
+            <td>404</td>
+            <td>No se encontró</td>
+            <td>El servidor no puede encontrar el recurso solicitado. Esto puede deberse a una URL obsoleta o incorrecta.</td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <h1 id="10.6.5">10.6.5 HTTP/2</h1>
+        <br>
+        <p>HTTP/2 es una revisión importante de la especificación del protocolo HTTP. El propósito de HTTP/2 es mejorar el rendimiento HTTP abordando problemas de latencia que existían en la versión HTTP 1.1 del protocolo. HTTP/2 utiliza el mismo formato de encabezado que HTTP 1.1 y utiliza los mismos códigos de estado. Sin embargo, hay muchas características importantes de HTTP/2 que un analista de ciberseguridad debe tener en cuenta.</p>
+        <br>
+        <img src="img/HTTP2.jpg" class="foto">
+        <br><br>
+        <li><b>Multiplexación : </b>los servidores HTTP y los clientes llevan a cabo conversaciones llamadas transmisiones para cada transacción. Por ejemplo, un cliente se conectará a un servidor HTTP, solicitará recursos de ese servidor y recibirá los recursos solicitados. Con HTTP 1.1, solo se admitió una transmisión en el momento. Con HTTP/2, un cliente y un servidor pueden tener múltiples transmisiones ejecutándose entre ellos al mismo tiempo a través de la misma conexión TCP, como se muestra en la figura. Esto proporciona una eficiencia mucho mayor al protocolo.</li>
+        <li><b>Servidor PUSH : </b>los servidores HTTP pueden enviar contenido que aún no se ha solicitado al cliente. El servidor anticipa el contenido que es probable que el cliente solicite. El cliente almacena en caché este contenido para su uso futuro.</li>
+        <li><b>Un protocolo binario : </b>en HTTP 1.1, los comandos, como las solicitudes de cliente a servidor, se realizan en formato de texto. HTTP/2 ha cambiado a usar comandos binarios. Esto supera algunos problemas engorrosos con la versión anterior, reduce la sobrecarga de solicitudes y respuestas, reduce la latencia y mejora el rendimiento.</li>
+        <li><b>Compresión de encabezado : </b>los encabezados de solicitud y respuesta HTTP se comprimen para reducir aún más la cantidad de ancho de banda requerido por las secuencias HTTP/2.</li>
+        <hr>
+
+        <h1 id="10.6.6">10.6.6 Asegurando HTTP ─ HTTPS</h1>
+        <br>
+        <p>Para una comunicación segura a través de Internet, se utiliza el protocolo HTTP seguro (HTTPS). HTTPS utiliza el puerto TCP 443. HTTPS utiliza autenticación y cifrado para proteger los datos mientras viajan entre el cliente y el servidor. HTTPS utiliza el mismo proceso de solicitud del cliente y respuesta del servidor que HTTP, pero el flujo de datos se encripta con la capa de sockets seguros (SSL) o la seguridad de la capa de transporte (TLS) antes de transportarlo por la red. Aunque SSL es el predecesor de TLS, ambos protocolos suelen denominarse SSL.</p>
+        <br>
+        <p>HTTPS/2 se especifica para utilizar HTTPS sobre TLS con la extensión de negociación de protocolo de capa de aplicación (ALPN) para TLS 1.2 o posterior. El estándar HTTP/2 no especifica el cifrado; sin embargo, todas las aplicaciones de software cliente principales lo requieren. Por lo tanto, se puede suponer que HTTP/2 está encriptado.</p>
+        <br>
+        <p>Mucha información confidencial se transmite por Internet usando HTTPS, como las contraseñas, los datos de tarjetas de crédito y la información médica.</p>
+        <hr>
+
+        <h1 id="10.6.7">10.6.7 Práctica de laboratorio - Utilizar Wireshark para examinar tráfico HTTP y HTTPS</h1>
+        <br>
+        <p>En esta práctica de laboratorio se cumplirán los siguientes objetivos:</p>
+        <br>
+        <li>Capturar y ver tráfico HTTP</li>
+        <li>Capturar y ver tráfico HTTPS</li>
+        <div class="botones">
+            <button><a href="pdf/10.6.7-lab---using-wireshark-to-examine-http-and-https-traffic_es-XL.pdf" target="_blank">Uso de Wireshark para examinar trafico HTTP y HTTPS</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m10/es-XL/assets/10.6.7-lab---using-wireshark-to-examine-http-and-https-traffic_es-XL.pdf" target="_blank">Uso de Wireshark para examinar trafico HTTP y HTTPS (online)</a></button>
+        </div>
+    </div>
+</body>
+</html>

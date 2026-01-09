@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <link rel="stylesheet" href="3.3. Configuración y monitoreo de Windows.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="3.3.1">3.3.1 Ejecutar como administrador</h1>
+        <br>
+        <p>Como mejor práctica de seguridad, no es recomendable iniciar sesión en Windows utilizando la cuenta de administrador o una cuenta con privilegios administrativos. Esto se debe a que cualquier programa que se ejecute cuando inicie sesión con esos privilegios los heredará. El malware con privilegios administrativos tiene acceso completo a todos los archivos y carpetas en la computadora.</p>
+        <br>
+        <p>En ocasiones es necesario ejecutar o instalar software que requiere los privilegios de un Administrador. Para lograr esto, hay dos diferentes formas de realizar la instalación.</p>
+        <br>
+
+        <!-- Ejecutar como administrador-->
+        <div class="contenedor-tablas">
+            <table>
+                <tr class="cabecera">
+                    <th>Administrador</th>
+                </tr>
+                <tr>
+                    <td>Haga clic con el botón derecho en el Explorador de archivos de Windows y elija Ejecutar como administrador en el menú contextual.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/3.3.1 administrador.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th>Administrador Command Prompt</th>
+                </tr>
+                <tr>
+                    <td>Haga clic con el botón derecho en el Explorador de archivos de Windows y elija Ejecutar como administrador en el menú contextual.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/3.3.1 administrador command prompt.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+
+        <h1 id="3.3.2">3.3.2 Usuarios y dominios locales</h1>
+        <br>
+        <p>Cuando se inicia una nueva computadora por primera vez, o al instalar Windows, el sistema solicita la creación de una cuenta de usuario. Esta se conoce como “usuario local”. Esta cuenta contiene todos los ajustes de personalización, los permisos de acceso, las ubicaciones de archivos y muchos otros datos específicos del usuario. Hay también otras dos cuentas: de invitado y de administrador. Ambas están deshabilitadas de manera predeterminada.</p>
+        <br>
+        <p>Como una mejor práctica de seguridad, no debe habilitarse la cuenta de administrador ni otorgarles privilegios administrativos a los usuarios estándar. Si un usuario necesita realizar cualquier función que requiera privilegios administrativos, el sistema solicitará la contraseña de administrador y permitirá realizar como administrador solamente la tarea específica. Requerir la contraseña de administrador protege la computadora al evitar que cualquier software que no esté autorizado instale, ejecute o acceda a archivos.</p>
+        <br>
+        <p>No debe habilitarse la cuenta de invitado. La cuenta de invitado no tiene una contraseña, ya que se crea cuando una computadora será utilizada por muchas personas diferentes que no tienen cuentas propias. Cada vez que se inicia sesión con la cuenta de invitado, se proporciona un entorno predeterminado con privilegios limitados.</p>
+        <br>
+        <p>Para facilitar la administración de usuarios, Windows utiliza grupos. Un grupo tendrá un nombre y un conjunto específico de permisos asociados con él. Cuando se coloca a un usuario en un grupo, los permisos de ese grupo se le otorgan a ese usuario. Se puede colocar a un usuario en varios grupos con muchos permisos diferentes. Cuando se superponen los permisos, algunos de ellos (como “denegar explícitamente”) anulan los permisos otorgados por otro grupo. Hay muchos grupos de usuarios diferentes integrados en Windows que se utilizan para tareas específicas. Por ejemplo, el grupo de usuarios del registro de rendimiento les permite a los miembros programar el registro de contadores de rendimiento y recopilar registros de manera local o remota. Los usuarios y grupos locales se administran con el applet del panel de control lusrmgr.msc, como se muestra en la figura</p>
+        <br>
+        <img src="img/3.3.2-image-1.jpg" class="foto">
+        <br><br>
+        <p>Además de grupos, Windows también puede utilizar dominios para establecer permisos. Un dominio es un tipo de servicio de red en el que todos los usuarios, grupos, computadoras, periféricos y ajustes de seguridad se almacenan en una base de datos, que también los controla. Esta base de datos se almacena en computadoras o grupos de computadoras especiales que se denominan controladores de dominio (DC, Domain Controller). Cada usuario y computadora en el dominio deben autenticarse con el DC para iniciar sesión y tener acceso a los recursos de red. El DC establece la configuración de seguridad para cada usuario y cada computadora en cada sesión. Cualquier ajuste suministrado por el DC se aplica de manera predeterminada en la configuración de cuenta de usuario o computadora local.</p>
+        <hr>
+
+        <hr>
+        <h1 id="3.3.3">3.3.3 CLI y PowerShell</h1>
+        <br>
+        <p>La interfaz de línea de comandos (Command Line Interface, CLI) de Windows se puede utilizar para ejecutar programas, navegar por el sistema de archivos y administrar archivos y carpetas. Además, pueden crearse archivos denominados archivos por lotes para ejecutar varios comandos seguidos, algo muy parecido a un script básico.</p>
+        <br>
+        <p>Para abrir el CLI de Windows, busque cmd.exe y haga clic en el programa. Es necesario recordar que hacer clic derecho el programa ofrece la opción de ejecutar como administrador, lo que les otorga mucho más poder a los comandos que se utilizarán.</p>
+        <br>
+        <p>El indicador permite ver la ubicación actual en el sistema de archivos. Estas son algunas sugerencias para recordar cuando se usa la CLI:</p>
+        <br>
+        <li>De manera predeterminada, los nombres y rutas de archivo no distinguen entre mayúsculas y minúsculas.</li>
+        <li>Storage devices are assigned a letter for reference. The drive letter is followed by a colon and backslash (). This indicates the root, or highest level, of the device. Folder and file hierarchy on the device is indicated by separating them with the backslash. For example, the path C: Users Jim Desktopile.txt es el archivo denominado archivo.txt en la carpeta Escritorio, dentro de la carpeta Jim y en el interior de la carpeta Usuarios del dispositivo C:.</li>
+        <li>Los comandos que tienen modificadores opcionales utilizan la barra inclinada (/) para delinear entre el comando y la opción de cambio.</li>
+        <li>Puede utilizar la tecla Tab para autocompletar comandos cuando son referenciados directorios o archivos.</li>
+        <li>Windows guarda un historial de los comandos que se introdujeron durante una sesión de la CLI. Acceda a comandos previamente introducidos presionando las flechas de arriba y abajo.</li>
+        <li>Para cambiar entre dispositivos de almacenamiento, escriba la letra del dispositivo, seguido de dos puntos y presione Enter.</li>
+        <br>
+        <p>A pesar de que la CLI tiene muchos comandos y características, no puede trabajar en conjunto con el núcleo de Windows o la GUI. Se puede utilizar otro entorno, llamado Windows PowerShell, para crear script con el fin de automatizar tareas que la CLI común no puede crear. PowerShell también proporciona una CLI para iniciar comandos. PowerShell es un programa integrado en Windows que se puede abrir buscando la palabra "powershell" y haciendo clic en el programa. Como la CLI, PowerShell también se puede ejecutar con privilegios de administrador.</p>
+        <br>
+        <p>Estos son los tipos de comandos que puede ejecutar PowerShell:</p>
+        <br>
+        <li><b>cmdlets - </b>Estos comandos realizan una acción y envían un resultado u objeto al siguiente comando que se ejecutará.</li>
+        <li><b>Scripts de PowerShell - </b>Estos son archivos con una .ps1 extensión que contienen comandos de PowerShell que se ejecutan.</li>
+        <li><b>Funciones de PowerShell - </b>Estas son fragmentos de código a los que se puede hacer referencia en un script.</li>
+        <br>
+        <p>Para obtener más información sobre Windows PowerShell y comenzar a usarlo, escriba help en PowerShell, como se ve en la salida del comando.</p>
+        <br>
+        <img src="img/3.3.3 image.jpg" class="foto">
+        <br><br>
+        <p>Hay cuatro niveles de ayuda de Windows PowerShell:</p>
+        <br>
+        <li><b>get-help </b>PS command - Muestra ayuda básica para un comando</li>
+        <li><b>get-help </b>PS command [-examples] - Muestra una ayuda con ejemplos básica para un comando</li>
+        <li><b>get-help </b>PS command [-detailed] - Muestra ayuda con ejemplos detallada para un comando</li>
+        <li><b>get-help </b>PS command [-full] - Muestra toda la información de ayuda con ejemplos para un comando</li>
+        <hr>
+
+        <h1 id="3.3.4">3.3.4 Instrumentación de Administración Windows</h1>
+        <br>
+        <p>Instrumentación de Administración Windows (WMI) se utiliza para administrar computadoras remotas. Puede recuperar información sobre componentes de la computadora, brindar estadísticas de hardware y software, y monitorear el estado de computadoras remotas. Para abrir el control WMI desde el Panel de control, haga doble clic en Herramientas administrativas > Administración de equipos para abrir la ventana Administración de equipos, expanda el árbol Servicios y aplicaciones y haga clic con el botón derecho en el icono Control WMI > Propiedades.</p>
+        <br>
+        <p>La ventana Propiedades de Control WMI se ve en la figura.</p>
+        <br>
+        <img src="img/3.3.4-image-1.png" class="foto">
+        <br><br>
+        <p>Estas son las cuatro fichas en la ventana Propiedades de Control WMI:</p>
+        <br>
+        <li><b>General - </b>Resumen de información sobre la computadora local y WMI</li>
+        <li><b>Copia de seguridad y/o restauración - </b>Permite realizar la copia de respaldo manual de las estadísticas recopiladas por WMI</li>
+        <li><b>Seguridad - </b>Ajustes para configurar quién tiene acceso a las diferentes estadísticas de WMI</li>
+        <li><b>Opciones avanzadas - </b>Ajustes para configurar el espacio de nombres predeterminado para WMI</li>
+        <br>
+        <p>Actualmente, algunos ataques utilizan WMI para conectarse con sistemas remotos, modificar el registro y ejecutar comandos. WMI ayuda a los atacantes a evitar la detección porque el tráfico es común, los dispositivos de seguridad de red suelen confiar y los comandos de WMI remotos no suelen dejar rastro en el host remoto. Debido a esto, el acceso a WMI debe limitarse al máximo.</p>
+        <hr>
+
+        <h1 id="3.3.5">3.3.5 El comando net</h1>
+        <p>Windows tiene muchos comandos que se pueden introducir en la línea de comando. Un comando importante es el comando net, que se usa en la administración y el mantenimiento del sistema operativo. El comando net puede soportar muchos otros comandos, que siguen el net y puede combinarse con switches para concentrarse en resultados específicos.</p>
+        <br>
+        <p>Para ver una lista de los numerosos net comandos, escriba net help en el command prompt. La comando output muestra los comandos que puede utilizar el net comando. Para ver ayuda detallada sobre cualquiera de los comandos net, escriba C:> net help como se muestra abajo.</p>
+        <br>
+        <img src="img/3.3.5 image.jpg" class="foto">
+        <br><br>
+        <p>La tabla enumera algunos comandos comunes net.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Comando</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td><b>net session</b></td>
+                <td>Define los requisitos de contraseñas e inicio de sesión para los usuarios</td>
+            </tr>
+            <tr class="claro">
+                <td><b>net session</b></td>
+                <td>Enumera o desconecta las sesiones entre una computadora y otras computadoras de la red</td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>net share</b></td>
+                <td>Crea, elimina o administra recursos compartido</td>
+            </tr>
+            <tr class="claro">
+                <td><b>net start</b></td>
+                <td>Inicia un servicio de red o enumera los servicios de red en ejecución</td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>net stop</b></td>
+                <td>Detiene un servicio de red</td>
+            </tr>
+            <tr class="claro">
+                <td><b>net use</b></td>
+                <td>Conecta, desconecta los recursos de red compartidos, y permite ver información sobre ellos</td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>net view</b></td>
+                <td>Muestra una lista de las computadoras y los dispositivos de red en la misma</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="3.3.6">3.3.6 Administrador de tareas y Monitor de recursos</h1>
+        <br>
+        <p>Hay dos herramientas muy importantes y útiles para ayudar a un administrador a entender la enorme y variada cantidad de aplicaciones, servicios y procesos que se ejecutan en una computadora con Windows. Estas herramientas también proporcionan información sobre el rendimiento de la computadora, como el uso de CPU, memoria y red. Estas herramientas son especialmente útiles al investigar un problema donde hay sospechas de malware. Cuando un componente no está funcionando de la manera en que debería, estas herramientas pueden utilizarse para determinar cuál puede ser el problema.</p>
+        <br>
+        <b>Administrador de tareas</b>
+        <br>
+        <p>El Administrador de tareas ofrece mucha información sobre el software que se está ejecutando y el rendimiento general de la computadora.</p>
+        <br>
+        <img src="img/3.3.6-image-1.jpg" class="foto">
+        <br><br>
+        <p>En la tabla se describen las siete fichas del Administrador de tareas.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Fichas del Administrador de tareas</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Proceso</b></td>
+                <td>
+                    <li>Lista todos los programas y procesos que están siendo ejecutados.</li>
+                    <li>Se ve el uso de CPU, memoria, disco y utilización de red de cada proceso.</li>
+                    <li>Las propiedades de un proceso se pueden examinar o finalizar si no se comporta correctamente o se ha estancado.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>Rendimiento</b>
+                <td>
+                    <li>Una vista de todas las estadísticas de rendimiento proporciona un panorama útil del desempeño de la CPU, la memoria, el disco y la red. </li>
+                    <li>Al hacer clic en cada elemento en el panel izquierdo, se ven las estadísticas detalladas de dicho elemento en el panel derecho</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Historial de aplicaciones</b></td>
+                <td>
+                    <li>El uso que cada aplicación hace de los recursos a lo largo del tiempo proporciona información sobre aplicaciones que consumen más recursos de los que deberían.</li>
+                    <li>Haga clic en <strong>Opciones</strong> y <strong>Mostrar historial de todos los procesos</strong> para ver el historial de cada proceso que se ha ejecutado desde que se inició la computadora.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>Inicio</b></td>
+                <td>
+                    <li>Todas las aplicaciones y servicios que inician cuando la computadora es arrancada se muestran en esta pestaña.</li>
+                    <li>Para impedir que un programa se inicie durante el arranque, <strong>haga clic con el botón derecho</strong> en el programa y elija.</li>
+                </td>     
+            </tr>
+            <tr class="oscuro">
+                <td>Usuarios</td>
+                <td>
+                    <li>En esta pestaña, se ven todos los usuarios que han iniciado sesión en la computadora.</li>
+                    <li>También se ven todos los recursos que utilizan los procesos y las aplicaciones de cada usuario.</li>
+                    <li>Desde esta ficha, un administrador puede desconectar a un usuario de la computadora.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Detalles</td>
+                <td>
+                    <li>De manera similar a la ficha Procesos, esta ficha proporciona opciones de administración adicionales, por ejemplo, establecer prioridades para que el procesador le dedique más o menos tiempo a un proceso.</li>
+                    <li>También es posible establecer afinidad con la CPU, lo que define qué núcleo o CPU utilizará un programa.</li>
+                    <li>También, una función útil denominada Analizar cadena de espera permite ver qué procesos esperan a otros.</li>
+                    <li>Esta característica ayuda a determinar si un proceso está en espera o está interrumpido.</li>
+                </td>
+                
+            </tr>
+            <tr class="oscuro">
+                <td>Servicios</td>
+                <td>
+                    <li>En esta ficha se muestran todos los servicios cargados.</li>
+                    <li>También aparecen la identificación del proceso (PID, Process ID) y una breve descripción junto con el estado del proceso (En ejecución o Detenido).</li>
+                    <li>En la parte inferior, hay un botón para abrir la consola de servicios y tener acceso a funciones adicionales de administración de los servicios.</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <b>Monitor de recursos</b>
+        <br>
+        <p>Cuando se necesita información más detallada sobre el uso de recursos, es posible utilizar el Monitor de recursos, como se muestra en la figura.</p>
+        <br>
+        <img src="img/3.3.6-image-5.jpg" class="foto">
+        <br><br>
+        <p>Si la computadora se comporta de manera extraña, el Monitor de recursos puede ayudar a encontrar el origen del problema.</p>
+        <br>
+        <p>En la tabla se describen las cinco fichas del Monitor de recursos.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Pestañas del Monitor de recursos</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Descripción general</b></td>
+                <td>
+                    <li>La ficha muestra el uso general de cada recurso. </li>
+                    <li>Si se selecciona un proceso individual, se filtrará en todas las pestañas para mostrar solamente las estadísticas de dicho 
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>CPU</b></td>
+                <td>
+                    <li>Se muestra el PID, el número de subprocesos que utiliza el proceso y el uso medio de CPU de cada proceso. </li>
+                    <li>Si se expanden las filas inferiores, es posible ver información adicional sobre cualquier servicio que el proceso utilice, y los identificadores y módulos asociados.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Menoria</b></td>
+                <td>
+                    <li>En esta pestaña, se ve toda la información estadística sobre la manera en que cada proceso utiliza la memoria. </li>
+                    <li>También, es posible ver un panorama del uso de toda la memoria RAM debajo de la fila Procesos.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>Disco</b></td>
+                <td>En esta pestaña se muestran todos los procesos que están usando un disco, con estadísticas de lectura / escritura y una descripción general de cada dispositivo de almacenamiento.</td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Red</b></td>
+                <td>
+                    <li>Todos los procesos que están usando la red se muestran en esta pestaña, con estadísticas de lectura / escritura. </li>
+                    <li>Lo más importante es poder ver las conexiones actuales de TCP, junto con todos los puertos de escucha. </li>
+                    <li>Esta ficha resulta muy útil cuando se intenta determinar qué aplicaciones y procesos se comunican usando la red. </li>
+                    <li>Permite observar si un proceso no autorizado tiene acceso a la red y escucha una comunicación, y cuál es la dirección con la que se está comunicando.</li>
+                </td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="3.3.7">3.3.7 Redes</h1>
+        <br>
+        <p>Una de las características más importantes de cualquier sistema operativo es la capacidad de la computadora de conectarse a una red. Sin esta característica, no hay acceso a los recursos de red o a Internet. Para configurar las propiedades de redes de Windows y probar la configuración de redes, se emplea el Centro de redes y recursos compartidos. La manera más sencilla de ejecutar esta herramienta es buscarla y hacer clic en ella. Utilice el Centro de redes y recursos compartidos para verificar o crear conexiones de red, configurar el uso compartido de red y cambiar la configuración del adaptador de red.</p>
+        <br>
+        <b>Centro de redes y recursos compartidos</b>
+        <br>
+        <img src="img/3.3.7-image-1.png" class="foto">
+        <br><br>
+        <p>En la vista inicial, se ve un panorama general de la red activa. Esta vista permite ver si hay acceso a Internet y si la red es privada, pública o para invitados. También se ve el tipo de red (por cable o inalámbrica). Desde esta ventana, es posible ver el Grupo Hogar al que pertenece la computadora o crear uno si todavía no forma parte de uno. Esta herramienta también puede usarse para cambiar la configuración del adaptador o la configuración de uso compartido avanzado, establecer una nueva conexión o solucionar problemas. Tenga en cuenta que se eliminó HomeGroup de Windows 10 en la versión 1803.</p>
+        <br>
+        <b>Cambiar configuración del adaptador.</b>
+        <p>Para configurar un adaptador de red, es necesario seleccionar Cambiar configuración del adaptador en centro de redes y recursos compartidos a fin de ver todas las conexiones de red que están disponibles. Seleccione el adaptador que desea configurar. En este caso, cambiamos un adaptador Ethernet para adquirir su dirección IPv4 automáticamente de la red.</p>
+        <br>
+        <div class="contenedor-tablas">
+            <table>
+                <tr class="cabecera">
+                    <th>1. Propiedades de acceso del adaptador</th>
+                </tr>
+                <tr>
+                    <td>Haga clic con el botón derecho en el adaptador que desee configurar y seleccione Propiedades, como se ve en la figura.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/1. Propiedades de acceso del adaptador.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th>2. Acceder a las propiedades de TPC/IPv4</th>
+                </tr>
+                <tr>
+                    <td>Esta conexión utiliza Protocolo de internet versión 4 (TCP/IPv4) o Protocolo de internet versión 6 (TCP/IPv6) depende de la versión que el usuario desee utilizar. En la figura, IPv4 se está seleccionando.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/2. Acceder a las propiedades de TPCIPv4.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th><b>3. Cambiar la configuración</b></th>
+                </tr>
+                <tr>
+                    <td>Haga clic en Propiedades para configurar el adaptador. En el cuadro de diálogo Propiedades mostrado en la figura, puede optar por Obtener una dirección automáticamente si hay un servidor DHCP disponible en la red. Si desea configurar la dirección manualmente, puede completar la dirección, subred, puerta de enlace predeterminada y los servidores DNS para configurar el adaptador. Haga clic en Aceptar para aplicar los cambios. También puede usar la herramienta netsh.exe para configurar los parámetros de red desde una petición de ingreso de comando. Este programa permite ver y modificar la configuración de red. Escriba netsh /? en la petición de ingreso de comando para ver una lista de todos los modificadores que puede utilizar con este comando.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/3. Cambiar la configuración.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+        </div>
+        <br>
+        <b>nslookup and netstat</b>
+        <br><br>
+        <p>Sistema de Nombres de Dominio (DNS) debe ser probado por que es esencial para encontrar la dirección de los hosts traduciéndola de un nombre, a una URL. Utilice el comando <b>nslookup</b> para probar DNS Escriba <b>nslookup</b> <a href="https://www.cisco.com/">cisco.com </a>en la petición de ingreso de comando para encontrar la dirección del servidor web de Cisco. Si se devuelve la dirección, significa que el DNS funciona correctamente. También es posible comprobar qué puertos están abiertos, donde están conectados y cuál es su estado actual. Escriba <b>netstat</b> en la línea de comando para ver los detalles de las conexiones de red activas, como se muestra en la salida del comando. Más adelante en este capítulo, el comando <b>netstat</b> se analizará en más detalle.</p>
+        <br>
+        <img src="img/nslookup and netstat.jpg" class="foto">
+        <hr>
+
+        <h1 id="3.3.8">3.3.8 Acceso a los recursos de red</h1>
+        <br>
+        <p>Al igual que otros sistemas operativos, Windows utiliza una red para varias aplicaciones diferentes, como web, correo electrónico y servicios de archivo. Microsoft ayudó en el desarrollo del protocolo bloque de mensajes del servidor (SMB, Server Message Block), originalmente diseñado por IBM, para compartir recursos de red. Principalmente, SMB se utiliza para tener acceso a archivos de hosts remotos. Para conectar recursos, se utiliza el formato de convención de nomenclatura universal (UNC, Universal Naming Convention), por ejemplo:</p>
+        <br>
+        <b>servernamesharenameile</b>
+        <p>En la UNC, servername es el servidor que aloja el recurso. Puede ser un nombre de DNS, un nombre de NetBIOS o, simplemente, una dirección IP. El elemento sharename corresponde a la raíz de la carpeta del sistema de archivos en el host remoto, mientras que file es el recurso que el host local intenta encontrar. Es posible que el archivo se encuentre en un nivel más profundo en el sistema de archivos, y es necesario indicar esta jerarquía.</p>
+        <br>
+        <p>Al compartir recursos en la red, se deberá identificar el área del sistema de archivos que se compartirá. Es posible aplicar el control de acceso a las carpetas y archivos para limitar a usuarios y grupos a funciones específicas, tales como leer, escribir o denegar. Windows también crea recursos compartidos especiales automáticamente. Estos recursos compartidos se denominan recursos compartidos administrativos. Un recurso compartido administrativo se identifica con el signo de dólar ($) que aparece después de su nombre. Cada volumen de disco tiene un recurso compartido administrativo, representado por la letra de volumen y el signo $ (por ejemplo, C$, D$ o E$). La carpeta de instalación de Windows se comparte como admin$, la carpeta de impresoras se comparte como print$, y hay otros recursos compartidos administrativos que se pueden conectar. Solamente los usuarios con privilegios administrativos pueden acceder a estos recursos compartidos.</p>
+        <br>
+        <p>La manera más sencilla de conectarse a un recurso compartido es escribir su UNC en el explorador de archivos de Windows, en el cuadro en la parte superior de la pantalla, donde se ve la ruta de navegación de la ubicación actual del sistema de archivos. Cuando Windows intenta conectarse al recurso compartido, solicita las credenciales para tener acceso a los recursos. Recuerde que, dado que el recurso está en una computadora remota, las credenciales deben ser las de la computadora remota, no las de la computadora local.</p>
+        <br>
+        <p>Además de acceder a recursos compartidos en hosts remotos, también puede iniciar sesión en un host remoto y manipular esa computadora, como si fuera local, para realizar cambios de configuración, instalar software o solucionar un problema. En Windows, esta función se conoce como Protocolo de escritorio remoto (Remote Desktop Protocol, RDP). Al investigar incidentes de seguridad, un analista de seguridad suele usar el RDP para tener acceso a computadoras remotas. Para iniciar el RDP y conectarse a una computadora remota, busque “escritorio remoto” y haga clic en la aplicación. En la figura, se ve la ventana Conexión a escritorio remoto.</p>
+        <br>
+        <p>Debido a que RDP está diseñado para permitir a los usuarios remotos controlar hosts individuales, es un objetivo natural para los actores de amenazas. Se debe tener cuidado al activar RDP, especialmente en versiones heredadas sin parches de Windows, como las que todavía se encuentran en los sistemas de control industrial. Se debe tener cuidado para limitar la exposición de RDP a Internet, y se deben usar enfoques de seguridad y políticas de control de acceso, como Zero Trust, para limitar el acceso a hosts internos.</p>
+        <br>
+        <img src="img/3.3.8-image-1.jpg" class="foto">
+        <hr>
+
+        <h1 id="3.3.9">3.3.9 Windows Server</h1>
+        <br>
+        <p>La mayoría de las instalaciones de Windows se realizan como instalaciones de escritorio en equipos de escritorio y portátiles. En centros de datos se utiliza principalmente otra versión de Windows: Windows Server. Se trata de una familia de productos de Microsoft que empezó con Windows Server 2003. Windows Server aloja muchos servicios diferentes y puede cumplir diferentes roles dentro de una empresa.</p>
+        <br>
+        <p><b>Nota: </b>Aunque hay un Windows Server 2000, se considera una versión de cliente de Windows NT 5.0. Windows Server 2003 es un servidor basado en NT 5.2 y es el precursor de una nueva familia de versiones de Windows Server.</p>
+        <br>
+        <p>Estos son algunos de los servicios que provee Windows Server:</p>
+        <br>
+        <li><b>Servicios de red- </b>DNS, DHCP, Terminal Services, controladora de red y virtualización de red en Hyper-V</li>
+        <li><b>Servicios de archivo- </b>SMB, NFS y DFS</li>
+        <li><b>Servicios web- </b>FTP, HTTP y HTTPS</li>
+        <li><b>Administración- </b>política de grupo y control de servicios de dominio de Active Directory</li>
+        <hr>
+
+        <h1 id="3.3.10">3.3.10 Práctica de laboratorio - Crear cuentas de usuario</h1>
+        <br>
+        <p>En esta práctica de laboratorio crearán y modificarán cuentas de usuario en Windows.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/3.3.10-lab---create-user-accounts_es-XL.pdf" target="_blank">Creación de cuentas de usuario</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m3/es-XL/assets/3.3.10-lab---create-user-accounts_es-XL.pdf">Creación de cuentas de usuario (online)</a></button>
+        </div>
+
+        <hr>
+
+        <h1 id="3.3.11">3.3.11 Práctica de laboratorio - Utilizar Windows PowerShell</h1>
+        <br>
+        <p>El objetivo de esta práctica de laboratorio es estudiar algunas de las funciones de PowerShell.</p>
+        <div class="botones">
+            <button><a href="pdf/3.3.11-lab---using-windows-powershell_es-XL.pdf" target="_blank">Uso de Windows PowerShell</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m3/es-XL/assets/3.3.11-lab---using-windows-powershell_es-XL.pdf">Uso de Windows PowerShell (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="3.3.12">3.3.12 Práctica de laboratorio - Administrador de tareas de Windows</h1>
+        <br>
+        <p>En esta práctica de laboratorio, explorará el Administrador de tareas y administrará procesos desde allí.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/3.3.12-lab---windows-task-manager_es-XL.pdf" target="_blank">Administrador de tareas de Windows</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m3/es-XL/assets/3.3.12-lab---windows-task-manager_es-XL.pdf">Administrador de tareas de Windows (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="3.3.13">3.3.13 Práctica de laboratorio - Monitorear y administrar recursos del sistema en Windows</h1>
+        <br>
+        <p>En esta práctica de laboratorio, utilizará herramientas administrativas para controlar y administrar los recursos del sistema.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/3.3.13-lab---monitor-and-manage-system-resources-in-windows_es-XL.pdf" target="_blank">Monitorear y administrar recursos del sistema de Windows</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m3/es-XL/assets/3.3.13-lab---monitor-and-manage-system-resources-in-windows_es-XL.pdf">Monitorear y administrar recursos del sistema de Windows (online)</a></button>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

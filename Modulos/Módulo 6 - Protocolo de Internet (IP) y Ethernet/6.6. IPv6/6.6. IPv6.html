@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="6.6.1">6.6.1 Necesidad de utilizar IPv6</h1>
+        <br>
+        <p>Ya sabe que IPv4 se está quedando sin direcciones. Es por eso que necesita aprender acerca de IPv6.</p>
+        <br>
+        <p>IPv6 está diseñado para ser el sucesor de IPv4. IPv6 tiene un espacio de direcciones más grande de 128 bits, que proporciona 340 undecillones (es decir, 340 seguidos de 36 ceros) posibles direcciones. Sin embargo, IPv6 es más que solo direcciones más extensas.</p>
+        <br>
+        <p>Cuando el IETF comenzó a desarrollar un sucesor de IPv4, aprovechó esta oportunidad para corregir las limitaciones de IPv4 e incluir mejoras. Un ejemplo es el Protocolo de mensajes de control de Internet versión 6 (ICMPv6), que incluye la resolución de direcciones y la configuración automática de direcciones que no se encuentran en ICMP para IPv4 (ICMPv4).</p>
+        <br>
+        <p>El agotamiento del espacio de direcciones IPv4 fue el factor que motivó la migración a IPv6. A medida que África, Asia y otras áreas del mundo están más conectadas a Internet, no hay suficientes direcciones IPv4 para acomodar este crecimiento. Como se muestra en la ilustración, a cuatro de cinco Registros Regionales de Internet (RIR) se les agotaron las direcciones IPv4.</p>
+        <br><br>
+
+        <h2>Fechas de agotamiento de las direcciones IPv4 de RIR</h2>
+        <br>
+        <img src="img/Fechas de agotamiento de las direcciones IPv4 de RIR.jpg" class="foto">
+        <br><br>
+        <p>IPv4 tiene un máximo teórico de 4300 millones de direcciones. Las direcciones privadas en combinación con la traducción de direcciones de red (NAT) fueron esenciales para demorar la reducción del espacio de direcciones IPv4. Sin embargo, NAT es problemático para muchas aplicaciones, crea latencia y tiene limitaciones que impiden severamente las comunicaciones entre pares.</p>
+        <br>
+        <p>Con el número cada vez mayor de dispositivos móviles, los proveedores de telefonía móvil han estado liderando el camino con la transición a IPv6. Los dos principales proveedores de telefonía móvil en los Estados Unidos informan que más del 90% de su tráfico es sobre IPv6.</p>
+        <br>
+        <p>La mayoría de los principales proveedores de Internet y proveedores de contenido, como YouTube, Facebook y Netflix, también han hecho la transición. Muchas empresas como Microsoft, Facebook y LinkedIn están haciendo la transición a IPv6 solo internamente. En 2018, el ISP de banda ancha Comcast reportó un despliegue de más del 65% y British Sky Broadcasting más del 86%.</p>
+        <br>
+        <p><b>Internet de las cosas</b></p>
+        <br>
+        <p>En la actualidad, Internet es significativamente distinta de como era en las últimas décadas. Actualmente, Internet es mucho más que el correo electrónico, las páginas web y la transferencia de archivos entre equipos. Internet evoluciona y se está convirtiendo en una Internet de las cosas (IoT). Ya no serán solo los equipos, las tabletas y los teléfonos inteligentes los únicos dispositivos que accedan a Internet. Los dispositivos del futuro preparados para acceder a Internet y equipados con sensores incluirán desde automóviles y dispositivos biomédicos hasta electrodomésticos y ecosistemas naturales.</p>
+        <br>
+        <p>Con una población de Internet cada vez mayor, un espacio limitado de direcciones IPv4, problemas con NAT y el IoT, ha llegado el momento de comenzar la transición a IPv6.</p>
+        <hr>
+
+        <h1 id="6.6.2">6.6.3 Regla 1 - Omitir los ceros iniciales</h1>
+        <br>
+        <p>El primer paso para aprender acerca de IPv6 en las redes es comprender la forma en que se escribe y se formatea una dirección IPv6. Las direcciones IPv6 son mucho más grandes que las direcciones IPv4, por lo que es poco probable que se nos quede sin ellas.</p>
+        <br>
+        <p>Las direcciones IPv6 tienen una longitud de 128 bits y se escriben como una cadena de valores hexadecimales. Cada cuatro bits está representado por un solo dígito hexadecimal; para un total de 32 valores hexadecimales, como se muestra en la figura. Las direcciones IPv6 no distinguen entre mayúsculas y minúsculas, y pueden escribirse en minúsculas o en mayúsculas.</p>
+        <br><br>
+
+        <h2>Segmentos o hextetos de 16 bits</h2>
+        <br>
+        <img src="img/Segmentos o hextetos de 16 bits.jpg" class="foto">
+        <br><br>
+
+        <p><b>Formato preferido</b></p>
+        <br>
+        <p>La figura anterior también muestra que el formato preferido para escribir una dirección IPv6 es x: x: x: x: x: x: x: x, donde cada "x" consta de cuatro valores hexadecimales. El término octeto hace referencia a los ocho bits de una dirección IPv4. En IPv6, un “hexteto” es el término no oficial que se utiliza para referirse a un segmento de 16 bits o cuatro valores hexadecimales. Cada "x" es un único hexteto que tiene 16 bits o cuatro dígitos hexadecimales.</p>
+        <br>
+        <p>El formato preferido significa que dirección IPv6 se escribe utilizando los 32 dígitos hexadecimales. No significa necesariamente que sea el método ideal para representar la dirección IPv6. En este módulo, verá dos reglas que ayudan a reducir la cantidad de dígitos necesarios para representar una dirección IPv6.</p>
+        <br>
+        <p>Estos son ejemplos de direcciones IPv6 en el formato preferido.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>2001 : 0db8 : 0000 : 1111 : 0000 : 0000 : 0000: 0200</p>
+            <br>
+            <p>2001 : 0db8 : 0000 : 00a3 : abcd : 0000 : 0000: 1234</p>
+            <br>
+            <p>2001 : 0db8 : 000a : 0001 : c012 : 9aff : fe9a: 19ac</p>
+            <br>
+            <p>2001 : 0db8 : aaaa : 0001 : 0000 : 0000 : 0000: 0000</p>
+            <br>
+            <p>fe80 : 0000 : 0000 : 0000 : 0123 : 4567 : 89ab: cdef</p>
+            <br>
+            <p>fe80 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0001</p>
+            <br>
+            <p>fe80 : 0000 : 0000 : 0000 : c012 : 9aff : fe9a: 19ac</p>
+            <br>
+            <p>fe80 : 0000 : 0000 : 0000 : 0123 : 4567 : 89ab: cdef</p>
+            <br>
+            <p>0000 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0001</p>
+            <br>
+            <p>0000 : 0000 : 0000 : 0000 : 0000 : 0000 : 0000: 0000  </p>
+        </div>
+        <hr>
+
+        <h1 id="6.6.3">6.6.2 Formatos de direccionamiento IPv6</h1>
+        <br>
+        <p>La primera regla para ayudar a reducir la notación de las direcciones IPv6 es omitir los ceros iniciales en cualquier hexteto. Aquí hay cuatro ejemplos de formas de omitir ceros a la izquierda:</p>
+        <br>
+        <li>01ab se puede representar como 1ab</li>
+        <li>09f0 se puede representar como 9f0</li>
+        <li>0a00 se puede representar como a00</li>
+        <li>00ab se puede representar como ab</li>
+        <br>
+        <p>Esta regla solo es válida para los ceros iniciales, y NO para los ceros finales; de lo contrario, la dirección sería ambigua. Por ejemplo, el hexteto "abc" podría ser "0abc" o "abc0", pero no representan el mismo valor.</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>Tipo</th>
+            <th>Formato</th>
+        </tr>
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td>
+                <div class="cuadro_de_texto">2001:0db8:0000:1111:0000:0000:0000:0200</div>
+            </td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:db8:0:1111:0:0:0:200</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:0db8:0000:00a3:ab00:0ab0:00ab:1234</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:db8:0:a3:ab00:ab0:ab:1234</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:0db8:000a:0001:c012:90ff:fe90:0001</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:db8:a:1:c012:90ff:fe90:1</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:0db8:aaaa:0001:0000:0000:0000:0000</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001:db8:aaaa:1:0:0:0:0</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80:0000:0000:0000:0123:4567:89ab:cdef</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80:0:0:0:123:4567:89ab:cdef</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80:0000:0000:0000:0000:0000:0000:0001</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80:0:0:0:0:0:0:1</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">0000:0000:0000:0000:0000:0000:0000:0001</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">0:0:0:0:0:0:0:1</div></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr class="claro">
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">0000:0000:0000:0000:0000:0000:0000:0000</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Sin ceros iniciales</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">0:0:0:0:0:0:0:0</div></td>
+        </tr>
+        </table>
+        <hr>
+
+        <h1 id="6.6.4">6.6.4 Regla 2 - Dos puntos dobles</h1>
+        <br>
+        <p>La segunda regla para ayudar a reducir la notación de las direcciones IPv6 es que dos puntos dobles (: :) puede reemplazar cualquier cadena única y contigua de uno o más hextetos de 16 bits que consisten en todos los ceros. Por ejemplo, 2001:db8:cafe: 1:0:0:0:1 (0 iniciales omitidos) podría representarse como 2001:db8:cafe:1: :1. Los dos puntos dobles (: :) se utilizan en lugar de los hextetos de tres ceros (0: 0: 0).</p>
+        <br>
+        <p>Los dos puntos dobles (::) se pueden utilizar solamente una vez dentro de una dirección; de lo contrario, habría más de una dirección resultante posible. Cuando se utiliza junto con la técnica de omisión de ceros iniciales, la notación de direcciones IPv6 generalmente se puede reducir de manera considerable. Esto se suele conocer como “formato comprimido”.</p>
+        <br>
+        <p>Aquí hay un ejemplo del uso incorrecto del dos puntos dobles: 2001:db8: :abcd: :1234.</p>
+        <br>
+        <p>Los dos puntos dobles se utilizan dos veces en el ejemplo anterior. Aquí están las posibles expansiones de esta dirección de formato comprimido incorrecto:</p>
+        <br>
+        <li>2001:db8::abcd:0000:0000:1234</li>
+        <li>2001:db8::abcd:0000:0000:0000:1234</li>
+        <li>2001:db8:0000:abcd::1234</li>
+        <li>2001:db 8:0000:0000:abcd: :1234</li>
+        <br>
+        <p>Si una dirección tiene más de una cadena contigua de hextetos, todos 0, la práctica recomendada es usar los dos puntos dobles (::) en la cadena más larga. Si las cadenas son iguales, la primera cadena debe usar los dos puntos dobles (::).</p>
+        <br>
+        <table>
+        <tr class="cabecera">
+            <th>Tipo</th>
+            <th>Formato</th>
+        </tr>
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">2001:0db8:0000:1111:0000:0000:0000:0200</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001 : db8 : 0 : 1111 : : 200</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">2001:db8:0:1111::200</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">2001:0db8:0000:0000:ab00:0000:0000:0000</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001 : db8 : 0 : 0 : ab00 ::</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">2001:db8:0:0:ab00::</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">2001:0db8:aaaa:0001:0000:0000:0000:0000</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">2001 : db8 : aaaa : 1 ::</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">2001:db8:aaaa:1::</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">fe80:0000:0000:0000:0123:4567:89ab:cdef</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80 :: 123 : 4567 : 89ab : cdef</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">fe80::123:4567:89ab:cdef</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">fe80:0000:0000:0000:0000:0000:0000:0001</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">fe80 :: 1</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">fe80::1</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">0000:0000:0000:0000:0000:0000:0000:0001</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">:: 1</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">::1</div></td>
+        </tr>
+
+        <tr class="claro"><td></td><td></td></tr>
+
+        <tr class="oscuro">
+            <td>Recomendado</td>
+            <td><div class="cuadro_de_texto">0000:0000:0000:0000:0000:0000:0000:0000</div></td>
+        </tr>
+        <tr class="claro">
+            <td>Comprimido / espacios</td>
+            <td><div class="cuadro_de_texto" style="color: #ffffff;">::</div></td>
+        </tr>
+        <tr class="oscuro">
+            <td>Comprimido</td>
+            <td><div class="cuadro_de_texto">::</div></td>
+        </tr>
+        </table>
+        <hr>
+
+        <h1 id="6.6.5">6.6.5 Longitud de prefijo IPv6</h1>
+        <br>
+        <p>El prefijo, o parte de red, de una dirección IPv4 se puede identificar mediante una máscara de subred decimal punteada o por longitud del prefijo (notación de barra). Por ejemplo, la dirección IPv4 192.168.1.10 con la máscara de subred decimal punteada 255.255.255.0 equivale a 192.168.1.10/24.</p>
+        <br>
+        <p>En IPv4 el /24 se llama prefijo. En IPv6 se llama longitud de prefijo. IPv6 no utiliza la notación decimal punteada de máscara de subred. Al igual que IPv4, la longitud del prefijo se representa en notación de barra inclinada y se usa para indicar la porción de red de una dirección IPv6.</p>
+        <br>
+        <p>La longitud de prefijo puede ir de 0 a 128. La longitud recomendada del prefijo IPv6 para las LAN y la mayoría de los otros tipos de redes es / 64, como se muestra en la figura.</p>
+        <br><br>
+
+        <h2>Longitud de prefijo IPv6</h2>
+        <br>
+        <img src="img/Longitud de prefijo IPv6.jpg" class="foto">
+        <br><br>
+        <p>Se recomienda encarecidamente utilizar un ID de interfaz de 64 bits para la mayoría de las redes. Esto se debe a que la autoconfiguración de direcciones sin estado (SLAAC) utiliza 64 bits para el ID de lainterfaz. También facilita la creación y gestión de subredes.</p>
+        <hr>
+
+        <h1 id="6.6.6">6.6.6 Video - Asignación de direcciones de capa 2 y de capa 3</h1>
+        <br>
+        <p>Haga clic en reproducir para repasar las nociones de asignación de direcciones de la capa 2 y la capa 3.</p>
+        <br>
+        <video src="video/Video - Asignación de direcciones de capa 2 y de capa 3.mp4" controls></video>
+        <hr>
+
+        <h1 id="6.6.7">6.6.7 Verifique su comprensión - Tipos de dirección IPv6</h1>
+        <br>
+        <p>Instrucciones:</p>
+        <br>
+        <p>Convierta las direcciones IPv6 en formatos cortos (omitir los ceros iniciales) y comprimidos. Escriba letras en minúsculas. Haga clic en Siguiente para avanzar la actividad a la siguiente dirección.</p>
+        <br>
+        <img src="img/Verifique su comprensión - Tipos de dirección IPv6.jpg" class="foto">
+        <hr>
+    </div>
+</body>
+</html>

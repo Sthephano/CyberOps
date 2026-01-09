@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="9.4.1">9.4.1 ¿Qué Aprendí en este Módulo?</h1>
+        <br>
+        <p><b>Características de la Capa de Transporte</b></p>
+        <br>
+        <p>La capa de transporte es el enlace entre la capa de aplicación y las capas inferiores que son responsables de la transmisión a través de la red. La capa de transporte es responsable de las comunicaciones lógicas entre aplicaciones que se ejecutan en diferentes hosts. La capa de transporte incluye los protocolos TCP y UDP. Los protocolos de capa de transporte especifican cómo transferir mensajes entre hosts y es responsable de administrar los requisitos de fiabilidad de una conversación. La capa de transporte es responsable del seguimiento de conversaciones (sesiones), la segmentación de datos y el reensamblaje de segmentos, la adición de información de encabezado, la identificación de aplicaciones y la multiplexación de conversaciones. TCP es de estado y confiable. Reconoce datos, reenvía la pérdida de datos y ofrece los datos en orden de secuencia. Utilice TCP para el correo electrónico y la web. UDP es sin estado y rápida. Rápido, de baja sobrecarga, no requiere confirmaciones, no vuelve a enviar la pérdida de datos y ofrece datos como llegan. Use UDP para VoIP y DNS.</p>
+        <br>
+        <p>Los protocolos de capa de transporte TCP y UDP utilizan números de puerto para administrar múltiples conversaciones simultáneas. Esta es la razón por la que los campos de encabezado TCP y UDP identifican un número de puerto de aplicación de origen y destino. Los puertos de origen y de destino se colocan dentro del segmento. Los segmentos se encapsulan dentro de un paquete IP. Se conoce como socket a la combinación de la dirección IP de origen y el número de puerto de origen, o de la dirección IP de destino y el número de puerto de destino. El socket se utiliza para identificar el servidor y el servicio solicitado por el cliente y el host y la aplicación en el host que deben manejar los datos devueltos. Hay un rango de números de puerto entre 0 y 65535.</p>
+        <br>
+        <p><b>Establecimiento de la Sesión de Capa de Transporte</b></p>
+        <br>
+        <p>El protocolo de enlace de tres capas establece que el dispositivo de destino está presente en la red. Verifica que el dispositivo de destino tenga un servicio activo y acepte solicitudes en el número de puerto de destino que el cliente de origen desea utilizar. Informa al dispositivo de destino que el cliente de origen intenta establecer una sesión de comunicación en dicho número de puerto Los seis indicadores de bits de control son: URG, ACK, PSH, RST, SYN y FIN y se utilizan para identificar la función de los mensajes TCP que se envían. Un cliente o servidor puede terminar una sola conversación compatible con TCP enviando una secuencia de mensajes TCP.</p>
+        <br>
+        <p><b>Confiabilidad de la Capa de Transporte</b></p>
+        <br>
+        <p>Para que el receptor comprenda el mensaje original, los datos en estos segmentos se vuelven a ensamblar en el orden original. Se asignan números de secuencia en el encabezado de cada paquete. No importa cuán bien diseñada esté una red, ocasionalmente se produce la pérdida de datos. TCP proporciona formas de administrar pérdidas de segmentos. Hay un mecanismo para retransmitir segmentos para datos no reconocidos. Los sistemas operativos host actualmente suelen emplear una característica TCP opcional llamada reconocimiento selectivo (SACK), negociada durante el protocolo de enlace de tres vías. Si ambos hosts admiten SACK, el receptor puede reconocer explícitamente qué segmentos (bytes) se recibieron, incluidos los segmentos discontinuos. Por lo tanto, el host emisor solo necesitaría retransmitir los datos faltantes. El control de flujo permite mantener la confiabilidad de la transmisión de TCP mediante el ajuste de la velocidad del flujo de datos entre el origen y el destino. Para lograr esto, el encabezado TCP incluye un campo de 16 bits llamado “tamaño de la ventana”. El proceso en el que el destino envía reconocimientos a medida que procesa los bytes recibidos y el ajuste continuo de la ventana de envío del origen se conoce como ventanas deslizantes. El origen está transmitiendo 1460 bytes de datos dentro de cada segmento TCP. Normalmente, es el tamaño máximo de segmento (MSS) que puede recibir el dispositivo de destino. Para evitar y controlar la congestión, TCP emplea varios mecanismos de manejo de congestión.</p>
+        <hr>
+        <h1 id="9.4.2">9.4.2 Módulo 9 - Cuestionario sobre la Capa de Transporte</h1>
+    </div>
+</body>
+</html>

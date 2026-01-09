@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="18.1.1">18.1.1 Activos, Vulnerabilidades y Amenazas</h1>
+        <br>
+        <p>Los analistas de ciberseguridad deben prepararse para cualquier tipo de ataque. Es su trabajo proteger los activos de la red de la organización. Para ello, los analistas de ciberseguridad deben identificar primero lo siguiente:</p>
+        <br>
+        <li><b>Activos - </b>Cualquier elemento de valor para una organización que debe ser protegido, incluidos servidores, dispositivos de infraestructura, terminales y el activo más importante, los datos.</li>
+        <li><b>Vulnerabilidades - </b>Una debilidad en un sistema o en su diseño que podría ser aprovechada por un atacante.</li>
+        <li><b>Amenazas - </b>Cualquier daño potencial a un activo.</li>
+        <hr>
+
+        <h1 id="18.1.2">18.1.2 Identificar los activos</h1>
+        <br>
+        <p>A medida que una organización crece, también lo hacen sus activos, por lo que es posible imaginar la cantidad de activos que debe proteger una organización de gran tamaño. Las organizaciones también pueden adquirir otros activos mediante fusiones con otras empresas. Como resultado, muchas organizaciones solamente tienen una idea general de los activos que necesitan proteger.</p>
+        <br>
+        <p>Los activos son el conjunto de todos los dispositivos y la información que la organización posee o administra. Los activos constituyen la superficie de ataque a la que podrían apuntar los agentes de amenaza. Estos activos deben inventariarse y evaluarse a fin de determinar el nivel de protección necesario para frustrar posibles ataques.</p>
+        <br>
+        <p>La administración de activos consiste en inventariar todos los activos y, luego, desarrollar e implementar políticas y procedimientos para protegerlos. Esta tarea puede ser agotadora si se tiene en cuenta que muchas organizaciones deben proteger usuarios y recursos internos, trabajadores móviles y servicios virtuales y basados en la nube.</p>
+        <br>
+        <p>Además, las organizaciones necesitan identificar dónde se almacenan los activos de información fundamentales, y cómo se obtiene acceso a dicha información. Los activos de información varían, al igual que las amenazas contra ellos. Por ejemplo, es posible que una tienda minorista almacene información de las tarjetas de crédito de los clientes. Una empresa de ingeniería almacenará software y diseños que no debe ver la competencia. Un banco almacenará los datos del cliente, información de la cuenta y otra información financiera sensible. Cada uno de estos activos puede atraer distintos agentes de amenaza que tienen distintos niveles de habilidad y motivaciones.</p>
+        <hr>
+
+        <h1 id="18.1.3">18.1.3 Identificar Vulnerabilidades</h1>
+        <br>
+        <p>La identificación de amenazas le brinda a una organización una lista de probables amenazas en un entorno determinado. Para identificar las amenazas, es importante hacerse varias preguntas:</p>
+        <br>
+        <li>¿Cuáles son las posibles vulnerabilidades de un sistema?</li>
+        <li>¿Quién podría aprovechar estas vulnerabilidades para obtener acceso a activos de información específicos?</li>
+        <li>¿Cuáles serían las consecuencias si alguien aprovecha vulnerabilidades del sistema y se pierden activos?</li>
+        <br>
+        <p>Para ver un ejemplo, consulte la ilustración</p>
+        <br><br>
+
+        <h2>Amenazas de banca electrónica identificadas</h2>
+        <br>
+        <img src="img/Amenazas de banca electrónica identificadas.jpg" class="foto">
+        <br>
+        <p>La identificación de amenazas para un sistema de banca electrónica incluiría lo siguiente:</p>
+        <br>
+        <li><b>Peligro del sistema interno - </b>El atacante utiliza los servidores de banca electrónica expuestos para ingresar en un sistema interno del banco.</li>
+        <li><b>Datos robados de clientes - </b>Un atacante roba los datos personales y financieros de los clientes del banco de la base de datos de clientes.</li>
+        <li><b>Transacciones falsas desde un servidor externo - </b>Un atacante modifica el código de la aplicación de banca electrónica y hace transacciones haciéndose pasar por un usuario legítimo.</li>
+        <li><b>Transacciones falsas con una tarjeta inteligente o un PIN robados - </b>Un atacante roba la identidad de un cliente y realiza transacciones maliciosas desde la cuenta comprometida.</li>
+        <li><b>Ataque al sistema desde el interior - </b>Un empleado del banco encuentra una falla en el sistema y la aprovecha para iniciar un ataque.</li>
+        <li><b>Errores de ingreso de datos - </b>Un usuario ingresa datos incorrectos o realiza solicitudes incorrectas de transacciones.</li>
+        <li><b>Destrucción del centro de datos - </b>Un evento catastrófico daña gravemente o destruye el centro de datos.</li>
+        <br>
+        <p>La identificación de vulnerabilidades en una red requiere comprender las aplicaciones importantes que se utilizan, así como las diferentes vulnerabilidades de esa aplicación y del hardware. Esto puede exigirle al administrador de redes un nivel importante de investigación.</p>
+        <hr>
+
+        <h1 id="18.1.4">18.1.4 Identificar amenazas</h1>
+        <br>
+        <p>Las organizaciones deben emplear un enfoque de defensa profunda para identificar amenazas y proteger activos vulnerables. En este enfoque se utilizan varias capas de seguridad en el perímetro de la red, dentro de la red y en los puntos terminales de la red.</p>
+        <br>
+        <p>Para ver un ejemplo, consulte la ilustración.</p>
+        <br>
+        <h2>Enfoque de defensa en profundidad</h2>
+        <br>
+        <img src="img/Enfoque de defensa en profundidad.jpg" class="foto">
+        <br><br>
+        <p>La ilustración de esta diapositiva muestra una topología simple de un enfoque de defensa en profundidad.</p>
+        <br>
+        <li><b>Router externo - </b>La primera línea de defensa se conoce como router externo (R1 en la figura). El router externo tiene un conjunto de reglas que especifica el tráfico autorizado y denegado, y pasa por el firewall todas las conexiones destinadas a la red LAN interna.</li>
+        <li><b>Firewall - </b>La segunda línea de defensa es el firewall. El firewall es un dispositivo de punto de control que efectúa un filtrado adicional y rastrea el estado de las conexiones. Deniega el inicio de conexiones desde las redes externas (no confiables) a la red interna (confiable) mientras permite que los usuarios internos establezcan conexiones bidireccionales con las redes no confiables. También puede realizar la autenticación de usuario (proxy de autenticación) para otorgarles a los usuarios remotos externos acceso a recursos de la red interna.</li>
+        <li><b>Router interno - </b>Otra linea de defensa es el router interno (R2 en la imagen). Puede aplicar las reglas de filtrado finales en el tráfico antes de que se reenvíe a su destino.</li>
+        <br>
+        <p>Los routers y firewalls no son los únicos dispositivos que se utilizan en el enfoque de defensa en profundidad. Otros dispositivos de seguridad incluyen Sistemas de Prevención de Intrusiones (IPS, Intrusion Prevention System), Protección Avanzada contra Malware (AMP, Advanced Malware Protection), sistemas de seguridad de contenido web y de correo electrónico, servicios de identidad, controles de acceso a la red y muchos más.</p>
+        <br>
+        <p>En el enfoque de seguridad de defensa en profundidad por capas, las diferentes capas trabajan juntas para crear una arquitectura de seguridad en la que la falla de una capa de protección no afecte la eficacia de las demás.</p>
+        <hr>
+
+        <h1 id="18.1.5">18.1.5 La Cebolla de Seguridad y La Alcachofa de Seguridad</h1>
+        <br>
+        <h2>Cebolla de Seguridad</h2>
+        <br>
+        <p>Una analogía común utilizada para describir un enfoque de defensa en profundidad se denomina “La Cebolla de Seguridad" Cómo se puede observar en la figura, un atacante tendría que quitar las capas de defensa de la red capa por capa, de manera similar a pelar una cebolla. Solo después de penetrar en cada capa el actor de amenazas llegaría al sistema o a los datos a los cuales pretendía llegar.</p>
+        <br>
+        <p><b>Nota: </b>El enfoque tipo cebolla descrito en esta página es una manera de visualizar la defensa en profundidad. No debe confundirse con el conjunto de herramientas de seguridad Security Onion.</p>
+        <br>
+        <img src="img/Cebolla de Seguridad.jpg" class="foto">
+        <br><br>
+
+        <h2>Alcachofa de Seguridad</h2>
+        <br>
+        <p>El panorama cambiante de las redes (por ejemplo, la evolución de las redes sin fronteras) ha cambiado esta analogía de "Cebolla de Seguridad" a "Alcachofa de Seguridad” la cual beneficia al atacante.</p>
+        <br>
+        <p>Como se puede observar en la imagen, los agentes de amenaza ya no tienen que desprender cada capa. solamente necesitan quitar “hojas de la alcachofa.” La ventaja es que cada “hoja” de la red puede revelar datos sensibles que no están bien protegidos.</p>
+        <br>
+        <p>Por ejemplo, es más fácil para un agente de amenaza atacar un dispositivo móvil que un servidor o una computadora internos que están protegidos por capas de defensa. Cada dispositivo móvil es una hoja. cada vez que el hacker quita una hoja, encuentra más datos. En el corazón de la alcachofa se encuentran los datos más confidenciales. Cada hoja proporciona una capa de protección que, al mismo tiempo, es un camino para el ataque.</p>
+        <br>
+        <p>No es necesario quitar cada hoja para llegar al corazón de la alcachofa. Los hackers “descascaran” la armadura de seguridad a lo largo del perímetro para llegar al “corazón” de la empresa.</p>
+        <br>
+        <p>Mientras que los sistemas orientados a Internet suelen estar muy bien protegidos y las protecciones de los límites suelen ser sólidas, los hackers insistentes, ayudados por una combinación de habilidad y suerte, eventualmente encuentran una brecha en este duro perímetro por la que pueden entrar e ir donde les plazca.</p>
+        <br>
+        <img src="img/Alcachofa de Seguridad.jpg" class="foto">
+    </div>
+</body>
+</html>

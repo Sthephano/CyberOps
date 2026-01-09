@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="10.3.1">10.3.1 Espacio de direcciones IPv4 privadas</h1>
+        <br>
+        <p>Como sabe, no hay suficientes direcciones IPv4 públicas para asignar una dirección única a cada dispositivo conectado a Internet. Las redes suelen implementarse mediante el uso de direcciones IPv4 privadas, según se definen en RFC 1918. El rango de direcciones incluido en RFC 1918 se incluye en la siguiente tabla. Es muy probable que la computadora que utiliza para ver este curso tenga asignada una dirección privada.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+            <th>Clase</th>
+            <th>Rango de direcciones internas RFC 1918</th>
+            <th>Prefijo</th>
+            </tr>
+            <tr class="oscuro">
+            <td>A</td>
+            <td>10.0.0.0 a 10.255.255.255</td>
+            <td>10.0.0.0/8</td>
+            </tr>
+            <tr class="claro">
+            <td>B</td>
+            <td>172.16.0.0 a 172.31.255.255</td>
+            <td>172.16.0.0/12</td>
+            </tr>
+            <tr class="oscuro">
+            <td>C</td>
+            <td>192.168.0.0 a 192.168.255.255</td>
+            <td>192.168.0.0/16</td>
+            </tr>
+        </table>
+        <br><br>
+
+        <p>Estas direcciones privadas se utilizan dentro de una organización o un sitio para permitir que los dispositivos se comuniquen localmente. Sin embargo, debido a que estas direcciones no identifican a una sola empresa u organización, las direcciones IPv4 privadas no se pueden enrutar a través de Internet. Para permitir que un dispositivo con una dirección IPv4 privada acceda a recursos y dispositivos fuera de la red local, primero se debe traducir la dirección privada a una dirección pública.</p>
+        <br>
+        <p>NAT proporciona la traducción de direcciones privadas a direcciones públicas, como se muestra en la figura. Esto permite que un dispositivo con una dirección IPv4 privada acceda a recursos fuera de su red privada, como los que se encuentran en Internet. NAT, combinado con direcciones IPv4 privadas, ha sido el método principal para preservar las direcciones IPv4 públicas. Se puede compartir una única dirección IPv4 pública entre cientos o incluso miles de dispositivos, cada uno configurado con una dirección IPv4 privada exclusiva.</p>
+        <br>
+        <img src="img/Espacio de direcciones IPv4 privadas.jpg" class="foto">
+        <br><br>
+        <p>Sin NAT, el agotamiento del espacio de direcciones IPv4 habría ocurrido mucho antes del año 2000. Sin embargo, NAT tiene limitaciones y desventajas, que se explorarán más adelante en este módulo. La solución al agotamiento del espacio de direcciones IPv4 y a las limitaciones de NAT es la transición final a IPv6.</p>
+        <hr>
+
+        <h1 id="10.3.2">10.3.2 ¿Qué es NAT?</h1>
+        <br>
+        <p>NAT tiene muchos usos, pero el principal es conservar las direcciones IPv4 públicas. Esto se logra al permitir que las redes utilicen direcciones IPv4 privadas internamente y al proporcionar la traducción a una dirección pública solo cuando sea necesario. NAT tiene el beneficio percibido de agregar un grado de privacidad y seguridad a una red, ya que oculta las direcciones IPv4 internas de redes externas.</p>
+        <br>
+        <p>Los routers con NAT habilitada se pueden configurar con una o más direcciones IPv4 públicas válidas. Estas direcciones públicas se conocen como “conjunto de NAT”. Cuando un dispositivo interno envía tráfico fuera de la red, el router con NAT habilitada traduce la dirección IPv4 interna del dispositivo a una dirección pública de la piscina NAT. Para los dispositivos externos, todo el tráfico entrante y saliente de la red parece tener una dirección IPv4 pública del conjunto de direcciones proporcionado.</p>
+        <br>
+        <p>En general, los routers NAT funcionan en la frontera de una red de rutas internas. Una red de código auxiliar es una o más redes con una única conexión a su red vecina, una entrada y una salida de la red. En el ejemplo de la ilustración, el R2 es un router de frontera. Visto desde el ISP, el R2 forma una red de rutas internas.</p>
+        <br>
+        <img src="img/¿Qué es NAT.jpg" class="foto">
+        <br><br>
+        <p>Cuando un dispositivo dentro de la red de rutas internas desea comunicarse con un dispositivo fuera de su red, el paquete se reenvía al router de frontera. El router de frontera realiza el proceso de NAT, es decir, traduce la dirección privada interna del dispositivo a una dirección pública, externa y enrutable.</p>
+        <br>
+        <p><b>Nota: </b>La conexión al ISP puede utilizar dirección privada o dirección pública que es compartida entre los consumidores. Para los propósitos de este módulo, se muestra una dirección pública.</p>
+        <hr>
+
+        <h1 id="10.3.3">10.3.3 ¿Cómo funciona NAT?</h1>
+        <br>
+        <p>En este ejemplo, la PC1 con la dirección privada 192.168.10.10 desea comunicarse con un servidor web externo con la dirección pública 209.165.201.1.</p>
+        <br>
+        <p>Haga clic en el botón Reproducir de la figura para iniciar la animación.</p>
+        <br>
+        <video src="video/Cómo funciona NAT.mp4" controls></video>
+        <hr>
+
+        <h1 id="10.3.4">10.3.4 Traducción de la dirección del puerto</h1>
+        <br>
+        <p>La traducción de la dirección del puerto (PAT), también conocida como “NAT con sobrecarga”, asigna varias direcciones IPv4 privadas a una única dirección IPv4 pública o a algunas direcciones. Esto es lo que hacen la mayoría de los enrutadores domésticos. El ISP asigna una dirección al enrutador, sin embargo, varios miembros del hogar pueden acceder simultáneamente a Internet. Esta es la forma más común de NAT tanto para el hogar como para la empresa.</p>
+        <br>
+        <p>Con PAT, se pueden asignar varias direcciones a una o más direcciones, debido a que cada dirección privada también se rastrea con un número de puerto. Cuando un dispositivo inicia una sesión TCP / IP, genera un valor de puerto de origen TCP o UDP, o un ID de consulta especialmente asignado para ICMP, para identificar de forma única la sesión. Cuando el router NAT recibe un paquete del cliente, utiliza su número de puerto de origen para identificar de forma exclusiva la traducción NAT específica.</p>
+        <br>
+        <p>PAT garantiza que los dispositivos usen un número de puerto TCP diferente para cada sesión con un servidor en Internet. Cuando llega una respuesta del servidor, el número de puerto de origen, que se convierte en el número de puerto de destino en la devolución, determina a qué dispositivo el router reenvía los paquetes. El proceso de PAT también valida los paquetes entrantes que han solicitado, lo que agrega un grado de seguridad a la sesión.</p>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una animación del proceso PAT. PAT agrega números de puerto de origen únicos a la dirección global interna para distinguir las traducciones.</p>
+        <br>
+        <video src="video/Traducción de la dirección del puerto.mp4" controls></video>
+        <br><br>
+
+        <p>A medida que el R2 procesa cada paquete, utiliza un número de puerto (1331 y 1555, en este ejemplo) para identificar el dispositivo en el que se originó el paquete. La dirección de origen (SA) es la dirección local interna con el número de puerto asignado TCP / UDP agregado. La dirección de destino (DA) es la dirección global externa con el número de puerto de servicio agregado. En este ejemplo, el puerto de servicio es 80, que es HTTP.</p>
+        <br>
+        <p>Para la dirección de origen, el R2 traduce la dirección local interna a una dirección global interna con el número de puerto agregado. La dirección de destino no cambia, pero ahora se conoce como la dirección IPv4 global externa. Cuando el servidor web responde, se invierte la ruta.</p>
+    </div>
+</body>
+</html>

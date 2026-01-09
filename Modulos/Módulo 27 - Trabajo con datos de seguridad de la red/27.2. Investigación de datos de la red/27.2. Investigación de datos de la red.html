@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="27.2.1">27.2.1 Uso de Sguil</h1>
+        <br>
+        <p>El deber principal de un analista especializado en ciberseguridad es verificar las alertas de seguridad. Según la organización, las herramientas utilizadas para hacerlo varían. Por ejemplo, un sistema de tickets puede utilizarse para administrar la asignación y documentación de las tareas. En Security Onion, el primer lugar al que acudirá un analista en ciberseguridad para verificar las alertas es Sguil.</p>
+        <br>
+        <p>Sguil correlaciona automáticamente alertas similares en una única línea y permite ver eventos correlacionados representados por esa línea. Para tener una idea de lo que ha estado ocurriendo en la red, puede resultar útil ordenar la columna <b>CNT</b> para mostrar las alertas con la frecuencia más alta.</p>
+        <br>
+        <p>Al hacer clic derecho en el valor <b>CNT</b> y seleccionar <b>Ver eventos correlacionados</b>, se abre una ficha con todos los eventos correlacionados por Sguil. Esto puede ayudar al analista de ciberseguridad a entender el plazo durante el Sguil recibió los eventos correlacionados. Tenga en cuenta que cada evento recibe una identificación única de evento. Solo se muestra el primer ID de evento de la serie de eventos correlacionados en la pestaña Eventos en tiempo real. La figura muestra las alertas de Sguil ordenadas en <b>CNT</b> con el menú Ver eventos correlacionados abierto.</p>
+        <br><br>
+        <h2>Alertas de Sguil ordenadas en CNT</h2>
+        <br>
+        <img src="img/27.2.1-image-1.png" class="foto">
+        <hr>
+
+        <h1 id="27.2.2">27.2.2 Consultas de Sguil</h1>
+        <br>
+        <p>Las consultas pueden crearse en Sguil utilizando Query Builder. Simplifica la construcción de consultas hasta cierto punto, pero el analista de ciberseguridad debe conocer los nombres de los campos y algunos problemas con los valores de los campos. Por ejemplo, Sguil almacena direcciones IP en una representación de números enteros. Para consultar una dirección IP en notación decimal punteada, el valor de la dirección IP debe colocarse dentro de la <b>INET_ATON()</b> función. El Generador de consultas se abre desde el menú Query de Sguil. Se debe seleccionar <b>Query Event Table</b> para buscar eventos activos.</p>
+        <br>
+        <p>La tabla muestra los nombres de algunos de los campos de la tabla de eventos que se pueden consultar directamente. Al seleccionar <b>Mostrar Tablas de Base de Datos</b> en el menú <b>Consulta</b> se muestra una referencia a los nombres y tipos de campo para cada una de las tablas que se pueden consultar. Cuando realice búsquedas en tablas de eventos, utilice el patrón <b>event.fieldName = value</b>.</p>
+        <br>
+        <img src="img/27.2.2 Consultas de Sguil.jpg" class="foto">
+        <br>
+        <p>En la figura se ve una consulta sencilla de marca de hora y dirección IP realizada en la ventana de Generador de Consultas. Cabe destacar el uso de la <b>INET_ATON()</b> función para simplificar el ingreso de una dirección IP.</p>
+        <br>
+        <img src="img/27.2.2-image-3.png" class="foto">
+        <br><br>
+        <p>En el siguiente ejemplo, el analista de ciberseguridad está investigando un puerto de origen 40754 asociado a una alerta de amenazas emergentes. Hacia el final de la consulta, la <b>WHERE event.src_port = '40754'</b> parte fue creada por el usuario en el Generador de Consultas.  Sguil proporciona automáticamente el resto de la consulta y se refiere a cómo se van a recuperar, mostrar y presentar los datos asociados a los eventos.</p>
+        <br>
+        <img src="img/27.2.2-image-5.png" class="foto">
+        <hr>
+
+        <h1 id="27.2.3">27.2.3 Alternar a otros programas desde Sguil</h1>
+        <br>
+        <p>Sguil permite que el analista de ciberseguridad pueda alternar con otras fuentes y herramientas de información. Los archivos de registro están disponibles en Elasticsearch. Las capturas de paquetes relevantes se pueden mostrar en Wireshark. También están disponibles transcripciones de sesiones TCP e información de detección de Zeek (Bro). El menú que se ve en la figura se abrió haciendo clic con el botón secundario del mouse sobre una identificación de alerta. Las selecciones en este menú abren la información acerca de la alerta en otras herramientas, lo que le permite al analista de ciberseguridad ver información completa y contextualizada.</p>
+        <br><br>
+        <h2>Alternar a otros programas desde Sguil</h2>
+        <br>
+        <img src="img/27.2.3-image-1.png" class="foto">
+        <br><br>
+        <p>Además, Sguil puede proporcionar pivotes a la información del Sistema de detección de activos en tiempo real pasivo (Passive-Real-time Asset Detection System PRADS) y del Perfil de conexión de red del analista de seguridad (Security Analyst Network Connection Profiler SANCP). Para acceder a estas herramientas, haga clic derecho en una dirección IP de un evento y seleccione los menús Consulta rápida o Consulta avanzada.</p>
+        <br>
+        <p>PRADS reúne datos de perfiles de red, incluida información sobre el comportamiento de los activos en la red. PRADS es una fuente de eventos, como Snort y OSSEC. También se puede consultar mediante Sguil cuando una alerta indica que podría estar en riesgo un host interno. Ejecutar una consulta de PRADS fuera de Sguil puede proporcionar información sobre los servicios, las aplicaciones y las cargas útiles que pueden ser relevantes para la alerta. Además, PRADS detecta cuándo aparecen nuevos activos en la red.</p>
+        <br>
+        <p><b>Nota: </b>La interfaz de Sguil menciona a PADS en lugar de PRADS. PADS es el precursor de PRADS. PRADS es la herramienta que se utiliza en Security Onion. PRADS también se utiliza para completar tablas de SANCP. En Security Onion, las funcionalidades de SANCP se reemplazaron con PRADS; sin embargo, el término SANCP se sigue usando en la interfaz de Sguil. PRADS recopila los datos y un agente de SANCP registra estos datos en una tabla de datos de SANCP.</p>
+        <br>
+        <p>Las funcionalidades de SANCP se refieren a la recopilación y el registro de información estadística sobre el tráfico y el comportamiento de la red. SANCP proporciona un método para verificar que las conexiones de red sean válidas. Esto se logra mediante la aplicación de reglas que indican que el tráfico debe registrarse y la información con la que debe etiquetarse el tráfico.</p>
+        <hr>
+
+        <h1 id="27.2.4">27.2.4 Manejo de eventos en Sguil</h1>
+        <br>
+        <p>Finalmente, Sguil no es solamente una consola que facilita la investigación de alertas. También es una herramienta para direccionar o abordar las alertas. Es posible realizar tres tareas en Sguil para administrar alertas. En primer lugar, las alertas que se consideren falsos positivos pueden caducar. Esto se puede hacer usando el clic derecho en la columna ST para el evento y usando el menú o presionando la tecla F8. Un evento caducado desaparece de la cola. En segundo lugar, si el analista de ciberseguridad no sabe cómo manejar un evento, puede derivarlo presionando la tecla F9. La alerta se moverá a la ficha de eventos derivados de Sguil. Por último, es posible categorizar un evento. La categorización es para los eventos que se identificaron como positivos verdaderos.</p>
+        <br>
+        <p>Sguil incluye siete categorías prediseñadas que pueden asignarse usando el menú que se ve en la figura o presionando la tecla de función correspondiente. Por ejemplo, si se presiona la tecla F1, un evento se categoriza como Cat I. Además, se pueden crear criterios que categorizarán automáticamente un evento. Se supone que los eventos categorizados han sido manejados por el analista de ciberseguridad. Cuando se clasifica un evento, se elimina de la lista de Eventos de Tiempo Real. El evento igual permanece en la base de datos y es posible tener acceso a él mediante consultas emitidas por categoría.</p>
+        <br>
+        <p>Este curso solamente abarca un nivel básico de Sguil. Existen numerosos recursos en Internet para aprender más.</p>
+        <br><br>
+        <h2>Manejo de eventos en Sguil</h2>
+        <br>
+        <img src="img/27.2.4-image-1.png" class="foto">
+        <hr>
+
+        <h1 id="27.2.5">27.2.5 Trabajar en ELK</h1>
+        <br>
+        <p>Logstash y Beats se utilizan para la ingestión de datos en Elastic Stack. Proporcionan acceso a una gran cantidad de entradas de archivos de registro. Debido a que el número de registros que se pueden mostrar es tan grande, Kibana, que es la interfaz visual de los registros, está configurado para mostrar las últimas 24 horas de forma predeterminada. Puede ajustar el intervalo de tiempo para ver rangos de datos más amplios o antiguos.</p>
+        <br>
+        <img src="img/27.2.5-image-1.png" class="foto">
+        <br><br>
+        <p>Para ver los registros del archivo de registro durante un período de tiempo diferente, haga clic en la pestaña Últimas 24 horas en la esquina superior derecha de Kibana. A partir de ahí, defina el intervalo de tiempo seleccionando la ficha Rápida para intervalos de tiempo predefinidos. También puede introducir las fechas y horas manualmente mediante la pestaña Absoluto. La figura muestra un intervalo de tiempo absoluto entre el 17 de mayo y el 18 de mayo de 2020. Los registros se introducen en Elasticsearch en índices o bases de datos independientes según un intervalo de tiempo configurado.</p>
+        <br>
+        <p>La mejor manera de monitorear sus datos en Elasticsearch es crear paneles visuales personalizados que rastreen los datos que le interesan utilizar. Una variedad de gráficos visuales, incluyendo gráficos de barras, gráficos circulares, métricas de recuento, mapas térmicos, mapas geográficos, listas de números principales están disponibles. En Kibana, las visualizaciones y gráficos se pueden buscar y filtrar con métricas y depósitos de datos específicos.</p>
+        <hr>
+
+        <h1 id="27.2.6">27.2.6 Consultas en ELK</h1>
+        <br>
+        <p>Elasticsearch se basa en Apache Lucene, una biblioteca de software de motor de búsqueda de código abierto que cuenta con capacidades de indexación y búsqueda de texto completo. Elasticsearch introduce datos en documentos denominados índices y esos documentos se asignan a varios tipos de datos utilizando patrones de índice. Los patrones de índice crean una estructura de datos de campos y valores con formato JSON. Los tipos de datos de los campos pueden estar en los siguientes formatos:</p>
+        <br>
+        <li>Core Datatypes: Texto (cadenas), numérico, fecha, booleano, binario y rango</li>
+        <li>Complex Datatypes: Objeto (JSON), Anidado (matrices de objetos JSON)</li>
+        <li>Geo Datatypes: Geo-punto (latitud/longitud), Geo-forma (polígonos)</li>
+        <li>Specialized Datatypes: Direcciones IP, recuento de tokens, histograma, etc.)</li>
+        <br>
+        <p>Usando las bibliotecas de software de Lucene, Elasticsearch tiene su propio lenguaje de consulta basado en JSON llamado Query DSL (Lenguaje específico de dominio). Query DSL incluye consultas de hoja, consultas compuestas y consultas costosas. Las consultas de hoja buscan un valor específico en un campo específico, como las consultas de coincidencia, término o rango. Las consultas compuestas incluyen otras consultas de hoja o compuestas y se utilizan para combinar varias consultas de forma lógica. Las consultas costosas se ejecutan lentamente e incluyen coincidencia difusa, coincidencia de expresiones regulares y coincidencia de caracteres comodín.</p>
+        <br><br>
+        <p><b>Lenguaje de consultas</b></p>
+        <br>
+        <p>Junto con JSON, las consultas de Elasticsearch hacen uso de los siguientes elementos: operadores booleanos, campos, rangos, comodines, expresiones regulares, búsqueda difusa, búsqueda de texto.</p>
+        <br>
+
+        <p><b>Operadores booleanos</b> : operadores AND, OR y NOT:</p>
+        <br>
+        <li>"php" O "zip" O "exe" O "jar" O "ejecutar"</li>
+        <li>"RST" Y "ACK"</li>
+
+        <br>
+
+        <p><b>Campos</b> - En pares clave: valor separados por dos puntos, especifica el campo clave, dos puntos, un espacio y el valor:</p>
+        <br>
+        <li>dst.ip: “192.168.1.5”</li>
+        <li>dst.port: 80</li>
+
+        <br>
+
+        <p><b>Rangos</b> - Puede buscar campos dentro de un rango específico usando corchetes (inclusive) o llaves (exclusivo):</p>
+        <li>host:[1 TO 255] — Devolverá eventos con una edad entre 1 y 255</li>
+        <li>TTL:{100 TO 400} — Devolverá eventos con precios entre 101 y 399</li>
+        <li>name: [Admin TO User] — Devolverá nombres entre e incluyendo Administrador y Usuario</li>
+
+        <br>
+
+        <p><b>Wildcards</b> - El * carácter es para caracteres wildcard de varios caracteres y el ? para caracteres wildcard de un solo carácter:</p>
+        <li>P?ssw?rd — Coincidirá con la contraseña y P@ssw0rd</li>
+        <li>Pas* — Coincidirá con Pase, Passwd y Contraseña</li>
+
+        <br>
+
+        <p><b>Regex</b> - se colocan entre barras diagonales (/):</p>
+        <li>/d[ao]n/ — Coincidirá con dan y don</li>
+        <li>/&lt;.+&gt;/ — Coincidirá con texto similar a una etiqueta HTML</li>
+
+        <br>
+
+        <p><b>Búsqueda difusa</b> - la búsqueda difusa utiliza la distancia de Damerau-Levenshtein para coincidir con términos similares en la ortografía. Esto es genial cuando el conjunto de datos tiene palabras mal escritas. Utilice la tilde (~) para encontrar términos similares:</p>
+        <li>index.php~ - Esto puede devolver resultados como "index.html", "home.php" y "info.php".</li>
+        <li>Utilice la tilde (~) junto con un número para especificar qué tan grande puede ser la distancia entre palabras:</li>
+        <li>term~2 - Esto coincidirá, entre otras cosas: "equipo", "términos", "trem" y "rasgado"</li>
+
+        <br>
+
+        <p><b>Búsqueda de texto</b> : escriba el término o valor que desea encontrar. Esto puede ser un campo, o una cadena dentro de un campo, etc.</p>
+
+        <br><br>
+
+        <p><b>Ejecución de consultas</b></p>
+        <br>
+        <p>Elasticsearch se diseñó para interactuar con usuarios que utilizan clientes basados en web que siguen el marco HTTP REST. Las consultas se pueden ejecutar utilizando los siguientes métodos:</p>
+        <br>
+        <li><b>URI</b> - Elasticsearch can execute queries using URI searches:
+        <p>    http://localhost:9200/_search?q=query:ns.example.com</p>
+        <br>
+        <li><b>cURL</b> - Elasticsearch can execute queries using cURL from the command line:</li>
+        <p>   curl "localhost:9200/ _search?q=query:ns.example.com"</p>
+        <br>
+        <li><b>JSON</b>  - Elasticsearch puede ejecutar consultas con una búsqueda en el cuerpo de la solicitud utilizando un documento JSON que comienza con un elemento de consulta y una consulta formateada con el lenguaje específico del dominio de consulta.</li>
+        <br>
+        <li><b>Herramientas de desarrollo</b> - Elasticsearch puede ejecutar consultas utilizando la consola Herramientas de desarrollo en Kibana y una consulta formateada utilizando el lenguaje específico de dominio de consulta.</li>
+        <br>
+        <p><b>Nota</b>: Las consultas de Elasticksearch avanzadas no se incluyen en el alcance de este curso. En los laboratorios, se suministrarán los enunciados de consultas complejas si es necesario.</p>
+        <hr>
+
+        <h1 id="27.2.7">27.2.7 Investigación de llamadas de proceso o API</h1>
+        <br>
+        <p>Las aplicaciones interactúan con un sistema operativo (operating system OS) mediante llamadas del sistema a la interfaz de programación de aplicaciones (application programming interface API) del sistema operativo (operating system OS), como se ve en la figura. Estas llamadas del sistema permiten tener acceso a muchos aspectos del funcionamiento del sistema, como las siguientes:</p>
+        <br>
+        <li>Control de procesos de software</li>
+        <li>Administración de archivos</li>
+        <li>Administración de dispositivos</li>
+        <li>Administración de la información</li>
+        <li>Comunicación</li>
+        <br>
+        <p>El malware también puede hacer llamadas al sistema. Si el malware puede engañar al kernel de un OS y para que le permita hacer llamadas al sistema, son posibles muchas vulnerabilidades.</p>
+        <br>
+        <p>El software HIDS rastrea el funcionamiento de un OS host. Las reglas de OSSEC detectan los cambios en parámetros con base en el host, como la ejecución de procesos de software, los cambios en privilegios de usuarios y las modificaciones del registro, entre otros. Las reglas de OSSEC activarán una alerta en Sguil. Girar a Kibana en la dirección IP del host le permite elegir el tipo de alerta según el programa que la creó. El filtrado de índices OSSEC da como resultado una vista de los eventos OSSEC que se produjeron en el host, incluidos los indicadores de que el malware puede haber interactuado con el kernel del sistema operativo</p>
+        <br>
+        <img src="img/27.2.7 Investigación de llamadas de proceso o API.jpg" class="foto">
+        <hr>
+
+        <h1 id="27.2.8">27.2.8 Investigación de detalles de los archivos</h1>
+        <br>
+        <p>En Sguil, si el analista en ciberseguridad sospecha de un archivo, el valor hash se puede enviar a un sitio en línea, como VirusTotal, para determinar si el archivo es un malware conocido. El valor de hash se puede enviar desde la ficha de búsqueda en la página de VirusTotal.</p>
+        <br>
+        <p>En Kibana, Zeek Hunting se puede utilizar para mostrar información sobre los archivos que han entrado en la red. A partir de los tipos MIME, o medios, que están presentes, se pueden configurar filtros para mostrar información sobre tipos específicos de archivos como application/xml o application/zip. A partir de ahí, se pueden mostrar los detalles de los archivos individuales, como se muestra en la figura. Tenga en cuenta que en Kibana, el tipo de evento se muestra como bro_files, aunque el nuevo nombre de Bro sea Zeek.</p>            
+        <br><br>
+        <h2>Detalles del archivo de Zeek como se muestra en Kibana</h2>
+        <br>
+        <img src="img/27.2.8-image-1.png" class="foto">
+        <br><br>
+        <p>Numerosos detalles están disponibles para los archivos. En este ejemplo, se muestran los hashes MD5 y SHA-1, al igual que otros detalles. Las entradas azules proporcionan pivotes para ver los detalles de la información proporcionada en la tabla en CapMe! u otras herramientas.</p>
+        <hr>
+
+        <h1 id="27.2.9">27.2.9 Práctica de laboratorio - Tutorial de expresiones regulares</h1>
+        <br>
+        <p>Una expresión regular (regular expression regex) es un patrón de símbolos que describe datos que deben coincidir en una consulta o en cualquier otra operación. Las expresiones regulares se construyen en forma similar a las aritméticas, utilizando diversos operadores para combinar expresiones más pequeñas. Hay dos estándares principales de expresiones regulares, POSIX y Perl.</p>
+        <br>
+        <p>En esta práctica de laboratorio utilizarán un tutorial en línea para estudiar expresiones regulares. También describirán la información que coincide con expresiones regulares dadas.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/27.2.9-lab---regular-expression-tutorial_es-XL.pdf" target="_blank">Tutorial de exporesiones regulares</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.9-lab---regular-expression-tutorial_es-XL.pdf" target="_blank">Tutorial de exporesiones regulares (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="27.2.10">27.2.10 Práctica de laboratorio - Extraer un ejecutable de un PCAP</h1>
+        <br>
+        <p>Analizar registros es muy importante, pero también lo es comprender de qué manera suceden las transacciones de red al nivel de los paquetes.</p>
+        <br>
+        <p>En esta práctica de laboratorio analizarán el tráfico de un archivo pcap previamente capturado y extraerán un ejecutable del archivo.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/27.2.10-lab---extract-an-executable-from-a-pcap_es-XL.pdf" target="_blank">Extraer un ejecutable de un PCAP</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.10-lab---extract-an-executable-from-a-pcap_es-XL.pdf" target="_blank">Extraer un ejecutable de un PCAP (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="27.2.11">27.2.11 Video - Interpretar datos HTTP y DNS para aislar a los actores maliciosos</h1>
+        <br>
+        <p>Vea el vídeo para ver un tutorial del laboratorio Security Onion Interpret HTTP and DNS Data to Aislar Threat Actor.</p>
+        <br>
+        <video src="video/Interpretar datos HTTP y DNS para aislar a los actores maliciosos.mp4" controls></video>
+        <hr>
+
+        <h1 id="27.2.12">27.2.12 Práctica de laboratorio - Interpretar datos HTTP y DNS para aislar al actor de la amenaza</h1>
+        <br>
+        <p>En este laboratorio, investigará las vulnerabilidades de inyección SQL y exfiltración de DNS mediante herramientas de seguridad Onion.</p>
+        <br>
+        <div class="botones">
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.12-lab---interpret-http-and-dns-data-to-isolate-threat-actor_es-XL.pdf" target="_blank">Interpretar datos HTTP y DNS para aislar al actor de la amenaza</a></button>
+            <button><a href="pdf/27.2.12-lab---interpret-http-and-dns-data-to-isolate-threat-actor_es-XL.pdf" target="_blank">Interpretar datos HTTP y DNS para aislar al actor de la amenaza (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="27.2.13">27.2.13 Video - Aislamiento de hosts afectados mediante 5 tuplas</h1>
+        <br>
+        <p>Vea el video para ver un tutorial del Host comprometido con aislamiento de Security Onion usando el laboratorio de 5 tuplas.</p>
+        <br>
+        <video src="video/Video - Aislamiento de hosts afectados mediante 5 tuplas.mp4" controls></video>
+        <hr>
+
+        <h1 id="27.2.14">27.2.14 Práctica de laboratorio - Aislar hosts afectados con el método de cinco tuplas</h1>
+        <br>
+        <p>En este laboratorio, usará las herramientas de Security Onion para investigar un ataque utilizando las herramientas de Security onion.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/27.2.14-lab---isolate-compromised-host-using-5-tuple_es-XL.pdf" target="_blank">Aislar hosts afectados con el método de cinco tuplas</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.14-lab---isolate-compromised-host-using-5-tuple_es-XL.pdf" target="_blank">Aislar hosts afectados con el método de cinco tuplas (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="27.2.15">27.2.15 Laboratorio - Investigar un ataque de malware Exploit</h1>
+        <br>
+        <p>En este laboratorio usará Security Onion para investigar un malware más complejo explotar el uso de un kit de ataque para infectar hosts.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/27.2.15-lab---investigating-a-malware-exploit_es-XL.pdf" target="_blank">Investigar un ataque de malware Exploit</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.15-lab---investigating-a-malware-exploit_es-XL.pdf" target="_blank">Investigar un ataque de malware Exploit (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="27.2.16">27.2.16 Laboratorio - Investigación de un ataque en un host de Windows</h1>
+        <br>
+        <p>En esta práctica de laboratorio:</p>
+        <br>
+        <li>Investigar un ataque a un host de Windows.</li>
+        <li>Usar Sguil, Kibana y Wireshark en Security Onion para investigar el ataque.</li>
+        <li>Examinar artefactos de ataque.</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/27.2.16-lab---investigating-an-attack-on-a-windows-host_es-XL.pdf" target="_blank">Investigación de un ataque en un host de Windows</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m27/es-XL/assets/27.2.16-lab---investigating-an-attack-on-a-windows-host_es-XL.pdf" target="_blank">Investigación de un ataque en un host de Windows (online)</a></button>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>
+

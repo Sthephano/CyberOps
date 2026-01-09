@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container"> 
+        <h1 id="26.1.1">26.1.1 Security Onion</h1>
+        <br>
+        <p>Security Onion es una suite de código abierto de herramientas de Monitoreo de la seguridad de la red (Network Security Monitoring, NSM) que se ejecuta en una distribución Ubuntu de Linux. Las herramientas de Security Onion ofrecen tres funciones principales para el análisis de ciberseguridad como la captura completa de paquetes y tipos de datos, sistemas de detección de intrusión basados en el host y basados en la red, y herramientas de análisis de alerta. Security Onion puede instalarse como una plataforma independiente o como una plataforma de sensor y servidor. Algunos de los componentes de Security Onion son propiedad de corporaciones que los mantienen, como Cisco y Riverbend Technologies, pero está disponible como una plataforma de código abierto.</p>
+        <br>
+        <p>Para obtener más información, y para obtener Security Onion, busque en Internet el sitio web de Security Onion.</p>
+        <br>
+        <p><b>Nota: </b>En algunos recursos, es posible que vea Security Onion abreviado como SO En este curso, usaremos Security Onion.</p>
+        <hr>
+
+        <h1 id="26.1.2">26.1.2 Herramientas de detección para recopilar datos de alertas</h1>
+        <br>
+        <p>Security Onion contiene muchos componentes. Es un entorno integrado diseñado para simplificar la implementación de una solución integral de NSM. En la figura, se ejemplifica una vista simplificada de la manera en que algunos de los componentes de Security Onion funcionan juntos.</p>
+        <br><br>
+        <h2>Una arquitectura Security Onion</h2>
+        <br>
+        <img src="img/Una arquitectura Security Onion.jpg" class="foto">
+        <br><br>
+        <p><b>CapME</b></p>
+        <br>
+        <p>Es una aplicación web que permite la visualización de transcripciones pcap producidas con las herramientas tcpflow o Zeek. Es posible tener acceso a CapME desde la herramienta Enterprise Log Search and Archive (ELSA). CapME le proporciona al analista de ciberseguridad un medio fácil de leer para visualizar una sesión completa de la capa 4. CapME actúa como un complemento de ELSA y proporciona acceso a archivos pcap relevantes que se pueden abrir en Wireshark.</p>
+        <br>
+        <p><b>Snort</b></p>
+        <br>
+        <p>Un sistema de detección de intrusiones en la red (NIDS, Network Intrusion Detection System). Es una fuente importante de los datos de alerta que se indexan en la herramienta de análisis Sguil. Snort utiliza reglas y firmas para generar alertas. Snort puede descargar automáticamente reglas nuevas utilizando el componente PulledPork de Security Onion. Snort y PulledPork son herramientas de código abierto patrocinadas por Cisco.</p>
+        <br>
+        <p><b>Zeek</b></p>
+        <br>
+        <p>Anteriormente conocido como Bro. Es un NIDS que utiliza más de un enfoque con base en el comportamiento para detectar intrusiones. En lugar de utilizar firmas o reglas, Zeek utiliza políticas en forma de secuencias de comando que determinan qué datos registrar y cuándo emitir notificaciones de alerta. Zeek también puede enviar archivos adjuntos para someterlos a análisis de malware, bloquear el acceso a sitios maliciosos y apagar una computadora que parezca estar violando las políticas de seguridad.</p>
+        <br>
+        <p><b>Nota: </b>Algunas interfaces dentro de Security Onion aún no se han actualizado con el cambio de nombre Bro a Zeek.</p>
+        <br>
+        <p><b>OSSEC</b></p>
+        <br>
+        <p>Es un sistema de detección de intrusiones con base en el host (HIDS, Host-based Intrusion Detection System) que se integra en Security Onion. Monitorea activamente las operaciones del sistema del host, entre ellas, el monitoreo de integridad de archivos, el monitoreo de registros locales, el monitoreo de procesos del sistema y la detección de rootkits. Las alertas y los datos de registro de OSSEC están disponibles para Sguil y Kibana. OSSEC requiere la ejecución de un agente en las computadoras con Windows de la empresa.</p>
+        <br>
+        <p><b>Wazuh</b></p>
+        <br>
+        <p>Wazuh es un HIDS que reemplazará OSSEC en Security Onion. Es una solución completa que proporciona un amplio espectro de mecanismos de protección de endpoints, incluyendo análisis de archivos de registro de host, supervisión de la integridad de archivos, detección de vulnerabilidades, evaluación de configuración y respuesta a incidentes. Al igual que OSSEC, requiere que los agentes se ejecuten en hosts de red.</p>
+        <br>
+        <p><b>Suricata</b></p>
+        <br>
+        <p>Es un NIDS que utiliza un enfoque basado en firmas. También puede usarse para la prevención de intrusiones en línea. Es similar a Zeek; Sin embargo, Suricata utiliza la creación nativa de subprocesos, que permite la distribución del procesamiento de flujos de paquetes en múltiples núcleos de procesador. También incluye algunas características adicionales, como el bloqueo con base en la reputación y la compatibilidad con la creación de subprocesos de unidades de procesamiento de gráficos (GPU, Graphics Processing Unit) para mejorar el rendimiento.</p>
+        <br>
+
+        <hr>
+
+        <h1 id="26.1.3">26.1.3 Herramientas de análisis</h1>
+        <br>
+        <p>Security Onion integra estos diferentes tipos de datos y registros del sistema de detección de intrusiones (IDS) en una única plataforma mediante las siguientes herramientas:</p>
+        <br>
+        <li><b>Sguil</b> - Proporciona una consola de alto nivel para que los investigadores de ciberseguridad puedan investigar las alertas de seguridad a partir de una amplia variedad de fuentes. Sguil sirve como punto de partida para la investigación de alertas de seguridad. Hay disponible una amplia variedad de fuentes de datos para el analista de ciberseguridad si se utiliza Sguil directamente con otras herramientas.</li>
+        <li><b>Kibana</b> - Kibana es una interfaz interactiva para datos de Elasticsearch. Permite la consulta de datos de NSM y proporciona visualizaciones flexibles de esos datos. Proporciona funciones de exploración de datos y análisis de datos de aprendizaje automático. Es posible pivotar desde Sguil directamente a Kibana para ver pantallas contextualizadas basadas en las direcciones IP de origen y destino asociadas a una alerta. Busque en Internet y visite el sitio web <a href="http://elastic.co" target="_blank">elastic.co</a> para obtener más información sobre las muchas características de Kibana.</li>
+        <li><b>Wireshark</b> - Es una aplicación de captura de paquetes que está integrada en el conjunto de productos de Security Onion. Puede abrirse directamente con otras herramientas y permite ver capturas de paquetes completos relevantes para un análisis.</li>
+        <li><b>Zeek</b> - Este es un analizador de tráfico de red que sirve como monitor de seguridad. Zeek inspecciona todo el tráfico en un segmento de red y permite un análisis detallado de esos datos. El giro de Sguil a Zeek proporciona acceso a registros de transacciones muy precisos, contenido de archivos y salida personalizada.</li>
+        <br>
+        <p><b>Nota</b>: Las herramientas de Security Onion que no se ven en la figura están fuera del alcance de este curso. Una descripción completa de Security Onion y sus componentes puede ser encontrada en la página web de Security Onion.</p>
+        <br>
+
+        <h1 id="26.1.4">26.1.4 Generación de alertas</h1>
+        <br>
+
+        <p>Las alertas de seguridad son los mensajes de notificación que generan las herramientas, los sistemas y los dispositivos de seguridad de NSM. Las alertas pueden adoptar muchas formas según la fuente. Por ejemplo, syslog admite clasificaciones de gravedad que se pueden utilizar para alertar a los analistas de ciberseguridad sobre eventos que requieran atención.</p>
+        <br>
+        <p>En Security Onion, Sguil proporciona una consola que integra alertas de varias fuentes en una cola con marca de hora. Un analista de ciberseguridad puede navegar por la cola de seguridad investigando, clasificando, derivando o retirando alertas. En lugar de un sistema de administración del flujo de trabajo dedicado como Request Tracker for Incident Response (RTIR), un analista de ciberseguridad utilizaría el resultado de una aplicación como Sguil para organizar una investigación NSM.</p>
+        <br>
+        <p>Las alertas suelen incluir información de cinco tuplas cuando esté disponible, así como marcas de hora y la información necesaria para identificar qué dispositivo o sistema generó la alerta. Es importante recordar que las cinco tuplas incluyen la siguiente información para el seguimiento de una conversación entre una aplicación de origen y una de destino:</p>
+        <br>
+        <p><b>SrcIP - </b>La dirección IP de origen para el evento.</p>
+        <p><b>SPort - </b>El puerto de la capa 4 de origen (local) para el evento.</p>
+        <p><b>DstIP - </b>La dirección IP de destino para el evento.</p>
+        <p><b>DPort - </b>El puerto de la capa 4 de destino para el evento.</p>
+        <p><b>Pr - </b>El número de protocolo IP para el evento.</p>
+        <br>
+        <p>La información adicional podría incluir la aplicación de una decisión de permitir o negar el tráfico, datos capturados de la carga útil del paquete, o un valor hash para un archivo descargado, o una variedad de datos diferentes.</p>
+        <br>
+        <p>En la figura, se ve la ventana de la aplicación Sguil con la cola de alertas que esperan ser investigadas en la parte superior de la interfaz.</p>
+        <br><br>
+        <img src="img/Ventana de Sguil.png" class="foto">
+        <br><br>
+        <p>Los campos disponibles para los eventos en tiempo real son los siguientes:</p>
+        <br>
+        <li><b>ST</b> - This is the status of the event. RT means real time. The event is color-coded by priority. The priorities are based on the category of the alert. There are four priority levels: muy bajo, bajo, medio y alto. Los colores van del amarillo claro al rojo a medida que la prioridad aumenta.</li>
+        <li><b>CNT</b> - El recuento de la cantidad de veces que se detectó este evento para la misma dirección IP de origen y de destino. El sistema determina que este conjunto de eventos está correlacionado. En lugar de informar cada evento de una serie posiblemente larga de eventos correlacionados en esta ventana, el evento aparece una vez en esta columna con la cantidad de ocasiones en que se lo detectó. Un número elevado puede representar un problema de seguridad o la necesidad de modificar las firmas del evento para limitar la cantidad de eventos potencialmente irrelevantes que se está informando.</li>
+        <li><b>Sensor</b> - Es el agente que reporta el evento. Los sensores disponibles y sus números de identificación pueden encontrarse en la ficha de estado del agente del panel que aparece debajo de la ventana de eventos a la izquierda. Estos números también se utilizan en la columna de identificación de la alerta. Desde el panel de estado del agente, podemos ver que los sensores de OSSEC, pcap y Snort envían informes a Sguil. Además, podemos ver los nombres de host predeterminados de estos sensores, lo que incluye la interfaz de monitoreo. Es necesario tener en cuenta que cada interfaz de monitoreo tiene datos pcap y Snort asociados con ella.</li>
+        <li><b>ID de alerta</b> -Este número de dos partes representa el sensor que informa el problema y el número de evento para ese sensor. En la figura, podemos ver que la mayor cantidad de eventos visualizados provienen del sensor de OSSEC (1). El sensor de OSSEC ha informado ocho conjuntos de eventos correlacionados. De estos eventos, 232 se informaron con la identificación de evento 1.24.</li>
+        <li><b>Fecha/Hora</b> - Esta es la marca de tiempo del evento. En el caso de eventos correlacionados, es la marca de tiempo del primer evento.</li>
+        <li><b>Mensaje de evento</b> - El texto que identifica el evento. Se configura en la regla que desencadenó la alerta. La regla asociada puede verse en el panel derecho, justo encima del paquete de datos. Para mostrar la regla, la casilla de verificación <b>Mostrar regla</b> debe estar activada.</li>
+        <br>
+        <p>Según la tecnología de seguridad, es posible generar alertas con base en reglas, firmas, anomalías o comportamientos. Sin importar cómo se generan, las condiciones que desencadenan una alerta deben definirse previamente de algún modo.</p>
+        <hr>
+
+        <h1 id="26.1.5">26.1.5 Reglas y alertas</h1>
+        <br>
+        <p>Las alertas pueden provenir de una serie de fuentes:</p>
+        <br>
+        <li><b>NIDS</b> - Snort, Zeek, y Suricata</li>
+        <li><b>HIDS</b> - OSSEC, Wazuh</li>
+        <li><b>Administración y monitoreo de activos</b> - Sistema de detección de activos pasivos (PADS)</li>
+        <li><b>Transacciones HTTP, DNS y TCP</b>- Registradas por Zeek y pcaps</li>
+        <li><b>Mensajes de syslog</b>* - Múltiples fuentes</li>
+        <br>
+        <p>La información encontrada en las alertas que estan en Sguil diferirá en cuanto al formato del mensaje, ya que provienen de fuentes diferentes.</p>
+        <br>
+        <p>La alerta de Sguil en la figura se activó por una regla configurada en Snort. Es importante que el analista de ciberseguridad pueda interpretar lo que desencadenó la alerta para poder investigarla. Por esta razón, el analista de ciberseguridad debe entender los componentes de las reglas de Snort, que son una importante fuente de alertas en Security Onion.</p>
+        <br><br>
+
+        <h2>Alerta y regla asociada de Sguil</h2>
+        <br>
+        <img src="img/Alerta y regla asociada de Sguil.jpg" class="foto">
+        <hr>
+
+        <h1 id="26.1.6">26.1.6 Estructura de la regla de Snort</h1>
+        <br>
+        <p>Las reglas de Snort constan de dos secciones, como se ve en la Figura: el encabezado de la regla y las opciones de la regla. El encabezado de la regla contiene la acción, el protocolo, las direcciones IP y máscaras de red de origen y destino, y la información del puerto de origen y de destino. La sección de opciones de la regla contiene mensajes de alerta e información sobre qué partes del paquete deben ser inspeccionadas para determinar si debe adoptarse la acción de la regla. A veces, Sguil añade la ubicación de la regla. La ubicación de la regla es la ruta al archivo que contiene la regla y el número de línea en la que la regla aparece para que sea posible encontrarla y modificarla o eliminarla si hace falta.</p>
+        <br></br>
+        <h2>Estructura de la regla de Snort e información suministrada por Sguil</h2>
+        <hr>
+        <img src="img/Estructura de la regla de Snort e información suministrada por Sguil.svg" class="foto">
+        <br><br>
+        <table>
+            <tr class="cabecera">
+                <th>Componente</th>
+                <th>Explicación</th>
+            </tr>
+            <tr class="oscuro">
+                <td>alert</td>
+                <td>la medida que se debe tomar es emitir una alerta, otras son log (registrar) y pass (pasar)</td>
+            </tr>
+            <tr class="claro">
+                <td>ip</td>
+                <td>el protocolo</td>
+            </tr>
+            <tr class="oscuro">
+                <td>cualquiera cualquiera</td>
+                <td>el origen especificado es cualquier dirección IP y cualquier puerto de Capa 4</td>
+            </tr>
+            <tr class="claro">
+                <td>_></td>
+                <td>el origen especificado es cualquier dirección IP y cualquier puerto de Capa 4</td>
+            </tr>
+            <tr class="oscuro">
+                <td>cualquiera cualquiera</td>
+                <td>el destino especificado es cualquier dirección IP y cualquier puerto de Capa 4</td>
+            </tr>
+        </table>
+        <br><br>
+        <p><b>Las opciones de las reglas</b></p>
+        <br>
+        <p>La estructura de la sección de opciones de la regla es variable. Es la parte de la regla que está entre paréntesis, como se ve en la Figura. Contiene el mensaje de texto que identifica la alerta. También contiene metadatos sobre la alerta, como una dirección URL que proporciona información de referencia para la alerta. Es posible incluir otra información, como el tipo de regla y un identificador numérico único para la regla y su revisión. Además, es posible especificar características de la carga útil del paquete en las opciones. El manual de usuario de Snort, que se puede encontrar en Internet, proporciona detalles sobre las reglas y cómo crearlas.</p>
+        <br>
+        <p>Los mensajes de reglas de Snort pueden incluir la fuente de la regla. Tres fuentes comunes de reglas de Snort son las siguientes:</p>
+        <br>
+        <li><b>GPL</b> - reglas de Snort anteriores que fueron creadas por Sourcefire y distribuidas mediante GPLv2. El conjunto de reglas GPL no cuenta con certificación de Cisco Talos. Incluye las SID de Snort 3464 e inferiores. El conjunto de reglas de la GPL se puede descargar desde el sitio web de Snort, y se incluye en Security Onion.</li>
+        <li><b>ET</b> - reglas de Snort para amenazas emergentes. Las amenazas nuevas son un punto de recopilación para las reglas de Snort desde múltiples fuentes. Las reglas de ET son de código abierto y se distribuyen bajo licencia de BSD. El conjunto de reglas de ET contiene reglas de múltiples categorías. Un conjunto de reglas de ET se incluye con Security Onion. Las amenazas emergentes es una división de Proofpoint, Inc.</li>
+        <li><b>VRT</b> - Estas reglas están inmediatamente disponibles para los suscriptores y se publican para los usuarios registrados 30 días después de que se crean, con algunas limitaciones. Ahora las crea y mantiene Cisco Talos.</li>
+        <br>
+        <p>Las reglas pueden descargarse automáticamente de <a href="http://Snort.org" target="_blank">Snort.org</a> con la utilidad de administración de reglas PulledPork que se incluye con Security Onion.</p>
+        <br>
+        <p>Las alertas que no generan las reglas de Snort se identifican con etiquetas de OSSEC o PADS, entre otras. Además, es posible crear reglas locales personalizadas.</p>
+        <br><br>
+        <h2>Estructura de opciones de la regla de Snort</h2>
+        <br>
+        <img src="img/Estructura de opciones de la regla de Snort.svg" class="foto">
+        <br><br>
+        <table>
+            <tr class="cabecera">
+                <th>Componente</th>
+                <th>Explicación</th>
+            </tr>
+            <tr class="oscuro">
+                <td>msg:</td>
+                <td>Texto que describe la alerta.</td>
+            </tr>
+            <tr class="claro">
+                <td>contenido:</td>
+                <td>Se refiere al contenido del paquete. En este caso, se enviará una alerta si el texto literal“uid=0(root)” aparece en cualquier lugar de los datos del paquete. También se pueden proporcionar valores que especifiquen la ubicación del texto en la carga útil de datos.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>referencia:</td>
+                <td>Esto no se muestra en la figura. A menudo es el enlace a una URL que proporciona más información sobre la regla. En este caso, el sid tiene un hipervínculo al origen de la regla en Internet.</td>
+            </tr>
+            <tr class="claro">
+                <td>ClassType:</td>
+                <td>Una categoría correspondiente al ataque. Snort tiene un conjunto de categorías predeterminadas con uno de cuatro valores de prioridad.</td>
+            </tr>
+            <tr class="oscuro">
+                <td>SID:</td>
+                <td>Un identificador numérico único para la regla.</td>
+            </tr>
+            <tr class="claro">
+                <td>rev:</td>
+                <td>La revisión de la regla que está representada por el sid.</td>
+            </tr>
+        </table>
+        <hr>
+        
+        <h1 id="26.1.7">26.1.7 Práctica de laboratorio - Reglas de Snort y de firewalls</h1>
+        <br>
+        <p>Distintos tipos de software y dispositivos de seguridad realizan funciones diferentes y registran diversos eventos. Como consecuencia, también varían las alertas generadas por diferentes dispositivos y software.</p>
+        <br>
+        <p>En esta práctica de laboratorio se familiarizarán con las reglas de firewall y las firmas de IDS; para ello, harán lo siguiente:</p>
+        <br>
+        <li>Monitorear IDS y eventos en vivo.</li>
+        <li>Configurarán su propia regla de firewall personalizada para impedir que los hosts se comuniquen con un servidor que aloja malware.</li>
+        <li>Crearán un paquete malicioso y lo lanzarán con un objetivo interno.</li>
+        <li>Crearán una regla de IDS personalizada para detectar el ataque personalizado y emitir una alerta.</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/26.1.7-lab---snort-and-firewall-rules_es-XL.pdf" target="_blank">Reglas de Snort y de firewalls</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m26/es-XL/assets/26.1.7-lab---snort-and-firewall-rules_es-XL.pdf" target="_blank">Reglas de Snort y de firewalls (online)</a></button>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

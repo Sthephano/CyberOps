@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <link rel="stylesheet" href="3.2. Arquitectura y operaciones de Windows.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="3.2.1">3.2.1 Capa de abstracción de hardware</h1>
+        <br>
+        <p>Las computadoras con Windows utilizan muchos tipos de hardware distintos. El sistema operativo se puede instalar en una computadora comprada o en una computadora ensamblada por el usuario. Cuando se instala el sistema operativo, debe aislarse de las diferencias en el hardware. En la figura, se ve la arquitectura básica de Windows.</p>
+        <br>
+        <img src="img/3.2.1-image.jpg" class="foto"> 
+        <br><br>
+        <p>Una capa de abstracción de hardware (HAL) es un software que maneja toda la comunicación entre el hardware y el kernel. El kernel es el núcleo del sistema operativo y controla toda la computadora. Se encarga de todas las solicitudes de entrada y salida, la memoria y todos los periféricos conectados a la computadora.</p>
+        <br>
+        <p>En algunos casos, el núcleo todavía se comunica con el hardware directamente, por lo que no es totalmente independiente de la HAL. La HAL también necesita el núcleo para realizar algunas funciones.</p>
+        <hr>
+        
+        <h1 id="3.2.2">3.2.2 Modo usuario y modo Kernel</h1>
+        <br>
+        <p>Como se identifica en la figura, hay dos modos diferentes en los que funciona una CPU cuando la computadora tiene Windows instalado: el modo de usuario y el modo de núcleo.</p>
+        <br>
+        <img src="img/3.2.2-image.jpg" class="foto">
+        <br><br>
+        <br>
+        <p>Las aplicaciones instaladas se ejecutan en el modo de usuario, y el código del sistema operativo lo hace en el modo de kernel. El código que se ejecuta en el modo de núcleo tiene acceso ilimitado al hardware subyacente y es capaz de ejecutar cualquier instrucción de la CPU. El código del modo de núcleo también puede hacer referencia a cualquier dirección de la memoria directamente. Dado que suele estar reservado para las funciones más confiables del sistema operativo, un error en el código que se ejecuta en el modo de núcleo detiene el funcionamiento de toda la computadora. Por el contrario, otros programas (como las aplicaciones de usuario) se ejecutan en modo de usuario y no tienen acceso directo a ubicaciones de memoria o hardware. El código de modo de usuario debe pasar por el sistema operativo para tener acceso a los recursos de hardware. Debido al aislamiento que brinda el modo de usuario, los errores en dicho modo afectan solamente a la aplicación y es posible una recuperación. La mayoría de los programas de Windows funcionan en el modo de usuario. Los controladores de dispositivos (elementos del software que permiten que el sistema operativo y un dispositivo se comuniquen) pueden funcionar en modo de núcleo o de usuario, según el controlador.</p>
+        <br>
+        <p>Todo el código que se ejecuta en el modo de núcleo usa el mismo espacio para la dirección postal. Los controladores en modo de núcleo no están aislados del sistema operativo. Si se produce un error con el controlador en el modo de núcleo y escribe en el espacio para la dirección postal incorrecto, el sistema operativo u otro controlador del modo de núcleo podrían verse afectados negativamente. En este sentido, el controlador podría dejar de funcionar e interrumpir el funcionamiento de todo el sistema operativo.</p>
+        <br>
+        <p>Cuando se ejecuta código en el modo de usuario, el núcleo le otorga su propio espacio para la dirección postal limitado, junto con un proceso creado específicamente para la aplicación. Esto se hace, principalmente, para evitar que las aplicaciones cambien código del sistema operativo que se esté ejecutando al mismo tiempo. Al tener su propio proceso, la aplicación tiene su propio espacio para la dirección postal privado, lo que impide que otras aplicaciones modifiquen sus datos. Esto también ayuda a evitar que el sistema operativo y otras aplicaciones dejen de funcionar si se interrumpe la aplicación.</p>
+        <hr>
+
+        <h1 id="3.2.3">3.2.3 Sistemas de archivos de Windows</h1>
+        <br>
+        <p>Un sistema de archivos determina cómo se organiza la información en los medios de almacenamiento. Algunos sistemas de archivos pueden ser una mejor opción que otros, según el tipo de medios que se utilice. La tabla enumera los sistemas de archivos que admite Windows.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Sistema de archivos de Windows</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td><b>exFAT</b></td>
+                <td>
+                    <li>Este es un sistema de archivos simple compatible con muchos sistemas operativos diferentes.</li>
+                    <li>FAT tiene limitaciones en la cantidad de particiones, tamaños de partición y tamaños de archivo que puede abordar, por lo que generalmente ya no se usa para discos duros (HDs) o unidades de estado sólido (SSD).</li>
+                    <li>FAT16 y FAT32 están disponibles para usarse, y FAT32 es el más común, ya que tiene muchas menos restricciones que FAT16.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>Sistema de archivos jerárquico + (HFS+)</b></td>
+                <td>
+                    <li>Este sistema de archivos se usa en computadoras MAC OS X y permite nombres de archivo, tamaños de archivo y tamaños de partición mucho más largos que los sistemas de archivos anteriores.</li>
+                    <li>Aunque no es compatible con Windows sin software especializado, Windows es capaz de leer datos de particiones HFS+.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td><b>Sistema de archivos extendido (EXT)</b></td>
+                <td>
+                    <li>Este sistema de archivos es utilizado con computadoras basadas en Linux.</li>
+                    <li>Aunque no es compatible con Windows, Windows es capaz de leer datos de particiones EXT con software especializado.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td><b>Sistema de archivos de nueva tecnología (NTFS)</b></td>
+                <td>
+                    <li>Este es el sistema de archivos usado más comúnmente cuando está instalado en Windows. Todas las versiones de Windows y Linux admiten NTFS.</li>
+                    <li>Los equipos Mac-OS X sólo pueden leer una partición NTFS. Son capaces de escribir en una partición NTFS después de instalar controladores especiales.</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>NTFS es el sistema de archivos más utilizado en Windows por numerosas razones. NTFS admite archivos y particiones muy grandes y es muy compatible con otros sistemas operativos. Además, NTFS también es muy confiable y admite funciones de recuperación. Lo más importante es que admite muchas características de seguridad. El control de acceso de datos se logra mediante descriptores de seguridad. Estos descriptores de seguridad contienen información de propiedad y permisos en todos los niveles hasta el nivel de archivo. NTFS también controla muchas marcas de hora para registrar la actividad del archivo. También llamadas MACE, las marcas de hora de modificación, acceso, creación y modificación de entrada suelen usarse en las investigaciones forenses para determinar el historial de un archivo o carpeta. NTFS también admite la encriptación del sistema de archivos para proteger todos los medios de almacenamiento.</p>
+        <br>
+        <p>Antes de poder usar un dispositivo de almacenamiento, como un disco, se debe formatear con un sistema de archivos. A su vez, antes de poder implementar un sistema de archivos en un dispositivo de almacenamiento, se debe particionar dicho dispositivo. Los discos duros se dividen en áreas llamadas particiones. Cada partición es una unidad lógica de almacenamiento que se puede formatear para almacenar información, como archivos de datos o aplicaciones. Durante el proceso de instalación, la mayoría de los sistemas operativos particionan y formatean automáticamente el espacio disponible de la unidad con un sistema de archivos, como NTFS.</p>
+        <br>
+        <p>El formato NTFS crea estructuras importantes en el disco para almacenar archivos y tablas para registrar las ubicaciones de los archivos:</p>
+        <br>
+        <li><b>Sector de Partición de Arranque - </b>Estos son los primeros 16 sectores de la unidad. contiene la ubicación de la tabla maestra de archivos (MFT, Master File Table). Los últimos 16 sectores contienen una copia del sector de arranque.</li>
+        <li><b>Tabla Maestra de Archivos (MFT) - </b>Esta tabla contiene la localización de todos los archivos y los directorios de la partición, incluyendo los atributos de los archivos como la información de seguridad y las marcas de tiempo.</li>
+        <li><b>Archivos del sistema - </b>Estos son archivos ocultos que almacenan información sobre otros volúmenes y atributos de archivo.</li>
+        <li><b>Área de Archivos - </b>El área principal de la partición donde los archivos y los directorios son guardados.</li>
+        <br>
+        <p><b>Nota - </b>Cuando se formatea una partición, los datos previos posiblemente puedan ser recuperados por que no todos los datos son completamente eliminados. Este espacio libre puede ser examinado y se pueden recuperar archivos que pueden comprometer la seguridad. Si se va a reutilizar una unidad, se recomienda realizar un borrado seguro. El borrado seguro escribirá datos en toda la unidad varias veces para garantizar que no queden datos anteriores.</p>
+        <hr>
+
+        <h1 id="3.2.4">3.2.4 Flujos de datos alternativos</h1>
+        <br>
+        <p>NTFS guarda los archivos como una serie de atributos; por ejemplo, el nombre del archivo o una marca de hora. Los datos que contiene el archivo se almacenan en el atributo $DATA, y se conocen como flujo de datos. Con NTFS, es posible conectar flujos de datos alternativos (Alternate Data Streams, ADS) al archivo. En ocasiones, las aplicaciones aprovechan esta función para almacenar información adicional sobre el archivo. Los ADS son un factor importante en relación con el malware. Esto se debe a que resulta sencillo ocultar datos en ADS. Un atacante podría almacenar código malicioso dentro de ADS y otro archivo podría invocar este contenido posteriormente.</p>
+        <br>
+        <p>En el sistema de archivos NTFS, un archivo con ADS se identifica después del nombre del archivo y dos puntos, por ejemplo Testfile.txt:ADS. Este nombre de archivo indica que un ADS llamado ADS está asociado con el archivo llamado Testfile.txt. Un ejemplo de ADS es mostrada en la salida de un comando.</p>
+        <br>
+        <img src="img/3.2.4-image.jpg" class="foto">
+        <br><br>
+        <p>En la salida:</p>
+        <br>
+        <li>El primer comando coloca el texto “Alternate Data Here” en un ADS del archivo Testfile.txt, llamado “ADS”.</li>
+        <li>After that, dir enseña que el archivo fue creado, pero el ADS no es visible.</li>
+        <li>The next command shows that there is data in the Testfile.txt:ADS data stream</li>
+        <li>The last command shows the ADS of the Testfile.txt file because the r switch was used with the dir command.</li>
+        <hr>
+        
+        <h1 id="3.2.5">3.2.5 Proceso de arranque de Windows</h1>
+        <br>
+        <p>Ocurren muchas acciones entre el tiempo que es presionado el botón de poder y Windows siendo cargado completamente, como es mostrado en la figura. Esto se conoce como proceso de arranque de Windows.</p>
+        <br>
+        <img src="img/3.2.5-image.jpg" class="foto">
+        <br><br>
+        <p>Existen dos tipos de firmware de computadora:</p>
+        <br>
+        <li><b>Basic Input-Output System (BIOS) - </b>BIOS firmware se creó a principios de la década de 1980 y funciona de la misma manera desde entonces. A medida que las computadoras evolucionaron, BIOS firmware comenzó a tener problemas para admitir todas las nuevas funciones que solicitaban los usuarios.</li>
+        <li><b>Unified Extensible Firmware Interface (UEFI) - </b>UEFI se diseñó para reemplazar el BIOS y admitir las nuevas funciones.</li>
+        <br>
+        <p>En BIOS firmware, el proceso comienza con la fase de inicialización del BIOS. Esto ocurre cuando se inicializan los dispositivos de hardware y se realiza una prueba automática de encendido (POST, Power-On Self Test) para garantizar que todos estos dispositivos se estén comunicando. La POST finaliza cuando se detecta el disco del sistema. La última instrucción en la POST es buscar el registro principal de arranque (MBR, Master Boot Record).</p>
+        <br>
+        <p>El MBR contiene un pequeño programa que se encarga de localizar y cargar el sistema operativo. La BIOS ejecuta este código y el sistema operativo comienza a cargarse.</p>
+        <br>
+        <p>A diferencia de BIOS firmware, UEFI firmware tiene mucha visibilidad en el proceso de arranque. El arranque con UEFI se realiza cargando los archivos de programa de EFI, almacenados como archivos .efi en una partición especial del disco conocida como la partición de sistema EFI (ESP, EFI System Partition).</p>
+        <br>
+        <p><b>Nota: </b>Una computadora que utiliza UEFI almacena el código de arranque en el firmware. Esto ayuda a aumentar la seguridad de la computadora al momento del arranque, ya que entra directamente en el modo protegido.</p>
+        <br>
+        <p>Si el firmware es BIOS o UEFI, después de ubicar una instalación válida de Windows, se ejecuta el archivo <b>Bootmgr.exe. Bootmgr.exe </b>cambia el sistema del modo real al modo protegido para que se pueda utilizar toda la memoria del sistema.</p>
+        <br>
+        <p>Bootmgr.exe lee la base de datos de configuración de arranque (BCD). La BCD contiene cualquier código adicional necesario para iniciar la computadora, junto con una indicación que señala si la computadora está saliendo de una hibernación o si es un arranque en frío. Si la computadora está saliendo de una hibernación, el proceso de arranque continúa con <b>Winresume.exe</b>. Esto permite que la computadora lea el archivo <b>Hiberfil.sys</b> que contiene el estado de la computadora cuando ingresó en la hibernación.</p>
+        <br>
+        <p>Si se inicia la computadora con un arranque en frío, se carga el archivo <b>Winload.exe</b>. El archivo <b>Winload.exe</b> crea un registro de la configuración de hardware en el registro. El registro es una lista de todos los ajustes, las opciones, el hardware y el software de la computadora. El registro se explorará en profundidad más adelante en este capítulo. <b>Winload.exe</b> también utiliza la firma de código en modo kernel (KMCS) para asegurarse de que todos los controladores estén firmados digitalmente. Esto garantiza que los controladores son seguros para cargarlos al iniciar la computadora.</p>
+        <br>
+        <p>Después de que se analizan los controladores, <b>Winload.exe</b> ejecuta <b>Ntoskrnl.exe</b>, que arranca el núcleo de Windows y configura la HAL. Finalmente, Session Manager Subsystem (SMSS) lee el registro para crear el entorno de usuario, iniciar el servicio de Winlogon y preparar el escritorio de cada usuario a medida que inician sesión.</p>
+        <hr>
+        
+        <h1 id="3.2.6">3.2.6 Inicio de Windows</h1>
+        <br>
+        <p>Hay dos elementos importantes del registro que se utilizan para iniciar automáticamente aplicaciones y servicios:</p>
+        <br>
+        <li><b>HKEY_LOCAL_MACHINE - </b>muchos aspectos de la configuración de Windows se almacenan en esta clave, incluida la información sobre los servicios que se inician con cada arranque.</li>
+        <li><b>HKEY_CURRENT_USER - </b>HKEY_CURRENT_USER - En esta clave se almacenan varios aspectos relacionados con el usuario que ha iniciado sesión, incluida la información sobre los servicios que se inician solo cuando el usuario inicia sesión en la computadora.</li>
+        <br>
+        <p>El registro se discutirá más adelante en este tema.</p>
+        <br>
+        <p>La presencia de entradas diferentes en estas ubicaciones del registro definen qué servicios y aplicaciones se iniciarán, según lo que indiquen sus tipos de entrada. Estos tipos son Run, RunOnce, RunServices, RunServicesOnce y Userinit. Estas entradas se pueden ingresar manualmente en el registro, pero es mucho más seguro usar la herramienta Msconfig.exe. Esta herramienta se utiliza para ver y cambiar todas las opciones de inicio de la computadora. Use el cuadro de búsqueda para encontrar y abrir la herramienta Msconfig.</p>
+        <br>
+        <p>La herramienta Msconfig abre la ventana Configuración del sistema. Hay cinco ventanas que contienen las opciones de configuración.</p>
+        <br>
+
+        <!--TABLA INICIO DE WINDOWS-->
+        <div class="contenedor-tablas">
+            <table>
+                <tr class="cabecera">
+                    <th><b>General</b></th>
+                </tr>
+                <tr>
+                    <td>Aquí se pueden elegir tres tipos de inicio diferentes. “Normal” carga todos los controladores y servicios. “Con diagnóstico” carga solamente los servicios y controladores básicos. “Selectivo” le permite al usuario elegir qué cargar en el inicio.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/General.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th><b>Arranque</b></th>
+                </tr>
+                <tr>
+                    <td>Aquí se puede elegir cualquier sistema operativo instalado para comenzar. También hay opciones para el arranque a prueba de errores, que se utiliza para solucionar problemas de inicio.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/Arranque.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th>Servicios</th>
+                </tr>
+                <tr>
+                    <td>TTodos los servicios instalados se enumeran aquí para que se puedan elegir para comenzar al inicio.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/Servicios.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th>Inicio</th>
+                </tr>
+                <tr>
+                    <td>Todas las aplicaciones y servicios que están configurados para comenzar automáticamente al inicio se pueden habilitar o deshabilitar abriendo el administrador de tareas desde esta pestaña.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/Inicio.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr class="cabecera">
+                    <th>Herramientas</th>
+                </tr>
+                <tr>
+                    <td>Muchas herramientas comunes del sistema operativo se pueden iniciar directamente desde esta pestaña.</td>
+                </tr>
+                <tr>
+                    <td><img src="img/Herramientas.jpg" class="imagen-completa"></td>
+                </tr>
+            </table>
+        </div>
+
+        <hr>
+
+        <h1 id="3.2.7">3.2.7 Apagado de Windows</h1>
+        <br>
+        <p>Siempre es mejor cerrar correctamente la computadora que apagarla. Los archivos que quedan abiertos, los servicios que se cierran de manera desordenada y las aplicaciones que se bloquean pueden sufrir daños si se apaga la computadora sin informar primero al sistema operativo. La computadora necesita tiempo para cerrar cada aplicación, apagar cada servicio y registrar cualquier cambio de configuración antes de interrumpir la alimentación.</p>
+        <br>
+        <p>Durante el apagado, la computadora cierra primero las aplicaciones del modo de usuario y, luego, los procesos de modo de núcleo. Si un proceso del modo de usuario no responde durante una cierta cantidad de tiempo, el sistema operativo muestra una notificación y permite que el usuario espere a que la aplicación responda o fuerce la finalización del proceso. Si un proceso en el modo de núcleo no responde, parecerá que el apagado se detuvo y es posible que sea necesario apagar la computadora con el botón de encendido.</p>
+        <br>
+        <p>Hay varias maneras de apagar una computadora Windows: La opción de apagado del menú de Windows, el comando shutdown en la linea de comandos, utilizar Ctrl+Alt+Delete y presionando el icono de botón de poder. Hay tres opciones diferentes entre las que elegir al apagar el equipo:</p>
+        <br>
+        <li><b>Apagar - </b>apaga el equipo (apaga).</li>
+        <li><b>Reiniciar - </b>reinicia la computadora (apaga y enciende).</li>
+        <li><b>Hibernación - </b>registra el estado actual del equipo y el entorno de usuario y lo almacena en un archivo. La hibernación le permite al usuario continuar su trabajo rápidamente justo desde donde lo dejó, con todos sus archivos y programas aún abiertos.</li>
+        <hr>
+        
+        <h1 id="3.2.8">3.2.8 Procesos, subprocesos y servicios</h1>
+        <br>
+        <p>Una aplicación de Windows se compone de procesos. La aplicación puede tener uno o varios procesos exclusivos. Un proceso es cualquier programa que se esté ejecutando. Cada proceso en ejecución está compuesto de, al menos, un subproceso. Un subproceso es una parte del proceso que puede ejecutarse. El procesador realiza los cálculos en el subproceso. Para configurar los procesos de Windows, busque el Administrador de tareas. La pestaña Procesos del Administrador de tareas se muestra en la figura.</p>
+        <br>
+        <img src="img/3.2.8-image-1.jpg" class="foto">
+        <br><br>
+        <p>Todos los subprocesos exclusivos de un proceso están incluidos en el mismo espacio para la dirección postal. Esto significa que estos subprocesos no pueden tener acceso al espacio para la dirección postal de ningún otro proceso. Esto evita el daño de otros procesos. Debido a que Windows realiza múltiples tareas simultáneamente, es posible ejecutar varios subprocesos al mismo tiempo. La cantidad de subprocesos que se pueden ejecutar al mismo tiempo depende del número de procesadores de la computadora.</p>
+        <br>
+        <p>Algunos de los procesos que ejecuta Windows son servicios. Son programas que se ejecutan en segundo plano para respaldar el funcionamiento del sistema operativo y de las aplicaciones. Pueden configurarse para iniciarse automáticamente cuando Windows arranca o es posible iniciarlos manualmente. También pueden detenerse, reiniciarse o deshabilitarse.</p>
+        <br>
+        <p>Los servicios proporcionan funcionalidades de duración prolongada, como la conexión inalámbrica o el acceso a un servidor FTP. Para configurar los servicios de Windows, busque “servicios”. El subprograma del panel de control de Servicios de Windows se muestra en la figura.</p>
+        <br>
+        <img src="img/3.2.8-image-3.png" class="foto">
+        <br><br>
+        <p>Ser muy cuidadoso manipulando las configuraciones de estos servicios Algunos programas dependen de uno o más servicios para funcionar correctamente. Apagar un servicio puede afectar adversamente aplicaciones u otros servicios.</p>
+        <hr>
+        
+        <h1 id="3.2.9">3.2.9 Asignación de la memoria e identificadores</h1>
+        <br>
+        <p>Una computadora funciona almacenando las instrucciones en la memoria RAM hasta que la CPU las procesa. El espacio para la dirección postal virtual de un proceso es el conjunto de direcciones virtuales que puede utilizar el proceso. La dirección virtual no es la ubicación física real en la memoria, sino una entrada en una tabla de página que se utiliza para traducir la dirección virtual a una dirección física.</p>
+        <br>
+        <p>Cada proceso en una computadora con Windows de 32 bits admite un espacio para la dirección postal virtual que hace posible manipular hasta 4 GB. Cada proceso en una computadora con Windows de 64 bits admite un espacio para la dirección postal virtual de 8 TB.</p>
+        <br>
+        <p>Cada proceso de espacio del usuario se ejecuta en un espacio para la dirección postal privado, separado de otros procesos de espacio del usuario. Cuando el proceso de espacio del usuario necesita tener acceso a los recursos del núcleo, debe utilizar un identificador de procesos. Esto se debe a que el proceso de espacio del usuario no puede tener acceso directo a estos recursos del núcleo. El identificador de procesos brinda el acceso que necesita el proceso de espacio del usuario sin conectarse directamente.</p>
+        <br>
+        <p>Una poderosa herramienta para ver la asignación de memoria es RamMap, que se muestra en la figura. RAMMap forma parte del conjunto de herramientas de Windows Sysinternals. Se puede descargar desde Microsoft. RAMMap proporciona una gran cantidad de información acerca de cómo Windows ha asignado la memoria del sistema al kernel, los procesos, los controladores y las aplicaciones.</p>
+        <br>
+        <img src="img/3.2.9-image-1.jpg" class="foto">
+        <hr>
+        
+        <h1 id="3.2.10">3.2.10 El registro de Windows</h1>
+        <br>
+        <p>Windows almacena toda la información sobre el hardware, las aplicaciones, los usuarios y la configuración del sistema en una extensa base de datos conocida como el Registro. Las maneras en que interactúan estos objetos también se registran, por ejemplo, qué archivos abre una aplicación y todos los detalles de propiedad de carpetas y aplicaciones. El registro es una base de datos jerárquica donde el nivel más alto se conoce como subárbol, debajo están las claves y, luego, las subclaves. Los valores almacenan datos y se almacenan en las claves y subclaves. Una clave de registro puede tener hasta 512 niveles de profundidad.</p>
+        <br>
+        <p>La tabla enumera las cinco colmenas del registro de Windows.</p>
+        <br>
+        <table>
+            <tr>
+                <th>Colmena de registro</th>
+                <th>Descripción</th>
+            </tr>
+            <tr>
+                <td><b>HKEY_CURRENT_USER (HKCU)</b></td>
+                <td>Contiene información sobre el usuario actualmente conectado</td>
+            </tr>
+            <tr>
+                <td><b>HKEY_USER (HKU)</b></td>
+                <td>Contiene información sobre todas las cuentas de usuario en el host</td>
+            </tr>
+            <tr>
+                <td><b>HKEY_CLASSES_ROOT (HKCR)</b></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>HKEY_LOCAL_MACHINE (HKML)</b></td>
+                <td>Contiene información sobre los registros de vinculación e incrustación de objetos (OLE). OLE permite a los usuarios incrustar objetos de otras aplicaciones (como una hoja de cálculo) en un solo documento (como un documento de Word).</td>
+            </tr>
+            <tr>
+                <td><b>HKEY_CURRENT_CONFIG</b></td>
+                <td>Contiene información sobre el perfil de hardware actual</td>
+            </tr>
+        </table>
+        <br>
+        <p>No es posible crear nuevos subárboles. Las claves y los valores de registro en los subárboles pueden crearse, modificarse o eliminarse usando una cuenta con privilegios de administrador. Como es mostrado en la figura, la herramienta regedit.exe es usada para modificar el registro. Se debe tener mucho cuidado al usar esta herramienta. Cambios mínimos en el registro podrían tener consecuencias sustanciales o hasta catastróficas.</p>
+        <br>
+        <img src="img/3.2.10-image-3.jpg" class="foto">
+        <br><br>
+        <p>La navegación por el registro es muy similar a la del explorador de archivos de Windows. Use el panel izquierdo para navegar por las colmenas y la estructura debajo de él y use el panel derecho para ver el contenido del elemento resaltado en el panel izquierdo. Con tantas claves y subclaves, la ruta de la clave puede resultar muy prolongada. La ruta aparece en la parte inferior de la ventana como referencia. Dado que cada clave y subclave es, en definitiva, un contenedor, la ruta se representa como una carpeta en un sistema de archivos. El backslash () es utilizado para diferenciar la jerarquía de la base de datos.</p>
+        <br>
+        <p>Las claves de registro pueden contener una subclave o un valor. Los diferentes valores que pueden contener las claves son los siguientes:</p>
+        <br>
+        <li><b>REG_BINARY - </b>números o valores booleanos</li>
+        <li><b>REG_DWORD - </b>números superiores a 32 bits o datos sin procesar</li>
+        <li><b>REG_SZ - </b>Valores de String</li>
+        <br>
+        <p>Debido a que el registro mantiene casi toda la información del usuario y del sistema operativo, es fundamental asegurarse de no ponerlo en riesgo. Las aplicaciones potencialmente maliciosas pueden agregar claves de registro para que se inicien cuando se inicia la computadora. Durante un arranque normal, el usuario no verá el programa iniciarse porque la entrada está en el registro y la aplicación no muestra ninguna ventana ni indicio de inicio durante el arranque de la computadora. Un registro de clave, por ejemplo, sería devastador para la seguridad de una computadora si iniciara el arranque sin el conocimiento ni consentimiento del usuario. Cuando se realizan auditorías normales de seguridad o se corrige un sistema infectado, se deben revisar las ubicaciones de inicio de la aplicación en el registro para asegurarse de que cada elemento sea conocido y seguro de ejecutar.</p>
+        <br>
+        <p>El registro también contiene la actividad que realiza un usuario durante el uso diario habitual de la computadora. Esto abarca el historial de los dispositivos de hardware, incluidos todos los dispositivos que se han conectado a la computadora con el nombre, el fabricante y el número de serie. En el registro, también se almacena otra información, como los documentos que un usuario y un programa abrieron, dónde se encuentran y cuando se tuvo acceso a ellos. Esto resulta muy útil durante la ejecución de una investigación forense.</p>  
+        <hr>
+        
+        <h1 id="3.2.11">3.2.11 Práctica de laboratorio - Explorar procesos, subprocesos, controles y el registro de Windows</h1>
+        <br>
+        <p>En esta práctica de laboratorio, explorarán los procesos, subprocesos y identificadores usando el Explorador de procesos de SysInternals. También utilizarán el Registro de Windows para cambiar un ajuste.</p>
+        <div class="botones">
+                <button><a href="pdf/3.2.11-lab---exploring-processes--threads--handles--and-windows-registry_es-XL.pdf">Explorar procesos, subprocesos, controles y el registro de Windows</a></button>
+                <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m3/es-XL/assets/3.2.11-lab---exploring-processes--threads--handles--and-windows-registry_es-XL.pdf" target="_blank">Explorar procesos, subprocesos, controles y el registro de Windows (online)</a></button>
+        </div>
+        <hr>
+        
+        <h1 id="3.2.12">3.2.12 Comprobar su comprensión - Identificar la colmena del registro de Windows</h1>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSc42Hm9bBdpDCHssPncjtsTeEIpPBmqncpJZixZGPiI30UiMA/viewform?usp=publish-editor">3.2.12 Comprobar su comprensión - Identificar la colmena del registro de Windows</a>
+        <br>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

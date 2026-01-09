@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="4.1.1">4.1.1 ¿Qué es Linux?</h1>
+        <br>
+        <img src="img/4.1.1-image-0.png" class="foto">
+        <br><br>
+        <p>Linux es un sistema operativo creado en 1991. Linux es de código abierto, rápido, confiable y pequeño. Requiere muy pocos recursos de hardware para ejecutarse y tiene muchas opciones para ser personalizado. A diferencia de otros sistemas operativos, como Windows y Mac OS X, Linux fue creado por una comunidad de programadores que actualmente lo mantiene vigente. Linux es parte de varias plataformas y puede encontrarse en cualquier tipo de dispositivo, desde "relojes a supercomputadoras".</p>
+        <br>
+        <p>Otro aspecto importante de Linux es que está diseñado para conectarse a la red, lo que facilita mucho la escritura y el uso de aplicaciones con base en la red. Dado que Linux es de código abierto, cualquier persona o empresa puede obtener el código fuente del kernel, examinarlo, modificarlo y volver a compilarlo cuando lo desean. También pueden redistribuir el programa con o sin costo.</p>
+        <br>
+        <p>Una distribución de Linux es el término que se utiliza para describir paquetes creados por distintas organizaciones. Las distribuciones de Linux (o distros) incluyen el kernel de Linux con herramientas y paquetes de software personalizados. Si bien algunas de estas organizaciones pueden cobrar el soporte de su distribución de Linux (orientado a empresas con base en Linux), la mayoría también ofrece la distribución gratis sin soporte. Debian, Red Hat, Ubuntu, CentOS y SUSE son solo algunos ejemplos de distribuciones de Linux.</p>
+        <hr>
+
+        <h1 id="4.1.2">4.1.2 El Valor de Linux</h1>
+        <br>
+        <p>Linux es, a menudo, el sistema operativo elegido en el Centro de Operaciones de Seguridad (SOC). Estos son algunos de los motivos para elegir Linux:</p>
+        <hr>
+        <li><b>Linux es de código abierto - </b>Cualquier persona puede adquirir Linux sin cargo y modificarlo según sus necesidades específicas. Esta flexibilidad les permite a analistas y administradores diseñar un sistema operativo específicamente para análisis de seguridad.</li>
+        <li><b>La CLI de Linux es muy potente - </b>mientras que una GUI facilita muchas tareas, agrega complejidad y requiere más recursos de la computadora para funcionar. La interfaz de línea de comandos (CLI) de Linux es extremadamente potente y permite a los analistas realizar tareas no solo directamente en la terminal sino que también de manera remota.</li>
+        <li><b>El usuario tiene más control sobre el sistema operativo - </b>El usuario de administrador en Linux, conocido como el usuario root o superusuario, tiene poder absoluto sobre la computadora. A diferencia de otros sistemas operativos, el usuario root puede modificar cualquier aspecto de la computadora con unas pocas pulsaciones de teclas. Esta capacidad resulta especialmente útil cuando se trabaja con funciones de niveles inferiores, como la pila de red. Le permite al usuario root tener un control preciso sobre la manera en que el sistema operativo maneja los paquetes de red.</li>
+        <li><b>Permite mejorar el control de comunicación de la red - </b>El control es inherente a Linux. Debido a que es posible ajustar el sistema operativo en cualquier aspecto, es una gran plataforma para crear aplicaciones de red. Por este mismo motivo, muchas excelentes herramientas de software con base en la red están disponibles únicamente en Linux</li>
+        <hr>
+
+        <h1 id="4.1.3">4.1.3 Linux en el SOC</h1>
+        <br>
+        <p>La flexibilidad que proporciona Linux es una característica grandiosa para el SOC. Todo el sistema operativo se puede adaptar para convertirlo en la plataforma perfecta de análisis de seguridad. Por ejemplo, los administradores pueden agregar al sistema operativo solamente los paquetes necesarios para hacerlo rápido y eficiente. Es posible instalar y configurar herramientas de software específicas para trabajar en conjunto, lo que les permite a los administradores crear una computadora personalizada que se adapta perfectamente al flujo de trabajo de un SOC.</p>
+        <br>
+        <p>La figura muestra Sguil, que es la consola de analista de ciberseguridad en una versión especial de Linux llamada Cebolla de Seguridad. La Cebolla de Seguridad es un conjunto de herramientas de código abierto que trabajan juntas para el análisis de seguridad de red. Trabajaremos con la Cebolla de Seguridad más adelante en este curso.</p>
+        <br>
+        <img src="img/4.1.3-image-1.png" class="foto">
+        <br><br>
+        <p>La tabla enlista algunas herramientas que suelen encontrarse en un SOC</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Herramientas SOC</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Software de captura de paquetes</td>
+                <td>
+                    <li>Una herramienta crucial para un analista del SOC, ya que permite observar y entender cada detalle de una transacción de la red. </li>
+                    <li>Wireshark es una popular herramienta de captura de paquetes.</li>
+                </td>
+            </tr>   
+            <tr class="claro">
+                <td>Herramientas de análisis de Malware</td>
+                <td>Estas herramientas permiten al analista ejecutar y observar de manera segura el funcionamiento de un malware sin poner en riesgo el sistema subyacente.</td>
+            </tr>   
+            <tr class="oscuro">
+                <td>Sistemas de detección de intrusiones (Intrusion detection systems, IDSs)</td>
+                <td>
+                    <li>Estas herramientas son utilizadas para el monitoreo y la inspección de tráfico en tiempo real. </li>
+                    <li>Si cualquier aspecto del tráfico que fluye actualmente coincide con cualquiera de las reglas establecidas, se ejecuta una acción previamente definida.</li>
+                </td>
+            </tr>   
+            <tr class="claro">
+                <td>Firewalls</td>
+                <td>Este software se utiliza para especificar, según las reglas predefinidas, si el tráfico está permitido para entrar o salir de la red o dispositivo.</td>
+            </tr>   
+            <tr class="oscuro">
+                <td>Administradores de registros</td>
+                <td>
+                    <li>Los archivos de registro son usados para registrar eventos.</li>
+                    <li>Dado que una red puede generar muchas entradas en el registro de eventos, los software de gestores de registro se emplean para facilitar el monitoreo de los registros.</li>
+                </td>
+            </tr>   
+            <tr class="claro">
+                <td>Administración de información y eventos de seguridad (SIEM)</td>
+                <td>SIEM proporciona análisis en tiempo real de alertas y entradas de registro generadas por dispositivos de red, como IDSs y Firewalls</td>
+            </tr>   
+            <tr class="oscuro">
+                <td>Sistema de tiquetes</td>
+                <td>La tarea de asignación, edición y registro de tiquetes se realiza a través de un sistema de gestión de tiquetes Las alertas de seguridad a menudo se asignan a los analistas a través de un sistema de tiquetes.</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="4.1.4">4.1.4 Herramientas de Linux</h1>
+        <br>
+        <p>Además de herramientas específicas para el SOC, las computadoras de Linux utilizadas en el SOC suelen tener herramientas de pruebas de penetración. También conocida como PenTesting, una prueba de penetración es el proceso de atacar una red o computadora en busca de vulnerabilidades. Algunos ejemplos de herramientas de PenTesting son los generadores de paquetes, los escáneres de puertos y los ataques de prueba de concepto.</p>
+        <br>
+        <p>Kali Linux es una distribución de Linux agrupa muchas herramientas de penetración juntas en una sola distribución Linux. Kali contiene una amplia selección de herramientas. En la figura, se ve una captura de pantalla de Kali Linux. Observe todas las categorías principales de herramientas de pruebas de penetración.</p>
+        <br>
+        <img src="img/4.1.4-image-1.jpg" class="foto">
+    </div>
+</body>
+</html>

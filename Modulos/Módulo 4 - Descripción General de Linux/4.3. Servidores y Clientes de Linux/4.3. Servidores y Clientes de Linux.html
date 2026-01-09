@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="4.3.1">4.3.1 Una introducción a las Comunicaciones entre Clientes y Servidores</h1>
+        <br>
+        <p>Los servidores son computadoras con software instalado que les permite ofrecer servicios a los clientes a través de la red. Existen muchos tipos de servicios. Algunos proporcionan recursos externos a los clientes cuando lo solicitan, como archivos, mensajes de correo electrónico o páginas web. Otros servicios ejecutan tareas de mantenimiento, como la administración de registros y de la memoria, análisis de disco y mucho más. Cada servicio requiere un software de servidor independiente. Por ejemplo, el servidor en la figura utiliza un software para proporcionar al cliente la capacidad de recuperar y enviar archivos</p>
+        <br>
+        <p>El tema sobre comunicaciones entre Clientes y Servidores se analizará en mayor detalle más adelante en el curso.</p>
+        <br>
+        <img src="img/4.3.1-image.jpg" class="foto">
+        <hr>
+
+        <h1 id="4.3.2">4.3.2 Servidores, Servicios y sus Puertos</h1>
+        <br>
+        <p>En orden para que una computadora pueda ser el servidor para múltiples servicios, se utilizan los puertos. Un puerto es un recurso de red reservado utilizado por un servicio. Se dice que un servidor “escucha” en un puerto cuando se asocia a dicho puerto.</p>
+        <br>
+        <p>Mientras que el administrador puede decidir qué puerto utilizar con cualquier servicio, muchos clientes están configurados para utilizar un puerto específico de manera predeterminada. Es habitual dejar el servicio ejecutándose en su puerto predeterminado. La tabla enlista algunos puertos utilizados comúnmente y sus servicios. A estos también se los denomina “puertos conocidos”.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Puerto</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>20/21</td>
+                <td>Protocolo de transferencia de archivos (FTP)</td>
+            </tr>
+            <tr class="claro">
+                <td>22</td>
+                <td>Secure Shell (SSH) </td>
+            <tr class="oscuro">
+                <td>23</td>
+                <td>Servicio de inicio de sesión remoto de Telnet</td>
+            </tr>
+            <tr class="claro">
+                <td>25</td>
+                <td>Protocolo Simple de Transferencia de Correo (SMTP)</td>
+            <tr class="oscuro">
+                <td>53</td>
+                <td>Sistema de Nombres de Dominio (DNS)</td>
+            </tr>
+            <tr class="claro">
+                <td>67/68</td>
+                <td>Protocolo de Configuración Dinámica de Host (DHCP)</td>
+            <tr class="oscuro">
+                <td>69</td>
+                <td>Protocolo Trivial de Transferencia de Archivos (TFTP)</td>
+            </tr>
+            <tr class="claro">
+                <td>80</td>
+                <td>Protocolo de Transferencia de Hipertexto (HTTP)</td>
+            <tr class="oscuro">
+                <td>110</td>
+                <td>Protocolo de Oficina de Correos, versión 3 (POP3) </td>
+            </tr>
+            <tr class="claro">
+                <td>123</td>
+                <td>Protocolo de Tiempo de Red (NTP) </td>
+            <tr class="oscuro">
+                <td>143</td>
+                <td>Protocolo de Acceso a Mensajes de Internet (IMAP)</td>
+            </tr>
+            <tr class="claro">
+                <td>161/162</td>
+                <td>Protocolo Simple de Administración de Redes (SNMP)</td>
+            <tr class="oscuro">
+                <td>443</td>
+                <td>HTTP Seguro (HTTPS)</td>
+            </tr>
+        </table>
+        <br>
+        <p>Los puertos y su uso en la red se analizan con mayor detalle más adelante en el curso</p>
+        <hr>
+
+        <h1 id="4.3.3">4.3.3 Clientes</h1>
+        <br>
+        <p>Los clientes son programas o aplicaciones cuyo objetivo es comunicarse con un tipo de servidor específico. También conocidos como aplicaciones cliente, los clientes usan un protocolo bien definido para comunicarse con el servidor. Los Navegadores Web son clientes web utilizados para comunicarse con servidores web mediante el Protocolo de Transferencia Hyper (HTTP) en el Puerto 80. El cliente del Protocolo de Transferencia de Archivos (FTP) es un software utilizado para comunicarse con un servidor FTP. En la figura, se ve a un cliente cargando archivos a un servidor.</p>
+        <br>
+        <img src="img/4.3.3-image.jpg" class="foto">
+        <hr>
+
+        <div class="lecciones">
+            <h1 id="4.3.4">4.3.4 Práctica de laboratorio - Servidores Linux</h1>
+            <br>
+            <p>En este laboratorio, se pondrá en practica el uso de la línea de comando de Linux para identificar los servidores que se están ejecutando en una computadora.</p>
+            <br>
+            <div class="botones">
+                <button>
+                    <a href="pdf/4.3.4-lab---linux-servers_es-XL.pdf">Servidores Linux</a>
+                </button>
+                <button>
+                    <a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m4/es-XL/assets/4.3.4-lab---linux-servers_es-XL.pdf" target="_blank">Servidores Linux (online)</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

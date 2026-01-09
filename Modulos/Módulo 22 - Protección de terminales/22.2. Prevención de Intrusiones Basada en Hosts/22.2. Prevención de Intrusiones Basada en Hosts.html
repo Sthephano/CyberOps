@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="22.2.1">22.2.1 Firewalls basados en Hosts</h1>
+        <p>Los firewalls personales basados en hosts son programas de software independientes que controlan el tráfico que entra o sale de una computadora. Las aplicaciones de firewall también están disponibles para teléfonos y tabletas Android.</p>
+        <br>
+        <p>Los firewalls basados en hosts pueden utilizar un conjunto de políticas o perfiles predefinidos para controlar los paquetes que entran y salen de una computadora. También pueden tener reglas que se pueden modificar o crear directamente para controlar el acceso según direcciones, protocolos y puertos. Las aplicaciones de firewall basadas en hosts también pueden configurarse para emitir alertas a los usuarios si se detecta comportamiento sospechoso. Luego, pueden ofrecerle al usuario la posibilidad de permitir que una aplicación sospechosa se ejecute o que no lo haga nunca en el futuro.</p>
+        <br>
+        <p>Los datos del registro varían según la aplicación de firewall. Por lo general, se incluye la fecha y hora del evento, si la conexión se autorizó o denegó, información sobre las direcciones IP de origen o destino de los paquetes, y los puertos de origen y destino de los segmentos encapsulados. Además, es posible que actividades comunes, como búsquedas de DNS y otros eventos de rutina, aparezcan en los registros del firewall basado en hosts, por lo que el filtrado y otras técnicas de análisis son útiles para la inspección de grandes volúmenes de datos de registros.</p>
+        <br>
+        <p>Una forma de prevenir las intrusiones es el uso de firewalls distribuidos. Los firewalls distribuidos combinan características de firewalls basados en hosts con administración centralizada. La función de administración impone reglas a los hosts y también puede aceptar los archivos de registro de los hosts.</p>
+        <br>
+        <p>Ya sea que esté instalado completamente en el host o distribuido, el firewall basado en hosts es una capa importante de la seguridad de la red, junto con el firewall basado en la red. Estos son algunos ejemplos de firewalls basados en hosts:</p>
+        <br>
+        <li><b>Windows Defender Firewall - </b>Incluido por primera vez en Windows XP, el Firewall de Windows (actualmente conocido como Windows Defender Firewall) utiliza un enfoque basado en perfiles para configurar la funcionalidad del firewall. Al acceso a redes públicas se le asigna el perfil de firewall "Público" restrictivo. El perfil "Privado" es para computadoras que están aisladas de Internet mediante otros dispositivos de seguridad, como un router doméstico con funcionalidad de firewall. El perfil "Dominio" es el tercer perfil disponible. Se elige para las conexiones a una red de confianza, como una red empresarial que tiene una infraestructura de seguridad adecuada. Firewall de Windows tiene la funcionalidad de registro y puede administrarse de manera centralizada con políticas de seguridad de grupo personalizadas desde un servidor de administración, como System Center 2012 Configuration Manager.</li>
+        <li><b>iptables - </b>Es una aplicación que les permite a los administradores de sistemas de Linux configurar reglas de acceso a la red que forman parte de los módulos de Linux kernel Netfilter.</li>
+        <li><b>nftables - </b>La aplicación "nftables", sucesora de "iptables", es una aplicación de firewall de Linux que utiliza una máquina virtual simple en el kernel de Linux. El código se ejecuta dentro de la máquina virtual que inspecciona los paquetes de red e implementa reglas de decisión en cuanto a la aceptación y el reenvío de paquetes.</li>
+        <li><b>TCP Wrappers - </b>Es un control de acceso y sistema de registro basado en reglas para Linux. El filtrado de paquetes se basa en direcciones IP y servicios de red.</li>
+        <hr>
+
+        <h1 id="22.2.2">22.2.2 Detección de Intrusiones Basada en hosts</h1>
+        <br>
+        <p>La diferencia entre la prevención de intrusiones basada en hosts y la detección de intrusiones basada en hosts no está clara. De hecho, algunas fuentes hacen referencia a sistemas de detección y prevención de intrusiones basado en hosts (Host- Based Intrusion Dtection and Prevention Systems HIPDS). Debido a que la industria parece favorecer el uso de la sigla HIDS, la utilizaremos en nuestro análisis.</p>
+        <br>
+        <p>Un sistema HIDS está diseñado para proteger a los hosts de malware conocido y desconocido. Un HIDS puede brindar monitoreo e informes detallados de la actividad de configuración y aplicaciones del sistema. Puede proporcionar análisis de registros, correlación de eventos, verificación de integridad, aplicación de políticas, detección de rootkit y alertas. Un HIDS incluirá, con frecuencia, un terminal de servidor de administración, como se ve en la figura.</p>
+        <br>
+        <p>Un HIDS es una aplicación de seguridad integral que combina las funcionalidades de las aplicaciones antimalware con la de un firewall. Un HIDS no solo detecta el malware, sino que también puede evitar que se ejecute si llega a un host. Debido a que el software HIDS debe ejecutarse directamente en el host, se considera un sistema basado en agentes</p>
+        <br><br>
+
+        <h2>Arquitectura para la Detección de Intrusiones basada en hosts</h2>
+        <br>
+        <img src="img/Arquitectura para la Detección de Intrusiones basada en hosts.jpg" class="foto">
+        <hr>
+
+        <h1 id="22.2.3">22.2.3 Funcionamiento del HIDS</h1>
+        <p>Se puede decir que los sistemas de seguridad basado en hosts funcionan como sistemas de detección y prevención, ya que evitan los ataques conocidos y detectan posibles ataques desconocidos. Un HIDS utiliza estrategias proactivas y reactivas. Un HIDS puede prevenir intrusiones porque utiliza firmas para detectar malware conocido y evita que infecte un sistema. Sin embargo, esta estrategia solamente es buena contra las amenazas conocidas. Las firmas son ineficaces contra amenazas nuevas o de zero-day. Además, algunas familias de malware se caracterizan por ser polimorfas. Esto significa que los atacantes pueden crear variaciones de un tipo (o familia) de malware para evadir las detecciones basadas en firmas, cambiando apenas algunos aspectos de la firma del malware para que no se pueda detectar. Se utiliza un conjunto adicional de estrategias para detectar la posibilidad de intrusiones exitosas de malware que evada la detección de firmas:</p>
+        <br>
+        <li><b>Basado en Anomalías - </b>El comportamiento del sistema del host se compara con un modelo normal de referencia aprendido. Las desviaciones significativas del host comparadas con el modelo normal se interpretan como el resultado de alguna clase de intrusión. Si se detecta una intrusión, el HIDS puede registrar detalles de la intrusión, enviar alertas a los sistemas de administración de seguridad y tomar medidas para evitar el ataque. La línea de base se deriva del comportamiento del usuario y del sistema. Debido a que muchas cosas, además del malware, pueden hacer que el comportamiento del sistema cambie, la detección de anomalías puede generar muchos resultados erróneos que pueden aumentar la carga de trabajo del personal de seguridad y también reducir la credibilidad del sistema.</li>
+        <li><b>Basado en políticas - </b>El comportamiento normal del sistema se describe mediante reglas (o la violación de las reglas) predefinidas. La violación de estas políticas tiene como resultado las acciones del HIDS. El HIDS puede tratar de cerrar procesos de software que hayan infringido las reglas y puede registrar esos eventos y alertar al personal con respecto a las infracciones. La mayor parte del software de HIDS viene con un conjunto de reglas predefinidas. Con algunos sistemas, los administradores pueden crear políticas personalizadas que se pueden distribuir a hosts desde un sistema centralizado de administración de políticas.</li>
+        <hr>    
+
+        <h1 id="22.2.4">22.2.4 Productos de HIDS</h1>
+        <p>Existe una serie de productos de HIDS en el mercado actual. La mayoría de ellos utiliza el software en el host y algún tipo de funcionalidad centralizada de administración de la seguridad que permite la integración con servicios de monitoreo de seguridad de la red y de inteligencia de amenazas. Algunos ejemplos son: Cisco AMP, AlienVault USM, Tripwire, and Open Source HIDS SECurity (OSSEC).</p>
+        <br>
+        <p>OSSEC utiliza un servidor de administración centralizada y agentes que se instalan en hosts individuales. Actualmente, los agentes están disponibles para las plataformas Mac, Windows, Linux y Solaris. El servidor OSSEC también puede recibir y analizar alertas de una variedad de dispositivos de red y firewalls usando syslog. OSSEC monitorea los registros del sistema en los hosts y también lleva a cabo la verificación de la integridad de los archivos. OSSEC puede detectar rootkits y otros tipos de malware, y también se puede configurar para ejecutar scripts o aplicaciones en los hosts como respuesta a los desencadenantes de eventos.</p>
+        <br>
+        <p>Busque OSSEC en Internet para obtener más información.</p>
+        <hr>
+        
+        <h1 id="22.2.5">22.2.5 Actividad Verifique su comprensión - Identificar la terminología sobre protección contra intrusiones con basada en hosts.</h1>
+    </div>
+</body>
+</html>

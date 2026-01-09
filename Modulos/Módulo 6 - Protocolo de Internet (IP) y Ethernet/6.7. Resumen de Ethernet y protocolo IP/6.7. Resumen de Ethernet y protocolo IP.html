@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="6.7.1">6.7.1 ¿Qué aprendí en este módulo?</h1>
+        <br>
+        <p><b>Ethernet</b></p>
+        <br>
+        <p>Ethernet y LAN inalámbricas (WLAN) son las dos tecnologías LAN más populares. Ethernet opera en las capas físicas y de enlace de datos del modelo OSI y se definen en los estándares IEEE 802.2 y 802.3. Ethernet admite anchos de banda de 10 Mbps a 100.000 Mbps. Es importante conocer los campos de trama Ethernet. Una dirección MAC de Ethernet es un valor binario de 48 bits expresado como 12 dígitos hexadecimales (4 bits por dígito hexadecimal). La dirección MAC se puede representar mediante guiones, dos puntos o puntos entre los grupos de dígitos.</p>
+        <br>
+        <p><b>IPv4</b></p>
+        <br>
+        <p>Los protocolos de capa de red permiten a los dispositivos finales intercambiar datos entre redes e Internet. IP versión 4 (IPv4) e IP versión 6 (IPv6) son los principales protocolos de comunicación de la capa de red. Para lograr comunicaciones punto a punto a través de los límites de la red, los protocolos de capa de red realizan cuatro operaciones básicas: El protocolo IP encapsula el segmento de la capa de transporte agregando un encabezado IP, que se utiliza para entregar el paquete al host de destino, el cuál es examinado por los dispositivos de la capa 3 (es decir, los Routers y Switches capa 3), para alcanzar el host de destino. El protocolo IP es connectionless (no reuqiere una ruta preestablecida), mejor esfuerzo e independiente de los medios. Es importante estar familiarizado con la estructura del paquete IP.</p>
+        <br>
+        <p><b>Conceptos básicos del direccionamiento IP</b></p>
+        <br>
+        <p>La estructura de las direcciones IP consta de una dirección de red jerárquica de 32 bits que identifica la porción de red y la parte del host dentro de una red. Los bits dentro de la porción de red de la dirección deben ser idénticos para todos los dispositivos que residen en la misma red. Los bits dentro de la porción de host de la dirección deben ser únicos para identificar un host específico dentro de una red. A un host se le asigna una dirección IPv4 y una máscara de subred. La máscara de subred IPv4 se usa para diferenciar la porción de red de la porción de host de una dirección IPv4. La dirección de red representa todos los dispositivos de la misma red. La longitud del prefijo es el número de bits establecidos en 1 en la máscara de subred. Está escrito en "notación de barra", que se observa mediante una barra diagonal (/) seguida del número de bits establecidos en 1. El proceso real utilizado para identificar las porciones de red y host se llama ANDing. Las subredes crean dominios de difusión más pequeños para reducir el tráfico general de la red, mejorar el rendimiento de la red e implementar políticas de seguridad. Las subredes se pueden utilizar para agrupar dispositivos por ubicación, departamento o tipo de dispositivo.</p>
+        <br>
+        <p><b>Tipos de direcciones IPv4</b></p>
+        <br>
+        <p>Las primeras implementaciones de IPv4 proporcionaron direcciones de red enrutables globalmente basadas en un sistema bajo un esquema de calase, que utiliza las Clases A, B y C, cada una de las cuales tiene diferentes rangos de direcciones IP. Sin embargo, el sistema de direccionamiento bajo este esquema era defectuoso y rápidamente agotó las direcciones de red disponibles y, por lo tanto, fue reemplazado por el actual sistema de direccionamiento sin esquemas de clases. Hay direcciones IPv4 públicas y direcciones IPv4 privadas. Las direcciones privadas deben ser utilizadas por las organizaciones y no se propagan en Internet. Hay tres bloques de direcciones privadas disponibles.</p>
+        <br>
+        <p><b>La puerta de enlace (gateway) predeterminada</b></p>
+        <br>
+        <p>El dispositivo final de origen determina si un paquete está destinado a un host local o a un host remoto. En IPv4 -: El dispositivo de origen utiliza su propia máscara de subred junto con su propia dirección IPv4 y la dirección IPv4 de destino para realizar esta determinación. En IPv6: El router local anuncia la dirección de red local (prefijo) a todos los dispositivos de la red. El router conectado al segmento de red local se denomina gateway predeterminado. Tiene una dirección IP local en el mismo rango de direcciones que otros hosts en la red local. Puede aceptar datos en la red local y reenviar datos fuera de la red local. Este también enruta el tráfico a otras redes. Una ruta predeterminada es la ruta o camino que la PC utiliza cuando intenta conectarse a la red remota. En un host de Windows, el comando route print o netstat -r se puede usar para mostrar la tabla de enrutamiento del host.</p>
+        <br>
+        <p><b>IPv6</b></p>
+        <br>
+        <p>Una dirección IPv6 es una dirección jerárquica de 128 bits. El espacio de direcciones de 128 bits proporciona un grupo mucho mayor de direcciones IP disponibles públicamente (340 undecilliones) que IPv4 (4,3 mil millones). El Protocolo de mensajes de control de Internet versión 6 (ICMPv6), también incluye la resolución y configuración automática de direcciones , Estas características no se encuentran presentes en ICMPv4. Las direcciones IPv6 se escriben como una cadena de valores hexadecimales. Cada cuatro bits está representado por un solo dígito hexadecimal; para un total de 32 valores hexadecimales. Hay dos reglas que ayudan a reducir el número de dígitos necesarios para representar una dirección IPv6. La primera regla es omitir los ceros iniciales en cualquier hexteto. Regla 2 : Los dos puntos dobles (::) pueden reemplazar cualquier cadena única y contigua de uno o más segmentos de 16 bits (hextetos) que estén compuestas sólo por ceros. La longitud del prefijo se representa en notación de barra diagonal y se usa para indicar la porción de red de una dirección IPv6. La longitud de prefijo puede ir de 0 a 128. La longitud de prefijo IPv6 recomendada para LAN y la mayoría de los otros tipos de redes es / 64. Esto se debe a que la autoconfiguración de direcciones sin estado (SLAAC) utiliza 64 bits para el ID de la interfaz. También facilita la creación y gestión de subredes.</p>
+        <hr>
+        <h1 id="6.7.2">6.7.2 Módulo 6 - Cuestionario de Ethernet y Protocolo IP</h1>
+    </div>
+</body>
+</html>

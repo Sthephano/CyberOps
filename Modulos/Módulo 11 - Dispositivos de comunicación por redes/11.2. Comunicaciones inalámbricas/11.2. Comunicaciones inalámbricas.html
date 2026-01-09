@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="11.2.1">11.2.1 Video - Comunicaciones inalámbricas</h1>
+        <br>
+        <video src="video/Video - Comunicaciones inalámbricas.mp4" controls></video>
+        <hr>
+
+        <h1 id="11.2.2">11.2.2 LAN inalámbricas frente a redes cableadas</h1>
+        <br>
+        <p>Las WLAN usan radiofrecuencias (RF) en lugar de cables en la capa física y la subcapa MAC de la capa de enlace de datos. Las WLAN comparten un origen similar con las LAN Ethernet. El IEEE adoptó la cartera 802 LAN/MAN de estándares de arquitectura de redes informáticas. Los dos grupos de trabajo 802 dominantes son Ethernet 802.3 (que define Ethernet para redes LAN cableadas) y 802.11 (que define Ethernet para redes WLAN). Hay diferencias importantes entre los dos.</p>
+        <br>
+        <p>Las WLAN usan radiofrecuencias (RF) en lugar de cables en la capa física y la subcapa MAC de la capa de enlace de datos. Las WLAN comparten un origen similar con las LAN Ethernet. El IEEE adoptó la cartera 802 LAN/MAN de estándares de arquitectura de redes informáticas. Los dos grupos de trabajo 802 dominantes son Ethernet 802.3 (que define Ethernet para redes LAN cableadas) y 802.11 (que define Ethernet para redes WLAN). Hay diferencias importantes entre los dos.</p>
+        <br>
+        <li>Las WLAN conectan clientes a la red mediante puntos de acceso (AP) inalámbrico o un router inalámbrico, en lugar de hacerlo mediante un switch Ethernet.</li>
+        <li>Las WLAN conectan los dispositivos móviles que, en general, están alimentados por batería, en lugar de los dispositivos enchufados de la LAN. Las NIC inalámbricas tienden a reducir la duración de la batería de los dispositivos móviles.</li>
+        <li>Las WLAN admiten hosts que se disputan el acceso a los medios de RF (bandas de frecuencia). Para evitar proactivamente las colisiones dentro de los medios, el estándar 802.11 recomienda la prevención de colisiones (CSMA/CA) en lugar de la detección de colisiones (CSMA/CD) para el acceso a los medios.</li>
+        <li>Las WLAN utilizan un formato de trama diferente al de las LAN Ethernet conectadas por cable. Las WLAN requieren información adicional en el encabezado de la Capa 2 de la trama.</li>
+        <li>Las WLAN tienen mayores inconvenientes de privacidad debido a que las frecuencias de radio pueden salir fuera de las instalaciones.</li>
+        <br>
+        <p>La tabla resume las diferencias entre LAN inalámbricas y cableadas.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+            <th>
+                <p><b>Característica</b></p>
+            </th>
+            <th>
+                <p><b>LAN inalámbrica 802.11</b></p>
+            </th>
+            <th>
+                <p><b>802.3 LANs Ethernet inalámbricas</b></p>
+            </th>
+            </tr>
+            <tr class="claro">
+            <td>
+                <p>Capa física</td>
+            <td>Frecuencia de radio (RF)</td>
+            <td>Cables físicos</td>
+            </tr>
+            <tr class="oscuro">
+            <td>Acceso de medios</td>
+            <td>Prevención de colisiones</td>
+            <td>Detección de colisiones</td>
+            </tr>
+            <tr class="claro">
+            <td>>Disponibilidad</td>
+            <td>Cualquiera con una NIC inalámbrica en el rango de un punto de acceso</td>
+            <td>Se requiere conexión por cable físico</td>
+            </tr>
+            <tr class="oscuro">
+            <td>Interferencia en la señal</td>
+            <td>Sí</td>
+            <td>Mínimo</td>
+            </tr>
+            <tr class="claro">
+            <td>Regulación</td>
+            <td>Diferentes regulaciones por país</td>
+            <td>El estándar IEEE dictamina</td>
+            </tr>
+        </table>
+        <hr>
+
+        <h1 id="11.2.3">11.2.3 802.11 Estructura del Frame</h1>
+        <br>
+        <p>Recuerde que todas los frames de capa 2 consisten en un encabezado, carga útil y sección de secuencia de verificación de trama (FCS). El formato del Frame 802.11 es similar al formato de Frame de Ethernet, excepto que contiene más campos, como se muestra en la figura.</p>
+        <br>
+        <img src="img/Estructura del Frame.jpg" class="foto">
+        <br><br>
+        <p>todas las tramas 802.11 inalámbricas contienen los siguientes campos;</p>
+        <br>
+        <li><b>Control de trama ─ </b>Identifica el tipo de trama inalámbrica y contiene subcampos para la versión del protocolo, el tipo de trama, el tipo de dirección, la administración de energía y la configuración de seguridad.</li>
+        <li><b>Duración - </b>En general, se usa para indicar el tiempo restante necesario para recibir la siguiente transmisión de tramas.</li>
+        <li><b>Dirección 1 - </b>Normalmente, contiene la dirección MAC del dispositivo o AP receptor inalámbrico.</li>
+        <li><b>Dirección 2 </b>Normalmente, contiene la dirección MAC del dispositivo o AP receptor inalámbrico.</li>
+        <li><b>Dirección 3 - </b>En ocasiones, contiene la dirección MAC del destino, como la interfaz del router (puerta de enlace predeterminada) a la que se conecta el AP.</li>
+        <li><b>Control de Secuencia - </b>Contiene información para controlar la secuencia y las tramas fragmentadas</li>
+        <li><b>Dirección 4 - </b>Suele estar vacío, ya que se usa solo en el modo ad hoc.</li>
+        <li><b>Payload ─ </b>Contiene los datos para la transmisión.</li>
+        <li><b>FCS ─ </b>Esto se utiliza para el control de errores de la capa 2.</li>
+        <hr>
+
+        <h1 id="11.2.4">11.2.4 CSMA/CA</h1>
+        <br>
+        <p>Las WLAN son configuraciones de medios compartidos semidúplex. Half-duplex significa que solo un cliente puede transmitir o recibir en dado momento. Medios compartidos significa que todos los clientes pueden transmitir y recibir en el mismo canal de radio. S Esto crea un problema porque un cliente inalambrico no puede escuchar mientras está enviando, lo que hace que sea imposible detectar una colisión.</p>
+        <br>
+        <p>Para resolver este problema las WLAN utilizan el acceso múltiple con detección de operador con evitación de colisiones (CSMA / CA) para determinar cómo y cuándo enviar datos. Un cliente inalámbrico hace lo siguiente:</p>
+        <br>
+        <li>Escucha el canal para ver si está inactivo, es decir, no hay otro tráfico actualmente en el canal. El canal es tambien llamado el portador.</li>
+        <li>Envía un mensaje listo para enviar (Ready to Send)(RTS) al AP para solicitar acceso dedicado a la red.</li>
+        <li>Recibe un mensaje de permiso para enviar (clear to send) (CTS) desde el AP garantizando el acceso para enviar.</li>
+        <li>Si el cliente inalámbrico no recibe el mensaje CTS este espera una cantidad de tiempo aleatoria antes de reiniciar el proceso.</li>
+        <li>Después de recibir el CTS, trasmite la información.</li>
+        <li>Todas las transmisiones son reconocidas. Si un cliente no recibe el reconocimiento, asume que ocurrió una colisión y reinicia el proceso.</li>
+        <hr>
+
+        <h1 id="11.2.5">11.2.5 Asociación de AP de cliente inalámbrico</h1>
+        <br>
+        <p>Para que los dispositivos inalámbricos se comuniquen a través de una red, primero se deben asociar a un AP o un router inalámbrico. Una parte importante del proceso 802.11 es descubrir una WLAN y conectarse a esta. Los dispositivos inalámbricos completan el siguiente proceso de tres etapas, como muestra en la figura:</p>
+        <br>
+        <li>Descubre un AP inalámbrico</li>
+        <li>Autenticar con el AP.</li>
+        <li>Asociarse con el AP.</li>
+        <br>
+        <img src="img/Asociación de AP de cliente inalámbrico.jpg" class="foto">
+        <br><br>
+
+        <p>Para lograr una asociación exitosa, un cliente inalámbrico y un AP deben acordar parámetros específicos: Para permitir la negociación de estos procesos, se deben configurar los parámetros en el AP y posteriormente en el cliente.</p>
+        <br>
+        <li><b>SSID - </b>El nombre del SSID aparece en la lista de redes inalámbricas disponibles en un cliente. En organizaciones más grandes que usan múltiples VLAN para segmentar el tráfico, cada SSID se asigna a una VLAN Según la configuración de la red, varios AP en una red pueden compartir un SSID.</li>
+        <li><b>Contraseña - </b>El cliente inalámbrico la necesita para autenticarse con el AP.</li>
+        <li><b>Modo de red - </b>Se refiere a los estándares WLAN 802.11 a/b/g/n/ac/ad. Los AP y routers inalámbricos pueden funcionar en modo combinado, lo que significa que pueden utilizar varios estándares al mismo tiempo.</li>
+        <li><b>Modo de seguridad - </b>Se refiere a la configuración de los parámetros de seguridad, como WEP, WPA o WPA2. Habilite siempre el nivel más alto de seguridad que se admita.</li>
+        <li><b>Configuración de canales - </b>Se refiere a las bandas de frecuencia que se usan para transmitir datos inalámbricos. Los routers inalámbricos y los AP pueden escanear los canales de radiofrecuencia y seleccionar automáticamente una configuración de canal adecuada. Los routers y los AP inalámbricos pueden elegir la configuración de canales, o esta se puede definir manualmente si existe interferencia con otro AP o dispositivo inalámbrico.</li>
+        <hr>
+
+        <h1 id="11.2.6">11.2.6 Modo de entrega pasiva y activa</h1>
+        <br>
+        <p>Los dispositivos inalámbricos deben detectar un AP o un router inalámbrico y se deben conectar a este. Los clientes inalámbricos se conectan al AP mediante un proceso de análisis (sondeo). Este proceso puede ser pasivo o activo.</p>
+        <br><br>
+
+        <p><b>Modo pasivo</b></p>
+        <br>
+        <p></p>
+        <br>
+        <img src="img/Modo pasivo.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Modo activo</b></p>
+        <br>
+        <p>En modo activo: los clientes inalámbricos deben conocer el nombre del SSID. El cliente inalámbrico inicia el proceso al transmitir por difusión una trama de solicitud de sondeo en varios canales. La solicitud de sondeo incluye el nombre del SSID y los estándares admitidos. Los AP configurados con el SSID enviarán una respuesta de prueba que incluye el SSID, los estándares admitidos y la configuración de seguridad. Si un AP o un router inalámbrico se configuran para que no transmitan por difusión las tramas de señal, es posible que se requiera el modo activo.</p>
+        <br>
+        <p>Para descubrir las redes WLAN cercanas, un cliente inalámbrico también podría enviar una solicitud de sondeo sin un nombre de SSID. Los AP configurados para transmitir por difusión tramas de señal responderían al cliente inalámbrico con una respuesta de sondeo y proporcionarían el nombre del SSID. Los AP con la característica de transmisión del SSID por difusión deshabilitada no responden.</p>
+        <br>
+        <img src="img/Modo activo.jpg" class="foto">
+        <hr>
+
+        <h1 id="11.2.7">11.2.7 Verifique su conocimiento - Pasos en el proceso de cliente y AP</h1>
+        <br>
+        <hr>
+
+        <h1 id="11.2.8">11.2.8 Dispositivos inalámbricos - AP, LWAP y WLC</h1>
+        <br>
+        <p>Una implementación común de tecnología inalámbrica de datos permite a los dispositivos conectarse en forma inalámbrica a través de una LAN. En general, una LAN inalámbrica requiere puntos de acceso inalámbrico y clientes que tengan NIC inalámbricas. Los routers inalámbricos domésticos y de pequeñas empresas integran las funciones de un router, un switch y un punto de acceso en un solo dispositivo, como el que se ve en la figura. Tenga en cuenta que, en redes pequeñas, es posible que el router inalámbrico sea el único AP debido a que solamente se brinda cobertura inalámbrica a un área pequeña. En redes de más tamaño, puede haber muchos AP.</p>
+        <br>
+        <img src="img/11.2.8-image-1.jpg" class="foto">
+        <br><br>
+        <p>Todas las funciones de control y gestión de los AP en una red pueden centralizarse en una controladora de LAN inalámbrica (WLC, Wireless LAN Controller). Cuando se utiliza una WLC, los AP ya no actúan de manera autónoma, sino que actúan como AP ligeros (LWAP, Lightweight AP). Los LWAP solamente reenvían datos entre la LAN inalámbrica y la WLC. Todas las funciones de administración, como definir SSID y autenticar, se llevan a cabo en la WLC centralizada, en lugar de en cada AP individual. Una de las tantas ventajas de centralizar las funciones de administración de AP en la WLC es simplificar la configuración y el monitoreo de numerosos puntos de acceso.</p>
+        <hr>
+
+        <h1 id="11.2.9">11.2.9 Verifique su conocimiento - Identifique el dispositivo LAN</h1>
+    </div>
+</body>
+</html>

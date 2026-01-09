@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="7.1.1">7.1.1 Mensajes de ICMPv4</h1>
+        <br>
+        <p>Si bien IP es solo un protocolo de máximo esfuerzo, el paquete TCP/IP permite que los mensajes se envíen en caso de que se produzcan determinados errores. Estos mensajes se envían mediante los servicios de ICMP. El objetivo de estos mensajes es proporcionar respuestas acerca de temas relacionados con el procesamiento de paquetes IP en determinadas condiciones, no es hacer que IP sea confiable. Los mensajes de ICMP no son obligatorios y, a menudo, no se permiten dentro de una red por razones de seguridad.</p>
+        <br>
+        <p>El protocolo ICMP está disponible tanto para IPv4 como para IPv6. El protocolo de mensajes para IPv4 es ICMPv4. ICMPv6 proporciona estos mismos servicios para IPv6, pero incluye funcionalidad adicional. En este curso, el término ICMP se utilizará para referirse tanto a ICMPv4 como a ICMPv6.</p>
+        <br>
+        <p>Existe una gran variedad de tipos de mensajes de ICMP y de razones para enviarlos. Analizaremos algunos de los mensajes más comunes.</p>
+        <br>
+        <p>Los mensajes ICMP comunes a ICMPv4 y a ICMPv6 incluyen lo siguiente:</p>
+        <br>
+        <li>Confirmación de host</li>
+        <li>Destino o servicio inaccesible</li>
+        <li>Tiempo superado</li>
+        <li>Redireccionamiento de ruta</li>
+        <br>
+        <p>Confirmación de host</p>
+        <br>
+        <p>Se puede utilizar un mensaje de eco ICMP para determinar si un host funciona. El host local envía una solicitud de eco ICMP a un host. Si el host se encuentra disponible, el host de destino responde con una respuesta de eco. En la figura, haga clic en el botón Reproducir para ver una animación de la solicitud de eco/respuesta de eco de ICMP. Este uso de los mensajes de eco ICMP es la base de la utilidad ping.</p>
+        <br>
+        <video src="video/Mensajes de ICMPv4.mp4" controls></video>
+        <br><br>
+        <p>Destino o Servicio Inaccesible</p>
+        <br>
+        <p>Cuando un host o gateway recibe un paquete que no puede entregar, puede utilizar un mensaje ICMP de destino inalcanzable para notificar al origen que el destino o el servicio son inalcanzables. El mensaje incluye un código que indica el motivo por el cual no se pudo entregar el paquete.</p>
+        <br>
+        <p>Estos son algunos de los códigos de destino inalcanzable para ICMPv4:</p>
+        <br>
+        <li><b>0 - </b>Red inalcanzable</li>
+        <li><b>1 - </b>Host inalcanzable</li>
+        <li><b>2 - </b>Protocolo inalcanzable</li>
+        <li><b>3 - </b>Puerto inalcanzable</li>
+        <br>
+        <p><b>Nota: </b>ICMPv6 tiene códigos similares pero ligeramente diferentes para los mensajes de Destino Inalcanzable.</p>
+        <br>
+        <p><b>Tiempo Excedido</b></p>
+        <br>
+        <p>Los routers utilizan los mensajes de tiempo superado de ICMPv4 para indicar que un paquete no puede reenviarse debido a que el campo de tiempo de duración (TTL) del paquete se disminuyó a 0. Si un router recibe un paquete y disminuye el campo TTL en el paquete IPV4 a cero, descarta el paquete y envía un mensaje de tiempo superado al host de origen.</p>
+        <br>
+        <p>ICMPv6 también envía un mensaje de tiempo superado si el router no puede reenviar un paquete IPv6 debido a que el paquete caducó. IPv6 no tiene un campo TTL. Por lo que utiliza el campo de límite de saltos para determinar si el paquete caducó.</p>
+        <hr>
+
+        <h1 id="7.1.2">7.1.2 Mensajes de RS y RA de ICMPv6</h1>
+        <br>
+        <p>Los mensajes informativos y de error que se encuentran en ICMPv6 son muy similares a los mensajes de control y de error que implementa ICMPv4. Sin embargo, ICMPv6 tiene nuevas características y funcionalidad mejorada que no se encuentran en ICMPv4. Los mensajes ICMPv6 están encapsulados en IPv6.</p>
+        <br>
+        <p>ICMPv6 incluye cuatro mesajes nuevos como parte del protocolo de detección de vecino (ND o NDP).</p>
+        <br>
+        <p>Mensajería entre un router IPv6 y un dispositivos IPv6:</p>
+        <br>
+        <li>Mensaje de Solicitud de Router (RS)</li>
+        <li>Mensaje de Anuncio de Router (RA)</li>
+        <br>
+        <p>Mensajería entre dispositivos IPv6:</p>
+        <br>
+        <li>Mensaje de Solicitud de Vecino (NS)</li>
+        <li>Mensaje de Anuncio de Vecino (NA)</li>
+        <br><br>
+
+        <h2>Solicitud de Router</h2>
+        <br>
+        <p>1. Los routers envían mensajes de RA para proporcionar información de direccionamiento a los hosts que utilizan configuración automática de dirección independiente del estado (SLAAC). El mensaje RA puede incluir información de direccionamiento para el host, como el prefijo, la longitud del prefijo, la dirección DNS y el nombre de dominio. Un router envía un mensaje de RA periódicamente o en respuesta a un mensaje de RS. Un host que utiliza SLAAC establecerá como su gateway predeterminado la dirección link-local del router que envió el RA.</p>
+        <br>
+        <p>2. Cuando un host está configurado para obtener la información de direccionamiento automáticamente mediante SLAAC, el host envía un mensaje de RS al router que solicita el mensaje de RA.</p>
+        <br><br>
+
+        <p><b>Envío de mensajes entre un router IPv6 y un dispositivo IPv6</b></p>
+        <br>
+        <img src="img/Envío de mensajes entre un router IPv6 y un dispositivo IPv6.jpg" class="foto">
+        <br><br><br>
+
+        <h2>Resolución de Dirección</h2>
+        <br>
+        <p>Los mensajes de NA se envían cuando un dispositivo conoce la dirección IPv6 de un dispositivo, pero no la dirección MAC. Esto equivale a una solicitud de ARP para IPv4.</p>
+        <p>Los mensajes de NA se envían en respuesta a un mensaje de NS y coinciden con la dirección IPv6 de la NS. El mensaje de NA contiene la dirección MAC de Ethernet del dispositivo. Esto equivale a una Respuesta de ARP para IPv4.</p>
+        <br>
+        <p><b>Mensajería Entre Dispositivos IPv6</b></p>
+        <br><br>
+
+        <p><b> Mensajería Entre Dispositivos IPv6</b></p>
+        <br>
+        <img src="img/Mensajería Entre Dispositivos IPv6.jpg" class="foto">
+        <br><br><br>
+
+        <h2>Detección de Direcciones Duplicadas (DAD)</h2>
+        <br>
+        <p><b>Detección de Direcciones Duplicadas</b></p>
+        <br>
+        <p>Cuando se asigna una dirección de unicast global o link-local a un dispositivo, se recomienda realizar una operación DAD en la dirección para garantizar que sea única. Para verificar la unicidad de una dirección, el dispositivo enviará un mensaje NS con su propia dirección IPv6 como la dirección IPv6 objetivo, como se muestra en la figura. Si otro dispositivo de la red tiene esta dirección, responde con un mensaje NA. Este mensaje NA notifica al dispositivo emisor que la dirección está en uso. Si no se devuelve un mensaje NA correspondiente dentro de determinado período, la dirección de unicast es única y su uso es aceptable.</p>
+        <br>
+        <p><b>Nota: </b>No se requiere DAD, pero RFC 4861 recomienda que DAD se realice en direcciones de unicast.</p>
+        <br>
+        <p><b>Detección de Direcciones Duplicadas (DAD)</b></p>
+        <br><br>
+
+        <h2>Detección de Direcciones Duplicadas (DAD)</h2>
+        <br>
+        <img src="img/Detección de Direcciones Duplicadas (DAD).jpg" class="foto">
+    </div>
+</body>
+</html>

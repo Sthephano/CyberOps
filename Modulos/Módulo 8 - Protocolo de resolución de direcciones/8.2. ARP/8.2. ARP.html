@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="8.2.1">8.2.1 Descripción general de ARP</h1>
+        <br>
+        <p>Si su red utiliza el protocolo de comunicaciones IPv4, el protocolo de resolución de direcciones o ARP es lo que necesita para asignar direcciones IPv4 a direcciones MAC. En este tema se explica cómo funciona ARP.</p>
+        <br>
+        <p>Cada dispositivo IP de una red Ethernet tiene una dirección MAC Ethernet única. Cuando un dispositivo envía una trama de capa 2 de Ethernet, contiene estas dos direcciones:</p>
+        <br>
+        <li><b>Dirección MAC de destino - </b>La dirección MAC Ethernet del dispositivo de destino en el mismo segmento de red local. Si el host de destino está en otra red, entonces la dirección de destino en el trama sería la del gateway predeterminado (es decir, router).</li>
+        <li><b>Dirección MAC de origen- </b>La dirección MAC de la NIC de Ethernet en el host de origen.</li>
+        <br>
+        <p>La figura ilustra el problema al enviar una trama a otro host en el mismo segmento en una red IPv4.</p>
+        <br>
+        <img src="img/Descripción general de ARP.jpg" class="foto">
+        <br><br>
+        <p>Para enviar un paquete a otro host en la misma red IPv4 local, un host debe conocer la dirección IPv4 y la dirección MAC del dispositivo de destino. Las direcciones IPv4 de destino del dispositivo se conocen o se resuelven por el nombre del dispositivo. Sin embargo, las direcciones MAC deben ser descubiertas.</p>
+        <br>
+        <p>Un dispositivo utiliza el Protocolo de resolución de direcciones (ARP) para determinar la dirección MAC de destino de un dispositivo local cuando conoce su dirección IPv4.</p>
+        <br>
+        <p>ARP proporciona dos funciones básicas:</p>
+        <br>
+        <li>Resolución de direcciones IPv4 a direcciones MAC</li>
+        <li>Mantener una tabla de asignaciones de direcciones IPv4 a MAC</li>
+        <hr>
+
+        <h1 id="8.2.2">8.2.2 Funciones del ARP</h1>
+        <br>
+        <p>Cuando se envía un paquete a la capa de enlace de datos para encapsularlo en una trama de Ethernet, el dispositivo consulta una tabla en su memoria para encontrar la dirección MAC que está asignada a la dirección IPv4. Esta tabla se almacena temporalmente en la memoria RAM y se denomina tabla ARP o caché ARP.</p>
+        <br>
+        <p>El dispositivo emisor busca en su tabla ARP la dirección IPv4 de destino y la dirección MAC correspondiente.</p>
+        <br>
+        <li>Si la dirección IPv4 de destino del paquete está en la misma red que la dirección IPv4 de origen, el dispositivo busca la dirección IPv4 de destino en la tabla ARP.</li>
+        <li>Si la dirección IPv4 de destino está en una red diferente que la dirección IPv4 de origen, el dispositivo busca la dirección IPv4 del gateway predeterminado.</li>
+        <br>
+        <p>En ambos casos, se realiza una búsqueda de la dirección IPv4 y la dirección MAC correspondiente para el dispositivo.</p>
+        <br>
+        <p>En cada entrada o fila de la tabla ARP, se enlaza una dirección IPv4 con una dirección MAC. La relación entre los dos valores se denomina asignación. Esto solamente significa que es posible buscar una dirección IPv4 en la tabla y encontrar la dirección MAC correspondiente. La tabla ARP almacena temporalmente (en caché) la asignación para los dispositivos de la LAN.</p>
+        <br>
+        <p>Si el dispositivo localiza la dirección IPv4, se utiliza la dirección MAC correspondiente como la dirección MAC de destino de la trama. Si no se encuentra ninguna entrada, el dispositivo envía una solicitud de ARP.</p>
+        <br>
+        <p>Haga clic en Reproducir en la figura para ver una animación de la función ARP.</p>
+        <br>
+        <video src="video/Funciones del ARP video.mp4" controls></video>
+        <hr>
+
+        <h1 id="8.2.3">8.2.3 Vídeo - Funcionamiento y solicitud de ARP</h1>
+        <br>
+        <p>Se envía una solicitud ARP cuando un dispositivo necesita determinar la dirección MAC que está asociada con una dirección IPv4, y no tiene una entrada para la dirección IPv4 en su tabla ARP.</p>
+        <br>
+        <p>Los mensajes de ARP se encapsulan directamente dentro de una trama de Ethernet. No se utiliza un encabezado de IPv4. La solicitud de ARP se encapsula en una trama de Ethernet con la siguiente información de encabezado:</p>
+        <br>
+        <li><b>Dirección MAC de destino - </b>Esta es una dirección broadcast que requiere que todas las NIC Ethernet de la LAN acepten y procesen la solicitud de ARP.</li>
+        <li><b>Dirección MAC de origen - </b>Esta es la dirección MAC del remitente de la solicitud ARP.</li>
+        <li><b>Tipo - </b>Los mensajes de ARP tienen un campo de tipo 0x806. Esto informa a la NIC receptora que la porción de datos de la trama se debe enviar al proceso ARP.</li>
+        <br>
+        <p>Como las solicitudes de ARP son de broadcast, el switch las envía por todos los puertos, excepto el de recepción. Todas las NIC Ethernet de la LAN procesan transmisiones y deben entregar la solicitud ARP a su sistema operativo para su procesamiento. Cada dispositivo debe procesar la solicitud de ARP para ver si la dirección IPv4 objetivo coincide con la suya. Un router no reenvía difusiones por otras interfaces.</p>
+        <br>
+        <p>Solo un dispositivo de la LAN tiene la dirección IPv4 que coincide con la dirección IPv4 objetivo de la solicitud de ARP. Todos los demás dispositivos no envían una respuesta.</p>
+        <br>
+        <p>Haga clic en Reproducir para ver una demostración de una solicitud de ARP para una dirección IPv4 de destino que está en la red local.</p>
+        <br>
+        <video src="video/Funcionamiento y solicitud de ARP video.mp4" controls></video>
+        <hr>
+
+        <h1 id="8.2.4">8.2.4 Vídeo - Funcionamiento de ARP - Respuesta de ARP</h1>
+        <br>
+        <p>Solo el dispositivo con la dirección IPv4 de destino asociada con la solicitud ARP responderá con una respuesta ARP. La respuesta ARP se encapsula en una trama de Ethernet con la siguiente información de encabezado:</p>
+        <br>
+        <li><b>Dirección MAC de destino - </b>Es la dirección MAC del remitente de la solicitud de ARP.</li>
+        <li><b>Dirección MAC de origen - </b>Esta es la dirección MAC del remitente de la respuesta ARP.</li>
+        <li><b>Tipo - </b>Los mensajes de ARP tienen un campo de tipo 0x806. Esto informa a la NIC receptora que la porción de datos de la trama se debe enviar al proceso ARP.</li>
+        <br>
+        <p>Sólo el dispositivo que envió originalmente la solicitud ARP recibirá la respuesta ARP unicast. Una vez que recibe la respuesta de ARP, el dispositivo agrega la dirección IPv4 y la dirección MAC correspondiente a su tabla ARP. A partir de ese momento, los paquetes destinados para esa dirección IPv4 se pueden encapsular en las tramas con su dirección MAC correspondiente.</p>
+        <br>
+        <p>Si ningún dispositivo responde a la solicitud de ARP, el paquete se descarta porque no se puede crear una trama.</p>
+        <br>
+        <p>Las entradas de la tabla ARP tienen marcas de tiempo. Si un dispositivo no recibe una trama de un dispositivo en particular antes de que caduque la marca de tiempo, la entrada para este dispositivo se elimina de la tabla ARP.</p>
+        <br>
+        <p>Además, se pueden introducir entradas estáticas de asignaciones en una tabla ARP, pero esto no sucede con frecuencia. Las entradas estáticas de la tabla ARP no caducan con el tiempo y se deben eliminar de forma manual.</p>
+        <br>
+        <p><b>Nota: </b>IPv6 utiliza un proceso similar al ARP para IPv4 llamado “detección de vecinos (ND ) ICMPv6”.﻿ El protocolo IPv6 utiliza mensajes de solicitud de vecino y de anuncio de vecino similares a las solicitudes y respuestas ARP de IPv4.</p>
+        <br>
+        <p>Haga clic en Reproducir en la ilustración para ver una demostración de una respuesta de ARP.</p>
+        <br>
+        <video src="video/Funcionamiento de ARP - Respuesta de ARP.mp4" controls></video>
+        <hr>
+
+        <h1 id="8.2.5">8.2.5 Vídeo - Función de ARP en la comunicación remota</h1>
+        <br>
+        <p>Cuando la dirección IPv4 de destino no está en la misma red que la dirección IPv4 de origen, el dispositivo de origen debe enviar la trama a la puerta de enlace predeterminada. Esta es la interfaz del enrutador local. Cuando un dispositivo de origen tiene un paquete con una dirección IPv4 de otra red, lo encapsula en una trama con la dirección MAC de destino del router.</p>
+        <br>
+        <p>La dirección IPv4 de la puerta de enlace predeterminada se almacena en la configuración IPv4 de los hosts. Cuando un host crea un paquete para un destino, compara la dirección IPv4 de destino con la propia para determinar si ambas están ubicadas en la misma red de capa 3. Si el host de destino no está en la misma red, el origen busca en la tabla ARP una entrada que contenga la dirección IPv4 de la puerta de enlace predeterminada. Si no existe una entrada, utiliza el proceso ARP para determinar la dirección MAC de la puerta de enlace predeterminada.</p>
+        <br>
+        <p>Haga clic en reproducir para ver una demostración de una solicitud de ARP y una respuesta de ARP asociadas con la puerta de enlace predeterminada.</p>
+        <br>
+        <video src="video/Función de ARP en la comunicación remota.mp4" controls></video>
+        <hr>
+
+        <h1 id="8.2.6">8.2.6 Eliminación de entradas de una tabla ARP</h1>
+        <br>
+        <p>Para cada dispositivo, un temporizador de memoria caché ARP elimina las entradas de ARP que no se hayan utilizado durante un período especificado. Los tiempos varían según el sistema operativo del dispositivo. Por ejemplo, los sistemas operativos Windows más recientes almacenan entradas de tabla ARP entre 15 y 45 segundos, como se ilustra en la figura.</p>
+        <br>
+        <img src="img/Eliminación de entradas de una tabla ARP.jpg" class="foto">
+        <br><br>
+        <p>Los comandos también se pueden usar para eliminar manualmente algunas o todas las entradas de la tabla ARP. Después de eliminar una entrada, el proceso de envío de una solicitud de ARP y de recepción de una respuesta de ARP debe ocurrir nuevamente para que se introduzca la asignación en la tabla ARP.</p>
+        <hr>
+
+        <h1 id="8.2.7">8.2.7 Tablas ARP en dispositivos de red</h1>
+        <br>
+        <p>En un router Cisco, el comando show ip arp se utiliza para mostrar la tabla ARP, como se muestra en la figura.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>R1# show ip arp</p>
+            <p>Protocol  Address          Age (min)  Hardware Addr   Type   Interface</p>
+            <p>Internet  192.168.10.1            -   a0e0.af0d.e140  ARPA   GigabitEthernet0/0/0</p>
+            <p>Internet  209.165.200.225         -   a0e0.af0d.e141  ARPA   GigabitEthernet0/0/1</p>
+            <p>Internet  209.165.200.226         1   a03d.6fe1.9d91  ARPA   GigabitEthernet0/0/1</p>
+            <p>R1#</p>
+        </div>
+        <br>
+        <p>En una PC con Windows 10, el comando arp -a se usa para mostrar la tabla ARP, como se muestra en la figura.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>    C:\Users\PC> arp -a</p>
+            <p>Interface: 192.168.1.124 --- 0x10</p>
+            <p>  Internet Address      Physical Address      Type</p>
+            <p>  192.168.1.1           c8-d7-19-cc-a0-86     dynamic</p>
+            <p>  192.168.1.101         08-3e-0c-f5-f7-77     dynamic</p>
+            <p>  192.168.1.110         08-3e-0c-f5-f7-56     dynamic</p>
+            <p>  192.168.1.112         ac-b3-13-4a-bd-d0     dynamic</p>
+            <p>  192.168.1.117         08-3e-0c-f5-f7-5c     dynamic</p>
+            <p>  192.168.1.126         24-77-03-45-5d-c4     dynamic</p>
+            <p>  192.168.1.146         94-57-a5-0c-5b-02     dynamic</p>
+            <p>  192.168.1.255         ff-ff-ff-ff-ff-ff     static</p>
+            <p>  224.0.0.22            01-00-5e-00-00-16     static</p>
+            <p>  224.0.0.251           01-00-5e-00-00-fb     static</p>
+            <p>  239.255.255.250       01-00-5e-7f-ff-fa     static</p>
+            <p>  255.255.255.255       ff-ff-ff-ff-ff-ff     static</p>
+            <p>C:\Users\PC></p>
+        </div>
+        <hr>
+
+        <h1 id="8.2.8">8.2.8 Práctica de laboratorio - Uso de Wireshark para examinar las tramas de Ethernet</h1>
+        <br>
+        <p>En este laboratorio, utilizará Wireshark para capturar y ver tramas Ethernet con el fin de investigar ARP y direcciones IP y MAC. Además, capturará y analizará tramas ICMP.</p>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/8.2.8-lab---using-wireshark-to-examine-ethernet-frames_es-XL.pdf" target="_blank">Uso de Wireshark para examinar tramas de Ethernet</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m8/es-XL/assets/8.2.8-lab---using-wireshark-to-examine-ethernet-frames_es-XL.pdf" target="_blank">Uso de Wireshark para examinar tramas de Ethernet (online)</a></button>
+        </div>
+    </div>
+</body>
+</html>

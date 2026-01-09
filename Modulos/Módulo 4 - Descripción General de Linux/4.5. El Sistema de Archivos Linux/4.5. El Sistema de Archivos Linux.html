@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="4.5.1">4.5.1 Los tipos de Sistema de Archivos en Linux</h1>
+        <br>
+        <p>Hay muchos tipos diferentes de sistemas de archivos, que varían en términos de velocidad, flexibilidad, seguridad, tamaño, estructura, lógica y mucho más. Es el administrador quien decide qué tipo de sistema de archivos se adapta mejor al sistema operativo y los archivos que almacenará.</p>
+        <br>
+        <p>La tabla enlista algunos tipos de sistemas de archivos comúnmente encontrados y respaldado por Linux</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Archivos de Sistema de Linux</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>ext2 (segundo sistema de archivos extendido)</td>
+                <td>
+                    <li>ext2 fue el sistema de archivos predeterminado en varias distribuciones de Linux hasta que fue sustituido por ext3. </li>
+                    <li>Casi totalmente compatible con ext2, ext3 también admite el registro en diario (ver abajo). </li>
+                    <li>ext2 sigue siendo el sistema de archivos preferido de los medios de almacenamiento con base flash, ya que la ausencia de registros diarios aumenta el rendimiento y minimiza la cantidad de escrituras </li>
+                    <li>Dado que los dispositivos de memoria flash tienen una cantidad limitada de operaciones de escritura, reducir estas operaciones al mínimo aumenta la vida útil. </li>
+                    <li>Sin embargo, los kernels de Linux contemporáneos también admiten ext4, un sistema de archivos todavía más moderno, con mejor rendimiento y que también puede funcionar sin usar el registro por diario.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>ext3 (tercer sistema de archivos extendido)</td>
+                <td>
+                    <li>ext3 es un sistema de archivos con registro por diario diseñado para mejorar el sistema de archivos ext2 existente. </li>
+                    <li>Un diario, la principal característica que se agregó a ext3, es una técnica que se utiliza para minimizar el riesgo de corrupción del sistema de archivos en caso de una interrupción repentina en el suministro de corriente. </li>
+                    <li>Los sistemas de archivos mantienen un registro (o diario) de todos los cambios que están por realizarse en el sistema de archivos. </li>
+                    <li>Si la computadora deja de funcionar antes de que el cambio se complete, el diario puede utilizarse para restaurar o corregir cualquier posible problema provocado por la interrupción. </li>
+                    <li>El tamaño máximo de archivo en sistemas de archivos ext3 es de 32 TB.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>ext4 (cuarto sistema de archivos extendido)</td>
+                <td>
+                    <li>Designado como sucesor de ext3, ext4 se creó a partir de una serie de extensiones a ext3. </li>
+                    <li>Aunque las extensiones mejoraban el rendimiento de ext3 y aumentaban el tamaño de los archivos admitidos, a los desarrolladores del kernel de Linux les preocupaba la estabilidad y se opusieron a añadir las extensiones al sistema ext3 estable. </li>
+                    <li>El proyecto de ext3 se dividió en dos: un sistema se mantiene como ext3 y continúa su desarrollo normal, y el otro, llamado   ext4, incorpora las extensiones mencionadas.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>NFS (Sistema de Archivos de Red)</td>
+                <td>
+                    <li>NFS es un sistema de archivos basado en la red que permite el acceso a archivos en la red. </li>
+                    <li>Desde el punto de vista del usuario, no hay diferencia entre el acceso a un archivo almacenado localmente o en otra computadora en la red. </li>
+                    <li>NFS es un estándar abierto que permite que nadie lo implemente.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>CDFS (Sistema de Archivos de Disco Compacto)</td>
+                <td>CDFS fue creado específicamente para medios de discos ópticos.</td>
+            </tr>
+            <tr class="claro">
+                <td>Sistema de Intercambio de Archivos</td>
+                <td>
+                    <li>El sistema de archivos de intercambio es usado por Linux cuando se queda sin RAM. </li>
+                    <li>Técnicamente, es una partición de intercambio que no tiene un sistema de archivos específico, pero debe incluirse en el análisis de sistemas de archivos. </li>
+                    <li>Cuando Linux se queda sin RAM, el kernel mueve el contenido inactivo de la RAM a la partición intercambiable en el disco. </li>
+                    <li>Mientras que las particiones intercambiables (conocidas como espacio de intercambio) pueden ser útiles para computadoras Linux con una cantidad limitada de memoria, no deben considerarse una solución principal. </li>
+                    <li>La partición intercambiable se almacena en un disco que tiene velocidades de acceso mucho menores que la RAM.</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>HFS Plus o HSF+ (Hierarchical File System Plus)</td>
+                <td>
+                    <li>Es un sistema de archivos usado por Apple en sus computadoras Macintosh. </li>
+                    <li>El kernel de Linux incluye un módulo para montar HFS+ para las operaciones de lectura y escritura.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>>APFS (Apple File system)</td>
+                <td>Sistema de archivos actualizado que utilizan los dispositivos Apple. Proporciona un cifrado fuerte y está optimizado para unidades de estado sólido y flash</td>
+            </tr>
+            <tr class="oscuro">
+                <td>Registro Principal de Arranque (MBR)</td>
+                <td>
+                    <li>Situado en el primer sector de una computadora con particiones, el MBR almacena toda la información sobre la manera en que está organizado el sistema de archivos. </li>
+                    <li>El MBR le cede rápidamente el control a una función de carga para que realice la carga el sistema operativo.</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>El término que se utiliza para el proceso de asignación de un directorio a una partición es montaje. Después de una operación de montaje exitosa, el sistema de archivos contenido en la partición es accesible a través del directorio especificado. En este contexto, al directorio se llama el punto de montaje para ese sistema de archivos. Es posible que los usuarios de Windows estén familiarizados con un concepto similar: la letra de unidad.</p>
+            <br>
+            <p>El comando output muestra el resultado del comando mount emitido en la máquina virtual Cisco CyberOPS.</p>
+            <br>
+            <p>[analyst@secOps ~]$ mount</p>
+            <p>proc on /proc type proc (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>sys on /sys type sysfs (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>dev on /dev type devtmpfs (rw,nosuid,relatime,size=494944k,nr_inodes=123736,mode=755)</p>
+            <p>run on /run type tmpfs (rw,nosuid,nodev,relatime,mode=755)</p>
+            <p>/dev/sda1 on / type ext4 (rw,relatime)</p>
+            <p>securityfs on /sys/kernel/security type securityfs (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>tmpfs on /dev/shm type tmpfs (rw,nosuid,nodev)</p>
+            <p>devpts on /dev/pts type devpts (rw,nosuid,noexec,relatime,gid=5,mode=620,ptmxmode=000)</p>
+            <p>tmpfs on /sys/fs/cgroup type tmpfs (ro,nosuid,nodev,noexec,mode=755)</p>
+            <p>cgroup2 on /sys/fs/cgroup/unified type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate)</p>
+            <p>cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)</p>
+            <p>pstore on /sys/fs/pstore type pstore (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>none on /sys/fs/bpf type bpf (rw,nosuid,nodev,noexec,relatime,mode=700)</p>
+            <p>cgroup on /sys/fs/cgroup/rdma type cgroup (rw,nosuid,nodev,noexec,relatime,rdma)</p>
+            <p>cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)</p>
+            <p>cgroup on /sys/fs/cgroup/blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)</p>
+            <p>cgroup on /sys/fs/cgroup/hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)</p>
+            <p>cgroup on /sys/fs/cgroup/cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)</p>
+            <p>cgroup on /sys/fs/cgroup/devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)</p>
+            <p>cgroup on /sys/fs/cgroup/pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)</p>
+            <p>cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)</p>
+            <p>cgroup on /sys/fs/cgroup/net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)</p>
+            <p>cgroup on /sys/fs/cgroup/perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)</p>
+            <p>cgroup on /sys/fs/cgroup/freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)</p>
+            <p>systemd-1 on /proc/sys/fs/binfmt_misc type autofs (rw,relatime,fd=29,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=11792)</p>
+            <p>debugfs on /sys/kernel/debug type debugfs (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>tracefs on /sys/kernel/tracing type tracefs (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>hugetlbfs on /dev/hugepages type hugetlbfs (rw,relatime,pagesize=2M)</p>
+            <p>mqueue on /dev/mqueue type mqueue (rw,nosuid,nodev,noexec,relatime)</p>
+            <p>tmpfs on /tmp type tmpfs (rw,nosuid,nodev)</p>
+        </div>
+        <br>
+        <p>Cuando se emite sin opciones, <b>mount</b> devuelve la lista de sistemas de archivos actualmente montados en una computadora Linux. Mientras que muchos de los sistemas de archivos que se muestran no forman parte del alcance de este curso, preste atención al sistema de archivos raíz (resaltado). El sistema de archivos raíz está representado por el símbolo “/” y contiene todos los archivos predeterminados de la computadora. También se muestra en el resultado que el sistema de archivos root fue formateado como ext4 y ocupa la primera partición de la primera unidad (/dev/sda1).</p>
+        <hr>
+
+        <h1 id="4.5.2">4.5.2 Roles de Linux y Permisos de Archivo</h1>
+        <br>
+        <p>En Linux, se trata a la mayoría de las entidades de sistema como archivos. Con el objetivo de organizar el sistema y reforzar los límites dentro de la computadora, Linux usa permisos de archivos. Los permisos de archivos están integrados en la estructura del sistema de archivos y proporcionan un mecanismo para definir los permisos de cada archivo. Cada archivo en Linux trae sus permisos de archivo, los cuales definen las acciones que el propietario, el grupo y otros puede hacer con el archivo. Los posibles permisos son leer, escribir y ejecutar. El comando ls con el parámetro -l enlista información adicional acerca del archivo.</p>
+        <br>
+        <p>Considere la salida del ls -l comando en la salida del comando.</p>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>[analyst@secOps ~]$ ls -l space.txt</p>
+            <p>-rwxrw-r-- 1 analyst staff 253 May 20 12:49 space.txt</p>
+            <p>(1)(2)(3)(4)(5)(6)(7)</p>
+            <p>[analyst@secOps ~]$</p>
+        </div>
+        <br>
+        <p>El resultado proporciona mucha información sobre el archivo space.txt.</p>
+        <br>
+        <p>El primer campo del resultado permite ver los permisos asociados con space.txt (-rwxrw-r--) Los permisos de archivo siempre aparecen en el siguiente orden: Usuario, Grupo y Otros.</p>
+        <br>
+        <p>El archivo <b>space.txt</b> en tiene los siguientes permisos:</p>
+        <br>
+        <li>El guión (-) indica que se trata de un archivo. Para los    directorios, el primer guión sería una «d».</li>
+        <li>El primer conjunto de caracteres es para el permiso del usuario (rwx). El usuario, analista, propietario del archivo puede Rleer, Wescribir y Executar el archivo.</li>
+        <li>El segundo conjunto de caracteres es para los permisos de grupo (rw-). El grupo, personal, propietario del archivo puede Rleer y Wescribir en el archivo.</li>
+        <li>El tercer conjunto de caracteres es para cualquier otro permiso de usuario o grupo (r--). Cualquier otro usuario o grupo de la computadora solo puede Rleer el archivo.</li>
+        <br>
+        <p>El segundo campo define la cantidad de enlaces rígidos hacia el archivo (el número 1 después de los permisos). Un enlace físico crea otro archivo con un nombre diferente vinculado al mismo lugar en el sistema de archivos (denominado inodo). Esto es diferente del enlace simbólico, que se analiza en la siguiente página.</p>
+        <br>
+        <p>El tercer y cuarto campo muestran el usuario <b>(analyst)</b> y el grupo <b>(staff)</b> que poseen el archivo, respectivamente.</p>
+        <br>
+        <p>El quinto campo muestra el tamaño del archivo en bytes. El archivo <b>space.txt</b> tiene 253 bytes.</p>
+        <br>
+        <p>El sexto campo muestra la fecha y hora de la última modificación.</p>
+        <br>
+        <p>El séptimo campo muestra el nombre del archivo.</p>
+        <br>
+        <p>La figura muestra un desglose de los permisos de archivos en Linux.</p>
+        <br>
+        <img src="img/4.5.2-image.jpg" alt="4.5">
+        <br><br>
+        <p>Usar valores octales para definir los permisos</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Biario</th>
+                <th>Octal</th>
+                <th>Permiso</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>000</td>
+                <td>0</td>
+                <td>---</td>
+                <td>Sin acceso</td>
+            </tr>
+            <tr class="claro">
+                <td>001</td>
+                <td>1</td>
+                <td>--x</td>
+                <td>Solo ejecución</td>
+            </tr>
+            <tr class="oscuro">
+                <td>010</td>
+                <td>2</td>
+                <td>-w-</td>
+                <td>Solo escritura</td>
+            </tr>
+            <tr class="claro">
+                <td>011</td>
+                <td>3</td>
+                <td>-wx</td>
+                <td>Escritura y ejecución</td>
+            </tr>
+            <tr class="oscuro">
+                <td>100</td>
+                <td>4</td>
+                <td>r--</td>
+                <td>Solo lectura</td>
+            </tr>
+            <tr class="claro">
+                <td>101</td>
+                <td>5</td>
+                <td>r-x</td>
+                <td>Lectura y ejecución</td>
+            </tr>
+            <tr class="oscuro">
+                <td>110</td>
+                <td>6</td>
+                <td>rw-</td>
+                <td>Lecutra y escritura</td>
+            </tr>
+            <tr class="claro">
+                <td>111</td>
+                <td>7</td>
+                <td>rwx</td>
+                <td>Lecutra, escritura y ejecución</td>
+            </tr>
+        </table>
+        <br>
+        <p>Los permisos de archivos son una parte fundamental de Linux y no se pueden eliminar. Un usuario tiene tantos derechos sobre un archivo como se lo permiten los permisos de archivo. El único usuario que puede anular el permiso de archivo en una computadora con Linux es el usuario raíz. Como el usuario raíz tiene la capacidad para anular permisos de archivos, puede escribir en cualquier archivo. Dado que todo se trata como un archivo, el usuario root tiene control total sobre la computadora Linux. El acceso raíz se requiere a menudo antes de realizar el mantenimiento y las tareas administrativas. Debido a la potencia del usuario raíz, las credenciales root deben usar contraseñas seguras y no compartirse con nadie más que los administradores del sistema y otros usuarios de alto nivel.</p>
+        <hr>
+
+        <h1 id="4.5.3">4.5.3 Enlaces físicos y enlaces simbólicos</h1>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>Un enlace rígido es otro archivo que apunta a la misma ubicación que el archivo original. Usar el comando ln para crear un enlace rígido El primer argumento es el archivo existente y, el segundo, el archivo nuevo. Como se muestra en la salida del comando, el archivo <b>space.txt</b> está vinculado a <b>space.hard.txt</b> y el campo de enlace ahora muestra 2.</p>
+            <br>
+            <p>[analyst@secOps ~]$ ln space.txt space.hard.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ ls -l space*</p>
+            <p>-rw-r--r-- 2 analyst analyst 239 May  7 18:18 space.hard.txt</p>
+            <p>-rw-r--r-- 2 analyst analyst 239 May  7 18:18 space.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ echo "Testing hard link" >> space.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ ls -l space*</p>
+            <p>-rw-r--r-- 2 analyst analyst 257 May  7 18:19 space.hard.txt</p>
+            <p>-rw-r--r-- 2 analyst analyst 257 May  7 18:19 space.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ rm space.hard.txt</p>
+            <p>[analyst@secOps ~]$</p>
+            <p>[analyst@secOps ~]$ more space.txt</p>
+            <p>Space... The final frontier…</p>
+            <p>These are the voyages of the Starship Enterprise. Its continuing mission:</p>
+            <p>- To explore strange new worlds…</p>
+            <p>- To seek out new life; new civilizations…</p>
+            <p>- To boldly go where no one has gone before!</p>
+            <p>Testing hard link</p>
+            <p>[analyst@secOps ~]$</p>
+        </div>
+        <br>
+        <p>Ambos archivos apuntan a la misma ubicación en el sistema de archivos. Si cambia un archivo, el otro también cambia. El comando echo es usado para añadir un texto a <b>space.txt</b>. Observar que el tamaño del archivo para ambos <b>space.txt</b> y <b>space.hard.txt</b> incremento a 257 bytes. Si elimina <b>space.hard.txt</b> con el comando <b>rm</b> (remover), el archivo <b>space.txt</b> sigue existiendo, se puede verificar con el comando more <b>space.txt</b>.</p>
+        <br>
+        <p>Un enlace simbólico, también llamado enlace suave o symlink, es similar a un enlace físico en el sentido en que aplicar cambios a un enlace simbólico también cambia el archivo original. Como se muestra en la salida del comando, usar el comando ln con la opción -s para crear un enlace simbólico.</p>
+        <br>
+            <div class="cuadro_de_texto">
+            <P>[analyst@secOps ~]$ echo "Hello World!" > test.txt</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ ln -s test.txt mytest.txt</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ echo "It's a lovely day!" >> mytest.txt</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ more test.txt</P>
+            <P>Hello World!</P>
+            <P>It's a lovely day!</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ rm test.txt</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ more mytest.txt</P>
+            <P>more: stat of mytest.txt failed: No such file or directory</P>
+            <P>[analyst@secOps ~]$</P>
+            <P>[analyst@secOps ~]$ ls -l mytest.txt</P>
+            <P>lrwxrwxrwx 1 analyst analyst 8 May  7 20:17 mytest.txt -> test.txt</P>
+            <P>[analyst@secOps ~]$</P>
+        </div>
+        <p>Observe que al añadir una línea de texto a <b>test.txt</b> también añade la línea en <b>mytest.txt</b>. Sin embargo, a diferencia de un enlace rígido, eliminar el archivo original <b>text.txt</b> implica que <b>mytext.txt</b> está vinculado a un archivo que ya no existe, como se muestra con el comando more <b>mytest.txt</b> y <b>ls -l mytest.txt</b></p>
+        <br>
+        <p>Aunque los enlaces simbólicos tienen un punto único de falla (el archivo subyacente), los enlaces simbólicos tienen varios beneficios respecto de los enlaces físicos:</p>
+        <br>
+        <li>Encontrar enlaces físicos es más difícil. Los enlaces simbólicos muestran la ubicación del archivo original en el comando ls -l como se muestra en la última línea de salida en la salida del comando anterior ( mytest.txt -> test.txt ).</li>
+        <li>Los enlaces físicos se limitan al sistema de archivos en el que se crean. Los enlaces simbólicos pueden estar vinculados a un archivo en otro sistema de archivos.</li> 
+        <li>Los enlaces físicos no pueden estar vinculados a un directorio porque el propio sistema utiliza enlaces físicos para definir la jerarquía de la estructura de dire  ctorios. Sin embargo, los enlaces simbólicos pueden estar vinculados a directorios.</li>
+        <hr>    
+
+        <h1 id="4.5.4">4.5.4 Práctica de laboratorio - Navegar por el Sistema de Archivos y la Configuración de Permisos de Linux</h1>
+        <br>
+        <p>En esta práctica de laboratorio, se familiarizará con el sistema de archivos de Linux.</p>
+        <br>
+        <div class="botones">
+            <button>
+                <a href="pdf/4.5.4-lab---navigating-the-linux-filesystem-and-permission-settings_es-XL.pdf">Navegar por el sistema de archivos y la configuración de permisos de Linux</a>
+            </button>
+            <button>
+                <a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m4/es-XL/assets/4.5.4-lab---navigating-the-linux-filesystem-and-permission-settings_es-XL.pdf" target="_blank">Navegar por el sistema de archivos y la configuración de permisos de Linux (online)</a>
+            </button>
+        </div>
+        <hr>
+    </div>
+</body>
+</html>

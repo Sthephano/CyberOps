@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="26.2.1">26.2.1 La necesidad de evaluar las alertas</h1>
+        <br>
+        <p>El panorama de amenazas cambia constantemente con la detección de nuevas vulnerabilidades y la evolución de nuevas amenazas. A medida que las necesidades de usuarios y organizaciones cambian, también lo hace la superficie de ataque. Los agentes de amenaza han aprendido a cambiar rápidamente las características de sus ataques para evadir la detección.</p>
+        <br>
+        <p>Es imposible diseñar medidas para evitar todos los ataques. Inevitablemente, los ataques terminan evadiendo las medidas de protección, sin importar lo sofisticadas que puedan ser. A veces, lo mejor que se puede hacer es detectar los ataques mientras ocurren o posteriormente. Las reglas de detección deben ser excesivamente conservadoras. En otras palabras, es mejor que se generen alertas ocasionales por tráfico inocente que tener reglas que no detecten tráfico malicioso. Por este motivo, es necesario tener analistas de ciberseguridad calificados que investiguen las alertas para determinar si realmente se produjo un ataque.</p>
+        <br>
+        <p>Analistas de ciberseguridad de categoría 1, analizarán colas de alertas en una herramienta como Sguil, alternando a herramientas como Zeek, Wireshark y Kibana para verificar que una sea realmente un ataque.</p>
+        <br><br>
+
+        <h2>Principales herramientas para el analista de ciberseguridad de nivel 1</h2>
+        <br>
+        <img src="img/26.2.1 La necesidad de evaluar las alertas.jpeg" class="foto">
+        <hr>
+
+        <h1 id="26.2.2">26.2.2 Evaluación de alertas</h1>
+        <br>
+        <p>Los incidentes de seguridad se clasifican con un esquema adoptado del ámbito de los diagnósticos médicos. Este esquema de clasificación se utiliza para guiar acciones y evaluar los procedimientos de diagnóstico. Por ejemplo, cuando un paciente visita a un médico para un examen de rutina, una de las tareas del médico es determinar si el paciente está enfermo. Uno de los resultados puede ser determinar correctamente que la enfermedad está presente y que el paciente está enfermo. Otro resultado puede ser determinar que no hay ninguna enfermedad y el que paciente está sano.</p>
+        <br>
+        <p>Entonces, la inquietud radica en que el diagnóstico sea exacto (verdadero) o inexacto (falso). Por ejemplo, el médico podría pasar por alto síntomas de la enfermedad y tomar la determinación incorrecta de que el paciente está bien cuando, en realidad, está enfermo. Otro error posible es determinar que un paciente está enfermo cuando en realidad no lo está. Los diagnósticos falsos son costosos o peligrosos.</p>
+        <br>
+        <p>Durante el análisis de seguridad de la red, el analista de ciberseguridad recibe una alerta. Esto se asemeja a un paciente que va al médico y dice “estoy enfermo”. El analista de ciberseguridad, como el médico, debe determinar si este diagnóstico es cierto. El analista de ciberseguridad piensa: “El sistema dice que se ha producido un ataque. ¿Es cierto?”</p>
+        <br>
+        <p>Las alertas pueden clasificarse de la siguiente manera:</p>
+        <br>
+        <li><b>Positivo verdadero</b>: Se ha comprobado que la alerta es un incidente real de seguridad.</li>
+        <li><b>Positivo falso</b>: La alerta no indica que el incidente de seguridad haya sido real. La actividad benigna que resulta en un falso positivo a veces se conoce como un desencadenante benigno.</li>
+        <br>
+        <p>Otra situación puede ser que no se haya generado una alerta. La ausencia de una alerta puede clasificarse del siguiente modo:</p>
+        <br>
+        <li><b>Negativo verdadero</b>: No se han producido incidentes de seguridad. La actividad es benigna.</li>
+        <li><b>Falso negativo</b>: Se ha producido un incidente no detectado.</li>
+        <br><br>
+        <img src="img/Al emitirse, la alerta recibe una de cuatro clasificaciones.jpeg" class="foto">
+        <br><br>
+        <p><b>Los positivos verdaderos</b> son el tipo de alerta deseado. Si ocurren, significa que las reglas que generan alertas funcionan correctamente.</p>
+        <br>
+        <p><b>Los falsos positivos</b> no son deseables. Aunque no indican que se ha producido un ataque no detectado, son costosos porque los analistas de ciberseguridad deben investigar las falsas alarmas; por lo tanto, le quitan tiempo a la investigación de alertas que indican la presencia de ataques reales.</p>
+        <p><b>Los negativos verdaderos</b> también son deseables. Indican que el tráfico benigno normal se ignora correctamente y que no se emiten alertas erróneas.</p>
+        <br>
+        <p><b>Los falsos negativos</b> son peligrosos. Indican que los sistemas de seguridad implementados no detectan ataques. Estos incidentes podrían pasar inadvertidos durante mucho tiempo y causar daños y pérdidas de datos constantes.</p>
+        <br>
+        <p>Los eventos benignos son aquellos que no deben desencadenar alertas. Los eventos benignos excesivos indican que es necesario mejorar o eliminar algunas reglas u otros detectores.</p>
+        <br>
+        <p>Cuando se sospecha que hay positivos verdaderos, un analista de ciberseguridad es requerido para escalar la alerta a un nivel mayor de investigación. El investigador avanzará con la investigación para confirmar el incidente e identificar cualquier daño que podría haber ocurrido. Esta información será utilizada por personal de seguridad de mayor categoría que trabajará para aislar el daño, solucionar las vulnerabilidades, mitigar la amenaza y cumplir los requisitos de creación de informes.</p>
+        <br>
+        <p>Es posible que un analista de ciberseguridad también sea deba informar al personal de seguridad que se producen falsos positivos si estos le están quitando demasiado tiempo. Esta situación indica que los sistemas de seguridad deben ajustarse para ser más eficientes. Los cambios legítimos en la configuración de la red o la descarga de reglas de detección recientes podrían ocasionar un aumento repentino de falsos positivos.</p>
+        <br>
+        <p>Los falsos negativos pueden detectarse mucho después de que se produzca un ataque. Esto se puede lograr mediante el análisis retrospectivo de seguridad (RSA, Retrospective Security Analysis). El RSA puede tener lugar cuando se aplican reglas recién obtenidas u otra inteligencia de amenazas a datos de seguridad de la red archivados. Por este motivo, es importante monitorear la inteligencia de amenazas para conocer vulnerabilidades y ataques nuevos y para evaluar la probabilidad de que la red fuera vulnerable. Además, es necesario evaluar el ataque en relación con el posible daño que podría sufrir la empresa. Se puede determinar que añadir nuevas técnicas de mitigación es suficiente o que debería efectuarse un análisis más detallado.</p>
+        <hr>
+
+        <h1 id="26.2.3">26.2.3 Análisis determinista y análisis probabilístico</h1>
+        <br>
+        <p>Se pueden utilizar técnicas estadísticas para evaluar el riesgo de que los ataques tengan éxito en una red dada. Este tipo de análisis puede ayudar a los encargados de la toma de decisiones a evaluar mejor el costo de mitigar una amenaza respecto del daño que podría causar un ataque.</p>
+        <br>
+        <p>Hay dos enfoques generales para esto el análisis determinista y el análisis probabilístico. El análisis determinista evalúa el riesgo según lo que se conoce acerca de una vulnerabilidad. Supone que, para que un ataque tenga éxito, todos los pasos anteriores del ataque también deben tener éxito. Este tipo de análisis de riesgo solamente puede describir el peor de los casos. Sin embargo, muchos agentes de amenaza, aunque son conscientes del proceso para llevar a cabo un ataque, pueden carecer del conocimiento o la experiencia para completar correctamente cada paso en el camino a un ataque exitoso. Esto puede darle al analista de ciberseguridad una oportunidad para detectar el ataque y detenerlo antes de que avance más.</p>
+        <br>
+        <p>El análisis probabilístico evalúa el éxito potencial de un ataque calculando la probabilidad de que, si un paso de un ataque concluye con éxito, el siguiente paso también lo hará. El análisis probabilístico es especialmente útil en los análisis de seguridad de la red en tiempo real, en los que numerosas variables están en juego y un agente de amenaza puede tomar decisiones desconocidas a medida que se persigue un ataque.</p>
+        <br>
+        <p>El análisis probabilístico usa técnicas estadísticas que sirven para calcular la probabilidad que ocurra un evento de acuerdo con la probabilidad de que ocurran eventos anteriores. Con este tipo de análisis, es posible calcular las trayectorias más probables de un ataque y el personal de seguridad puede concentrar su atención en prevenir o detectar el ataque más probable.</p>
+        <br>
+        <p>En un análisis determinista, se da por sabida toda la información para llevar a cabo un ataque. Las características del ataque, como el uso de números de puerto específicos, se conocen por otras instancias del ataque o porque se usan puertos estandarizados. En el análisis probabilístico, se da por sentado que los números de puerto que se utilizarán solamente pueden predecirse con un cierto grado de seguridad. En esta situación, por ejemplo, no es posible aplicar un análisis determinista a un ataque que utiliza números de puerto dinámicos. Tales ataques se han optimizado para evitar que los firewalls que utilizan reglas estáticas los detecten.</p>
+        <br>
+        <p>Los dos enfoques se resumen a continuación.</p>
+        <br>
+        <li><b>Análisis determinístico</b> - para que un ataque tenga éxito, todos los pasos anteriores del ataque también deben tener éxito. El analista especializado en ciberseguridad conoce los pasos de un ataque exitoso.</li>
+        <li><b>Análisis probabilístico</b>- Hay técnicas estadísticas que predicen la probabilidad de que se concrete un ataque a partir de las posibilidades de que cada paso del ataque tenga éxito.</li>
+        <hr>
+
+        <h1 id="26.2.4">26.2.4 Verifique su comprensión -- Identificar escenarios determinísticos y probabilísticos</h1>
+        <br>
+        Haga clic en el campo correspondiente a cada característica para indicar el enfoque de análisis que describe.
+        <br><br>
+        <p>Supone que, para que un ataque tenga éxito, todos los pasos anteriores del ataque también deben tener éxito.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística?</p>
+        <br>
+        <p>El análisis es útil en análisis de seguridad de red en tiempo real en los que hay numerosas variables en juego.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística?</p>
+        <br>
+        <p>El análisis sólo puede describir el peor de los casos.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística?</p>
+        <br>
+        <p>El análisis analiza la probabilidad de que un ataque haya sido exitoso en última instancia.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística?</p>
+        <br>
+        <p>El análisis supone que los números de puerto que serán utilizados por un ataque solo pueden predecirse con un cierto grado de confianza.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística</p>
+        <br>
+        <p>El análisis supone que se conoce toda la información para lograr un ataque.</p>
+        <p>¿Determinista?</p>
+        <p>¿Probabilística?</p>
+        <hr>
+
+        <h1 id="26.2.5">26.2.5 Verifique su comprensión - Identifique la clasificación de alertas</h1>
+        <br>
+        <hr>
+    </div>
+</body>
+</html>

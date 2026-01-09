@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+</head>
+<body>
+    <div class="container">
+        <div class="lecciones">
+            <h1 id="2.1.1">2.1.1 Elementos de un SOC</h1>
+            <br>
+            <p>Defenderse contra las amenazas actuales requiere un enfoque formalizado, estructurado y disciplinado. Las organizaciones suelen utilizar los servicios de profesionales en un Centro de operaciones de seguridad (SOC). Los SOC proporcionan una amplia gama de servicios, que abarcan desde el seguimiento y la gestión hasta soluciones completas contra amenazas y seguridad alojada que se pueden personalizar para satisfacer las necesidades del cliente. Los SOC pueden ser totalmente en casa, perteneceinte y operado por la empresa o es posible contratar los elementos de un SOC a proveedores de seguridad, como los Servicios de seguridad administrados de Cisco <a href="https://www.cisco.com/site/us/en/products/security/services/index.html">Managed Security Services</a>.</p>
+            <br>
+            <p>Como está ilustrado en la figura, los principales elementos de un SOC son la gente, los procesos y la tecnología.</p>
+            <br>
+            <img src="img/2.1.1-image.jpg" class="foto">
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.2">2.1.2 Las personas en el SOC</h1>
+            <br>
+            <p>Los roles de trabajo en un SOC están evolucionando rápidamente. Tradicionalmente, los SOC asignan roles de trabajo por niveles, de acuerdo con la experiencia y las responsabilidades que requiere para cada uno. Los trabajos de primer nivel son más básicos, mientras que los trabajos de tercer nivel requieren una amplia experiencia.</p>
+            <br>
+            <p><b>Analistas de alertas nivel 1 - </b>Estos profesionales monitorean las alertas entrantes, verifican que sea un incidente verdadero haya ocurrido y reenvían los tickets al nivel 2, si es necesario</p>
+            <p><b>Respuesta de incidentes nivel 2 - </b>Estos profesionales son responsables de realizar una investigación profunda de los incidentes y aconsejar soluciones o acciones para ser tomadas.</p>
+            <p><b>Cazador de amenazas de nivel 3 - </b>Estos profesionales tienen un nivel experto de habilidad en la red, punto terminal, inteligencia de amenazas e ingeniería reversa de malware Son especialistas en seguir los procesos del malware para determinar su impacto y cómo eliminarlo. También están profundamente involucrados en la búsqueda de posibles amenazas y la implementación de herramientas de detección de amenazas. Los cazadores de amenazas buscan amenazas cibernéticas que están presentes en la red pero que aún no se han detectado.</p>
+            <p><b>Administrador del SOC - </b>Este profesional administra todos los recursos del SOC y sirve como punto de contacto con el resto de la organización o el cliente.</p>
+            <br>
+            <p>Este curso ofrece preparación para una certificación adecuada para el puesto de Analista de alertas de nivel 1, también conocido como Analista de ciberseguridad o CyberOps Associate.</p>
+            <br>
+            <p>La figura del instituto SANS representa gráficamente cómo interactúan entre sí estos roles.</p>
+            <br>
+            <img src="img/2.1.2-image.jpg" class="foto">
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.3">2.1.3 Los procesos en el SOC</h1>
+            <br>
+            <p>El día de un analista de ciberseguridad comienza con el monitoreo de colas de alertas de seguridad. El sistema de tickets es frecuentemente utilizado para asignar alertas a la cola para que un analista las investigue. Dado que el software que genera alertas puede activar falsas alarmas, una de las tareas del analista de ciberseguridad puede ser verificar que una alerta sea realmente un incidente de seguridad. Cuando la verificación está establecida, el incidente puede ser reenviado a investigadores u otro personal de seguridad sobre el que actuar. De lo contrario, la alerta puede descartarse como falsa alarma.</p>
+            <br>
+            <p>Si el ticket no puede ser resuelto, el analista de ciberseguridad lo reenvía al encargado de respuesta de nivel 2 para una investigación más profunda y una solución. Si el encargado de respuesta no puede resolver el ticket, será reenviado al personal de nivel 3 con el conocimiento profundo y habilidades de caza de amenazas.</p>
+            <br>
+            <img src="img/2.1.3-image.jpg" class="foto">
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.4">2.1.4 Tecnologías en el SOC - SIEM</h1>
+            <br>
+            <p>Como se muestra en la figura, un SOC necesita un sistema de administración de información y eventos de seguridad (Security Information and Event Management System, SIEM) o equivalente. SIEM da sentido a todos los datos que generan los firewalls, dispositivos de red, sistemas de detección de intrusiones y otros dispositivos.</p>
+            <br>
+            <p>Los sistemas SEIM se utilizan para recopilar y filtrar datos, detectar y clasificar amenazas y analizar e investigar amenazas. Los sistemas SIEM también pueden administrar recursos para implementar medidas preventivas y hacer frente a amenazas futuras. Las tecnologías del SOC incluyen una o más de las siguientes:</p>
+            <br>
+            <ul>
+                <li>Recopilación, correlación y análisis de eventos</li>
+                <li>Monitoreo de la seguridad</li>
+                <li>Control de la seguridad</li>
+                <li>Administración de registros</li>
+                <li>Evaluación de vulnerabilidades</li>
+                <li>Seguimiento de vulnerabilidades</li>
+                <li>Inteligencia de amenazas</li>
+            </ul>
+            <br>
+            <img src="img/2.1.4-image.jpg" class="foto">
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.5">2.1.5 Tecnologías en el SOC - SOAR</h1>
+            <br>
+            <p>SIEM y la coordinación de seguridad, automatización y respuesta (SOAR) se emparejan a menudo, ya que tienen capacidades que se complementan entre sí.</p>
+            <br>
+            <p>Los grandes equipos de operaciones de seguridad (SECops) utilizan ambas tecnologías para optimizar su SOC. Se estima que el 15% de las organizaciones con un equipo de seguridad de más de cinco personas utilizarán SOAR para finales de 2020.</p>
+            <br>
+            <p>Las plataformas SOAR son similares a los SIEM en el sentido de que agregan, correlacionan y analizan alertas. Sin embargo, la tecnología SOAR va un paso más allá al integrar la inteligencia de amenazas y automatizar los flujos de trabajo de investigación y respuesta de incidentes basados en playbooks desarrollados por el equipo de seguridad.</p>
+            <br>
+            <img src="img/2.1.5-image.jpg" class="foto">
+            <br><br>
+            <p>Plataformas de seguridad SOAR:</p>
+            <ul>
+                <li>Recopilar datos de alarma de cada componente del sistema.</li>
+                <li>Proporcionar herramientas que permitan rebuscar, evaluar e investigar casos.</li>
+                <li>Haga énfasis en la integración como medio de automatizar flujos de trabajo de respuesta a incidentes complejos que permiten una respuesta más rápida y estrategias de defensa adaptada.</li>
+                <li>Incluya playbooks predefinidos que permitan la respuesta automática a amenazas específicas. Los playbooks se pueden iniciar automáticamente en función de reglas predefinidas o pueden ser activados por el personal de seguridad.</li>
+            </ul>
+            <br>
+            <p>SOAR hace énfasis en las herramientas de integración y la automatización de los flujos de trabajo SOC. Coordina muchos procesos manuales, como la investigación de alertas de seguridad que sólo requieren intervención humana cuando es necesario. Esto libera al personal de seguridad para abordar asuntos más apremiantes e investigaciones de alto nivel y solución de amenazas. La futura adopción de sofisticadas plataformas SOAR rehará las operaciones SOC y los roles de trabajo.</p>
+            <br>
+            <p>Los sistemas SIEM producen necesariamente más alertas de las que la mayoría de los equipos de SECOps pueden investigar de manera realista con el fin de capturar de forma conservadora el mayor número posible de amenazas. El SOAR procesará muchas de estas alertas automáticamente y permitirá al personal de seguridad centrarse en amenazas más complejos y potencialmente dañinos.</p>
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.6">2.1.6 Métricas SOC</h1>
+            <br>
+            <p>Un SOC es de vital importancia para la seguridad de una organización. Tanto si el SOC es interno de una organización como si proporciona servicios a varias organizaciones, es importante comprender qué tan bien funciona el SOC para que se puedan realizar mejoras en las personas, los procesos y las tecnologías que componen el SOC.</p>
+            <br>
+            <p>Se pueden diseñar muchas métricas o indicadores clave de rendimiento (KPI) para medir diferentes aspectos específicos del rendimiento del SOC. Sin embargo, cinco métricas se utilizan comúnmente como métricas SOC. Sin embargo, tenga en cuenta que las métricas que describen el rendimiento general con frecuencia no muestran una imagen precisa del funcionamiento del SOC debido a la diversidad de amenazas de ciberseguridad. Varias métricas comunes compiladas por los administradores de SOC son:</p>
+            <br>
+            <ul>
+                <li><b>Tiempo de permanencia: </b>el tiempo que los actores de amenazas tienen acceso a una red antes de ser detectados y su acceso se detiene.</li>
+                <li><b>Tiempo medio de detección (MTTD): </b>el tiempo medio que tarda el personal de SOC en identificar incidentes de seguridad válidos se han producido en la red.</li>
+                <li><b>Tiempo medio de respuesta (MTTR): </b>el tiempo medio que se tarda en detener y corregir un incidente de seguridad.</li>
+                <li><b>Tiempo medio para contener (MTTC): </b>el tiempo necesario para evitar que el incidente cause más daños a los sistemas o datos.</li>
+                <li><b>Tiempo de control: </b>el tiempo necesario para detener la propagación de malware en la red.</li>
+            </ul>
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.7">2.1.7 Seguridad empresarial y administrada</h1>
+            <br>
+            <p>Para redes medianas y grandes, la organización se beneficiará de implementar un SOC de nivel empresarial. El SOC puede ser una solución interna completa. Sin embargo, muchas organizaciones importantes tercerizan, al menos en parte, las operaciones del SOC a un proveedor de soluciones de seguridad.</p>
+            <br>
+            <p>Cisco cuenta con un equipo de expertos que ayudan a garantizar la resolución oportuna y precisa de incidentes. Cisco ofrece un amplio rango de respuestas a incidentes, preparación y capacidades de administración que incluyen:</p>
+            <br>
+            <ul>
+                <li>Servicio Cisco Smart Net Total Care para la resolución rápida de problemas</li>
+                <li>Equipo de respuesta ante los incidentes de seguridad de los productos (PSIRT) de Cisco</li>
+                <li>Equipo de respuesta ante los incidentes de seguridad de las computadoras (CSIRT) de Cisco</li>
+                <li>Servicios administrados de Cisco</li>
+                <li>Operaciones tácticas de Cisco (TacOps)</li>
+                <li>Programa de seguridad física y de seguridad de Cisco</li>
+            </ul>
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.8">2.1.8 DevSecOps</h1>
+            <br>
+            <p>DevSecOps significa Desarrollo, Seguridad y Operaciones. Es una práctica que integra la seguridad en el proceso de DevOps (Desarrollo y Operaciones), con el objetivo de hacer de la seguridad una parte integral del ciclo de vida del desarrollo de software en lugar de algo que se agrega al final. Al incorporar la seguridad desde el principio, DevSecOps busca reducir las vulnerabilidades y mejorar la seguridad general de las aplicaciones, sistemas y entornos.</p>
+            <br>
+            <h2>DevSecOps proporciona:</h2>
+            <ul>
+                <li><b>Remediación Más Rápida: </b>Los problemas de seguridad se identifican temprano, reduciendo el tiempo y costo para solucionarlos.</li>
+                <li><b>Riesgo Reducido: </b>Los chequeos de seguridad continuos minimizan las posibilidades de que las vulnerabilidades lleguen a producción.</li>
+                <li><b>Mayor Eficiencia: </b>La automatización de tareas de seguridad permite a los equipos enfocarse en sus responsabilidades principales mientras se asegura que la seguridad no sea descuidada.</li>
+                <li><b>Mejora de la Colaboración: </b>La seguridad es una responsabilidad compartida, mejorando la comunicación y el trabajo en equipo entre desarrolladores, seguridad y equipos de operaciones.</li>
+            </ul>
+            <br>
+            <p>DevSecOps busca crear una cultura de seguridad donde la seguridad es responsabilidad de todos y está integrada en cada parte del ciclo de vida del desarrollo. Al integrar la seguridad en los procesos de desarrollo, las organizaciones pueden construir software más seguro, mitigar riesgos más rápidamente y crear una infraestructura más resiliente.</p>
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.9">2.1.9 Comparación entre seguridad y disponibilidad</h1>
+            <br>
+            <p>La mayoría de las redes empresariales tienen que estar funcionando en todo momento. El personal de seguridad entiende que, para que la organización logre sus prioridades, debe mantenerse la disponibilidad de la red.</p>
+            <br>
+            <p>Cada empresa o industria tiene una tolerancia limitada al tiempo de inactividad de la red. Esa tolerancia suele basarse en una comparación entre el costo del tiempo de inactividad y el costo de protección contra el tiempo de inactividad. Por ejemplo, en un comercio minorista pequeño con una sola ubicación, puede resultar suficiente que un router sea el único punto de falla. Sin embargo, si gran parte de las ventas de ese comercio proviene de compradores en línea, el propietario puede decidir brindar determinado nivel de redundancia para asegurar que siempre haya disponible una conexión.</p>
+            <br>
+            El tiempo de actividad preferido a menudo se mide en la cantidad de minutos de inactividad en un año, como se muestra en la tabla. Entre los ejemplos, un tiempo de actividad de “cinco nueves” indica que la red está activa el 99,999 % del tiempo, es decir, permanece inactiva menos de 5 minutos por año. “Cuatro nueves” equivale a un tiempo de inactividad de 53 minutos por año.</p>
+            <p>Sin embargo, el nivel de seguridad no debe ser tan alto como para interferir en las necesidades de los empleados o las funciones empresariales. El secreto es lograr siempre un equilibrio entre un buen nivel de seguridad y la posibilidad de que la empresa funcione con eficacia.</p>
+            <br>
+            <table>
+                <tr>
+                    <th>Disponibilidad %</th>
+                    <th>Tiempo de inactividad</th>
+                </tr>
+                <tr>
+                    <th>99,8 %</th>
+                    <th>17,52 horas</th>
+                </tr>
+                <tr>
+                    <th>99,9 % ("tres nueves")</th>
+                    <th>8,76 horas</th>
+                </tr>
+                <tr>
+                    <th>99,99 % ("cuatro nueves")</th>
+                    <th>52,26 minutos</th>
+                </tr>
+                    <th>99,999 % ("cinco nueves")</th>
+                    <th>5,256 minutos</th>
+                <tr>
+                    <th>99,9999 % ("seis nueves")</th>
+                    <th>31,56 segundos</th>
+                </tr>
+                <tr>
+                    <th>99,99999 % ("siete nueves")</th>
+                    <th>3.16 segundos</th>
+                </tr>
+            </table>
+            <br>
+            <p>Sin embargo, el nivel de seguridad no debe ser tan alto como para interferir en las necesidades de los empleados o las funciones empresariales. El secreto es lograr siempre un equilibrio entre un buen nivel de seguridad y la posibilidad de que la empresa funcione con eficacia.</p>
+        </div>
+        <hr>
+        <div class="lecciones">
+            <h1 id="2.1.10">2.1.10 Verifica tus conocimientos - Identifica la terminología SOC</h1> 
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSezH0Stn44d-DGzEs1wL6N7IbyvxEyOzU6ugrjRcjUHM7btFg/viewform?embedded=true" width="640" height="1892" frameborder="0" marginheight="0" marginwidth="0">Cargando…</iframe>
+        </div>
+    </div>
+</body>
+</html>

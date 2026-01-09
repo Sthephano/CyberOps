@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="6.4.1">6.4.1 Clases de direcciones IPv4 y máscaras de subred predeterminadas</h1>
+        <br>
+        <p>Hay varios tipos y clases de direcciones IPv4. Mientras que las clases de direcciones son cada vez menos importantes en las redes, todavía se utilizan y mencionan con frecuencia en la documentación sobre redes.</p>
+        <br>
+        <p><b>Clases de direcciones</b></p>
+        <br>
+        <p>En 1981, las direcciones IPv4 se asignaban mediante el direccionamiento con base a esquemas de clases, según se define en RFC 790. A los clientes se les asignaba una dirección de red basada en una de tres clases: A, B o C. El RFC dividía los rangos unicast en las siguientes clases específicas:</p>
+        <br>
+        <li><b>Clase A </b>(0.0.0.0/8 a 127.0.0.0/8): Diseñada para admitir redes extremadamente grandes, con más de 16 millones de direcciones de host. Usaba un prefijo /8 fijo donde el primer octeto indicaba la dirección de red y los tres octetos restantes eran para las direcciones de host.</li>
+        <li><b>Clase B </b>(128.0.0.0/16 a 191.255.0.0/16): Diseñada para satisfacer las necesidades de redes de tamaño moderado a grande, con hasta 65 000 direcciones de host. Usaba un prefijo /16 fijo donde los dos octetos de valor superior indicaban la dirección de red y los dos octetos restantes eran para las direcciones de host.</li>
+        <li><b>Clase C </b>(192.0.0.0/24 a 223.255.255.0/24): Diseñada para admitir redes pequeñas con un máximo de 254 hosts. Usaba un prefijo /24 fijo donde los tres primeros octetos indicaban la red y el octeto restante era para las direcciones de host.</li>
+        <br>
+        <b>Nota: </b>También existe un bloque de multidifusión de clase D que va de 224.0.0.0 a 239.0.0.0, y un bloque de direcciones experimentales de clase E que va de 240.0.0.0 a 255.0.0.0.
+        <br>
+        <p>Tal como se indica en la figura, el sistema de clases asignaba el 50% de las direcciones IPv4 disponibles a 128 redes Clase A, el 25% de las direcciones a la Clase B y, luego, la Clase C compartía el 25% restante con las Clases D y E. Aunque era adecuado en su momento, con la expansión de Internet resultó obvio que este método estaba desperdiciando direcciones y reducía la cantidad de direcciones de red IPv4 disponibles.</p>
+        <br>
+        <img src="img/Clases de direcciones.jpg" class="foto">
+        <br>
+        <p>El direccionamiento bajo el esquema de clases se abandonó a fines de la década de 1990 para favorecer el sistema de direccionamiento sin clase actual. Sin embargo, como veremos más adelante en esta sección, el direccionamiento sin clases fue solamente una solución temporal para el agotamiento de direcciones IPv4.</p>
+        <hr>
+
+        <h1 id="6.4.2">6.4.2 Direcciones privadas reservadas</h1>
+        <br>
+        <p>Las direcciones IPv4 públicas son direcciones en las que se realiza routing globalmente entre los routers ISP. Sin embargo, no todas las direcciones IPv4 disponibles pueden usarse en Internet. Existen bloques de direcciones denominadas direcciones privadas que la mayoría de las organizaciones usan para asignar direcciones IPv4 a los hosts internos.</p>
+        <br>
+        <p>A mediados de la década de 1990, se presentaron las direcciones IPv4 privadas debido al agotamiento del espacio de direcciones IPv4. Las direcciones IPv4 privadas no son exclusivas y cualquier red interna puede usarlas.</p>
+        <br>
+        <p>Estos son los bloques de direcciones privadas:</p>
+        <br>
+        <li>10.0.0.0 /8 o 10.0.0.0 a 10.255.255.255</li>
+        <li>172.16.0.0 /12 o 172.16.0.0 a 172.31.255.255</li>
+        <li>192.168.0.0 /16 o 192.168.0.0 a 192.168.255.255</li>
+        <br>
+        <p>Es importante saber que las direcciones dentro de estos bloques de direcciones no están permitidas en Internet y deben ser filtradas (descartadas) por los routers de Internet. Por ejemplo, como se ve en la figura, los usuarios de las redes 1, 2 o 3 envían paquetes a destinos remotos. Los routers ISP detectan que las direcciones IPv4 de origen de los paquetes provienen de direcciones privadas y, por lo tanto, descartan los paquetes.</p>
+        <br><br>
+
+        <h2>Las direcciones privadas no se pueden enrutar a través de Internet</h2>
+        <br>
+        <img src="img/Las direcciones privadas no se pueden enrutar a través de Internet.jpg" class="foto">
+        <br><br>
+        <p>La mayoría de las organizaciones usan direcciones IPv4 privadas para los hosts internos. Sin embargo, estas direcciones RFC 1918 no se pueden enrutar en Internet y deben traducirse a direcciones IPv4 públicas. Se usa la traducción de direcciones de red (NAT) para traducir entre direcciones IPv4 privadas y públicas. En general, esto se hace en el router que conecta la red interna a la red del ISP.</p>
+        <br>
+        <p>Los routers domésticos brindan la misma funcionalidad. Por ejemplo, la mayoría de los routers domésticos asignan direcciones IPv4 a sus hosts cableados e inalámbricos desde la dirección privada 192.168.1.0 /24. A la interfaz del router doméstico que se conecta a la red del proveedor de servicios de Internet (ISP) se le suele asignar una dirección IPv4 pública para usar en Internet.</p>
+    </div>
+</body>
+</html>

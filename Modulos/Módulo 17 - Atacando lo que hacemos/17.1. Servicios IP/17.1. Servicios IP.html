@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="17.1.1">17.1.1 Vulnerabilidades de ARP</h1>
+        <br>
+        <p>Los hosts transmiten una solicitud ARP hacia otros hosts del segmento de red para determinar la dirección MAC de un host con una dirección IP específica. Todos los hosts de la subred reciben y procesan la solicitud ARP. El host con la dirección IP que coincide con la de la solicitud ARP envía una respuesta ARP.</p>
+        <br>
+        <p>Reproduzca la animación para ver el proceso ARP en funcionamiento.</p>
+        <br>
+        <video src="video/Vulnerabilidades de ARP.mp4" controls></video>
+        <br><br>
+        <p>Cualquier cliente puede enviar una respuesta de ARP no solicitada llamada “ARP gratuito." Esto suele hacerse cuando un dispositivo se inicia por primera vez para informar a todos los demás dispositivos de la red local sobre la dirección MAC del nuevo dispositivo. Cuando un host envía un ARP gratuito, otros hosts en la subred almacenan en sus tablas de ARP la dirección MAC y la dirección IP que contiene dicho ARP.</p>
+        <br>
+        <p>Sin embargo, esta característica de ARP también significa que cualquier host puede afirmar ser el dueño de cualquier IP/MAC que elija. Un atacante puede envenenar la caché ARP de los dispositivos en la red local y crear un ataque MiTM para redireccionar el tráfico. El objetivo es asociar la dirección MAC del atacante con la dirección IP de la Puerta de enlace por defecto en las caché ARP de los hosts del segmento LAN. Esto posiciona al atacante entre la víctima y todos los demás sistemas fuera de la subred local.</p>
+        <hr>
+
+        <h1 id="17.1.2">17.1.2 Envenenamiento de caché ARP</h1>
+        <br>
+        <p>El envenenamiento de caché ARP se puede usar para lanzar varios ataques Man-in-the-middle.</p>
+        <br>
+        <p>Haga clic en cada botón para ver una ilustración y una explicación del proceso de envenenamiento de caché ARP.</p>
+        <br><br>
+
+        <p><b>Solicitud de ARP</b></p>
+        <br>
+        <p>La figura muestra cómo funciona el envenenamiento de caché ARP. La PC-A requiere la dirección MAC de su Puerta de enlace por defecto (R1); por lo tanto, envía una solicitud ARP para la dirección MAC de 192.168.10.1.</p>
+        <br>
+        <img src="img/Solicitud de ARP.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Respuesta de ARP</b></p>
+        <br>
+        <p>En está figura, R1 actualiza su caché ARP con las direcciones IP y MAC de la PC-A y envía una respuesta de ARP a PC-A, la cual a su vez, actualiza su caché ARP con las direcciones IP y MAC del R1.</p>
+        <br>
+        <img src="img/Respuesta de ARP.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Respuestas ARP gratuitas falsificadas</b></p>
+        <br>
+        <p>En la figura 3, el atacante envía dos respuestas de ARP gratuitas falsas usando su propia dirección MAC para las direcciones IP de destino indicadas. La PC-A actualiza su caché ARP con su Puerta de enlace por defecto, la cual ahora apunta hacia la MAC del host del atacante. El R1 también actualiza su caché ARP con la dirección IP de la PC-A y comienza a apuntar a la dirección MAC del atacante.</p>
+        <br>
+        <p>El anfitrión del atacante está ejecutando un ataque de envenenamiento ARP. El envenenamiento ARP puede ser pasivo o activo: Pasivo: Los atacantes roban información confidencial. Activo: Los atacantes modifican datos en tránsito o inyectan datos maliciosos.</p>
+        <br>
+        <img src="img/Respuestas ARP gratuitas falsificadas.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Nota: </b>Existen muchas herramientas disponibles en internet para crear ataques de ARP MiTM, como: dsniff, Cain & Abel, ettercap, Yersinia, entre otras.</p>
+        <hr>
+
+        <h1 id="17.1.3">17.1.3 Ataques DNS</h1>
+        <br>
+        <p>El protocolo de Sistema de Nombres de Dominio (DNS) define un servicio automatizado que empareja los nombres de recursos, como <a href="www.cisco.com">www.cisco.com</a>, con su respectiva dirección de red numérica, ya sea dirección IPv4 o IPv6. Incluye el formato para las consultas, respuestas y datos, y usa registros de recursos (RR) para identificar el tipo de respuesta de DNS.</p>
+        <br>
+        <p>La protección de DNS suele pasarse por alto. Sin embargo, es fundamental para el funcionamiento de una red y debe protegerse correctamente.</p>
+        <br>
+        <p>Los ataques DNS incluyen los siguientes:</p>
+        <br>
+        <li>Ataques de resolución abierta DNS</li>
+        <li>Ataques sigilosos DNS</li>
+        <li>Ataques Domain shadowing DNS</li>
+        <li>Ataques de tunelización DNS</li>
+        <br>
+        <p><b>Ataques de resolución abierta de DNS</b></p>
+        <br>
+        <p>Muchas organizaciones utilizan los servicios de los servidores DNS públicos abiertos, como GoogleDNS (8.8.8.8), para responder las consultas. Este tipo de servidor DNS se denomina resolución abierta. Una resolución de DNS abierta responde las consultas de clientes fuera de su dominio administrativo. Las resoluciones abiertas de DNS son vulnerables a múltiples actividades maliciosas, como las descritas en la tabla.</p>
+        <br>
+        <img src="img/Ataques de resolución abierta de DNS tabla.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Ataques sigilosos de DNS</b></p>
+        <br>
+        <p>Para ocultar su identidad, los atacantes también utilizan las siguientes técnicas DNS sigilosas para llevar a cabo sus ataques:</p>
+        <img src="img/Ataques sigilosos de DNS tabla.jpg.jpg" class="foto">
+        <br><br>
+
+        <p><b>Ataques DNS Domain shadowing</b></p>
+        <br>
+        <p>El uso de Domain shadowing implica que el atacante recolecte credenciales de cuenta de dominio para crear múltiples subdominios para utilizarlos durante los ataques. Estos subdominios generalmente apuntan a servidores maliciosos sin alertar al propietario real del dominio principal.</p>
+        <hr>
+
+        <h1 id="17.1.4">17.1.4 Tunelizado DNS</h1>
+        <br>
+        <p>Las botnets se han convertido en un método popular de ataque utilizado por los atacantes. La mayoría de las veces, las botnets se utilizan para propagar malware o iniciar ataques DDoS y suplantación de identidad.</p>
+        <br>
+        <p>A veces, el DNS en la empresa no se tiene en cuenta como un protocolo que las botnets pueden utilizar. Debido a esto, cuando se determina que el tráfico DNS es parte de un incidente, el ataque ya finalizó. Es necesario que el analista de ciberseguridad sea capaz de detectar cuándo un intruso utiliza la tunelización DNS para robar los datos, y así evitar y contener el ataque. Para lograr esto, el analista de seguridad debe implementar una solución que pueda bloquear las comunicaciones salientes de los hosts infectados.</p>
+        <br>
+        <p>Los atacantes que utilizan la tunelización DNS colocan tráfico que no es de DNS en tráfico DNS. Con frecuencia, este método evade las soluciones de seguridad. Para que el atacante utilice la tunelización DNS, se modifican los distintos tipos de registros de DNS, como TXT, MX, SRV, NULL, A, o CNAME. Por ejemplo, un registro TXT puede almacenar los comandos que son enviados hacia los bots de los host infectados como respuestas DNS. Un ataque de tunelización de DNS mediante TXT funciona así:</p>
+        <br>
+        <li>Los datos se dividen en varias partes codificadas.</li>
+        <li>Cada parte se coloca en una etiqueta de nombre de dominio de nivel inferior (lower level domain), de la consulta de DNS.</li>
+        <li>Dado que no hay ninguna respuesta del DNS local o el de red para la consulta, la solicitud se envía a los servidores DNS recursivos del ISP.</li>
+        <li>El servicio de DNS recursivo reenvía la consulta al servidor de nombres autorizados del atacante.</li>
+        <li>El proceso se repite hasta que se envían todas las consultas que contienen las partes.</li>
+        <li>Cuando el servidor de nombres autorizados del atacante recibe las consultas DNS de los dispositivos infectados, envía las respuestas para cada consulta DNS, las cuales contienen los comandos encapsulados y codificados.</li>
+        <li>El malware en el host comprometido vuelve a combinar las partes y ejecuta los comandos ocultos dentro.</li>
+        <br>
+        <p>Para poder detener la tunelización DNS, debe utilizarse un filtro que inspecciona el tráfico de DNS. Preste especial atención a las consultas de DNS que son más largas de lo normal, o las que tienen un nombre de dominio sospechoso. Además, las soluciones de seguridad DNS, como Cisco Umbrella (Antes conocido como Cisco OpenDNS), bloquean gran parte del tráfico de la tunelización de DNS identificando dominios sospechosos. Los dominios asociados con servicios de DNS Dinámico deben considerarse altamente sospechosos.</p>
+        <br>
+        <img src="img/Tunelizado DNS.jpg" class="foto">
+        <hr>
+
+        <h1 id="17.1.5">17.1.5 DHCP</h1>
+        <br>
+        <p>Los servidores DHCP proporcionan de manera dinámica, información de configuración de IP a los clientes. La figura muestra la secuencia típica de un intercambio de mensajes DHCP entre el cliente y el servidor.</p>
+        <br>
+        <h2>Funcionamiento normal de DHCP</h2>
+        <br>
+        <img src="img/Funcionamiento normal de DHCP.jpg" class="foto">
+        <hr>
+
+        <h1 id="17.1.6">17.1.6 Ataques de DHCP</h1>
+        <br>
+        <p><b>Ataque de suplantación DHCP</b></p>
+        <br>
+        <p>Un ataque de suplantación DHCP se produce cuando un servidor DHCP malicioso se conecta a la red y proporciona parámetros de configuración IP falsos a los clientes legítimos. Un servidor malicioso puede proporcionar una variedad de información engañosa:</p>
+        <br>
+        <li><b>Puerta de enlace por defecto incorrecta: </b>El atacante proporciona una puerta de enlace por defecto no válida o la dirección IP de su propio host para crear un ataque de MITM. Esto puede pasar totalmente inadvertido, ya que el intruso intercepta el flujo de datos que pasa a través de la red.</li>
+        <li><b>Servidor DNS incorrecto: </b>El atacante proporciona una dirección del servidor DNS incorrecta que dirige al usuario a un sitio web malicioso.</li>
+        <li><b>Dirección IP incorrecta: </b>El atacante proporciona una dirección IP no válida, una dirección IP de puerta de enlace por defecto no válida o ambas. Luego, el atacante crea un ataque DoS en el cliente DHCP.</li>
+        <br>
+        <p>Supongamos que un atacante conecta con éxito un servidor DHCP malicioso a un puerto de un switch en la misma subred que los clientes objetivos. El objetivo del servidor malicioso es proporcionarles a los clientes información de configuración IP falsa.</p>
+        <br><br>
+
+        <p>Haga clic en cada botón para ver una ilustración y una explicación de los pasos en un ataque de suplantación DHCP.</p>
+        <br>
+        <p><b>1. El cliente transmite mensajes DHCP Discovery</b></p>
+        <br>
+        <p>En la figura, un cliente legítimo se conecta a la red y requiere parámetros de configuración de IP. Por lo tanto, el cliente transmite una solicitud de DHCP Discover en busca de una respuesta de un servidor DHCP. Ambos servidores recibirán el mensaje.</p>
+        <br>
+        <img src="img/El cliente transmite mensajes DHCP Discovery.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>2. Los servidores DHCP responden con ofertas</b></p>
+        <br>
+        <p>En la figura, se ejemplifica cómo el servidor DHCP malicioso y el legítimo responden ambos con parámetros de configuración IP válidos. El cliente responde a la primera oferta recibida.</p>
+        <br>
+        <img src="img/Los servidores DHCP responden con ofertas.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>3. El cliente acepta la solicitud del DHCP malicioso</b></p>
+        <br>
+        <p>En esta situación, el cliente recibió primero la oferta del servidor malicioso, y transmite una solicitud de DHCP aceptando los parámetros del servidor malicioso, como se muestra en la Figura. El servidor legítimo y el malicioso reciben la solicitud.</p>
+        <br>
+        <img src="img/El cliente acepta la solicitud del DHCP malicioso.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>4. El servidor DHCP malicioso hace acuse de recibo de la solicitud</b></p>
+        <br>
+        <p>Sin embargo, solamente el servidor malicioso emite una respuesta unicast al cliente para acusar recibo de su solicitud, como se muestra en la figura. El servidor legítimo deja de comunicarse con el cliente porque la solicitud ya ha sido confirmada.</p>
+        <br>
+        <img src="img/El servidor DHCP malicioso hace acuse de recibo de la solicitud.jpg" class="foto">
+        <hr>
+
+        <h1 id="17.1.7">17.1.7 Práctica de laboratorio - Explorar tráfico DNS</h1>
+        <br>
+        <p>En esta práctica de laboratorio cumpliremos con los siguientes objetivos:</p>
+        <br>
+        <li>Capturar tráfico DNS</li>
+        <li>Explorar tráfico de consultas DNS</li>
+        <li>Explorar tráfico de respuestas DNS</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/17.1.7-lab---exploring-dns-traffic_es-XL.pdf" target="_blank">Exploración de tráfico de DNS</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m17/es-XL/assets/17.1.7-lab---exploring-dns-traffic_es-XL.pdf" target="_blank">Exploración de tráfico de DNS (online)</a></button>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+

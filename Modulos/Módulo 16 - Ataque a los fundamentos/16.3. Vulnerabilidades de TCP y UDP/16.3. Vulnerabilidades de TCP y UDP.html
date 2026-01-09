@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="16.3.1">16.3.1 Encabezado de segmento TCP</h1>
+        <br>
+        <p>Si bien algunos ataques apuntan a IP, este tema trata los ataques que apuntan a TCP y UDP.</p>
+        <br>
+        <p>La información de segmento de TCP aparece inmediatamente después del encabezado de IP. En la figura se muestran los campos del segmento TCP y los Flags para el campo de bits de control.</p>
+        <br>
+        <img src="img/Encabezado de segmento TCP.jpg" class="foto">
+        <hr>
+
+        <h1 id="16.3.2">16.3.2 Servicios TCP</h1>
+        <br>
+        <p>El TCP ofrece los siguientes servicios:</p>
+        <br>
+        <li><b>Entrega confiable - </b>El TCP incorpora acuses de recibo para garantizar la entrega, en lugar de confiar en los protocolos de capa superior para detectar y resolver errores. Si no se recibe un acuse de recibo oportuno, el emisor retransmite los datos. Requerir acuses de recibo de los datos recibidos puede causar retrasos sustanciales. Algunos ejemplos de los protocolos de capa de aplicación que hacen uso de la confiabilidad de TCP incluyen HTTP, SSL/TLS, FTP y transferencias de zona DNS.</li>
+        <li><b>Control de flujo : </b>El TCP implementa el control de flujo para abordar este problema. En lugar de confirmar la recepción de un segmento a la vez, varios segmentos se pueden confirmar con un único acuse de recibo.</li>
+        <li><b>Comunicación con estado : </b>La comunicación TCP con estado entre 2 partes ocurre durante la comunicación de "intercambio de señales de tres vías" de TCP (three-way handshake.) Antes de que sea posible transferir datos utilizando el TCP, una comunicación de "intercambio de señales de tres vías" abre la conexión TCP, tal como se ve en la Figura. Si ambas partes aceptan la conexión TCP, pueden enviar y recibir datos utilizando TCP.</li>
+        <br><br>
+        
+        <h2>Intercambio de señales de tres vías de TCP</h2>
+        <br>
+        <img src="img/Intercambio de señales de tres vías de TCP.jpg" class="foto">
+        <hr>
+
+        <h1 id="16.3.3">16.3.3 Ataques TCP</h1>
+        <br>
+        <p>Las aplicaciones de red utilizan puertos TCP o UDP. Los atacantes llevan a cabo análisis de puertos de los dispositivos objetivo para detectar qué servicios ofrecen.</p>
+        <br>
+        <p><b>Ataque de saturación SYN a TCP</b></p>
+        <br>
+        <p>El ataque de saturación de SYN de TCP ataca la comunicación de "intercambio de señales de tres vías" de TCP. Como se observa en la Figura 1, el atacante envía constantemente a un objetivo paquetes de solicitud de sesión TCP SYN con una dirección IP de origen falsificada de manera aleatoria. El dispositivo objetivo responde con un paquete SYN-ACK de TCP a la dirección IP falsificada y espera un paquete ACK de TCP. Las respuestas nunca llegan. Finalmente, el host objetivo se ve sobrecargado por las conexiones TCP medio abiertas, y los servicios TCP se deniegan a los usuarios legítimos.</p>
+        <br>
+
+        <h2>Ataque de saturación TCP SYN</h2>
+        <br>
+        <img src="img/Ataque de saturación TCP SYN.jpg" class="foto">
+        <br><br>
+
+        <p><b>Ataque de restablecimiento a TCP</b></p>
+        <br>
+        <p>Un ataque de restablecimiento de TCP puede utilizarse para terminar las comunicaciones de TCP entre dos hosts. La figura muestra como TCP utiliza un intercambio de cuatro vías para cerrar la conexión TCP con un par de segmentos FIN y ACK desde cada terminal de TCP. Una conexión TCP termina cuando recibe un bit RST. Esta es una manera abrupta de terminar la conexión TCP e informar al host receptor que deje de usar la conexión TCP de inmediato. Un atacante podría efectuar un ataque de restablecimiento de TCP y enviar un paquete falso que contenga un RST de TCP a uno o ambos terminales.</p>
+        <br><br>
+
+        <h2>Terminar una conexión TCP</h2>
+        <br>
+        <img src="img/Terminar una conexión TCP.jpg" class="foto">
+        <br><br>
+
+        <p><b>Secuestro de sesiones TCP</b></p>
+        <br>
+        <p>Otra vulnerabilidad es el secuestro de sesiones de TCP. Aunque es difícil de realizar, permite que un atacante tome el control de un host autenticado mientras este se comunica con el objetivo El atacante tendría que suplantar la dirección IP de un host, predecir el siguiente número de secuencia y enviar un ACK al otro host. Si tiene éxito, el atacante puede enviar, pero no recibir, datos desde el dispositivo objetivo.</p>
+        <hr>
+
+        <h1 id="16.3.4">16.3.4 Encabezado y Funcionaiento del segmento UDP</h1>
+        <br>
+        <p>UDP es comúnmente utilizado por DNS, DHCP, TFTP, NFS, y SNMP. También lo utilizan aplicaciones en tiempo real, como la transmisión multimedia o VoIP. UDP es un protocolo sin conexión, de capa de transporte Tiene un coste de redmucho menor que TCP ya que no está orientado a la conexión y no proporciona los mecanismos sofisticados de retransmisión, secuenciación y control del flujo que ofrecen confiabilidad. La estructura del segmento UDP (el cual se muestra en la imagen) es mucho menor que la estructura del segmento TCP.</p>
+        <br>
+        <p><b>Nota: </b>UDP actualmente divide los datos en datagramas. Sin embargo, el término genérico "segmento" se utiliza comúnmente</p>
+        <br>
+        <img src="img/Encabezado y Funcionaiento del segmento UDP.jpg" class="foto">
+        <br><br>
+
+        <p>Sin embargo aunque UDP es normalmente llamado "poco confiable", no significa que aplicaciones que utilizan UDP no sean confiables. Significa que estas funciones no las proporciona el protocolo de la capa de transporte, y se deben implementar aparte si es necesario.</p>
+        <br>
+        <p>El bajo coste del UDP es muy deseable para los protocolos que realizan transacciones simples de solicitud y respuesta. Por ejemplo, usar TCP para DHCP introduciría una cantidad innecesaria de tráfico de red. Si no se recibe respuesta, el dispositivo reenvía la solicitud.</p>
+        <hr>
+
+        <h1 id="16.3.5">16.3.5 Ataques de UDP</h1>
+        <br>
+        <p>UDP no está protegido por ningún tipo de encriptación. Podemos agregar encriptación a UDP, pero no está disponible de forma predeterminada. La falta de encriptación permite que cualquiera vea el tráfico, lo modifique y lo envíe a su destino. Si se cambian los datos en el tráfico, se altera la checksum de 16 bits, pero esta es opcional y no siempre se usa. Cuando se utiliza checksum, el atacante puede crear una nueva suma basada en la nueva payload (carga útil) de los datos, y registrarla en el encabezado como una nueva checksum. El dispositivo de destino verificará que la suma de comprobación coincide con los datos sin saber que los datos se modificaron. Este tipo de ataque no es el más utilizado.</p>
+        <br>
+        <p><b>Ataque de saturación de UDP</b></p>
+        <br>
+        <p>Es más probable que veamos un ataque de saturación UDP. En un ataque de saturación UDP, se consumen todos los recursos en una red. El atacante debe usar una herramienta como UDP Unicorn o Low Orbit Ion Cannon. Estas herramientas envían una avalancha de paquetes UDP, a menudo desde un dispositivo suplantado, hacia un servidor en la subred. El programa analiza todos los puertos conocidos intentando encontrar puertos cerrados. Esto hace que el servidor responda con un mensaje de puerto ICMP inaccesible. Debido a que hay muchos puertos cerrados en el servidor, esto crea mucho tráfico en el segmento, el cual utiliza la mayor parte del ancho de banda. El resultado es muy similar al de un ataque de DoS.</p>
+        <hr>
+
+        <h1 id="16.3.6">16.3.6 Verifique su comprensión - Vulnerabilidades TCP y UDP</h1>
+        <br>
+    </div>
+</body>
+</html>

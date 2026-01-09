@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="21.5.1">21.5.1 Aplicaciones de PKI</h1>
+        <br>
+        <p>¿Dónde puede usar PKI en una empresa? A continuación, se detalla una breve lista de usos comunes de las PKI:</p>
+        <br>
+        <li>Autenticación de pares basada en certificados SSL/TLS</li>
+        <li>Asegurar tráfico de red utilizando redes VPN IPsec</li>
+        <li>Tráfico web HTTPS</li>
+        <li>Control de acceso a la red mediante la autenticación 802.1x</li>
+        <li>Protección de correo electrónico utilizando el protocolo S/MIME</li>
+        <li>Protección de mensajería instantánea</li>
+        <li>Aprobación y autorización de aplicaciones con firma de código</li>
+        <li>Protección de datos de usuarios con el Sistema de Archivos de Encriptación (Encryption File System EFS)</li>
+        <li>Implementación de autenticación de dos factores con tarjetas inteligentes</li>
+        <li>Protección de dispositivos de almacenamiento USB</li>
+        <hr>
+
+        <h1 id="21.5.2">21.5.2 Encriptación de transacciones en la red</h1>
+        <br>
+        <p>Un analista de seguridad debe ser capaz de reconocer y resolver problemas potenciales relacionados a permitir el uso de soluciones relacionadas con PKI en la red empresarial.</p>
+        <br>
+        <p>Tenga en cuenta la manera en que el crecimiento del tráfico de SSL/TLS constituye un riesgo grave de seguridad para las empresas, ya que el tráfico está encriptado y no puede interceptarse ni monitorearse con los métodos normales. Los usuarios pueden introducir malware o filtrar información confidencial en una conexión SSL/TLS.</p>
+        <br>
+        <p>Los agentes de amenaza pueden utilizar SSL/TLS para introducir violaciones de cumplimiento reglamentario, virus y malware, o provocar pérdida de datos e intentos de intrusión en una red.</p>
+        <br>
+        <p>Otros problemas relacionados con SSL/TLS pueden vincularse a la validación del certificado de un servidor web. Cuando esto ocurre, los navegadores web muestran una advertencia de seguridad. Algunos de los problemas relacionados con la PKI que están vinculados a advertencias de seguridad son los siguientes:</p>
+        <br>
+        <p><b>Plazo de validez - </b>Los certificados X.509v3 especifican fechas de inicio y fin de validez. Si la fecha actual está fuera del rango, el navegador web muestra un mensaje. Los certificados caducados pueden deberse simplemente a una distracción del administrador, pero también pueden reflejar problemas más graves.</p>
+        <p><b>Error de validación de firma - </b>Si un navegador no puede validar la firma en el certificado, no hay ninguna garantía de que la clave pública en el certificado sea auténtica. Ocurrirá un error con la validación de la firma si el certificado raíz de la jerarquía de la CA no está disponible en el almacén de certificados del navegador.</p>
+        <br>
+        <p>En la figura, se ve un ejemplo de un error de validación de firma con Cisco AnyConnect Mobility VPN Client.</p>
+        <br>
+        <h2>Error de validación de firma</h2>
+        <br>
+        <img src="img/21.5.2-image-2.png" class="foto">
+        <br><br>
+        <p>Algunos de estos problemas pueden evitarse gracias a que los protocolos SSL/TLS son extensibles y modulares. Esto se conoce como un conjunto de cifrado. Los componentes clave del conjunto de cifrado son: el algoritmo de Código de Autenticación de Mensajes (Authentication Code Algorithm MAC), el algoritmo de encriptación, el algoritmo de intercambio de claves y el algoritmo de autenticación. Estos pueden cambiarse sin reemplazar todo el protocolo. Esta función resulta muy útil, ya que los diferentes algoritmos continúan evolucionando. A medida que el criptoanálisis sigue revelando defectos en estos algoritmos, el conjunto de cifrado se puede actualizar para colocar parches en estos defectos. Cuando las versiones del protocolo dentro del conjunto de cifrado cambian, el número de versión de SSL/TLS también lo hace.</p>
+        <hr>
+
+        <h1 id="21.5.3">21.5.3 Encriptación y monitoreo de seguridad</h1>
+        <br>
+        <p>El monitoreo de red se vuelve más difícil cuando los paquetes están encriptados. Sin embargo, los analistas de seguridad deben conocer esas dificultades y abordarlas lo mejor posible. Por ejemplo, cuando se utilizan VPN de sitio a sitio, el IPS debe colocarse de modo que pueda monitorear el tráfico sin encriptar.</p>
+        <br>
+        <p>Sin embargo, el aumento de HTTPS en la red empresarial supone nuevos desafíos. Dado que HTTPS introduce tráfico HTTP encriptado de punto a punto (mediante TLS/SSL), no es tan fácil observar el tráfico de los usuarios.</p>
+        <br>
+        <p>Los analistas especializados en seguridad deben saber cómo sortear y resolver estos problemas. Aquí vemos una lista de algunas de las medidas que podría tomar un analista especializado en seguridad:</p>
+        <br>
+        <li>Configurar reglas para distinguir entre tráfico SSL y no SSL, o entre tráfico SSL de HTTPS y no HTTPS.</li>
+        <li>Aumentar la seguridad mediante la validación de certificados de servidor usando CRL y OCSP.</li>
+        <li>Implementar protección antimalware y filtrado URL de contenido HTTPS.</li>
+        <li>Implementar un dispositivo Cisco SSL para desencriptar el tráfico SSL y enviarlo a dispositivos de Sistema de Prevención de Intrusiones (intrusion prevention system IPS) para identificar riesgos normalmente ocultos para SSL.</li>
+        <br>
+        <p>La criptografía es dinámica y siempre cambia. Un analista de seguridad debe comprender bien los algoritmos y las operaciones criptográficas para poder investigar los incidentes de seguridad relacionados con la criptografía.</p>
+        <br>
+        <p>Hay dos maneras principales en las que la criptografía afecta las investigaciones de seguridad. En primer lugar, los ataques pueden dirigirse específicamente a los algoritmos de encriptación propiamente dichos. Después de que se descodifica el algoritmo y el atacante obtiene las claves, es posible desencriptar y leer todos los datos encriptados que recopile el atacante, lo que expone los datos privados. Luego de esto, la investigación de seguridad también se ve afectada porque los datos se pueden ocultar a plena vista, encriptándolos. Por ejemplo, es muy probable que un firewall no vea el tráfico de control y comando que se encripte con TLS/SSL. Si no es posible ver y comprender el tráfico de control y comando entre un servidor de control y comando y una computadora infectada en una red segura, tampoco se puede detener. El atacante podría continuar usando comandos encriptados para infectar más computadoras y, posiblemente, crear una botnet. Es posible detectar este tipo de tráfico si se desencripta el tráfico y se lo compara con firmas de ataques conocidos, o si se detecta tráfico anómalo de TLS/SSL. Esto es muy difícil y lento, y la eficacia del proceso no está garantizada.</p>
+    </div>
+</body>
+</html>

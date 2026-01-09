@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="8.4.1">8.4.1 ¿Qué aprendí en este módulo?</h1>
+        <br>
+        <p><b>MAC e IP</b></p>
+        <br>
+        <p>Hay dos direcciones principales que se asignan a un dispositivo en una LAN Ethernet; la dirección IP, que se asigna lógicamente, y la dirección MAC que está asignada físicamente y es única para la interfaz de red. Las direcciones IP se utilizan para identificar la dirección del dispositivo de origen inicial y el dispositivo de destino final. La dirección IP de destino puede estar en la misma red IP que la de origen o en una red remota. Las direcciones de capa 2, o físicas, como las direcciones MAC Ethernet, tienen un propósito diferente: se utilizan para distribuir la trama de enlace de datos con el paquete IP encapsulado de una NIC a otra en la misma red. Si la dirección IP de destino está en la misma red, la dirección MAC de destino es la del dispositivo de destino.</p>
+        <br>
+        <p><b>ARP</b></p>
+        <br>
+        <p>Cuando se utiliza IPv4 para las comunicaciones de red, se utiliza ARP para asignar la dirección IPv4 lógica con la dirección MAC de capa 2. Para crear una trama Ethernet, se debe conocer la dirección MAC de destino. Cuando la dirección IPv4 de destino está en la misma red que el origen, el proceso ARP envía la dirección IPv4 a todos los hosts de la red para que el host con la dirección IPv4 coincidente pueda responder con la dirección MAC correspondiente. El dispositivo de envío ahora tiene toda la información necesaria para construir la trama Ethernet de Capa 2. ARP proporciona dos funciones básicas: resolver direcciones IPv4 a direcciones MAC y mantener una tabla de asignaciones de direcciones IPv4 a MAC. El dispositivo emisor busca en su tabla ARP la dirección IPv4 de destino y la dirección MAC correspondiente. Si la dirección IPv4 de destino del paquete está en la misma red que la dirección IPv4 de origen, el dispositivo busca la dirección IPv4 de destino en la tabla ARP. Si no tiene una entrada para la dirección IPv4 en su tabla ARP, el dispositivo de envío envía una solicitud ARP para determinar la dirección MAC de destino. Sólo el dispositivo con la dirección IPv4 de destino asociada con la solicitud ARP responderá con una respuesta ARP. La respuesta ARP se encapsula en una trama Ethernet utilizando la siguiente información de encabezado: la dirección MAC de destino del host solicitante, la dirección MAC de origen del host que responde y el tipo, que es un código que identifica los datos pertenecientes al proceso ARP. Los mensajes ARP tienen un valor del campo de "tipo" de 0x806. Si la dirección IPv4 de destino está en una red diferente que la dirección IPv4 de origen, el dispositivo busca la dirección IPv4 del gateway predeterminado. IPv6 utiliza un proceso similar a ARP en IPv4. Se conoce como ICMPv6 Neighbor Discovery (ND). IPv6 utiliza mensajes de solicitud de vecino y de anuncio de vecino similares a las solicitudes y respuestas de ARP de IPv4.</p>
+        <br>
+        <p><b>Problemas de ARP</b></p>
+        <br>
+        <p>Todos los dispositivos de la red local reciben y procesan una solicitud de ARP debido a que es una trama de difusión. En una red comercial típica, estas difusiones tendrían, probablemente, un efecto mínimo en el rendimiento de la red. Si se encendiera una gran cantidad de dispositivos que comenzaran a acceder a los servicios de red al mismo tiempo, el rendimiento podría disminuir durante un breve período de tiempo. Después de que los dispositivos envían las difusiones ARP iniciales y obtienen las direcciones MAC necesarias, se minimiza cualquier efecto en la red. Dado que la solicitud ARP es una transmisión o disfusión, hay posibles riesgos de seguridad impuestos. Un actor de amenaza puede usar la suplantación de ARP para realizar un ataque de envenenamiento de ARP respondiendo a una solicitud ARP para una dirección IPv4 que pertenece a otro dispositivo, como la puerta de enlace predeterminada. El receptor de la respuesta de ARP agrega la dirección MAC incorrecta a la tabla ARP y envía estos paquetes al atacante.</p>
+        <hr>
+
+        <h1 id="8.4.2">8.4.2 Módulo 8 - Prueba del protocolo de resolución de direcciones</h1>
+    </div>
+</body>
+</html>

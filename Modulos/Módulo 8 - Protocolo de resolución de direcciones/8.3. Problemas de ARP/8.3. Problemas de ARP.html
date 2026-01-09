@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="8.3.1">8.3.1 Problemas de ARP - Difusión ARP y suplantación ARP</h1>
+        <br>
+        <p>Todos los dispositivos de la red local reciben y procesan una solicitud de ARP debido a que es una trama de difusión. En una red comercial típica, estas difusiones tendrían, probablemente, un efecto mínimo en el rendimiento de la red. Sin embargo, si se encendiera una gran cantidad de dispositivos que comenzaran a acceder a los servicios de red al mismo tiempo, el rendimiento podría disminuir durante un breve período, como se muestra en la figura. Después que los dispositivos envían las solicitudes de difusión ARP iniciales y obtienen las direcciones MAC necesarias, se minimiza cualquier efecto en la red.</p>
+        <br>
+        <img src="img/Problemas de ARP - Difusión ARP y suplantación ARP.jpg" class="foto">
+        <br><br>
+        <p>En algunos casos, el uso de ARP puede conducir a un riesgo potencial de seguridad. Un atacante puede usar la suplantación ARP para realizar un ataque de envenenamiento ARP. Esta es una técnica utilizada por un atacante para responder a una solicitud de ARP de una dirección IPv4 que pertenece a otro dispositivo, como la puerta de enlace predeterminada, tal como se muestra en la ilustración. El atacante envía una respuesta de ARP con su propia dirección MAC. El receptor de la respuesta de ARP agrega la dirección MAC incorrecta a la tabla ARP y envía estos paquetes al atacante.</p>
+        <p>Los switches de nivel empresarial incluyen técnicas de mitigación conocidas como “inspección dinámica de ARP (DAI)”. DAI está más allá del alcance de este curso.</p>
+        <br>
+        <img src="img/Problemas de ARP - Difusión ARP y suplantación ARP 2.jpg." class="foto">
+        <hr>
+
+        <h1 id="8.3.2">8.3.2 Vídeo - Suplantación ARP</h1>
+        <br>
+        <p>Haga clic en reproducir para ver un video sobre ARP Spoofing.</p>
+        <br>
+        <video src="video/Suplantación ARP.mp4" controls></video>
+    </div>
+</body>
+</html>

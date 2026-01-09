@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="19.2.1">19.2.1 Operación de AAA</h1>
+        <br>
+        <p>Una red debe estar diseñada para controlar quién puede conectarse a ella y qué puede hacer cuando está conectado. Estos requisitos de diseño se identifican en la política de seguridad de la red. La política especifica cómo los administradores de redes, usuarios corporativos, usuarios remotos, partners comerciales y clientes tienen acceso a los recursos de la red. La política de seguridad de red también puede exigir la implementación de un sistema de Contabilidad que registre quién inició sesión y cuándo, además qué hizo mientras permaneció conectado. Algunas reglas de cumplimiento pueden especificar que el acceso se debe registrar y que se deben conservar los registros durante un plazo específico.</p>
+        <br>
+        <p>El protocolo de Autenticación, Autorización y Contabilidad (AAA) proporciona el marco de trabajo necesario para habilitar la seguridad de acceso escalable.</p>
+        <br>
+        <p>La tabla menciona las tres funciones de seguridad independientes proporcionadas por el marco arquitectónico AAA.</p>
+        <br>
+        <table>
+            <tr class="cabecera">
+                <th>Componente AAA</th>
+                <th>Descripción</th>
+            </tr>
+            <tr class="oscuro">
+                <td>Autenticación</td>
+                <td>
+                    <li>Los usuarios y administradores deben probar que son quienes dicen ser.</li>
+                    <li>La autenticación se puede establecer utilizando combinaciones de nombre de usuario y contraseña, preguntas de desafío y respuesta, tarjetas token y otros métodos. </li>
+                    <li>La autenticación AAA proporciona una forma centralizada de controlar el acceso a la red.</li>
+                </td>
+            </tr>
+            <tr class="claro">
+                <td>Autorización</td>
+                <td>
+                    <li>Una vez autenticado el usuario, los servicios de autorización determinan a qué recursos puede acceder el usuario y qué operaciones está habilitado para realizar.</li>
+                    <li>Un ejemplo es “El usuario estudiante puede tener acceso al servidor XYZ del host mediante SSH solamente”</li>
+                </td>
+            </tr>
+            <tr class="oscuro">
+                <td>Contabilidad</td>
+                <td>
+                    <li>La Contabilidad registra lo que hace el usuario, incluidos los elementos a los que accede, la cantidad de tiempo que accede al recurso y todos los cambios que se realizaron.</li>
+                    <li>La contabilidad realiza un seguimiento de la forma en que se utilizan los recursos de red.</li>
+                    <li>Un ejemplo es "El usuario estudiante tuvo acceso al servidor XYZ del host mediante SSH durante 15 minutos</li>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <p>Este concepto es similar a utilizar una tarjeta de crédito, como se indica en la imagen. La tarjeta de crédito identifica quién la puede utilizar y cuánto puede gastar ese usuario, y lleva un registro de los elementos en los que el usuario gastó dinero.</p>
+        <br>
+        <img src="img/Operación de AAA 1.jpg" class="foto">
+        <hr>
+
+        <h1 id="19.2.2">19.2.2 Autenticación AAA</h1>
+        <br>
+        <p>La autenticación de AAA puede usarse para autenticar a los usuarios para el acceso administrativo o puede usarse para autenticar a los usuarios para el acceso remoto a la red.</p>
+        <br>
+        <p>Cisco ofrece dos métodos comunes de implementar servicios de AAA:</p>
+        <br><br>
+
+        <p><b>Autenticación AAA local</b></p>
+        <p>Este método también se conoce como autenticación autónoma porque autentica a los usuarios en función de nombres de usuario y contraseñas almacenados localmente, como se ve en la imagen. AAA local es ideal para las redes pequeñas.</p>
+        <br>
+        <img src="img/Autenticación AAA local.jpg" class="foto">
+
+        <p><b>Autenticación AAA basada en el servidor</b></p>
+        <p>Este método autentica en función de un servidor AAA central que contiene los nombres de usuario y contraseñas de todos los usuarios. La autenticación AAA con base en el servidor es adecuada para redes de tamaño mediano a grande.</p>
+        <img src="img/Autenticación AAA basada en el servidor.jpg" class="foto">
+        <br><br>
+
+        <p>La autenticación AAA centralizada tiene más capacidad de escala y administración que la autenticación AAA local y, por lo tanto, es la implementación de AAA preferida.</p>
+        <br>
+        <p>Un sistema de AAA centralizado puede mantener bases de datos para la autenticación, autorización y contabilidad de manera independiente. Puede aprovechar Active Directory o el protocolo ligero de acceso a directorios (LDAP, Lightweight Directory Access Protocol) para la autenticación de usuarios y la membresía de grupos, manteniendo sus propias bases de datos de autorización y contabilidad.</p>
+        <br>
+        <p>Los dispositivos se comunican con el servidor AAA centralizado usando los protocolos Remote Authentication Dial-In User Service (RADIUS) o Terminal Access Controller Access Control System (TACACS+).</p>
+        <br>
+        <p>En la tabla se mencionan las diferencias entre estos programas;</p>
+        <br>
+        <img src="img/Autenticación AAA tabla.jpg" class="foto">
+        <hr>
+
+        <h1 id="19.2.3">19.2.3 Contabilidad de registros AAA</h1>
+        <p>La AAA centralizada también permite el uso del método de Contabilidad. Los registros de contabilidad provenientes de todos los dispositivos se envían a repositorios centralizados, lo que permite simplificar la Contabilidad de las acciones del usuario.</p>
+        <br>
+        <p>La Contabilidad AAA recopila datos de uso en los Contabilidad de AAA y los reporta. Estos registros son útiles para las auditorías de seguridad. Los datos recopilados pueden incluir la hora de inicio y finalización de la conexión, los comandos ejecutados, la cantidad de paquetes y el número de bytes.</p>
+        <br>
+        <p>Un uso muy implementado de la contabilidad es en combinación con la autenticación AAA. Esto ayuda a que el personal administrativo de la red administre el acceso a dispositivos de interconexión de redes. La Contabilidad proporciona más que solo autenticación. Los servidores AAA mantienen un registro detallado de lo que el usuario autenticado hace exactamente en el dispositivo, como se muestra en la imagen. Esto incluye todos los comandos EXEC y de configuración que emite el usuario. El registro contiene varios campos de datos, incluidos el nombre de usuario, la fecha y hora, y el comando real que introdujo el usuario. Esta información resulta útil para solucionar problemas de dispositivos y también proporciona evidencia contra personas que realizan actividades maliciosas.</p>
+        <br>
+        <img src="img/Contabilidad de registros AAA.jpg" class="foto">
+        <br><br>
+
+        <p>En la tabla, se ven los distintos tipos de información de Contabilidad que se pueden recopilar.</p>
+        <br>
+        <img src="img/Contabilidad de registros AAA tabla.jpg" class="foto">
+
+        <h1 id="19.2.4">19.2.4 Verifique su Conocimiento - Identificar la Característica de AAA</h1>
+    </div>
+</body>
+</html>

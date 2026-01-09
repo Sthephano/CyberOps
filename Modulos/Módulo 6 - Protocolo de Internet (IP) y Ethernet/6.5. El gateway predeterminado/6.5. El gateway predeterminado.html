@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="6.5.1">6.5.1 La decisión de reenvío de host</h1>
+        <br>
+        <p>Con IPv4 e IPv6, los paquetes siempre se crean en el host de origen. El host de origen debe poder dirigir el paquete al host de destino. Para ello, los dispositivos finales de host crean su propia tabla de enrutamiento. En este tema se explica cómo los dispositivos finales utilizan las tablas de enrutamiento.</p>
+        <br>
+        <p>Otra función de la capa de red es dirigir los paquetes entre hosts. Un host puede enviar un paquete según lo siguiente:</p>
+        <br>
+        <li><b>A sí mismo - </b>Un host puede hacerse ping a sí mismo al enviar un paquete a una dirección IPv4 127.0.0.1, denominada "interfaz de bucle invertido". El hacer ping a la interfaz de bucle invertido, pone a prueba la pila del protocolo TCP/IP en el host.</li>
+        <li><b>Host local - </b>Este es un host de destino que se encuentra en la misma red local que el host emisor. Los hosts de origen y destino comparten la misma dirección de red.</li>
+        <li><b>Host remoto - </b>Este es un host de destino en una red remota. Los hosts de origen y destino no comparten la misma dirección de red.</li>
+        <br>
+        <p>La figura ilustra la PC1 conectándose a un host local en la misma red y a un host remoto ubicado en otra red.</p>
+        <br>
+        <img src="img/La decisión de reenvío de host.jpg" class="foto">
+        <br><br>
+        <p>El dispositivo final de origen determina si un paquete está destinado a un host local o a un host remoto. El dispositivo final de origen determina si la dirección IP de destino está en la misma red en la que está el propio dispositivo de origen. El método de determinación varía según la versión IP:</p>
+        <br>
+        <li><b>En IPv4 - </b>El dispositivo de origen utiliza su propia máscara de subred junto con su propia dirección IPv4 y la dirección IPv4 de destino para realizar esta determinación.</li>
+        <li><b>En IPv6 - </b>El router local anuncia la dirección de red local (prefijo) a todos los dispositivos de la red.</li>
+        <br>
+        <p>En una red doméstica o comercial, puede tener varios dispositivos cableados e inalámbricos interconectados mediante un dispositivo intermediario, como un switch LAN o un punto de acceso inalámbrico (WAP). Este dispositivo intermediario proporciona interconexiones entre hosts locales en la red local. Los hosts locales pueden conectarse y compartir información sin la necesidad de dispositivos adicionales. Si un host está enviando un paquete a un dispositivo que está configurado con la misma red IP que el dispositivo host, el paquete simplemente se reenvía desde la interfaz del host, a través del dispositivo intermediario, y directamente al dispositivo de destino.</p>
+        <br>
+        <p>Por supuesto, en la mayoría de las situaciones queremos que nuestros dispositivos puedan conectarse más allá del segmento de red local, como a otros hogares, negocios e Internet. Los dispositivos que no están en el segmento de red local se denominan "módulo remoto de E/S". Cuando un dispositivo de origen envía un paquete a un dispositivo de destino remoto, se necesita la ayuda de los routers y del enrutamiento. El enrutamiento es el proceso de identificación de la mejor ruta para llegar a un destino. El router conectado al segmento de red local se denomina gateway predeterminado.</p>
+        <hr>
+
+        <h1 id="6.5.2">6.5.2 Puerta de Enlace Predeterminada (Gateway)</h1>
+        <br>
+        <p>La puerta de enlace predeterminada es el dispositivo de red (es decir, el router o el switch de capa 3) que puede enrutar el tráfico a otras redes. Si se piensa en una red como si fuera una habitación, el gateway predeterminado es como la puerta. Si desea ingresar a otra habitación o red, debe encontrar la puerta.</p>
+        <br>
+        <p>En una red, una puerta de enlace predeterminada suele ser un router con estas características:</p>
+        <br>
+        <li>Tiene una dirección IP local en el mismo rango de direcciones que otros hosts en la red local.</li>
+        <li>Puede aceptar datos en la red local y reenviar datos fuera de la red local.</li>
+        <li>Enruta el tráfico a otras redes.</li>
+        <br>
+        <p>Se requiere una puerta de enlace predeterminada para enviar tráfico fuera de la red local. El tráfico no se puede reenviar fuera de la red local si no hay una puerta de enlace predeterminada, la dirección de la puerta de enlace predeterminada no está configurada o la puerta de enlace predeterminada está desactivada.</p>
+        <hr>
+
+        <h1 id="6.5.3">6.5.3 Un host enruta a la puerta de enlace predeterminada</h1>
+        <br>
+        <p>Una tabla de enrutamiento de host generalmente incluirá una puerta de enlace predeterminada. En IPv4, el host recibe la dirección IPv4 de la puerta de enlace predeterminada, ya sea dinámicamente mediante el Protocolo de Configuración Dinámica de Host (DHCP) o configurado manualmente. En IPv6, el router anuncia la dirección de la puerta de enlace predeterminada o el host se puede configurar manualmente.</p>
+        <br>
+        <p>En la figura, PC1 y PC2 están configuradas con la dirección IPv4 de 192.168.10.1 como la puerta de enlace predeterminada.</p>
+        <br>
+        <img src="img/Un host enruta a la puerta de enlace predeterminad.jpg" class="foto">
+        <br><br>
+        <p>La configuración de un gateway predeterminado genera una ruta predeterminada en la tabla de enrutamiento de la PC. Una ruta predeterminada es la ruta o camino que la PC utiliza cuando intenta conectarse a la red remota.</p>
+        <br>
+        <p>Tanto la PC1 como la PC2 tendrán una ruta predeterminada para enviar todo el tráfico destinado a las redes remotas a través de R1.</p>
+        <hr>
+
+        <h1 id="6.5.4">6.5.4 Tablas de enrutamiento de host</h1>
+        <br>
+        <p>En un host de Windows, el comando route print o netstat -r se puede usar para mostrar la tabla de enrutamiento del host. Los dos comandos generan el mismo resultado. Al principio, los resultados pueden parecer abrumadores, pero son bastante fáciles de entender.</p>
+        <br>
+        <p>La figura muestra una topología de ejemplo y la salida generada por el comando <b>netstat -r</b>.</p>
+        <br>
+        <img src="img/Tablas de enrutamiento de host.jpg" class="foto">
+        <br><br>
+
+        <h2>Tabla de enrutamiento IPv4 para la PC1</h2>
+        <br>
+        <div class="cuadro_de_texto">
+            <p>C:\Users\PC1> netstat -r</p>
+            <p>(output omitted)</p>
+            <p>IPv4 Route Table</p>
+            <p>===========================================================================</p>
+            <p>Active Routes:</p>
+            <p>Network Destination         Netmask       Gateway       Interface    Metric</p>
+            <p>          0.0.0.0           0.0.0.0   192.168.10.1   192.168.10.10       25</p>
+            <p>        127.0.0.0         255.0.0.0       On-link        127.0.0.1      306</p>
+            <p>        127.0.0.1   255.255.255.255       On-link        127.0.0.1      306</p>
+            <p>  127.255.255.255   255.255.255.255       On-link        127.0.0.1      306</p>
+            <p>     192.168.10.0     255.255.255.0       On-link    192.168.10.10      281</p>
+            <p>    192.168.10.10   255.255.255.255       On-link    192.168.10.10      281</p>
+            <p>   192.168.10.255   255.255.255.255       On-link    192.168.10.10      281</p>
+            <p>        224.0.0.0         240.0.0.0       On-link        127.0.0.1      306</p>
+            <p>        224.0.0.0         240.0.0.0       On-link    192.168.10.10      281</p>
+            <p>  255.255.255.255   255.255.255.255       On-link        127.0.0.1      306</p>
+            <p>  255.255.255.255   255.255.255.255       On-link    192.168.10.10      281</p>
+            <p>(output omitted)</p>
+        </div>
+        <br>
+        <p><b>Nota</b> La salida sólo muestra la tabla de enrutamiento IPv4.</p>
+        <br>
+        <p>Al ingresar el comando netstat -r o el comando equivalente route printse muestran tres secciones relacionadas con las conexiones de red TCP / IP actuales:</p>
+        <br>
+        <li><b>Lista de interfaces - </b>Enumera la dirección de control de acceso a medios (MAC) y el número de interfaz asignado de cada interfaz con capacidad de red en el host, incluidos los adaptadores Ethernet, Wi-Fi y Bluetooth.</li>
+        <li><b>Tabla de enrutamiento IPv4 - </b>Es una lista de todas las rutas IPv4 conocidas, incluidas las conexiones directas, las redes locales y las rutas locales predeterminadas.</li>
+        <li><b>Tabla de enrutamiento IPv6 - </b>Es una lista de todas las rutas IPv6 conocidas, incluidas las conexiones directas, las redes locales y las rutas locales predeterminadas.</li>
+        <hr>
+
+        <h1 id="6.5.5">6.5.5 Verifique su comprensión - Cómo enruta un host</h1>
+        <br>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="9.2.1">9.2.1 Procesos del Servidor TCP</h1>
+        <br>
+        <p>Ya conoce los fundamentos de TCP. Comprender el papel de los números de puerto le ayudará a comprender los detalles del proceso de comunicación TCP. En este tema, también aprenderá acerca de los procesos de enlace de tres vías TCP y terminación de sesión.</p>
+        <br>
+        <p>Cada proceso de aplicación que se ejecuta en el servidor para utilizar un número de puerto. El número de puerto es asignado automáticamente o configurado manualmente por un administrador del sistema.</p>
+        <br>
+        <p>Un servidor individual no puede tener dos servicios asignados al mismo número de puerto dentro de los mismos servicios de la capa de transporte. Por ejemplo, un host que ejecuta una aplicación de servidor web y una aplicación de transferencia de archivos no puede tener ambos configurados para usar el mismo puerto, como el puerto TCP 80.</p>
+        <br>
+        <p>Una aplicación de servidor activa asignada a un puerto específico se considera abierta, lo que significa que la capa de transporte acepta y procesa los segmentos dirigidos a ese puerto. Toda solicitud entrante de un cliente direccionada al socket correcto es aceptada y los datos se envían a la aplicación del servidor. Pueden existir varios puertos abiertos simultáneamente en un servidor, uno para cada aplicación de servidor activa.</p>
+        <br><br>
+
+        <p><b>Clientes Envían Solicitudes TCP</b></p>
+        <br>
+        <p>El Cliente 1 está solicitando servicios web y el Cliente 2 está solicitando servicio de correo electrónico del mismo servidor.</p>
+        <img src="img/Clientes Envían Solicitudes TCP.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Solicitud de Puertos de Destino</b></p>
+        <br>
+        <p>Las solicitudes generan dinámicamente un número de puerto de origen. En este caso, el cliente 1 está utilizando el puerto de origen 49152 y el cliente 2 está utilizando el puerto de origen 51152.</p>
+        <img src="img/Solicitud de Puertos de Destino.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Solicitar Puertos de Origen</b></p>
+        <br>
+        <p>Las solicitudes de cliente generan dinámicamente un número de puerto de origen. En este caso, el Cliente 1 está utilizando el puerto de origen 49152 y el Cliente 2 está utilizando el puerto de origen 51152.</p>
+        <img src="img/Solicitar Puertos de Origen.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Respuesta de Puertos de Destino</b></p>
+        <br>
+        <p>Cuando el servidor responde a las solicitudes del cliente, invierte los puertos de destino y origen de la solicitud inicial. Observe que la respuesta del servidor a la solicitud web ahora tiene el puerto de destino 49152 y la respuesta de correo electrónico ahora tiene el puerto de destino 51152.</p>
+        <img src="img/Respuesta de Puertos de Destino.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Respuesta de Puertos de Origen</b></p>
+        <br>
+        <p>El puerto de origen en la respuesta del servidor es el puerto de destino original en las solicitudes iniciales.</p>
+        <img src="img/Respuesta de Puertos de Origen.jpg" class="foto">
+        <hr>
+
+        <h1 id="9.2.2">9.2.2 Establecimiento de Conexiones TCP</h1>
+        <br>
+        <p>En algunas culturas, cuando dos personas se conocen, generalmente se saludan dándose la mano. Ambas partes entienden el acto de estrechar la mano como una señal de saludo amistoso. Las conexiones en la red son similares. En las conexiones TCP, el cliente host establece la conexión con el servidor mediante el proceso de enlace de tres vías.</p>
+        <br>
+
+        <p><b>Paso 1. SYN</b></p>
+        <br>
+        <p>El cliente de origen solicita una sesión de comunicación con el servidor.</p>
+        <br>
+        <img src="img/Paso 1. SYN.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 2. ACK y SYN</b></p>
+        <br>
+        <p>El servidor acusa recibo de la sesión de comunicación de cliente a servidor y solicita una sesión de comunicación de servidor a cliente.</p>
+        <br>
+        <img src="img/Paso 2. ACK y SYN.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 3. ACK</b></p>
+        <br>
+        <p>El cliente de origen acusa recibo de la sesión de comunicación de servidor a cliente.</p>
+        <br>
+        <img src="img/Paso 3. ACK.jpg" class="foto">
+        <br><br><br>
+        <p>El protocolo de enlace de tres vías valida que el host de destino esté disponible para comunicarse. En este ejemplo, el host A ha validado que el host B está disponible.</p>
+        <hr>
+
+        <h1 id="9.2.3">9.2.3 Terminación de Sesión</h1>
+        <br>
+        <p>Para cerrar una conexión, se debe establecer el marcador de control de finalización (FIN) en el encabezado del segmento. Para finalizar todas las sesiones TCP de una vía, se utiliza un enlace de dos vías, que consta de un segmento FIN y un segmento de reconocimiento (ACK). Por lo tanto, para terminar una conversación simple admitida por TCP, se requieren cuatro intercambios para finalizar ambas sesiones. El cliente o el servidor pueden iniciar la terminación.</p>
+        <br>
+        <p>En el ejemplo, los términos cliente y servidor se utilizan como referencia por simplicidad, pero dos hosts que tengan una sesión abierta pueden iniciar el proceso de finalización.</p>
+        <br>
+
+        <p><b>Paso 1. FIN</b></p>
+        <br>
+        <p>Cuando el cliente no tiene más datos para enviar en la transmisión, envía un segmento con el indicador FIN establecido.</p>
+        <br>
+        <img src="img/Paso 1. FIN.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 2. ACK</b></p>
+        <br>
+        <p>El servidor envía un ACK para acusar recibo del FIN para terminar la sesión de cliente a servidor.</p>
+        <br>
+        <img src="img/Paso 2. ACK.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 3. FIN</b></p>
+        <br>
+        <p>El servidor envía un FIN al cliente para terminar la sesión de servidor a cliente.</p>
+        <br>
+        <img src="img/Paso 3. FIN.jpg" class="foto">
+        <br><br><br>
+
+        <p><b>Paso 4. ACK</b></p>
+        <br>
+        <p>El cliente responde con un ACK para dar acuse de recibo del FIN desde el servidor.</p>
+        <br>
+        <img src="img/Paso 4. ACK.jpg" class="foto">
+        <br><br><br>
+
+        <p>Una vez reconocidos todos los segmentos, la sesión se cierra.</p>
+        <hr>
+
+        <h1 id="9.2.4">9.2.4 Análisis del enlace de tres vías de TCP</h1>
+        <br>
+        <p>Los hosts mantienen el estado, rastrean cada segmento de datos dentro de una sesión e intercambian información sobre qué datos se reciben utilizando la información en el encabezado TCP. TCP es un protocolo full-duplex, donde cada conexión representa dos sesiones de comunicación unidireccionales. Para establecer la conexión, los hosts realizan un enlace de tres vías. Como se muestra en la figura, los bits de control en el encabezado TCP indican el progreso y el estado de la conexión.</p>
+        <br>
+        <p>Estas son las funciones del apretón de manos de tres vías:</p>
+        <br>
+        <li>Establece que el dispositivo de destino está presente en la red.</li>
+        <li>Verifica que el dispositivo de destino tenga un servicio activo y acepte solicitudes en el número de puerto de destino que el cliente de origen desea utilizar.</li>
+        <li>Informa al dispositivo de destino que el cliente de origen intenta establecer una sesión de comunicación en dicho número de puerto</li>
+        <br>
+        <p>Una vez que se completa la comunicación, se cierran las sesiones y se finaliza la conexión. Los mecanismos de conexión y sesión habilitan la función de confiabilidad de TCP.</p>
+        <br><br>
+
+        <h2>Campo de Bits de Control</h2>
+        <br>
+        <img src="img/Campo de Bits de Control.jpg" class="foto">
+        <br><br>
+        <p>Los seis bits del campo de bits de control del encabezado del segmento TCP también se conocen como marcadores. Una bandera es un bit que está activado o desactivado.</p>
+        <br>
+        <p>Los seis indicadores de bits de control son los siguientes:</p>
+        <br>
+        <li><b>URG - </b>campo de puntero urgente significativo</li>
+        <li><b>ACK - </b>Indicador de acuse de recibo utilizado en el establecimiento de la conexión y la terminación de la sesión</li>
+        <li><b>PSH - </b>Función de empuje</li>
+        <li><b>RST - </b>Restablece la conexión cuando se produce un error o un tiempo de espera</li>
+        <li><b>SYN - </b>Sincroniza números de secuencia utilizados en el establecimiento de conexión</li>
+        <li><b>FIN - </b>No más datos del remitente y se utilizan en la terminación de la sesión</li>
+        <br>
+        <p>Busque en Internet para obtener más información sobre las banderas PSH y URG.</p>
+        <hr>
+
+        <h1 id="9.2.5">9.2.5 Vídeo - Protocolo de Enlace TCP de 3 vías</h1>
+        <br>
+        <p>Vea el video para obtener más información sobre el apretón de manos de 3 vías TCP.</p>
+        <br>
+        <video src="video/Protocolo de Enlace TCP de 3 vías.mp4" controls></video>
+        <hr>
+
+        <h1 id="9.2.6">9.2.6 Práctica de laboratorio - Uso de Wireshark para observar el protocolo de enlace TCP de 3 vías</h1>
+        <br>
+        <p>En esta práctica de laboratorio se cumplirán los siguientes objetivos:</p>
+        <br>
+        <li>Part 1: Preparar los Hosts para Capturar el Tráfico</li>
+        <li>Part 2: Analizar los Paquetes con Wireshark</li>
+        <li>Part 3: Ver los Paquetes usando tcpdump</li>
+        <br>
+        <div class="botones">
+            <button><a href="pdf/9.2.6-lab---using-wireshark-to-observe-the-tcp-3-way-handshake_es-XL.pdf" target="_blank">Uso de Wireshark para observar el protocolo TCP de enlace de tres vías</a></button>
+            <button><a href="https://www.netacad.com/content/cyberops/1.0/courses/content/m9/es-XL/assets/9.2.6-lab---using-wireshark-to-observe-the-tcp-3-way-handshake_es-XL.pdf" target="_blank">Uso de Wireshark para observar el protocolo TCP de enlace de tres vías (online)</a></button>
+        </div>
+        <hr>
+
+        <h1 id="9.2.7">9.2.7 Verifique su conocimiento — Proceso de Conexión y Terminación TCP</h1>
+        <br>
+        <p>Mediante los menús desplegables, seleccione la opción adecuada para ilustrar el protocolo de enlace tridireccional de una sesión de establecimiento TCP.</p>
+        <br>
+        <img src="img/Verifique su conocimiento — Proceso de Conexión y Terminación TCP.jpg" class="foto">
+    </div>
+</body>
+</html>

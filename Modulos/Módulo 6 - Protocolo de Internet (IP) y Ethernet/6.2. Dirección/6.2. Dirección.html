@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="6.2.1">6.2.1 La capa de red</h1>
+        <br>
+        <p>La capa de red, o Capa OSI 3, proporciona servicios para permitir que los dispositivos finales intercambien datos a través de redes. Como se muestra en la figura, IP versión 4 (IPv4) e IP versión 6 (IPv6) son los principales protocolos de comunicación de la capa de red. Otros protocolos de capa de red incluyen protocolos de enrutamiento como Open Shortest Path First (OSPF) y protocolos de mensajería como Internet Control Message Protocol (ICMP).</p>
+        <br><br>
+
+        <h2>Protocolos de capa de red</h2>
+        <br>
+        <img src="img/Protocolos de capa de red.jpg" class="foto">
+        <br><br>
+        <p>Para lograr comunicaciones punto a punto a través de los límites de la red, los protocolos de la capa de red realizan cuatro operaciones básicas:</p>
+        <br>
+        <p><b>Direccionamiento de dispositivos finales: </b>los dispositivos finales deben configurarse con una dirección IP única para la identificación en la red.</p>
+        <p><b>Encapsulación: </b>La capa de red encapsula la unidad de datos de protocolo (PDU) de la capa de transporte en un paquete. El proceso de encapsulamiento agrega información del encabezado IP, como la dirección IP de los hosts de origen (emisores) y de destino (receptores). El proceso de encapsulación lo realiza la fuente del paquete IP.</p>
+        <p><b>Enrutamiento: </b>La capa de red proporciona servicios para dirigir los paquetes a un host de destino en otra red. Para transferir un paquete a otras redes, debe procesarlo un router. La función del router es seleccionar la mejor ruta y dirigir los paquetes al host de destino en un proceso que se denomina "enrutamiento". Un paquete puede cruzar muchos routers antes de llegar al host de destino. Se denomina "salto" a cada router que cruza un paquete antes de alcanzar el host de destino.</p>
+        <p><b>Desencapsulación: </b>Cuando el paquete llega a la capa de red del host de destino, el host verifica el encabezado IP del paquete. Si la dirección IP de destino dentro del encabezado coincide con su propia dirección IP, se elimina el encabezado IP del paquete. Una vez que la capa de red desencapsula el paquete, la PDU de capa 4 que se obtiene se transfiere al servicio apropiado en la capa de transporte. El proceso de desencapsulación lo realiza el host de destino del paquete IP.</p>
+        <br>
+        <p>A diferencia de la capa de transporte (Capa OSI 4), que gestiona el transporte de datos entre los procesos que se ejecutan en cada host, los protocolos de comunicación de la capa de red (es decir, IPv4 e IPv6) especifican la estructura de paquetes y el procesamiento utilizado para transportar los datos de un host a otro host. La capa de red puede transportar paquetes de varios tipos de comunicación entre varios hosts porque funciona sin tener en cuenta los datos que contiene cada paquete.</p>
+        <br>
+        <p>Haga clic en Reproducir en la ilustración para ver una animación sobre el intercambio de datos.</p>
+        <br>
+        <video src="video/Protocolos de capa de red video.mp4" controls></video>
+        <hr>
+
+        <h1 id="6.2.2">6.2.2 Encapsulación IP</h1>
+        <br>
+        <p>IP encapsula el segmento de la capa de transporte (la capa justo por encima de la capa de red) u otros datos agregando un encabezado IP. El encabezado IP se usa para entregar el paquete al host de destino.</p>
+        <br>
+        <p>La figura ilustra cómo la PDU de la capa de transporte es encapsulada por la PDU de la capa de red para crear un paquete IP.</p>
+        <br>
+        <img src="img/6.2.2 Encapsulación IP.jpg" class="foto">
+        <br><br>
+        <p>El proceso de encapsulamiento de datos capa por capa permite que se desarrollen y se escalen los servicios en las diferentes capas sin afectar a las otras capas. Esto significa que IPv4 o IPv6 o cualquier protocolo nuevo que se desarrolle en el futuro puede armar sin inconvenientes un paquete con los segmentos de capa de transporte.</p>
+        <br>
+        <p>El encabezado IP es examinado por dispositivos de Capa 3 (es decir, routers y switches de Capa 3) a medida que viaja a través de una red a su destino. Es importante tener en cuenta que la información de direccionamiento IP permanece igual desde el momento en que el paquete sale del host de origen hasta que llega al host de destino, excepto cuando se traduce por el dispositivo que realiza la traducción de direcciones de red (NAT) para IPv4.</p>
+        <br>
+        <p><b>Nota: </b>NAT se discute en módulos posteriores.</p>
+        <br>
+        <p>Los routers implementan protocolos de enrutamiento para encaminar paquetes entre redes. El enrutamiento realizado por estos dispositivos intermediarios examina el direccionamiento de la capa de red en el encabezado del paquete. En todos los casos, la porción de datos del paquete, es decir, la PDU de la capa de transporte encapsulada u otros datos, permanece sin cambios durante los procesos de la capa de red.</p>
+        <hr>
+
+        <h1 id="6.2.3">6.2.3 Características de IP</h1>
+        <br>
+        <p>IP se diseñó como un protocolo con sobrecarga baja. Provee solo las funciones necesarias para enviar un paquete de un origen a un destino a través de un sistema interconectado de redes. El protocolo no fue diseñado para rastrear ni administrar el flujo de paquetes. Estas funciones, si es necesario, están a cargo de otros protocolos en otras capas, principalmente TCP en la capa 4.</p>
+        <br>
+        <p>Estas son las características básicas de la IP:</p>
+        <br>
+        <p><b>Sin conexión: -</b> no hay conexión con el destino establecido antes de enviar paquetes de datos.</p>
+        <p><b>Mejor esfuerzo: - </b>la IP es inherentemente poco confiable porque no se garantiza la entrega de paquetes.</p>
+        <p><b>Medios independientes: </b>la operación es independiente del medio (es decir, cobre, fibra óptica o inalámbrico) que transporta los datos.</p>
+        <hr>
+
+        <h1 id="6.2.4">6.2.4 Sin conexión</h1>
+        <br>
+        <p>IP sin conexión, significa que el protocolo IP no crea una conexión de extremo a extremo dedicada antes de enviar los datos. La comunicación sin conexión es conceptualmente similar a enviar una carta a alguien sin notificar al destinatario por adelantado. La figura resume este punto clave.</p>
+        <br>
+        <h2>Sin conexión - Analogía</h2>
+        <br>
+        <img src="img/Sin conexión.jpg" class="foto">
+        <br></br>
+        <p>Las comunicaciones de datos sin conexión funcionan con el mismo principio. Como se muestra en la figura, el protocolo IP no requiere un intercambio inicial de información de control para establecer una conexión de extremo a extremo antes de que se reenvíen los paquetes.</p>
+        <br><br>
+
+        <h2>Sin conexión: red</h2>
+        <br>
+        <img src="img/Sin conexión red 2.jpg" class="foto">
+        <hr>
+
+        <h1 id="6.2.5">6.2.5 Mejor esfuerzo</h1>
+        <br>
+        <p>El protocolo IP tampoco necesita campos adicionales en el encabezado para mantener una conexión establecida. Este proceso reduce en gran medida la sobrecarga del protocolo IP. Sin embargo, sin una conexión completa preestablecida, los remitentes no saben si los dispositivos de destino están presentes y en funcionamiento cuando envían paquetes, ni tampoco si el destinatario recibe el paquete o si puede acceder al paquete y leerlo.</p>
+        <br>
+        <p>El protocolo IP no garantiza que todos los paquetes que se envían, de hecho, se reciban. En la ilustración, se muestran las características de entrega de mejor esfuerzo o poco confiable del protocolo IP.</p>
+        <br>
+        <img src="img/Mejor esfuerzo.jpg" class="foto">
+        <hr>
+
+        <h1 id="6.2.6">6.2.6 Independiente de los medios</h1>
+        <br>
+        <p>Que sea poco confiable significa que el protocolo IP no tiene la capacidad para administrar y recuperar paquetes no recibidos o dañados. Esto se debe a que, si bien los paquetes IP se envían con información sobre la ubicación de la entrega, no contienen información que pueda procesarse para informar al remitente si la entrega fue exitosa. Es posible que los paquetes lleguen dañados o fuera de secuencia al destino o que no lleguen en absoluto. El portocolo IP no tiene la capacidad de retransmitir paquetes si se producen errores.</p>
+        <br>
+        <p>Las aplicaciones que utilizan los datos o los servicios de capas superiores deben solucionar problemas como el envío de paquetes fuera de orden o la pérdida de paquetes. Esta característica permite que el protocolo IP funcione de manera muy eficaz. En el conjunto de protocolos TCP / IP, la confiabilidad es la función del protocolo TCP en la capa de transporte.</p>
+        <br>
+        <p>IP funciona independientemente de los medios que transportan los datos en las capas más bajas de la pila de protocolos. Como se muestra en la ilustración, los paquetes IP pueden ser señales electrónicas que se transmiten por cables de cobre, señales ópticas que se transmiten por fibra óptica o inalámbricamente como las señales de radio.</p>
+        <br>
+        <img src="img/Independiente de los medios.jpg" class="foto">
+        <br><br>
+        <p>La capa de enlace de datos OSI es responsable de tomar un paquete IP y prepararlo para la transmisión a través del medio de comunicaciones. Esto significa que la entrega de paquetes IP no se limita a ningún medio en particular.</p>
+        <br>
+        <p>Sin embargo, la capa de red tiene en cuenta una de las características más importantes del medio, que es el tamaño máximo de PDU que cada medio puede transportar. Esta característica se conoce como "unidad de transmisión máxima" (MTU). Parte del control de la comunicación entre la capa de enlace de datos y la capa de red consiste en establecer el tamaño máximo del paquete. La capa de enlace de datos pasa el valor de MTU a la capa de red. La capa de red luego determina qué tamaño pueden tener los paquetes.</p>
+        <br>
+        <p>En algunos casos, un dispositivo intermedio, generalmente un router, debe dividir un paquete IPv4 cuando lo reenvía de un medio a otro con una MTU más pequeña. Este proceso se denomina “fragmentación de paquetes” o “fragmentación”. La fragmentación provoca latencia. El router no puede fragmentar los paquetes IPv6.</p>
+        <hr>
+
+        <h1 id="6.2.7">6.2.7 Verifique su comprensión - Características de IP</h1>
+        <br>
+        <hr>
+
+        <h1 id="6.2.8">6.2.8 Encabezado de paquetes IPv4</h1>
+        <br>
+        <p>IPv4 es uno de los protocolos de comunicación de la capa de red principal. El encabezado del paquete IPv4 se utiliza para garantizar que este paquete se entrega en su siguiente parada en el camino a su dispositivo final de destino.</p>
+        <br>
+        <p>El encabezado de paquetes IPv4 consta de campos que contienen información importante sobre el paquete. Estos campos tienen números binarios que examinan el proceso de capa 3.</p>
+        <hr>
+
+        <h1 id="6.2.9">6.2.9 Campos de encabezado de paquete IPv4</h1>
+        <br>
+        <p>Los valores binarios de cada campo identifican diversos parámetros de configuración del paquete IP. Los diagramas de encabezado del protocolo, que se leen de izquierda a derecha y de arriba hacia abajo, proporcionan una representación visual de consulta al analizar los campos de protocolo. El diagrama de encabezado del protocolo IP en la ilustración identifica los campos de un paquete IPv4.</p>
+        <br><br>
+        <h2>Campos del encabezado de paquetes IPv4</h2>
+        <br>
+        <img src="img/Campos de encabezado de paquete IPv4.jpg" class="foto">
+        <br>
+        <p>Los dos campos a los que se hace más referencia son los de dirección IP de origen y de destino En estos campos, se identifica de dónde viene el paquete y a dónde va. Por lo general, estas direcciones no cambian mientras se viaja desde el origen hasta el destino.</p>
+        <br>
+        <p>Los campos Longitud de encabezado de Internet (IHL), Longitud total y Suma de comprobación del encabezado se utilizan para identificar y validar el paquete.</p>
+        <br>
+        <p>Para reordenar un paquete fragmentado, se usan otros campos. Específicamente, el paquete IPv4 utiliza los campos de identificación, señaladores y desplazamiento de fragmentos para llevar un control de los fragmentos. Un router puede tener que fragmentar un paquete IPv4 cuando lo reenvía de un medio a otro con una MTU más pequeña.
+        <br>
+        <p>Los campos Opciones y Relleno rara vez se usan y están fuera del alcance de este módulo.</p>
+        <hr>
+
+        <h1 id="6.2.10">6.2.10 Verifique su comprensión - Paquete IPv4</h1>
+        <br>
+    </div>
+</body>
+</html>

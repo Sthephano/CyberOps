@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../data/modulo_predeter.css">
+    <title>Cisco Networking Academy</title>
+</head>
+<body>
+    <div class="container">
+        <h1 id="25.4.1">25.4.1 ¿Qué aprendimos en este módulo?</h1>
+        <br>
+        <p><b>Tipos de datos de seguridad</b></p>
+        <br>
+        <p>Los datos de alertas son mensajes generados por sistemas de prevención de intrusiones (IPS) o sistemas de detección de intrusiones (IDS) para responder al tráfico que viola una regla o coincide con la firma de un ataque conocido. Snort genera las alertas y es posible leerlas y buscarlas con aplicaciones como Sguil, Squert y Kibana que forman parte del conjunto Security Onion de herramientas de NSM.</p>
+        <br>
+        <p>Los datos de sesión son un registro de una conversación entre dos terminales de red que suelen ser un cliente y un servidor. El servidor puede encontrarse dentro de la red empresarial o en un lugar al que se tiene acceso por Internet. Los datos de la sesión incluyen información de identificación, como las cinco tuplas de direcciones IP de origen y destino, los números de puerto de origen y de destino, y el código IP del protocolo en uso. Los datos sobre la sesión suelen incluir un identificador de la sesión, la cantidad de datos transferidos por el origen y el destino, e información relativa a la duración de la sesión.</p>
+        <br>
+        <p>La captura de paquetes completos es el tipo de captura que obtiene los datos más detallados de la red. Las capturas completas de paquetes requieren el mayor almacenamiento. La captura completa de paquetes contiene todo el material de las conversaciones, como los mensajes de texto o correo electrónico, el HTML de las páginas web y los archivos que ingresan o salen de la red. El contenido que se extrae de las capturas de paquetes completos puede recuperarse y analizarse en busca de malware o comportamiento del usuario que viole las políticas de la empresa y de seguridad.</p>
+        <br>
+        <p>Los datos estadisticos son creados a través del analisis de varias formas de datos de red Las características estadísticas del comportamiento normal de una red se pueden comparar con el tráfico de red actual en un esfuerzo por detectar anomalías. Las estadísticas pueden utilizarse para caracterizar volúmenes normales de variación en los patrones de tráfico de red con el fin de identificar las condiciones de red que están significativamente fuera de esos rangos. Las diferencias estadísticamente significativas deben desencadenar alarmas e impulsar la investigación.</p>
+        <br>
+        <p><b>Registros de terminales</b></p>
+        <br>
+        <p>El sistema de detección de intrusiones basado en hosts(Host-based Intrusion detection system, HIDS), se ejecuta en hosts individuales. HIDS no solo detecta intrusiones sino que, en la forma de firewalls con base en hosts, también puede prevenirlas. Este software crea registros y los guarda en el host. Muchas protecciones basadas en host tienen una forma de enviar registros a servidores de administración de registros centralizados, lo que proporciona una forma de buscar registros desde una ubicación central mediante herramientas de NSM. OSSEC, un HIDS de código abierto muy conocido, incluye una funcionalidad muy resistente de recopilación y análisis de registros.</p>
+        <br>
+        <p>Syslog incluye especificaciones para formatos de mensajes, una estructura de aplicación de cliente y servidor, y un protocolo de red. Muchos tipos diferentes de dispositivos de red pueden configurarse para utilizar el estándar de syslog a fin de registrar eventos en los servidores de syslog centralizados.</p>
+        <br>
+        <p>Los registros del servidor son una fuente esencial de información para el monitoreo de la seguridad de la red. Los servidores de aplicaciones de una red, como los web y los de correo electrónico, tienen archivos de registro de acceso y de errores. El servidor proxy DNS registra todas las consultas y respuestas de DNS que ocurren dentro de la red. Los registros del proxy de DNS son útiles para la identificación de hosts que podrían haber visitado sitios web peligrosos y para la identificación de exfiltración de datos de DNS y conexiones a servidores de comando y control de malware.</p>
+        <br>
+        <p>SIEM combina las funciones esenciales de las herramientas de administración de eventos de seguridad (SEM) y administración de información de seguridad (SIM) para brindar una perspectiva comprensible de las redes empresariales usando recolectores de registros, normalización, correlación, agregación, reporte y conformidad</p>
+        <br>
+        <p><b>Registros de redes</b></p>
+        <br>
+        <p>La herramienta de línea de comando tcpdump es un analizador de paquetes muy popular. Puede mostrar capturas de paquetes en tiempo real o escribir capturas de paquetes en un archivo. Las capturas incluyen protocolos de paquetes detallados y datos de contenido que se pueden ver con Wireshark.</p>
+        <br>
+        <p>NetFlow proporciona de manera eficiente un importante conjunto de servicios para aplicaciones IP, en el que se incluye auditoría de tráfico de red, facturación de redes con base en el uso, planificación de la red, seguridad, funcionalidades de monitoreo de denegación de servicio y monitoreo de la red. NetFlow brinda información valiosa acerca de los usuarios y las aplicaciones de la red, horarios pico de uso y routing de tráfico.</p>
+        <br>
+        <p>Control y visibilidad de aplicaciones de Cisco utiliza el reconocimiento version 2 basado en la red (NBAR2), también conocido como Next-Generation NBAR, para descubrir y clasificar las aplicaciones en uso en la red. El motor de reconocimiento de aplicaciones NBAR2 admite más de 1000 aplicaciones de red.</p>
+        <br>
+        <p>Los dispositivos como Cisco Email Security Appliance (ESA) y Cisco Web Security Appliance (WSA), ofrecen una amplia gama de funcionalidades para el monitoreo de la seguridad utilizando filtro de contenido. Se pueden generar archivos de registro para muchas de estas funcionalidades.</p>
+        <br>
+        <p>Los servidores proxy son dispositivos que actúan como intermediarios para los clientes de la red. Una empresa puede configurar un proxy web para manejar las solicitudes web en nombre de los clientes. En lugar de enviar las solicitudes de recursos web directamente al servidor desde el cliente, la solicitud se envía primero a un servidor proxy. El servidor proxy solicita los recursos y los devuelve al cliente. El servidor proxy genera registros de todas las peticiones y respuestas que luego pueden analizarse para determinar qué hosts realizan las solicitudes y si los destinos son seguros o podrían ser maliciosos, y también para entender mejor qué tipos de recursos se descargan.</p>
+        <br>
+        <p>Los dispositivos de Firewall NextGen extienden la seguridad en la red más allá de las direcciones IP y los números de puerto de capa 4 hasta la capa de aplicación y más allá. Los Firewall NextGen son dispositivos avanzados que proporcionan mucha más funcionalidad que las generaciones anteriores de dispositivos de seguridad de red. Los NextGen tiene tableros de reporte Firewall con funciones interactivas que permiten un rápido sistema de reportes en un clic sobre información muy específica sin la necesidad de SIEM u otros eventos de correlación.</p>
+        <hr>
+    </div>
+</body>
+</html>
